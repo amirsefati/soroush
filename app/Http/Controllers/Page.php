@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Moshaver extends Controller
+class Page extends Controller
 {
     public function index(){
-        return view('moshaver.master');
+        return view('page.firstpage');
     }
 }

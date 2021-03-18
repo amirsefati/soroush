@@ -50,13 +50,7 @@
 .row{
     text-align: right;
 }
-.ck[dir=rtl] .ck{
-    font-family: sefati;
-}
-.ck-content[dir=rtl] .table th{
-    text-align: center!important;
-}
-.border_dash{
-    border: 1px dashed gray;
-    border-radius: 10px;
+.app-header__logo .logo-src{
+    background-size: contain;
+    background-position-x: right;
 }

@@ -1,18 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>داشبورد مدیر</title>
+    <title>داشبورد مشاور</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="">
-    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="داشبورد مشاور برنامه">
    
-<link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
-<link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/moshaver.css')}}">
 
 </head>
 <body>
@@ -90,28 +88,28 @@
 
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">اکانت1</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">اکانت2</button>
+                                            <h6 tabindex="-1" class="dropdown-header">وسطی</h6>
+                                            <button type="button" tabindex="0" class="dropdown-item">اکانت3</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">اکانت4 </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        مدیریت
+                                        اسم طرف
                                     </div>
                                     <div class="widget-subheading">
-                                        پنل مدیریت سایت 
+                                        نمدونم چی
                                     </div>
                                 </div>
-                                <div class="widget-content-right header-user-info ml-3">
+                                <!-- <div class="widget-content-right header-user-info ml-3">
                                     <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
                                         <i class="fa text-white fa-calendar pr-1 pl-1"></i>
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>        </div>
@@ -432,138 +430,51 @@
                                 <li>
                                     <a href="/manager/index/0" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        نمایش
+                                        مشاوره1
                                     </a>
-                                </li>
+                                </li>      
 
+                                <li class="app-sidebar__heading">منو</li>
                                
-                               
-
-                              
-                                <li class="app-sidebar__heading">کاربران</li>
                                 <li>
-                                    <a href="/manager/user_no_verify" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        کاربران تایید نشده
-                                    </a>
-                                </li>
-
-                             
-
-                                <li>
-                                    <a href="/manager/manage_noti">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                         مدیریت 
-                                    </a>
-                                </li>
-
-
-                                <li class="app-sidebar__heading">فایل ها</li>
-                                <li>
-                                    <a href="/manager/exercise_file" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        تمرین
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/manager/solve_exercise_file" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        تحلیل تمرین 
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/manager/skat" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        تمرین اسکت 
-                                    </a>
-                                </li>
-                                
-
-                                <li class="app-sidebar__heading">آموزش ها</li>
-                               
-                                <!-- <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
-                                        Elements
+                                        منو کشویی
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
                                         <li>
                                             <a href="elements-buttons-standard.html">
                                                 <i class="metismenu-icon"></i>
-                                                Buttons
+                                                زیر منو1
                                             </a>
                                         </li>
                                         <li>
                                             <a href="elements-dropdowns.html">
                                                 <i class="metismenu-icon">
-                                                </i>Dropdowns
+                                                </i>
+                                                زیرمنو2
                                             </a>
                                         </li>
                                         
                                     </ul>
-                                </li> -->
+                                </li>
                                 
                                 
                                 <li>
                                     <a href="/manager/add_learn">
                                         <i class="metismenu-icon pe-7s-display2"></i>
-                                        افزودن آموزش
+                                         منو3
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="/manager/manage_learn">
                                         <i class="metismenu-icon pe-7s-display2"></i>
-                                         مدیریت آموزش ها
+                                        منو4
                                     </a>
                                 </li>
 
-
-                                
-                                <li class="app-sidebar__heading">گالری</li>
-                                <li>
-                                    <a href="/manager/add_gallery">
-                                        <i class="metismenu-icon pe-7s-mouse">
-                                        </i>افزودن آلبوم 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/manager/manage_gallery">
-                                        <i class="metismenu-icon pe-7s-eyedropper">
-                                        </i>مدیریت آلبوم ها 
-                                    </a>
-                                </li>
-
-                                <li class="app-sidebar__heading">مسابقات</li>
-                                <li>
-                                    <a href="/manager/add_competition">
-                                        <i class="metismenu-icon pe-7s-graph2">
-                                        </i>افزودن مسابقه
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/manager/manage_competition">
-                                        <i class="metismenu-icon pe-7s-graph2">
-                                        </i>مدیریت مسابقه ها
-                                    </a>
-                                </li>
-                                
-                                <li class="app-sidebar__heading">برنامه حضور مربیان</li>
-                                <li>
-                                    <a href="/manager/add_coach">
-                                        <i class="metismenu-icon pe-7s-graph2">
-                                        </i>افزودن مربی و ساعت حضور
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/manager/manage_coach">
-                                        <i class="metismenu-icon pe-7s-graph2">
-                                        </i> مدیریت برنامه
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -585,15 +496,7 @@
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) ,{
-            language : 'fa'
-        })
-        .catch( error => {
-          
-        } );
-</script>
+
 <script>
   $(document).ready(function(){
     $("#myInput").on("keyup", function() {
