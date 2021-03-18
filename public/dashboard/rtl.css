@@ -1,0 +1,62 @@
+@font-face {
+    font-family: sefati;
+    src:url('fonts/iranyekanwebregular.ttf')  format('truetype'), 
+        url('fonts/iranyekanwebregular.woff2') format('woff2'),
+        url('fonts/iranyekanwebregular.woff') format('woff');
+        font-weight: 100;
+
+}   
+
+.app-container{
+    direction: rtl;
+    font-family: sefati;
+
+}
+.app-sidebar__inner{
+    text-align: right;
+}
+.app-header__content{
+    direction: ltr;
+}
+@media (max-width: 991.98px){
+    .app-sidebar {
+        transform: translateX(274px);
+    }
+    .popover, .dropdown-menu{
+        top: 37% !important;
+    }
+    .dropdown-menu.dropdown-menu-right{
+        direction: rtl;
+    }
+    .dropdown-header{
+        text-align: right;
+        padding-right: 15px;
+    }
+    .app-main .app-main__outer{
+        padding-right: 10px!important;
+    }
+}
+
+.widget-content-left{
+    text-align: right;
+}
+
+.fixed-sidebar .app-main .app-main__outer{  
+    padding-right: 280px;
+    padding-left: 10px;
+
+}
+
+.row{
+    text-align: right;
+}
+.ck[dir=rtl] .ck{
+    font-family: sefati;
+}
+.ck-content[dir=rtl] .table th{
+    text-align: center!important;
+}
+.border_dash{
+    border: 1px dashed gray;
+    border-radius: 10px;
+}
