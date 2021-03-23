@@ -158,8 +158,22 @@
                                     </a>
                                 </li>      
 
-                                <li class="app-sidebar__heading">منو</li>
-                               
+                                <li class="app-sidebar__heading">فایل ها</li>
+
+                                <li>
+                                    <a href="/moshaver/addfilelist">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                         افزودن فایل 
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/manager/add_learn">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                         مدیریت فایل ها
+                                    </a>
+                                </li>
+
                                 <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
@@ -167,12 +181,7 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="elements-buttons-standard.html">
-                                                <i class="metismenu-icon"></i>
-                                                زیر منو1
-                                            </a>
-                                        </li>
+                                        
                                         <li>
                                             <a href="elements-dropdowns.html">
                                                 <i class="metismenu-icon">
@@ -210,8 +219,10 @@
                                     
                                 </div>
                                     </div>
-                        </div>   
+                        </div> 
+
                                 @yield('content')
+                                
                        </div>
         </div>
 
@@ -220,7 +231,30 @@
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/gh/mahmoud-eskandari/NumToPersian/dist/num2persian-min.js"></script>
+<script>
+function myFunction(col) {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
 
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[col];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 </body>
 
 </html>

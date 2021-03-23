@@ -17,7 +17,12 @@ Route::get('/', [Page::class,'index']);
 Route::prefix('moshaver')->group(function(){
 
     Route::get('/',[Moshaver::class,'index']);
+    Route::get('addfilelist',[Moshaver::class,'addfilelist']);
+    Route::get('addfile_get',[Moshaver::class,'addfile_get']);
+    Route::post('addfile_post',[Moshaver::class,'addfile_post']);
 
+    
+    
 });
 
 
