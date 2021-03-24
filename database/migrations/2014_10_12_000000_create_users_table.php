@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone')->unique();
+            $table->string('userid_inter');
+
             $table->string('code_meli')->nullable();
             $table->integer('level')->default(1);
 

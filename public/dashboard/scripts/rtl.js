@@ -108,5 +108,12 @@ $('document').ready(function(){
             $(this).val($(this).data("old"));
         });
       });
+   
+      $(".all_customers").select2({
+        dir: "rtl",
+        language:'fa'
+      });
+
       
+
 })

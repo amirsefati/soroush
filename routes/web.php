@@ -20,6 +20,7 @@ Route::prefix('moshaver')->group(function(){
     Route::get('addfilelist',[Moshaver::class,'addfilelist']);
     Route::get('addfile_get',[Moshaver::class,'addfile_get']);
     Route::post('addfile_post',[Moshaver::class,'addfile_post']);
+    Route::post('adduser_digest',[Moshaver::class,'adduser_digest']);
 
     
     

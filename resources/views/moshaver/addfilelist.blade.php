@@ -32,8 +32,10 @@
 
                     </tr>
                     <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Germany</td>
+                        <td>فایل اول</td>
+                        <td>سروش عزیز زاده</td>
+                        <td>منطقه 1</td>
+                        <td>20%</td>
                     </tr>
                     
                 </table>

@@ -61,7 +61,7 @@
                             <hr>
 
 
-                            <div class="row">   
+                            <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
                                     <label for="price">قیمت :</label>
                                     <input type="number" name="price" id="price" class="form-control" required>
@@ -94,14 +94,41 @@
 
                             <hr>
 
+                        <div class="row  justify-content-center">
+                            <div class="col-md-5">
+                                <label for="userid_file">اطلاعات مالک :</label>
+                                <select class="all_customers" style="width: 100%">
+                                        <option value="">کاربر را انتخاب کنید</option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3 pt-4">
+                                <button class="btn btn-success mt-1" type="button"  data-toggle="modal" data-target="#myModal">ثبت نام کاربر جدید</button>
+                            </div>
+                        </div>
+                        <hr>
+
                         <div class="row">
+                            <div class="col-md-4">
+                                <label for="phone1">شماره تلفن :</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="note">یادداشت شخصی :</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <div class="col-md-12">
-                                
+                                <label for="address">آدرس ملک :</label>
+                                <textarea name="" class="form-control" id="" rows="3"></textarea>
                             </div>
                         </div>
                         </div>
                     </div>
-
+                    <br>
                     <div class="collapse multi-collapse" id="collaps2">
                         <div class="card card-body">
                             section 2
@@ -121,5 +148,6 @@
 
     </div>
 </div>
+
 
 @endsection

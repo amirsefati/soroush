@@ -11,9 +11,51 @@
     <link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/moshaver.css')}}">
+    <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
 
 </head>
 <body>
+<div class="modal pt-5" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">ثبت نام کاربر جدید</h5>
+      </div>
+    <form action="/moshaver/adduser_digest" method="POST">
+    @csrf
+      <!-- Modal body -->
+      <div class="modal-body" style="direction: rtl;">
+        <div class="row">
+
+            <div class="col-6">
+                <label for="name"> نام کاربر :</label>
+                <input name="name" type="text" class="form-control" required>
+            </div>
+
+            <div class="col-6">
+                <label for="name">  شماره تلفن :</label>
+                <input name="phone" type="text" class="form-control" required>
+            </div>
+            
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12" style="text-align:center">
+                <button class="btn btn-success pr-4 pl-4"> ارسال</button>
+            </div>
+        </div>
+      </div>
+    </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">افزودن</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -232,7 +274,11 @@
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/gh/mahmoud-eskandari/NumToPersian/dist/num2persian-min.js"></script>
+<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/i18n/fa.js')}}"></script>
+
 <script>
+
 function myFunction(col) {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
