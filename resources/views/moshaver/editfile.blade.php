@@ -1,5 +1,14 @@
 @extends('moshaver.master')
 @section('content')
+<input type="text" id="what_kind_type" value="{{$file->kind_type}}" >
+
+<input type="text" id="what_type" value="{{$file->type}}">
+<input type="text" id="what_direction"  value="{{$file->direction}}">
+<input type="text" id="what_depot"  value="{{$file->depot}}">
+<input type="text" id="what_elevator"  value="{{$file->elevator}}">
+
+<input type="text" id="what_wc"  value="{{$file->wc}}">
+
 
 <div class="row">
     <div class="col-md-12">
@@ -58,13 +67,13 @@
 
                                 <div class="col-md-4">
                                     <label for="area"> متراژ(مترمربع) :</label>
-                                    <input name="area" type="number" id="area" class="form-control">
+                                    <input name="area" type="number" id="area" class="form-control" value="{{$file->area}}">
 
                                 </div>
 
                                 <div class="col-md-4" id="agecol">
                                     <label for="age"> سن بنا :</label>
-                                    <input name="age" type="number" class="form-control" >
+                                    <input name="age" type="number" class="form-control" value="{{$file->age}}">
 
                                 </div>
                             </div>
@@ -76,30 +85,30 @@
                             <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
                                     <label for="price">قیمت :</label>
-                                    <input type="number" name="price" id="price" class="form-control" >
+                                    <input type="number" name="price" id="price" class="form-control" value="{{$file->price}}">
                                     <small id="pricetopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="colrent">
                                     <label for="rent_annual">رهن :</label>
-                                    <input type="number" name="rent_annual" id="rentrpice" class="form-control" >
+                                    <input type="number" name="rent_annual" id="rentrpice" class="form-control" value="{{$file->rent_annual}}">
                                     <small id="renttopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="colrentmonth">
                                     <label for="rent_month">اجاره :</label>
-                                    <input type="number" name="rent_month" id="rent_month" class="form-control" >
+                                    <input type="number" name="rent_month" id="rent_month" class="form-control" value="{{$file->rent_month}}">
                                     <small id="rent_monthtopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="bedroom_number">
                                     <label for="bedroom_number">تعداد خواب :</label>
-                                    <input type="number" name="bedroom_number" class="form-control">
+                                    <input type="number" name="bedroom_number" class="form-control" value="{{$file->bedroom_number}}">
                                 </div>
 
                                 <div class="col-md-3" id="floorcol">
                                     <label for="floor"> طبقه واحد :</label>
-                                    <input type="number" name="floor" class="form-control">
+                                    <input type="number" name="floor" class="form-control" value="{{$file->floor}}">
                                 </div>
                             </div>
 
@@ -110,7 +119,11 @@
                             <div class="col-md-5">
                                 <label for="userid_file">اطلاعات مالک :</label>
                                 <select class="all_customers" name="userid_file" style="width: 100%">
+                                    @if($file->userid_file)
+                                        <option value="{{$file->userid_file}}" selected>{{App\Models\User::find($file->userid_file)->name}}</option>
+                                    @else
                                         <option value="">کاربر را انتخاب کنید</option>
+                                    @endif
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>
                                     @endforeach
@@ -125,15 +138,15 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="phone1">شماره تلفن :</label>
-                                <input type="number" name="phone1" class="form-control">
+                                <input type="number" name="phone1" class="form-control" value="{{$file->phone1}}">
                             </div>
                             <div class="col-md-6">
                                 <label for="address">آدرس ملک :</label>
-                                <input type="text" name="address" class="form-control">
+                                <input type="text" name="address" class="form-control" value="{{$file->address}}">
                             </div>
                             <div class="col-md-2">
                                 <label for="phone1"> منطقه :</label>
-                                <input type="number" name="region" id="region" class="form-control">
+                                <input type="number" name="region" id="region" class="form-control" value="{{$file->region}}">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -150,7 +163,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <label for="name">عنوان :</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" value="{{$file->name}}">
                                 </div>
 
                                 <div class="col-md-4">
@@ -162,19 +175,19 @@
                             <div class="row mt-3">
                                 <div class="col-md-3">
                                     <label for="allfloor">تعداد طبقات :</label>
-                                    <input type="number" name="allfloor" class="form-control">
+                                    <input type="number" name="allfloor" class="form-control" value="{{$file->allfloor}}">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="suiteinfloor">تعداد وارد در طبقه :</label>
-                                    <input type="number" name="suiteinfloor" class="form-control">
+                                    <input type="number" name="suiteinfloor" class="form-control" value="{{$file->suiteinfloor}}">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="allsuite">تعداد کل واحد ها :</label>
-                                    <input type="number" name="allsuite" class="form-control">
+                                    <input type="number" name="allsuite" class="form-control" value="{{$file->allsuite}}">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="parking">تعداد پارکینگ :</label>
-                                    <input type="number" name="parking" class="form-control">
+                                    <input type="number" name="parking" class="form-control" value="{{$file->parking}}">
                                 </div>
                             </div>
 
@@ -182,12 +195,12 @@
 
                                 <div class="col-md-3">
                                     <label for="wc_number">تعداد سرویس بهداشتی :</label>
-                                    <input type="number" name="wc_number" class="form-control">
+                                    <input type="number" name="wc_number" class="form-control" value="{{$file->wc_number}}">
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="wc">نوع سرویس بهداشتی :</label>
-                                    <select class="multiselectfiles" name="wc[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="wc[]" id="what_wc_selected" multiple="multiple" style="width:100%">
                                         <option value="ایرانی">ایرانی</option>
                                         <option value="فرنگی">فرنگی</option>
                                         <option value="وان حمام">وان حمام</option>

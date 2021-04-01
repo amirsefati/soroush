@@ -15,13 +15,14 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('type');
             $table->integer('userid_moshaver')->nullable();
             $table->integer('userid_file')->nullable();
             $table->integer('verify')->default(0);
             $table->integer('available')->default(1);
-            $table->integer('kind_type')->nullable();
+            $table->string('kind_type')->nullable();
+            $table->integer('publish')->default(0);
 
             $table->double('price')->nullable();
             $table->double('rent_annual')->nullable();
@@ -39,6 +40,7 @@ class CreateFilesTable extends Migration
             $table->string('phone2')->nullable();
             $table->string('tel')->nullable();
             $table->string('tel2')->nullable();
+            $table->text('thumbnail')->nullable();
             $table->text('images')->nullable();
             $table->text('videos')->nullable();
 

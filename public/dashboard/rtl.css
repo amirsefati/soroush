@@ -101,3 +101,21 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.box_upload_thumbnail{
+  width: 100%;
+  height: 140px;
+  background:#f4f6f9;
+  border: 3px dashed gray;
+  border-radius: 10px;
+  text-align: center;
+}
+.box_upload_thumbnailspan{
+  color:black;
+  text-align: center;
+  padding-top: 20px;
+}
+.box_upload_thumbnailimg{
+  width: 60px;
+  text-align: center;
+}

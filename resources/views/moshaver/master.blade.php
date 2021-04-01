@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/moshaver.css')}}">
     <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}">
 
 </head>
 <body>
@@ -42,16 +43,21 @@
             </div>
             
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-md-12" style="text-align:center">
-                <button class="btn btn-success pr-4 pl-4"> ارسال</button>
+                <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12" style="text-align:center">
+                <a href="/moshaver/adduser" style="font-size:11px">حالت پیشرفته</a>
             </div>
         </div>
       </div>
     </form>
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">افزودن</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
       </div>
     </div>
   </div>
@@ -250,6 +256,21 @@
                                     </a>
                                 </li>
 
+                                <li class="app-sidebar__heading">کاربران</li>
+                                <li>
+                                    <a href="/moshaver/adduser" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        افزودن کاربر
+                                    </a>
+                                </li> 
+
+                                <li>
+                                    <a href="/moshaver/listusers" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        لیست کاربر
+                                    </a>
+                                </li> 
+
                             </ul>
                         </div>
                     </div>
@@ -276,6 +297,9 @@
 <script src="https://cdn.jsdelivr.net/gh/mahmoud-eskandari/NumToPersian/dist/num2persian-min.js"></script>
 <script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/i18n/fa.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/persian-date.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/persian-datepicker.min.js')}}"></script>
+
 
 <script>
 

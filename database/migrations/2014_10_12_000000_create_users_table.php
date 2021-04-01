@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('code_meli')->nullable();
             $table->integer('level')->default(1);
 
+            $table->string('timer')->nullable();
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('tel1')->nullable();
@@ -33,11 +34,11 @@ class CreateUsersTable extends Migration
             $table->string('sporty')->nullable();
             $table->string('team')->nullable();
             $table->string('likes')->nullable();
+            $table->string('age')->nullable();
+            $table->string('work')->nullable();
 
             $table->integer('rank')->default(0);
-            $table->text('pic')->nullable();
             $table->text('documnts')->nullable();
-            $table->text('video')->nullable();
             $table->string('last_seen')->nullable();
 
             $table->string('type')->nullable();
@@ -49,6 +50,7 @@ class CreateUsersTable extends Migration
             $table->integer('elevator')->nullable();
             $table->integer('parking')->nullable();
             $table->integer('balcony')->nullable();
+            $table->integer('bedroom_number')->nullable();
 
             $table->string('status')->nullable();
             $table->string('rate')->nullable();
