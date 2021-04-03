@@ -1,36 +1,44 @@
 @extends('moshaver.master')
 @section('content')
-<input type="text" id="what_kind_type" value="{{$file->kind_type}}" >
+<input type="text" id="what_kind_type" value="{{$file->kind_type}}"  hidden>
 
-<input type="text" id="what_type" value="{{$file->type}}">
-<input type="text" id="what_direction"  value="{{$file->direction}}">
-<input type="text" id="what_depot"  value="{{$file->depot}}">
-<input type="text" id="what_elevator"  value="{{$file->elevator}}">
+<input type="text" id="what_type" value="{{$file->type}}" hidden>
 
-<input type="text" id="what_wc"  value="{{$file->wc}}">
 
+<input type="text" id="what_wc"  value="{{$file->wc}}" hidden>
+<input type="text" id="what_floor_type"  value="{{$file->floor_type}}" hidden>
+<input type="text" id="what_outdoor_face"  value="{{$file->outdoor_face}}" hidden>
+<input type="text" id="what_indoor_face"  value="{{$file->indoor_face}}" hidden>
+<input type="text" id="what_cabinet"  value="{{$file->cabinet}}" hidden>
+<input type="text" id="what_cooling"  value="{{$file->cooling}}" hidden>
+<input type="text" id="what_kitchen"  value="{{$file->kitchen}}" hidden>
 
 <div class="row">
     <div class="col-md-12">
-    <form action="/moshaver/addfile_post" method="POST" enctype="multipart/form-data">
+    <form action="/moshaver/editfile_post" method="POST" enctype="multipart/form-data">
     @csrf
+        <input type="text" name="fileid" value="{{$file->id}}" hidden>
         <input type="text" name="userid_moshaver" value="1" hidden>
         <input type="text" name="kind_type" id="kind_type_select" hidden>
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">
-                    <div class="col-md-4">افزودن فایل جدید</div>
+                    <div class="col-md-4">ویرایش فایل </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4" >
                         <div class="row">
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <div class="custom-control custom-switch pt-2">
-                                    <input type="checkbox" class="custom-control-input" id="switch1" name="publish">
+                                    @if($file->publish == 1)
+                                        <input type="checkbox" class="custom-control-input" id="switch1" checked="checked" name="publish">
+                                    @else
+                                        <input type="checkbox" class="custom-control-input" id="switch1" name="publish">
+                                    @endif
                                     <label class="custom-control-label" for="switch1">انتشار فایل</label>
                                 </div>
                             </div>
                             <div class="col-md-6 col-6" style="text-align: left;">
-                                <button type="submit" class="btn btn-success pr-4 pl-4">ارسال فایل</button>
+                                <button type="submit" class="btn btn-success pr-4 pl-4">ویرایش فایل</button>
                             </div>
                         </div>
                     </div>
@@ -210,7 +218,11 @@
                                 <div class="col-md-3">
                                     <label for="direction"> جهت ملک :</label>
                                     <select class="multiselectfiles" name="direction" id="" style="width:100%">
-                                        <option value="">انتخاب کنید</option> 
+                                        @if($file->direction)
+                                            <option value="{{$file->direction}}" selected>{{$file->direction}}</option>
+                                        @else
+                                            <option value="">انتخاب کنید</option> 
+                                        @endif
                                         <option value="شمالی">شمالی</option> 
                                         <option value="جنوبی">جنوبی</option> 
                                         <option value="شرقی">شرقی</option> 
@@ -224,7 +236,11 @@
                                 <div class="col-md-3">
                                     <label for="depot">انباری :</label>
                                     <select class="multiselectfiles" name="depot" id="" style="width:100%">
-                                        <option value="">انتخاب کنید</option> 
+                                        @if($file->depot)
+                                            <option value="{{$file->depot}}" selected>{{$file->depot  ? 'دارد' : 'ندارد'}}</option>
+                                        @else
+                                            <option value="">انتخاب کنید</option> 
+                                        @endif
                                         <option value="1">دارد</option>
                                         <option value="0">ندارد</option>
                                     </select>
@@ -234,7 +250,11 @@
                                     <div class="col-md-3">
                                         <label for="elevator">آسانسور :</label>
                                         <select class="multiselectfiles" name="elevator" id="" style="width:100%">
-                                            <option value="">انتخاب کنید</option> 
+                                            @if($file->elevator)
+                                                <option value="{{$file->elevator}}" selected>{{$file->elevator ? 'دارد' : 'ندارد'}}</option>
+                                            @else
+                                                <option value="">انتخاب کنید</option> 
+                                            @endif
                                             <option value="1">دارد</option>
                                             <option value="0">ندارد</option>
                                         </select>
@@ -242,14 +262,18 @@
                                     <div class="col-md-3">
                                         <label for="balcony">بالکن :</label>
                                         <select class="multiselectfiles" name="balcony" id="" style="width:100%">
-                                            <option value="">انتخاب کنید</option> 
+                                            @if($file->balcony)
+                                                <option value="{{$file->balcony}}" selected>{{$file->balcony  ? 'دارد' : 'ندارد'}}</option>
+                                            @else
+                                                <option value="">انتخاب کنید</option> 
+                                            @endif 
                                             <option value="1">دارد</option>
                                             <option value="0">ندارد</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3">
                                         <label for="wc">کف :</label>
-                                        <select class="multiselectfiles" name="floor_type[]" id="" multiple="multiple" style="width:100%">
+                                        <select class="multiselectfiles" name="floor_type[]" id="floor_type" multiple="multiple" style="width:100%">
                                             <option value="سنگ">سنگ</option>
                                             <option value="موزائیک">موزائیک</option>
                                             <option value="کاشی">کاشی</option>
@@ -268,8 +292,12 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="shell">نوع اسکلت :</label>
-                                        <select class="multiselectfiles" name="shell" id="" style="width:100%">
-                                            <option value="">انتخاب کنید</option> 
+                                        <select class="multiselectfiles" name="shell" id="shell" style="width:100%">
+                                            @if($file->shell)
+                                                <option value="{{$file->shell}}" selected>{{$file->shell}}</option>
+                                            @else
+                                                <option value="">انتخاب کنید</option> 
+                                            @endif
                                             <option value="بتنی">بتنی</option>
                                             <option value="فلزی پیچ مهره">فلزی پیچ مهره</option>
                                             <option value="فلزی جوشی">فلزی جوشی</option>
@@ -280,7 +308,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="outdoor_face">نمای خارجی :</label>
-                                        <select class="multiselectfiles" name="outdoor_face[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="outdoor_face[]" id="outdoor_face" multiple="multiple" id="" style="width:100%">
                                             <option value="سرامیک">سرامیک</option>
                                             <option value="آجر">آجر</option>
                                             <option value="سنگ ترمو">سنگ ترمو</option>
@@ -300,7 +328,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indoor_face">نمای داخلی :</label>
-                                        <select class="multiselectfiles" name="indoor_face[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="indoor_face[]" multiple="multiple" id="indoor_face" style="width:100%">
                                             <option value="دیوار نقاشی">دیوار نقاشی</option>
                                             <option value="کاغذ اپوکسی">کاغذ اپوکسی</option>
                                             <option value="کاغذ دیواری">کاغذ دیواری</option>
@@ -312,7 +340,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="cabinet">کابینت :</label>
-                                        <select class="multiselectfiles" name="cabinet[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="cabinet[]" id="cabinet" multiple="multiple" id="" style="width:100%">
                                             <option value="فلزی">فلزی</option>
                                             <option value="فایبرگلس">فایبرگلس</option>
                                             <option value="های گلس">های گلس</option>
@@ -332,7 +360,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="cooling">سرمایش گرمایش :</label>
-                                        <select class="multiselectfiles" name="cooling[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="cooling[]" multiple="multiple" id="cooling" style="width:100%">
                                             <option value="گرمایش از کف">گرمایش از کف</option>
                                             <option value="شوفاژ">شوفاژ</option>
                                             <option value="پکیج">پکیج</option>
@@ -450,6 +478,14 @@
                                     <label for="videos">ویدیو پروژه :</label>
                                     <input type="file" name="videos[]" id="videos" accept="video/mp4,video/x-m4v,video/*"  multiple>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-md-3" style="text-align: center;">
+                                <a href="{{$file->thumbnail}}" target="blank">
+                                <img src="{{$file->thumbnail}}" style="width:100%;padding:5px;cursor:zoom-in;" alt="">
+                                <span style="padding: 5px;font-size:12px">تصویر شاخص</span>
+                                </a>
                             </div>
                         </div>
                     </div>

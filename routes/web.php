@@ -21,13 +21,22 @@ Route::prefix('moshaver')->group(function(){
     Route::get('addfile_get',[Moshaver::class,'addfile_get']);
     Route::post('addfile_post',[Moshaver::class,'addfile_post']);
     Route::post('adduser_digest',[Moshaver::class,'adduser_digest']);
+    Route::post('editfile_post',[Moshaver::class,'editfile_post']);
 
     Route::get('adduser',[Moshaver::class,'adduser']);
     Route::post('adduser_post',[Moshaver::class,'adduser_post']);
     Route::get('editfile/{fileid}',[Moshaver::class,'editfile_get']);
 
     
+    Route::get('manage_files',[Moshaver::class,'manage_files']);
+
+    
     Route::get('listusers',[Moshaver::class,'listusers']);
+    Route::get('edituser/{userid}',[Moshaver::class,'edituser_get']);
+    Route::post('edituser_post',[Moshaver::class,'edituser_post']);
+
+    
+    Route::get('search_files',[Moshaver::class,'search_files']);
 
     
     

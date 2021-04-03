@@ -202,7 +202,7 @@
                                 <li>
                                     <a href="/manager/index/0" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        مشاوره1
+                                        وضعیت
                                     </a>
                                 </li>      
 
@@ -216,13 +216,19 @@
                                 </li>
 
                                 <li>
-                                    <a href="/manager/add_learn">
+                                    <a href="/moshaver/manage_files">
                                         <i class="metismenu-icon pe-7s-display2"></i>
                                          مدیریت فایل ها
                                     </a>
                                 </li>
-
                                 <li>
+                                    <a href="/moshaver/search_files">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        جست جو فایل
+                                    </a>
+                                </li>
+
+                                <!-- <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
                                         منو کشویی
@@ -240,21 +246,9 @@
                                         
                                     </ul>
                                 </li>
+                                 -->
                                 
-                                
-                                <li>
-                                    <a href="/manager/add_learn">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                         منو3
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/manager/manage_learn">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        منو4
-                                    </a>
-                                </li>
+                               
 
                                 <li class="app-sidebar__heading">کاربران</li>
                                 <li>

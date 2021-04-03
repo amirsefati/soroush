@@ -1,10 +1,20 @@
 @extends('moshaver.master')
 @section('content')
 
+<input type="text" id="pageedituser" value="edituser" hidden>
+<input type="text" id="what_elevator" value="{{$user->elevator}}" hidden>
+<input type="text" id="what_depot" value="{{$user->depot}}" hidden>
+<input type="text" id="what_parking" value="{{$user->parking}}" hidden>
+<input type="text" id="what_balcony" value="{{$user->balcony}}" hidden>
+
+<input type="text" id="what_sporty" value="{{$user->sporty}}" hidden>
+<input type="text" id="what_religen" value="{{$user->religen}}" hidden>
+<input type="text" id="what_work" value="{{$user->work}}" hidden>
+<input type="text" id="what_likes" value="{{$user->likes}}" hidden>
 
 <div class="row">
     <div class="col-md-12">
-    <form action="/moshaver/adduser_post" method="POST" enctype="multipart/form-data">
+    <form action="/moshaver/edituser_post" method="POST" enctype="multipart/form-data">
     @csrf
         <input type="text" name="userid_inter" value="1" hidden>
         <div class="card">
@@ -48,12 +58,12 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="name">نام کاربر :</label>
-                                    <input type="text" class="form-control" name="name" required>
+                                    <input type="text" class="form-control" name="name" value="{{$user->name}}" required>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="phone"> شماره تلفن :</label>
-                                    <input type="number" class="form-control" name="phone" required>
+                                    <input type="number" class="form-control" name="phone" value="{{$user->phone}}" required>
                                 </div>
                             </div>
                         
@@ -64,17 +74,17 @@
                             <div class="row mt-2 justify-content-center">
                                 <div class="col-md-4 " id="colseller">
                                     <label for="price">بودجه خریدار :</label>
-                                    <input type="number" class="form-control" name="price" id="adduser_price">
+                                    <input type="number" class="form-control" name="price" value="{{$user->price}}" id="adduser_price">
                                     <small id="adduser_price_small"></small>
                                 </div>
                                 <div class="col-md-4 " id="colrenterannual">
                                     <label for="rent_annual">بودجه رهن :</label>
-                                    <input type="number" class="form-control" name="rent_annual"   id="adduser_rent_annual">
+                                    <input type="number" class="form-control" name="rent_annual" value="{{$user->rent_annual}}"   id="adduser_rent_annual">
                                     <small id="adduser_rent_annual_small"></small>
                                 </div>
                                 <div class="col-md-4 " id="colrentermonth">
                                     <label for="price">بودجه اجاره :</label>
-                                    <input type="number" class="form-control" name="rent_month" id="adduser_rent_month">
+                                    <input type="number" class="form-control" name="rent_month" value="{{$user->rent_month}}" id="adduser_rent_month">
                                     <small id="adduser_rent_month_small"></small>
                                 </div>
                             </div>
@@ -91,21 +101,21 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="area">متراژ :</label>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="area" value="{{$user->area}}">
                                 </div>
 
                                 <div class="col-md-2">
                                     <label for="region">منطقه :</label>
-                                    <input type="number" class="form-control" name="region" id="region">
+                                    <input type="number" class="form-control" name="region" id="region" value="{{$user->region}}">
                                 </div>
                                 
                                 <div class="col-md-2">
                                     <label for="bedroom_number">تعداد خواب :</label>
-                                    <input type="number" class="form-control" name="bedroom_number">
+                                    <input type="number" class="form-control" name="bedroom_number" value="{{$user->bedroom_number}}">
                                 </div>
                                 <div class="col-md-2">
                                     <label for="age"> حداکثر سن بنا :</label>
-                                    <input type="number" class="form-control" name="age">
+                                    <input type="number" class="form-control" name="age" value="{{$user->age}}">
                                 </div>
                             </div>
 
@@ -116,36 +126,36 @@
                                 </div>
                                 <div class="col-md-8">
                                     <label for="desc">یادداشت شخصی :</label>
-                                    <input type="text" class="form-control" name="desc">
+                                    <input type="text" class="form-control" name="desc" value="{{$user->desc}}">
                                 </div>
                             </div>
 
                             <div class="row mt-4">
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
-                                        <input type="checkbox" class="custom-control-input" id="switch1" name="elevator">
+                                        <input type="checkbox" class="custom-control-input" id="elevator" name="elevator">
                                         <label class="custom-control-label" for="switch1">آسانسور</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
-                                        <input type="checkbox" class="custom-control-input" id="switch2" name="depot">
+                                        <input type="checkbox" class="custom-control-input" id="depot" name="depot">
                                         <label class="custom-control-label" for="switch2">انباری</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
-                                        <input type="checkbox" class="custom-control-input" id="switch3" name="parking">
-                                        <label class="custom-control-label" for="switch3">پارکینگ</label>
+                                        <input type="checkbox" class="custom-control-input" id="parking" name="parking">
+                                        <label class="custom-control-label" for="parking">پارکینگ</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
-                                        <input type="checkbox" class="custom-control-input" id="switch4" name="balcony">
-                                        <label class="custom-control-label" for="switch4">بالکن</label>
+                                        <input type="checkbox" class="custom-control-input" id="balcony" name="balcony">
+                                        <label class="custom-control-label" for="balcony">بالکن</label>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +168,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="sporty">فوتبالی :</label>
-                                    <select class="multiselectfiles" name="sporty[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="sporty[]" id="sporty" multiple="multiple" style="width:100%">
                                         <option value="استقلالی"> استقلالی</option>
                                         <option value="پرسپولیسی"> پرسپولیسی</option>
                                         <option value="دو آتیشه"> دو آتیشه</option>
@@ -167,7 +177,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sporty">مذهبی :</label>
-                                    <select class="multiselectfiles" name="religen[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="religen[]" id="religen" multiple="multiple" style="width:100%">
                                         <option value="متعصب"> متعصب</option>
                                         <option value="حزب اللهی"> حزب اللهی</option>
                                         <option value="مسیحی">مسیحی </option>
@@ -176,7 +186,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="work">شغل :</label>
-                                    <select class="multiselectfiles" name="work[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="work[]" id="work" multiple="multiple" style="width:100%">
                                         <option value="آزاد">آزاد </option>
                                         <option value="کارمند">کارمند </option>
                                         <option value="پاره وقت">پاره وقت </option>
@@ -192,7 +202,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-4">
                                     <label for="likes"> حیوان خانگی :</label>
-                                    <select class="multiselectfiles" name="likes[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="likes[]" id="likes" multiple="multiple" style="width:100%">
                                         <option value="سگ"> سگ</option>
                                         <option value="گربه">گربه </option>
                                         <option value="پرنده "> پرنده </option>
