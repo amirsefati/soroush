@@ -18,7 +18,7 @@
     <form action="/moshaver/editfile_post" method="POST" enctype="multipart/form-data">
     @csrf
         <input type="text" name="fileid" value="{{$file->id}}" hidden>
-        <input type="text" name="userid_moshaver" value="1" hidden>
+        <input type="text" name="userid_moshaver" value="{{Auth::user()->id}}" hidden>
         <input type="text" name="kind_type" id="kind_type_select" hidden>
         <div class="card">
             <div class="card-header">

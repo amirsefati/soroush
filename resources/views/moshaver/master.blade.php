@@ -101,9 +101,9 @@
                     </div>
                     <ul class="header-menu nav">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
+                            <a href="/logoutpanel" class="nav-link">
                                 <i class="nav-link-icon fa fa-database"> </i>
-                                بررسی لاگ
+                                 خروج از پنل
                             </a>
                         </li>
                         <li class="btn-group nav-item">
@@ -147,10 +147,10 @@
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        اسم طرف
+                                        {{Auth::user()->name}}
                                     </div>
                                     <div class="widget-subheading">
-                                        نمدونم چی
+                                        رتبه {{Auth::user()->rank}}
                                     </div>
                                 </div>
                                 <!-- <div class="widget-content-right header-user-info ml-3">
@@ -200,7 +200,7 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">داشبورد</li>
                                 <li>
-                                    <a href="/manager/index/0" class="">
+                                    <a href="/moshaver" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         وضعیت
                                     </a>

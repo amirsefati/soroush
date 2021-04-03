@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 //Firstpage Router
 Route::get('/', [Page::class,'index']);
+Route::post('/login', [Page::class,'login']);
+Route::get('/logoutpanel', [Page::class,'logoutpanel']);
+
 
 
 // Moshaver Router

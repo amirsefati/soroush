@@ -1,0 +1,36 @@
+.head_login{
+    height: 300px;
+    background-color: darkcyan;
+    border-radius: 0px 0% 40% 40%;
+}
+.content_login{
+    height: 400px;
+    background-color: darkgoldenrod;
+}
+.box_login{
+    height: 400px;
+    background-color: darkslateblue;
+    margin-top: -80px;
+    border-radius: 20px;
+    box-shadow: 8px 17px 32px -3px rgba(0,0,0,0.54);
+}
+.col_content_login{
+    padding: 5px 20px 5px 5px ;
+}
+.box_login_a1{
+    content: ' ';
+    height: 40px;
+    width: 4px;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    background: white;
+    color:white;
+}
+.box_login_a2{
+    color:white;
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    font-size: 16px;
+}
