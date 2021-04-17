@@ -16,11 +16,14 @@
     <div class="col-md-12">
     <form action="/moshaver/edituser_post" method="POST" enctype="multipart/form-data">
     @csrf
-        <input type="text" name="userid_inter" value="1" hidden>
+        <input type="text" name="userid" value="{{$user->id}}" hidden>
+        <input type="text" name="kind_type" id="kind_type" value="" hidden>
+        <input type="text" name="userid_inter" value="{{Auth::user()->id}}" hidden>
+
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">
-                    <div class="col-md-4">افزودن کاربر   جدید</div>
+                    <div class="col-md-4">ویرایش کاربر</div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4" >
                         <div class="row">
@@ -131,17 +134,18 @@
                             </div>
 
                             <div class="row mt-4">
+                                
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
                                         <input type="checkbox" class="custom-control-input" id="elevator" name="elevator">
-                                        <label class="custom-control-label" for="switch1">آسانسور</label>
+                                        <label class="custom-control-label" for="elevator">آسانسور</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-2 col-6">
                                     <div class="custom-control custom-switch pt-2">
                                         <input type="checkbox" class="custom-control-input" id="depot" name="depot">
-                                        <label class="custom-control-label" for="switch2">انباری</label>
+                                        <label class="custom-control-label" for="depot">انباری</label>
                                     </div>
                                 </div>
 
@@ -176,7 +180,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="sporty">مذهبی :</label>
+                                    <label for="religen">مذهبی :</label>
                                     <select class="multiselectfiles" name="religen[]" id="religen" multiple="multiple" style="width:100%">
                                         <option value="متعصب"> متعصب</option>
                                         <option value="حزب اللهی"> حزب اللهی</option>

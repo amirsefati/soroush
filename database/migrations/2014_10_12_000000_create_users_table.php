@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
 
             $table->string('code_meli')->nullable();
             $table->integer('level')->default(1);
+            $table->string('kind_type')->nullable();
+            $table->string('region')->nullable();
 
             $table->string('timer')->nullable();
             $table->string('phone1')->nullable();

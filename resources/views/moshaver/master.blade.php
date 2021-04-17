@@ -205,6 +205,12 @@
                                         وضعیت
                                     </a>
                                 </li>      
+                                <li>
+                                    <a href="/moshaver" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        تعاون
+                                    </a>
+                                </li>
 
                                 <li class="app-sidebar__heading">فایل ها</li>
 
@@ -221,12 +227,7 @@
                                          مدیریت فایل ها
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="/moshaver/search_files">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        جست جو فایل
-                                    </a>
-                                </li>
+                                
 
                                 <!-- <li>
                                     <a href="#">

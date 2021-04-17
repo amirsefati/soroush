@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Moshaver extends Controller
 {
@@ -228,6 +229,7 @@ class Moshaver extends Controller
             'age' => $request->age,
             'info' => $request->info,
             'region' => $request->region,
+            'kind_type' => $request->kind_type,
 
             
             'sporty' => json_encode($request->sporty),
@@ -251,8 +253,9 @@ class Moshaver extends Controller
         $user = User::find($userid);
         return view('moshaver.edituser',compact('user'));
     }
+
     public function edituser_post(Request $request){
-        return $request;
+
         $all_images = $request->documents;
         if(strlen($request->documnts) > 5){
             foreach($request->documnts as $doc){
@@ -277,7 +280,9 @@ class Moshaver extends Controller
             'desc' => $request->desc,
             'age' => $request->age,
             'info' => $request->info,
-           
+            'kind_type' => $request->kind_type,
+            'region' => $request->region,
+
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),
             'work' => json_encode($request->work),
@@ -301,12 +306,12 @@ class Moshaver extends Controller
         return view('moshaver.editfile',compact(['file','users']));
     }
     public function listusers(){
-        $users = User::where('userid_inter',1)->get();
+        $users = User::where('userid_inter',Auth::user()->id)->get();
         return view('moshaver.listusers',compact('users'));
     }
 
     public function manage_files(){
-        $files_yes_publish = File::where('publish',1)->get();
+        $files_yes_publish = File::where('publish',1)->orderBy('etc1','DESC')->orderBy('updated_at')->get();
         return view('moshaver.manage_files',compact('files_yes_publish'));
     }
 
@@ -314,5 +319,25 @@ class Moshaver extends Controller
     public function search_files(){
 
         return view('moshaver.search_files');
+    }
+
+    public function addpin($id){
+        File::find($id)->update(['etc1'=>'1']);
+        return back();
+    }
+    public function delpin($id){
+        File::find($id)->update(['etc1'=>'0']);
+        return back();
+    }
+
+    public function file_find_user($id){
+
+        $file = File::find($id);
+
+        $result = User::where('type',$file->type)
+                        ->where('kind_type',$file->kind_type)
+                        ->whereBetween('price',[($file->price)*0.8,($file->price)*1.2])->get();
+
+        return view('moshaver.file_find_user',compact('result'));
     }
 }

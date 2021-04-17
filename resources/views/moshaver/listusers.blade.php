@@ -18,14 +18,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <input type="text" id="myInput" onkeyup="myFunction(1)" placeholder="جست جو فایل  ...">
+                <input type="text" id="myInput"  placeholder="جست جو کاربر  ...">
                 <div style="overflow-x: auto;">
                 <table class="table table-striped" id="myTable">
                     <tr class="header">
                         <th style="width:30%;">نام کاربر </th>
                         <th style="width:30%;">شماره تلفن    </th>
                         <th style="width:20%;"> نوع درخواست</th>
-                        <th style="width:10%;">یادداشت</th>
+                        <th style="width:10%;">منطقه</th>
                         <th style="width:5%;">عملیات</th>
 
                     </tr>
@@ -34,11 +34,11 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->phone}}</td>
                         <td>{{$user->type}}</td>
-                        <td>{{$user->info}}</td>
+                        <td>{{$user->region}}</td>
                         <td>
                             <div class="row">
                                 <div class="col-md-6 col-6 p-0">
-                                <a href="/moshaver/edituser/{{$user->id}}"><img src="/img/edit.png" width="35px" alt=""></a>
+                                <a href="/moshaver/edituser/{{$user->id}}">Edit</a>
                                 </div>
                                 <div class="col-md-6 col-6 p-0">
                                 <a href="/moshaver/deleteuser/{{$user->id}}"><img src="/img/delete.png" width="35px" alt=""></a>

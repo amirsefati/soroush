@@ -41,7 +41,11 @@ Route::prefix('moshaver')->group(function(){
     
     Route::get('search_files',[Moshaver::class,'search_files']);
 
-    
+    Route::get('/addpin/{id}',[Moshaver::class,'addpin']);
+    Route::get('/delpin/{id}',[Moshaver::class,'delpin']);
+
+    Route::get('file_find_user/{id}',[Moshaver::class,'file_find_user']);
+
     
 });
 

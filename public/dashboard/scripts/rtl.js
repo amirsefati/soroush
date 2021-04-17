@@ -33,7 +33,8 @@ $('document').ready(function(){
     $("#renter").css('opacity','.5')
     $("#colrenterannual").hide()
     $("#colrentermonth").hide()
-      
+    $("#kind_type").val('sell')
+
     $("#type_maskoni").change(function() {
         $("#floorcol").show()  
         $("#agecol").show()
@@ -145,6 +146,8 @@ $('document').ready(function(){
         $("#colrenterannual").hide()
         $("#colrentermonth").hide()
         $("#colseller").show()
+        $("#kind_type").val('sell')
+
 
     })
   
@@ -164,6 +167,7 @@ $('document').ready(function(){
         $("#colrentermonth").show()
         $("#colrentermonth").show()
         $("#colseller").hide()
+        $("#kind_type").val('rent')
 
         
     })
@@ -230,7 +234,7 @@ $('document').ready(function(){
         )
         what_wc = $("#what_wc").val()
         what_wc_arr = JSON.parse(what_wc)
-        what_wc_arr.map((item)=>{
+        what_wc_arr && what_wc_arr.map((item)=>{
             $("#what_wc_selected").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -238,31 +242,31 @@ $('document').ready(function(){
 
         what_floor_type = $("#what_floor_type").val()
         what_floor_type_arr = JSON.parse(what_floor_type)
-        what_floor_type_arr.map((item)=>{
+        what_floor_type_arr && what_floor_type_arr.map((item)=>{
             $("#floor_type").append(
                 `<option value="${item}" selected>${item}</option>`
             )
         })
-
         what_outdoor_face = $("#what_outdoor_face").val()
         what_outdoor_face_arr = JSON.parse(what_outdoor_face)
-        what_outdoor_face_arr.map((item)=>{
+        what_outdoor_face_arr && what_outdoor_face_arr.map((item)=>{
             $("#outdoor_face").append(
                 `<option value="${item}" selected>${item}</option>`
             )
         })
 
         what_indoor_face = $("#what_indoor_face").val()
-        what_indoor_face_arr = JSON.parse(what_indoor_face)
-        what_indoor_face_arr.map((item)=>{
-            $("#indoor_face").append(
-                `<option value="${item}" selected>${item}</option>`
-            )
-        })
+            what_indoor_face_arr = JSON.parse(what_indoor_face)
+            what_indoor_face_arr && what_indoor_face_arr.map((item)=>{
+                $("#indoor_face").append(
+                    `<option value="${item}" selected>${item}</option>`
+                )
+            })        
+        
         
         what_cabinet = $("#what_cabinet").val()
         what_cabinet_arr = JSON.parse(what_cabinet)
-        what_cabinet_arr.map((item)=>{
+        what_cabinet_arr && what_cabinet_arr.map((item)=>{
             $("#cabinet").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -270,7 +274,7 @@ $('document').ready(function(){
 
         what_cooling = $("#what_cooling").val()
         what_cooling_arr = JSON.parse(what_cooling)
-        what_cooling_arr.map((item)=>{
+        what_cooling_arr && what_cooling_arr.map((item)=>{
             $("#cooling").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -294,7 +298,7 @@ $('document').ready(function(){
 
         what_sporty = $("#what_sporty").val()
         what_sporty_arr = JSON.parse(what_sporty)
-        what_sporty_arr.map((item)=>{
+        what_sporty_arr && what_sporty_arr.map((item)=>{
             $("#sporty").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -302,7 +306,7 @@ $('document').ready(function(){
 
         what_religen = $("#what_religen").val()
         what_religen_arr = JSON.parse(what_religen)
-        what_religen_arr.map((item)=>{
+        what_religen_arr && what_religen_arr.map((item)=>{
             $("#religen").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -310,7 +314,7 @@ $('document').ready(function(){
 
         what_work = $("#what_work").val()
         what_work_arr = JSON.parse(what_work)
-        what_work_arr.map((item)=>{
+        what_work_arr && what_work_arr.map((item)=>{
             $("#work").append(
                 `<option value="${item}" selected>${item}</option>`
             )
@@ -318,7 +322,7 @@ $('document').ready(function(){
 
         what_likes = $("#what_likes").val()
         what_likes_arr = JSON.parse(what_likes)
-        what_likes_arr.map((item)=>{
+        what_likes_arr && what_likes_arr.map((item)=>{
             $("#likes").append(
                 `<option value="${item}" selected>${item}</option>`
             )

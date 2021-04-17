@@ -6,7 +6,9 @@
     <div class="col-md-12">
     <form action="/moshaver/adduser_post" method="POST" enctype="multipart/form-data">
     @csrf
+    
         <input type="text" name="userid_inter" value="1" hidden>
+        <input type="text" name="kind_type" id="kind_type" value="" >
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">

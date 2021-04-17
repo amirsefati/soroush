@@ -340,7 +340,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="cabinet">کابینت :</label>
-                                        <select class="multiselectfiles" name="cabinet[]" id="cabinet" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="cabinet[]" id="cabinet" multiple="multiple" style="width:100%">
                                             <option value="فلزی">فلزی</option>
                                             <option value="فایبرگلس">فایبرگلس</option>
                                             <option value="های گلس">های گلس</option>

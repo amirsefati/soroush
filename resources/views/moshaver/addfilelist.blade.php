@@ -21,37 +21,72 @@
                 </div>
             </div>
             <div class="card-body">
-                <input type="text" id="myInput" onkeyup="myFunction(1)" placeholder="جست جو فایل  ...">
-                <div style="overflow-x: auto;">
-                <table class="table table-striped" id="myTable">
-                    <tr class="header">
-                        <th style="width:30%;">نوع فایل</th>
-                        <th style="width:30%;">نام مالک</th>
-                        <th style="width:20%;">اطلاعات فایل</th>
-                        <th style="width:10%;">وضعیت</th>
-                        <th style="width:5%;">عملیات</th>
-
-                    </tr>
+                <div class="row p-2">
                     @foreach($files_no_publish as $file)
-                    <tr>
-                        <td>{{$file->type}}</td>
-                        <td>{{App\Models\User::find($file->userid_file) ? App\Models\User::find($file->userid_file)->name : ''}}</td>
-                        <td> <span style="font-size:12px;font-weight: bold;">{{$file->kind_type == 'sell' ? 'فروش' : 'اجاره'}}</span> <span style="font-size: 9px;color:gray">(  منطقه : {{$file->region}} )</span></td>
-                        <td>20%</td>
-                        <td>
-                            <div class="row">
-                                <div class="col-md-6 col-6 p-0">
-                                <a href="/moshaver/editfile/{{$file->id}}"><img src="/img/edit.png" width="35px" alt=""></a>
-                                </div>
-                                <div class="col-md-6 col-6 p-0">
-                                <a href="/moshaver/deletefile/{{$file->id}}"><img src="/img/delete.png" width="35px" alt=""></a>
+                        <div class="col-md-4 pr-4 pl-4 pt-3">
+                            <div class="row row_box">
+                                <a href="/moshaver/editfile/{{$file->id}}">
+                                    <div class="col_right_box">
+                                        <img src="{{$file->thumbnail ? $file->thumbnail : '/img/noimg.png'}}"  class="addfilelist_img" alt="">
+                                        <span class="addfilelist_sell_rent">{{$file->kind_type == 'sell' ? 'فروشی' : 'اجاره'}}</span>
+                                        <span class="addfilelist_type">{{$file->type}}</span>
 
-                                </div>
+                                    </div>
+                                </a>
+                                    <div class="col_left_box" style="float: left;">
+                                        <p>{{$file->name ? $file->name :  'عنوان فایل'}}</p>
+                                        <p class="addfilelist_userid_file"> مالک : <span>{{($user = App\Models\User::find($file->userid_file)) ? $user->name : 'بدون مالک' }}</span></p>
+                                        <p class="addfilelist_price">
+                                            @if($file->price)
+                                            قیمت : {{$file->price}} میلون تومان
+                                            @else
+                                            قیمت : بدون قیمت
+                                            @endif
+                                        </p>
+                                        <p class="addfilelist_area">
+                                            <svg id="Plans_Icon" data-name="Plans Icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                                <rect id="Rectangle_1924" data-name="Rectangle 1924" width="24" height="24" fill="none"/>
+                                                <g id="plans" transform="translate(20.651 -1.837) rotate(90)">
+                                                    <g id="Group_787" data-name="Group 787" transform="translate(7.771 13.598)">
+                                                        <g id="Group_786" data-name="Group 786" transform="translate(0)">
+                                                            <path id="Path_1484" data-name="Path 1484" d="M86.52,413.09l-1.1-1.1a.551.551,0,1,0-.78.78l.162.161H74.231l.162-.161a.551.551,0,1,0-.78-.78l-1.1,1.1a.551.551,0,0,0,0,.78l1.1,1.1a.551.551,0,0,0,.78-.78l-.162-.162H84.8l-.162.162a.551.551,0,0,0,.78.78l1.1-1.1a.551.551,0,0,0,0-.78Z" transform="translate(-72.349 -411.826)" fill="#666"/>
+                                                        </g>
+                                                    </g>
+                                                    <g id="Group_789" data-name="Group 789" transform="translate(5.566 0)">
+                                                        <g id="Group_788" data-name="Group 788" transform="translate(0)">
+                                                            <path id="Path_1485" data-name="Path 1485" d="M7.932,11.556l-.162.161V1.883l.162.162a.551.551,0,0,0,.78-.78l-1.1-1.1a.551.551,0,0,0-.78,0l-1.1,1.1a.551.551,0,1,0,.78.78l.161-.162v9.834l-.162-.162a.551.551,0,0,0-.78.78l1.1,1.1a.551.551,0,0,0,.78,0l1.1-1.1a.551.551,0,1,0-.779-.78Z" transform="translate(-5.566 -0.001)" fill="#666"/>
+                                                        </g>
+                                                    </g>
+                                                    <g id="Group_791" data-name="Group 791" transform="translate(9.976)">
+                                                        <g id="Group_790" data-name="Group 790">
+                                                            <path id="Path_1486" data-name="Path 1486" d="M148.5,4.41h2.756V.551A.551.551,0,0,0,150.707,0h-7.534V4.41h2.756a.551.551,0,1,1,0,1.1h-2.756V7.167a.551.551,0,1,1-1.1,0V0h-2.389a.551.551,0,0,0-.551.551V11.944a.551.551,0,0,0,.551.551h2.389V9.739a.551.551,0,1,1,1.1,0V12.5h7.534a.551.551,0,0,0,.551-.551V5.513H148.5a.551.551,0,1,1,0-1.1Z" transform="translate(-139.13)" fill="#666"/>
+                                                        </g>
+                                                    </g></g></svg>    
+                                            <span style="font-size: 10px;">{{$file->area ?  $file->area : 0}} مترمربع</span>
+                                        </p>
+                                        <div class="addfilelist_colbottom">
+                                            <div class="row">
+                                                <div class="col-md-4 col-4 addfilelist_colbottom_span">
+                                                    <span class="bottomcol_span"> منطقه {{$file->region}}</span>
+                                                </div>
+
+                                                <div class="col-md-4 col-4 addfilelist_colbottom_span">
+                                                    <span class="bottomcol_span"> سن بنا {{$file->age}}</span>
+                                                </div>
+
+                                                <div class="col-md-4 col-4">
+                                                    <span class="bottomcol_span"> طبقه {{$file->floor}}</span>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    <div class="addfilelist_percent">
+                                         40%
+                                         
+                                    </div>
+                                    </div>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
                     @endforeach
-                </table>
                 </div>
             </div>
         </div>
