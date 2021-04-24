@@ -132,7 +132,40 @@ $('document').ready(function(){
         rentsection() 
     })
 
+    function sellersection(){
+        if(type_select === 1){
+            return true;
+        }
+        type_select = 1
+        
+        $("#seller").css('font-size','110%')
+        $("#renter").css('font-size','100%')
+        $("#seller").css('opacity','1')
+        $("#renter").css('opacity','.5')
+        $("#colrenterannual").hide()
+        $("#colrentermonth").hide()
+        $("#colseller").show()
+        $("#kind_type").val('sell')
 
+    }
+
+    function rentersection(){
+        if(type_select === 0){
+            return true;
+        }
+        type_select = 0
+        
+        $("#seller").css('font-size','100%')
+        $("#renter").css('font-size','110%')
+        $("#seller").css('opacity','.5')
+        $("#renter").css('opacity','1')
+        $("#colrenterannual").show()
+        $("#colrentermonth").show()
+        $("#colrentermonth").show()
+        $("#colseller").hide()
+        $("#kind_type").val('rent')
+
+    }
     $("#seller").click(function(){
         if(type_select === 1){
             return true;
@@ -224,9 +257,9 @@ $('document').ready(function(){
 
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){
-            sellsection()
+            sellersection()
         }else{
-            rentsection()
+            rentersection()
         }
         what_type = $("#what_type").val()
             $("#type_maskoni").append(
@@ -281,6 +314,7 @@ $('document').ready(function(){
         })
     }
 
+   
     if($("#pageedituser").length){
 
         if($("#what_elevator").val() === '1'){
@@ -328,4 +362,21 @@ $('document').ready(function(){
             )
         })
     }
+
+    $("#collapsbtn1").click(function(){
+        $("#collaps2").removeClass("show")
+        $("#collaps3").removeClass("show")
+
+    })
+
+    $("#collapsbtn2").click(function(){
+        $("#collaps1").removeClass("show")
+        $("#collaps3").removeClass("show")
+    })
+
+    $("#collapsbtn3").click(function(){
+        $("#collaps2").removeClass("show")
+        $("#collaps1").removeClass("show")
+    })
+
     })

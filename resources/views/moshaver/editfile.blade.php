@@ -48,9 +48,9 @@
             
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">مشخصات اولیه فایل</button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">اطلاعات تکمیلی</button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">افزودن عکس و فیلم</button>
+                        <button class="btn btn-primary" id="collapsbtn1" type="button" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">مشخصات اولیه فایل</button>
+                        <button class="btn btn-primary" id="collapsbtn2" type="button" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">اطلاعات تکمیلی</button>
+                        <button class="btn btn-primary" id="collapsbtn3" type="button" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">افزودن عکس و فیلم</button>
                     </div>
                 </div>
 

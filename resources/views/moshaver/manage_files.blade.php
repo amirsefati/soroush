@@ -44,7 +44,13 @@
                                             @if($file->price)
                                             قیمت : {{$file->price}} میلون تومان
                                             @else
-                                            قیمت : بدون قیمت
+                                                @if($file->rent_annual)
+                                                    رهن : {{$file->rent_annual}} میلیون -
+                                                    اجاره : {{$file->rent_month}} میلیون تومان
+
+                                                @else
+                                                    قیمت : بدون قیمت
+                                                @endif
                                             @endif
                                         </p>
                                         <p class="addfilelist_area">

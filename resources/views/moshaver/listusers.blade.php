@@ -18,37 +18,27 @@
                 </div>
             </div>
             <div class="card-body">
-                <input type="text" id="myInput"  placeholder="جست جو کاربر  ...">
-                <div style="overflow-x: auto;">
-                <table class="table table-striped" id="myTable">
-                    <tr class="header">
-                        <th style="width:30%;">نام کاربر </th>
-                        <th style="width:30%;">شماره تلفن    </th>
-                        <th style="width:20%;"> نوع درخواست</th>
-                        <th style="width:10%;">منطقه</th>
-                        <th style="width:5%;">عملیات</th>
-
-                    </tr>
+                <div class="row">
                     @foreach($users as $user)
-                    <tr>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->phone}}</td>
-                        <td>{{$user->type}}</td>
-                        <td>{{$user->region}}</td>
-                        <td>
+                        <div class="col-md-3 mt-3">
                             <div class="row">
-                                <div class="col-md-6 col-6 p-0">
-                                <a href="/moshaver/edituser/{{$user->id}}">Edit</a>
+                                <div class="col-md-6">
+                                    <a href="/moshaver/edituser/{{$user->id}}">
+                                        <img src="{{$user->thumbnail ? $user->thumbnail : '/img/noimg.png'}}" class="addfilelist_img" alt="">
+                                    </a>
                                 </div>
-                                <div class="col-md-6 col-6 p-0">
-                                <a href="/moshaver/deleteuser/{{$user->id}}"><img src="/img/delete.png" width="35px" alt=""></a>
-
+                                <div class="col-md-6 pr-0 pt-2">
+                                    <div>
+                                        <p>{{$user->name}}</p>
+                                        <p class="listuser_phone">شماره تلفن : <span>{{$user->phone}}</span></p>
+                                        <p class="listuser_phone">نوع درخواست : <span>{{$user->kind_type == 'sell' ? ' خریدار' : 'اجاره'}}</span></p>
+                                        <br>
+                                        <a style="color: blue;padding:10px" href="/moshaver/user_find_file/{{$user->id}}">جستجو فایل</a>
+                                    </div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
                     @endforeach
-                </table>
                 </div>
             </div>
         </div>

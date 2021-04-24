@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Taavon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class Moshaver extends Controller
     }
 
     public function addfile_get(){
-        $users = User::all();
+        $users = User::where('level','1')->get();
         return view('moshaver.addfile_get',compact('users'));
     }
 
@@ -105,7 +106,7 @@ class Moshaver extends Controller
         $images = '';
         $videos = '';
 
-        $thumbnail = $request->thumbnail;
+        $thumbnail = File::find($request->fileid)->thumbnail;
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
             $name = time().'-'. rand(100,10000) .'.'.$image->getClientOriginalExtension();
@@ -230,8 +231,8 @@ class Moshaver extends Controller
             'info' => $request->info,
             'region' => $request->region,
             'kind_type' => $request->kind_type,
+            'area' => $request->area,
 
-            
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),
             'work' => json_encode($request->work),
@@ -302,7 +303,7 @@ class Moshaver extends Controller
 
     public function editfile_get($fileid){
         $file = File::find($fileid);
-        $users = User::all();
+        $users = User::where('level','1')->get();
         return view('moshaver.editfile',compact(['file','users']));
     }
     public function listusers(){
@@ -334,10 +335,55 @@ class Moshaver extends Controller
 
         $file = File::find($id);
 
-        $result = User::where('type',$file->type)
-                        ->where('kind_type',$file->kind_type)
-                        ->whereBetween('price',[($file->price)*0.8,($file->price)*1.2])->get();
-
-        return view('moshaver.file_find_user',compact('result'));
+        if($file->kind_type == "sell"){
+            $result = User::where('type',$file->type)
+                ->whereBetween('price',[($file->price)*0.8,($file->price)*1.4])->get();
+        }else{
+            $result = User::where('type',$file->type)
+                ->whereBetween('rent_annual',[($file->rent_annual)*0.6,($file->rent_annual)*1.6])
+                ->whereBetween('rent_month',[($file->rent_month)*0.6,($file->rent_month)*1.4])
+                ->get();
+        }
+        
+        return view('moshaver.file_find_user',compact(['result','file']));
     }
+
+    public function user_find_file($id){
+
+        $user = User::find($id);
+
+        if($user->kind_type == "sell"){
+            $result = File::where('type',$user->type)
+                ->whereBetween('price',[($user->price)*0.8,($user->price)*1.4])->get();
+        }else{
+            $result = File::where('type',$user->type)
+                ->whereBetween('rent_annual',[($user->rent_annual)*0.6,($user->rent_annual)*1.6])
+                ->whereBetween('rent_month',[($user->rent_month)*0.6,($user->rent_month)*1.4])
+                ->get();
+        }
+        
+        return view('moshaver.user_find_file',compact(['result','user']));
+    }
+
+    public function request_taavon($file_id,$client_id,$user_id,$kind){
+        Taavon::create([
+            'kind' => $kind,
+            'user_id' => $user_id,
+            'moshaver_id' => Auth::user()->id,
+            'client_id' => $client_id,
+            'file_id' => $file_id,
+        ]);
+    }
+
+    public function taavon_get(){
+        $taavons = Taavon::where('user_id',Auth::user()->id)->get();
+        return view('moshaver.taavon_get',compact('taavons'));
+    }
+
+    public function taavon_verify($taavon_id,$status){
+        Taavon::find($taavon_id)->update([
+            'verify' => $status
+        ]);
+        return back();
+    }   
 }
