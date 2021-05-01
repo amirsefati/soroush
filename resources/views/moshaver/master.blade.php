@@ -216,57 +216,18 @@
                                     </a>
                                 </li>
 
-                                <li class="app-sidebar__heading">فایل ها</li>
-
-                                <li>
-                                    <a href="/moshaver/addfilelist">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                         افزودن فایل 
-                                    </a>
-                                </li>
-
                                 <li>
                                     <a href="/moshaver/manage_files">
                                         <i class="metismenu-icon pe-7s-display2"></i>
-                                         مدیریت فایل ها
+                                          فایل ها
                                     </a>
                                 </li>
-                                
-
-                                <!-- <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-diamond"></i>
-                                        منو کشویی
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                        
-                                        <li>
-                                            <a href="elements-dropdowns.html">
-                                                <i class="metismenu-icon">
-                                                </i>
-                                                زیرمنو2
-                                            </a>
-                                        </li>
-                                        
-                                    </ul>
-                                </li>
-                                 -->
-                                
-                               
-
-                                <li class="app-sidebar__heading">کاربران</li>
-                                <li>
-                                    <a href="/moshaver/adduser" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        افزودن کاربر
-                                    </a>
-                                </li> 
+                        
 
                                 <li>
                                     <a href="/moshaver/listusers" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        لیست کاربر
+                                         مشتری ها
                                     </a>
                                 </li> 
 

@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="row p-2">
                     @foreach($files_yes_publish as $file)
-                        <div class="col-md-12 pr-4 pl-4 pt-3">
+                        <div class="col-md-6 pr-4 pl-4 pt-3">
                             @if($file->kind_type == 'sell')
                             <div class="row row_box" style="background-color: #0093E9;background-image: linear-gradient(104deg, #0093E9 0%, #80D0C7 100%);">
                             @else
@@ -74,33 +74,7 @@
                                                     </g></g></svg>    
                                             <span style="font-size: 10px;">{{$file->area ?  $file->area : 0}} مترمربع</span>
                                         </p>
-                                        <div class="addfilelist_colbottom">
-                                            <div class="row">
-                                                <div class="col-md-2 col-4 ">
-                                                    <span class="bottomcol_span"> منطقه {{$file->region}}</span>
-                                                </div>
-
-                                                <div class="col-md-2 col-4 ">
-                                                    <span class="bottomcol_span"> سن بنا {{$file->age}}</span>
-                                                </div>
-
-                                                <div class="col-md-2 col-4">
-                                                    <span class="bottomcol_span"> آسانسور {{$file->elevator == null ? '-' : ($file->elevator == 1 ? 'دارد' : 'ندارد')}}</span>
-                                                </div>
-
-                                                <div class="col-md-2 hideinphone">
-                                                    <span class="bottomcol_span"> تعداد خواب {{$file->bedroom_number}}</span>
-                                                </div>
-
-                                                <div class="col-md-2 hideinphone">
-                                                    <span class="bottomcol_span"> پارکینگ {{$file->parking == null ? '-' : ($file->elevator == 1 ? 'دارد' : 'ندارد')}}</span>
-                                                </div>
-
-                                                <div class="col-md-2 hideinphone">
-                                                    <span class="bottomcol_span"> بالکن {{$file->balcony == null ? '-' : ($file->elevator == 1 ? 'دارد' : 'ندارد')}}</span>
-                                                </div>
-                                            </div>    
-                                        </div>
+                                        
                                     <a href="/moshaver/file_find_user/{{$file->id}}">
                                         <div class="addfilelist_percent_complete">
                                             <img src="/img/search.png" class="img_seatchpng" alt="">

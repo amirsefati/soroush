@@ -1,6 +1,10 @@
 a{
     color:slategrey;
 }
+a:hover{
+    color:slategrey;
+    text-decoration: none;
+}
 .addfilelist_sell_rent{
     
 }
@@ -144,6 +148,40 @@ a{
 .listuser_phone{
     font-size: 9px;
     margin-bottom: 2px;
+}
+
+.user_box{
+    box-shadow: 0 0 51px 0 rgb(0 0 0 / 8%), 0 6px 18px 0 rgb(0 0 0 / 5%);
+    border-radius: .75rem;
+    min-height: 120px;
+}
+.user_box_kind_type{
+    border-radius: 0 0 .5rem .5rem;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 55px;
+    height: 45px;
+    background-color: #1dc086;
+    text-align: center;
+}
+
+.user_box_kind_type_r{
+    border-radius: 0 0 .5rem .5rem;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 55px;
+    height: 45px;
+    background-color: #fd8125;
+    text-align: center;
+}
+.user_box_kind_type_p{
+    color:white;
+    padding-top: 15px;
+}
+.user_box:hover{
+    opacity: .9;
 }
 @media only screen and (max-width: 600px) {
     .addfilelist_img{

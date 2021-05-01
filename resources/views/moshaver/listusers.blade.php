@@ -11,8 +11,7 @@
                     <div class="col-md-4" style="text-align: left;">
                         <a href="/moshaver/addfile_get">
                             <button class="btn btn-danger pr-5 pl-5">افزودن کاربر جدید</button>
-                        </a>
-                       
+                        </a>  
                     </div>
 
                 </div>
@@ -20,22 +19,37 @@
             <div class="card-body">
                 <div class="row">
                     @foreach($users as $user)
-                        <div class="col-md-3 mt-3">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="/moshaver/edituser/{{$user->id}}">
-                                        <img src="{{$user->thumbnail ? $user->thumbnail : '/img/noimg.png'}}" class="addfilelist_img" alt="">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 pr-0 pt-2">
-                                    <div>
-                                        <p>{{$user->name}}</p>
-                                        <p class="listuser_phone">شماره تلفن : <span>{{$user->phone}}</span></p>
-                                        <p class="listuser_phone">نوع درخواست : <span>{{$user->kind_type == 'sell' ? ' خریدار' : 'اجاره'}}</span></p>
+                        <div class="col-md-4 mt-4  pr-2 pl-2">
+                            <div class="user_box p-1">
+                            <a href="/moshaver/edituser/{{$user->id}}">
+                                <p class="pt-3 pr-2"> 
+                                    @if($user->kind_type == 'sell')
+                                        بودجه : {{$user->price}}
+                                    @else
+                                        رهن {{$user->rent_annual}} میلیون تومان
                                         <br>
-                                        <a style="color: blue;padding:10px" href="/moshaver/user_find_file/{{$user->id}}">جستجو فایل</a>
-                                    </div>
+                                        اجاره {{$user->rent_month}} میلیون تومان
+
+                                    @endif
+                                </p>
+
+                                
+                                    @if($user->kind_type == 'sell')
+                                        <div class="user_box_kind_type">
+                                            <p class="user_box_kind_type_p">خریدار</p>
+                                        </div>
+                                    @else
+                                        <div class="user_box_kind_type_r">
+                                            <p class="user_box_kind_type_p">اجاره</p>
+                                        </div>
+
+                                    @endif
+                                
+                                
+                                <div>
+                                    <p class="pr-2">متراژ : {{$user->area}}</p>
                                 </div>
+                            </a>
                             </div>
                         </div>
                     @endforeach
