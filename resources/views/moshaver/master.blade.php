@@ -198,13 +198,30 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading">داشبورد</li>
+                                <li class="app-sidebar__heading"></li>
+
                                 <li>
                                     <a href="/moshaver" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        وضعیت
+                                        داشبورد
                                     </a>
-                                </li>      
+                                </li> 
+
+                                
+                                <li>
+                                    <a href="/moshaver/manage_files">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                          فایل ها
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/moshaver/listusers" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                         مشتری ها
+                                    </a>
+                                </li> 
+
                                 <li>
                                     <a href="/moshaver/taavon" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
@@ -217,19 +234,30 @@
                                 </li>
 
                                 <li>
-                                    <a href="/moshaver/manage_files">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                          فایل ها
+                                    <a href="/moshaver0" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        اقدامات پیش رو
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="/moshaver1" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        اعلامیه
+                                    </a>
+                                </li>
+
+                                
+                                <li>
+                                    <a href="/moshaver2" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        دفترچه تلفن
                                     </a>
                                 </li>
                         
 
-                                <li>
-                                    <a href="/moshaver/listusers" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                         مشتری ها
-                                    </a>
-                                </li> 
+                               
 
                             </ul>
                         </div>
