@@ -1,0 +1,20 @@
+<svg id="Plans_Icon" data-name="Plans Icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <rect id="Rectangle_1924" data-name="Rectangle 1924" width="24" height="24" fill="none"/>
+    <g id="plans" transform="translate(20.651 -1.837) rotate(90)">
+        <g id="Group_787" data-name="Group 787" transform="translate(7.771 13.598)">
+            <g id="Group_786" data-name="Group 786" transform="translate(0)">
+                <path id="Path_1484" data-name="Path 1484" d="M86.52,413.09l-1.1-1.1a.551.551,0,1,0-.78.78l.162.161H74.231l.162-.161a.551.551,0,1,0-.78-.78l-1.1,1.1a.551.551,0,0,0,0,.78l1.1,1.1a.551.551,0,0,0,.78-.78l-.162-.162H84.8l-.162.162a.551.551,0,0,0,.78.78l1.1-1.1a.551.551,0,0,0,0-.78Z" transform="translate(-72.349 -411.826)" fill="#666"/>
+            </g>
+        </g>
+        <g id="Group_789" data-name="Group 789" transform="translate(5.566 0)">
+            <g id="Group_788" data-name="Group 788" transform="translate(0)">
+                <path id="Path_1485" data-name="Path 1485" d="M7.932,11.556l-.162.161V1.883l.162.162a.551.551,0,0,0,.78-.78l-1.1-1.1a.551.551,0,0,0-.78,0l-1.1,1.1a.551.551,0,1,0,.78.78l.161-.162v9.834l-.162-.162a.551.551,0,0,0-.78.78l1.1,1.1a.551.551,0,0,0,.78,0l1.1-1.1a.551.551,0,1,0-.779-.78Z" transform="translate(-5.566 -0.001)" fill="#666"/>
+            </g>
+        </g>
+        <g id="Group_791" data-name="Group 791" transform="translate(9.976)">
+            <g id="Group_790" data-name="Group 790">
+                <path id="Path_1486" data-name="Path 1486" d="M148.5,4.41h2.756V.551A.551.551,0,0,0,150.707,0h-7.534V4.41h2.756a.551.551,0,1,1,0,1.1h-2.756V7.167a.551.551,0,1,1-1.1,0V0h-2.389a.551.551,0,0,0-.551.551V11.944a.551.551,0,0,0,.551.551h2.389V9.739a.551.551,0,1,1,1.1,0V12.5h7.534a.551.551,0,0,0,.551-.551V5.513H148.5a.551.551,0,1,1,0-1.1Z" transform="translate(-139.13)" fill="#666"/>
+            </g>
+        </g>
+    </g>
+</svg>

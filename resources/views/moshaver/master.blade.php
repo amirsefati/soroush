@@ -234,7 +234,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/moshaver0" class="">
+                                    <a href="" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         اقدامات پیش رو
                                     </a>
@@ -242,7 +242,7 @@
 
 
                                 <li>
-                                    <a href="/moshaver1" class="">
+                                    <a href="" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         اعلامیه
                                     </a>
@@ -250,7 +250,7 @@
 
                                 
                                 <li>
-                                    <a href="/moshaver2" class="">
+                                    <a href="" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         دفترچه تلفن
                                     </a>
@@ -264,13 +264,7 @@
                     </div>
                 </div>    <div class="app-main__outer">
                     <div class="app-main__inner">
-                        <div class="app-page-title">
-                            <div class="page-title-wrapper">
-                                <div class="page-title-heading">
-                                    
-                                </div>
-                                    </div>
-                        </div> 
+                        
 
                                 @yield('content')
                                 

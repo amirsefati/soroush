@@ -11,11 +11,9 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: left;">
                         <a href="/moshaver/addfile_get">
-                            <button class="btn btn-danger pr-5 pl-5">افزودن فایل</button>
+                            <button class="btn pr-5 pl-5" style="background:#1D3461;color:white">افزودن فایل</button>
                         </a>
-                        <a href="/moshaver/adduser">
-                        <button class="btn btn-warning">افزودن کاربر</button>
-                        </a>
+                        
                     </div>
 
                 </div>

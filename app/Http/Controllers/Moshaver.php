@@ -283,6 +283,7 @@ class Moshaver extends Controller
             'info' => $request->info,
             'kind_type' => $request->kind_type,
             'region' => $request->region,
+            'area' => $request->area,
 
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),
@@ -385,5 +386,21 @@ class Moshaver extends Controller
             'verify' => $status
         ]);
         return back();
-    }   
+    }  
+    
+    public function show_user_get($id){
+        $user = User::find($id);
+
+        if($user->kind_type == "sell"){
+            $result = File::where('type',$user->type)
+                ->whereBetween('price',[($user->price)*0.8,($user->price)*1.4])->get();
+        }else{
+            $result = File::where('type',$user->type)
+                ->whereBetween('rent_annual',[($user->rent_annual)*0.6,($user->rent_annual)*1.6])
+                ->whereBetween('rent_month',[($user->rent_month)*0.6,($user->rent_month)*1.4])
+                ->get();
+        }
+
+        return view('moshaver.show_user',compact(['user','result']));
+    }
 }

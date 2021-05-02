@@ -187,6 +187,21 @@ a:hover{
     border-radius: 15px;
     color:black;
 }
+.show_user_box{
+    border-radius: 25px;
+    box-shadow: 0 0 51px 0 rgb(0 0 0 / 8%), 0 6px 18px 0 rgb(0 0 0 / 5%);
+    background: #f4f6f9;
+    min-height: 300px;
+}
+
+.show_user_header_type{
+    background: #fd8125;
+    color:white;
+    padding: 15px 10px;
+    border-radius: 0px 0px 10px 10px;
+    
+}
+
 @media only screen and (max-width: 600px) {
     .addfilelist_img{
         width: 110px;

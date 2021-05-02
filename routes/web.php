@@ -37,7 +37,9 @@ Route::prefix('moshaver')->group(function(){
     Route::get('listusers',[Moshaver::class,'listusers']);
     Route::get('edituser/{userid}',[Moshaver::class,'edituser_get']);
     Route::post('edituser_post',[Moshaver::class,'edituser_post']);
+    Route::get('show_user/{userid}',[Moshaver::class,'show_user_get']);
 
+    
     
     Route::get('search_files',[Moshaver::class,'search_files']);
 
