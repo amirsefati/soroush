@@ -72,10 +72,10 @@
                                                 <strong>{{$user->price}} میلیون تومان</strong>
                                             @else
                                                 رهن : 
-                                                <strong>{{rent_annual}}میلیون تومان</strong>
+                                                <strong>{{$user->rent_annual}}میلیون تومان</strong>
                                                 <br/>
                                                 اجاره :
-                                                <strong>{{rent_month}}میلیون تومان</strong>
+                                                <strong>{{$user->rent_month}}میلیون تومان</strong>
 
                                                 
                                             @endif
