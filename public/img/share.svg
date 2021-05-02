@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1{fill:#4b4b4b}
+        </style>
+    </defs>
+    <g id="Group_11625" transform="translate(-327 -489.741)">
+        <g id="Group_11932" transform="translate(-2)">
+            <g id="share_2_" transform="translate(332 491.741)">
+                <path id="Path_2791" d="M317.715 17.523A1.523 1.523 0 1 1 316.191 16a1.523 1.523 0 0 1 1.524 1.523zm0 0" class="cls-1" transform="translate(-307.754 -15.648)"/>
+                <path id="Path_2792" d="M300.543 3.75a1.875 1.875 0 1 1 1.875-1.875 1.877 1.877 0 0 1-1.875 1.875zm0-3.047a1.172 1.172 0 1 0 1.172 1.172A1.173 1.173 0 0 0 300.543.7zm0 0" class="cls-1" transform="translate(-292.105)"/>
+                <path id="Path_2793" d="M317.715 358.856a1.523 1.523 0 1 1-1.523-1.523 1.523 1.523 0 0 1 1.523 1.523zm0 0" class="cls-1" transform="translate(-307.754 -349.481)"/>
+                <path id="Path_2794" d="M300.543 345.082a1.875 1.875 0 1 1 1.875-1.875 1.877 1.877 0 0 1-1.875 1.875zm0-3.047a1.172 1.172 0 1 0 1.172 1.172 1.173 1.173 0 0 0-1.172-1.172zm0 0" class="cls-1" transform="translate(-292.105 -333.832)"/>
+                <path id="Path_2795" d="M19.047 188.191a1.523 1.523 0 1 1-1.523-1.523 1.523 1.523 0 0 1 1.523 1.523zm0 0" class="cls-1" transform="translate(-15.649 -182.566)"/>
+                <path id="Path_2796" d="M1.875 174.418a1.875 1.875 0 1 1 1.875-1.875 1.877 1.877 0 0 1-1.875 1.875zm0-3.047a1.172 1.172 0 1 0 1.172 1.172 1.173 1.173 0 0 0-1.172-1.172zm0 0" class="cls-1" transform="translate(0 -166.918)"/>
+                <path id="Path_2797" d="M114.818 93.632a.469.469 0 0 1-.233-.876l4.349-2.48a.469.469 0 1 1 .464.815l-4.35 2.48a.466.466 0 0 1-.231.061zm0 0" class="cls-1" transform="translate(-111.836 -88.232)"/>
+                <path id="Path_2798" d="M119.189 269.636a.467.467 0 0 1-.232-.061l-4.35-2.48a.469.469 0 1 1 .464-.815l4.35 2.48a.469.469 0 0 1-.233.876zm0 0" class="cls-1" transform="translate(-111.858 -260.369)"/>
+            </g>
+            <path id="Rectangle_18781" fill="none" d="M0 0H16V16H0z" transform="translate(329 489.741)"/>
+        </g>
+    </g>
+</svg>
