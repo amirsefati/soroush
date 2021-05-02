@@ -17,10 +17,11 @@
     <div class="container-fluid" style="direction: rtl;">
         @yield('content')
     </div>
-<script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
-<script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 
 
 </body>
+
+<script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
+<script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 
 </html>

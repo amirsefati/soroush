@@ -1,36 +1,64 @@
-.head_login{
-    height: 300px;
-    background-color: darkcyan;
-    border-radius: 0px 0% 40% 40%;
+
+body{
+    font-family: 'sefati'!important;
 }
-.content_login{
-    height: 400px;
-    background-color: darkgoldenrod;
+
+.slider_right{
+    height: 100vh;
+    background: url('/img/slider/1.jpg');
+    width: 100%;
 }
-.box_login{
-    height: 400px;
-    background-color: darkslateblue;
-    margin-top: -80px;
-    border-radius: 20px;
-    box-shadow: 8px 17px 32px -3px rgba(0,0,0,0.54);
-}
-.col_content_login{
-    padding: 5px 20px 5px 5px ;
-}
-.box_login_a1{
-    content: ' ';
-    height: 40px;
-    width: 4px;
-    position: absolute;
-    right: 0;
-    top: -30px;
+
+.login_left{
+    height: 100vh;
     background: white;
-    color:white;
+    width: 100%; 
 }
-.box_login_a2{
-    color:white;
-    position: absolute;
-    top: -30px;
-    right: 10px;
-    font-size: 16px;
+.login_box{
+    border: 2px solid gray;
+    border-radius: 15px;
+    margin-top: 20%;
+    margin-right: 15%;
+    width: 70%;
 }
+.login_box_head{
+    text-align: center;
+}
+.login_box_head_p{
+    font-size: 22px;
+    margin: 5px;
+}
+
+.btn_login{
+    padding: 10px;
+    background: cyan;
+    width: 90%;
+    border-radius: 20px;
+}
+.btn_forget_pass{
+    padding: 10px;
+    background: white;
+    width: 90%;
+    border: .5px solid gray;
+    border-radius: 20px;
+    margin-right: 5%;
+}
+
+hr.login_box_cutter {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top:.5px solid gray;
+    color: gray;
+    text-align: center;
+}
+hr.login_box_cutter:after {
+    content: "✄";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+

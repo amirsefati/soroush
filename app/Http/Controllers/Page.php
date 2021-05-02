@@ -20,6 +20,7 @@ class Page extends Controller
     }
 
     public function login(Request $request){
+
         if(User::where('phone',$request->phone)->first()){
             if($user = User::where('phone',$request->phone)->where('password',$request->pass)->first()){
                 Auth::loginUsingId($user->id,true);

@@ -3,52 +3,46 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-12 head_login">
 
+    <div class="col-md-6 slider_right">
+    
+    
     </div>
 
-</div>
 
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-3">
-        <div class="row box_login">
-            <div class="box_login_a1"></div>
-            <span class="box_login_a2">ورود به بخش کاربری</span>
-                <div class="col-md-12" style="margin-top:110px;">
-                <form action="/login" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-10">
-                            <label for="phone" style="color:white;padding-right:8px">شماره تلفن :</label>
-                            <input type="number" name="phone" class="form-control" required autofocus>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-md-10">
-                            <label for="pass" style="color:white;padding-right:8px"> گذرواژه :</label>
-                            <input type="text" name="pass" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="row mt-5">
-                        <div class="col-md-5 col-4"></div>
-                        <div class="col-md-6 col-8">
-                            <div class="row">
-                                <button type="submit" class="col-md-6 col-6 btn btn-success pr-4 pl-4">ورود</button><span style="padding: 1px;"></span>
-                                <button type="button" class="col-md-5 col-5 btn btn-warning pr-1 pl-1">ثبت نام</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+    <div class="col-md-6 login_left">
+        <div class="login_box p-3">
+            <div class="login_box_head">
+                <p class="login_box_head_p">ورود به دستیار مشاور</p>
+                <p class="login_box_head_p">املاک عظیمیان</p>
+            </div>
+        <form action="/login" method="post">
+            @csrf
+            <div class="login_box_content">
+                <label for="phone">موبایل :</label>
+                <input name="phone" type="number" class="form-control" >
+                <br>
+                <label for="pass">گذرواژه :</label>
+                <input name="pass" type="password" class="form-control" >
+            </div>
+                <br>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <button  class="btn_login">ورود</button>
                 </div>
-        </div>
-    </div>
-    <div class="col-md-5 col_content_login">
-        <div class="row content_login">
-        </div>
-    </div>
+            </div>
+        </form>
+            <hr class="login_box_cutter"/>
 
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <p class="btn_forget_pass">
+                        <span> 🔒 </span>رمز عبور خود را فراموش کرده اید؟
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 @endsection
