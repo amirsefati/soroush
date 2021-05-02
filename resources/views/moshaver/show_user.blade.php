@@ -153,15 +153,53 @@
     
     
                                 <div id="menu1" class="container tab-pane fade"><br>
-                                    @foreach($result as $file)
+                                    <div class="row">
+                                        @foreach($result as $file)
+                                            <div class="col-md-6 list_file_in_user">
+                                                <div class="row">
+                                                    <div class="col-md-4 ">
+                                                        <img src="{{$file->thumbnail}}" width="100%" alt="">
+                                                    </div>
+                                                    <div class="col-md-8 p-2">
+                                                        {{$file->type}} {{$file->area}} متری <br>
 
+                                                                @if($file->kind_type == 'sell')
+                                                                    قیمت :
+                                                                    <strong>{{$file->price}} میلیون تومان</strong>
+                                                                @else
+                                                                    رهن : 
+                                                                    <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                                                    <br/>
+                                                                    اجاره :
+                                                                    <strong>{{$file->rent_month}} میلیون تومان</strong>
 
-                                    @endforeach
+                                                                    
+                                                                @endif
+                                                    </div>
+
+                                                    <hr/>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        @endforeach 
+                                    </div>
+                                  
 
                                 </div>
                                 <div id="menu2" class="container tab-pane fade"><br>
-                                <h3>Menu 2</h3>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                <h3>در حال به روز رسانی</h3>
+
+                                </div>
+
+                                <div id="menu2" class="container tab-pane fade"><br>
+                                <h3>در حال به روز رسانی</h3>
+
                                 </div>
                         </div>
                     </div>

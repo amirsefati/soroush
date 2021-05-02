@@ -13,7 +13,7 @@
                             <a href="/moshaver/show_user/{{$user->id}}">
                                 <p class="pt-3 pr-2"> 
                                     @if($user->kind_type == 'sell')
-                                        بودجه : {{$user->price}}
+                                        بودجه : {{$user->price}} میلیون تومان
                                     @else
                                         رهن {{$user->rent_annual}} میلیون تومان
                                         <br>
