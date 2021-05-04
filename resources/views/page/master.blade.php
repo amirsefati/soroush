@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
     <link rel="stylesheet" href="{{asset('css/page.css')}}">
+    <link rel="stylesheet" href="{{asset('slider/style.css')}}">
 
 </head>
 <body>
@@ -23,5 +24,6 @@
 
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('slider/js/script.js')}}"></script>
 
 </html>

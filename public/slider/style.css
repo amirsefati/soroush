@@ -1,0 +1,283 @@
+@font-face {
+    font-family: Rebellion;
+    src: url("/slider/font/Rebellion Knight Personal Use Only.ttf");
+}
+
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic);
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+a {
+    font-family: 'Playfair Display', serif;
+    text-decoration: none;
+}
+
+.intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: none transparent;
+}
+
+
+.left {
+    float: left;
+    height: 100%;
+    width: 50%;
+    padding: 3rem 3rem 3rem 5rem;
+    display: table;
+}
+
+iframe {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.1rem;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+span {
+    color: #E8CA2B;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-size: 8rem;
+    margin-bottom: 3rem;
+}
+
+h1 + p {
+    color: #949494;
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
+}
+
+p + a {
+    font-size: 1.6rem;
+    color: #000;
+}
+
+.slider {
+    float: right;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slider li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-transition: clip 1s ease-in-out, z-index 0s 1s;
+    transition: clip 1s ease-in-out, z-index 0s 1s;
+    clip: rect(0, 100vw, 100vh, 100vw);
+    display: table;
+}
+
+.center-y {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+}
+
+h3 {
+    font-size: 6.5rem;
+    font-style: italic;
+    font-family: Rebellion;
+}
+
+h3 + a {
+    font-size: 1.6rem;
+    display: inline-block;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+h3, h3 + a {
+    opacity: 0;
+    -webkit-transition: opacity .7s 0s, -webkit-transform .5s .2s;
+    transition: opacity .7s 0s, -webkit-transform .5s .2s;
+    transition: opacity .7s 0s, transform .5s .2s;
+    transition: opacity .7s 0s, transform .5s .2s, -webkit-transform .5s .2s;
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+}
+
+li a {
+    padding: 15px 25px 15px 25px;
+    margin-top: 25px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: .3em;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 14px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.65);
+    border-top: 0;
+    margin-left: -14px;
+    margin-top: -14px;
+}
+
+li.current h3, li.current h3 + a {
+    opacity: 1;
+    -webkit-transition-delay: 1s;
+    transition-delay: 1s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+li.current {
+    z-index: 1;
+    clip: rect(0, 100vw, 100vh, 0);
+}
+
+li.prev {
+    clip: rect(0, 0, 100vh, 0);
+}
+
+.slider nav {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+nav a {
+    display: inline-block;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    min-width: 12px;
+    min-height: 12px;
+    background: #ffffff;
+    margin: 0 1rem;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+}
+
+a.current_dot {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+@media screen and (max-width: 700px) {
+    .left {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .left > iframe {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .slider {
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        position: fixed;
+    }
+}
+
+.zoomIn {
+    animation-name: zoomIn;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
+
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1.2, 1.2);
+    }
+}
+
