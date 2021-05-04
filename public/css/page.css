@@ -21,6 +21,7 @@ body{
     margin-right: 15%;
     width: 70%;
     background: #0B4F6C;
+    opacity: .97;
 }
 .login_box_head{
     text-align: center;
@@ -64,3 +65,14 @@ hr.login_box_cutter:after {
     background: #0B4F6C;
 }
 
+@media only screen and (max-width: 600px) {
+
+    .login_box{
+        border: 2px solid gray;
+        border-radius: 15px;
+        margin-top: 15%;
+        margin-right: 5%;
+        width: 90%;
+        background: #0B4F6C;
+    }
+}
