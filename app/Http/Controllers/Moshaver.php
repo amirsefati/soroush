@@ -403,4 +403,20 @@ class Moshaver extends Controller
 
         return view('moshaver.show_user',compact(['user','result']));
     }
+
+    public function fileinfo_get($id){
+        $file = File::find($id);
+
+        if($file->kind_type == "sell"){
+            $result = User::where('type',$file->type)
+                ->whereBetween('price',[($file->price)*0.8,($file->price)*1.4])->get();
+        }else{
+            $result = User::where('type',$file->type)
+                ->whereBetween('rent_annual',[($file->rent_annual)*0.6,($file->rent_annual)*1.6])
+                ->whereBetween('rent_month',[($file->rent_month)*0.6,($file->rent_month)*1.4])
+                ->get();
+        }
+
+        return view('moshaver.fileinfo',compact(['file','result']));
+    }
 }

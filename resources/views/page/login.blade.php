@@ -106,7 +106,7 @@
             <div class="login_box_content">
                 <label for="phone" style="position: relative;padding:10px;font-size:12px;">موبایل :</label>
                 <input style="background: transparent;color:white" name="phone" type="number" class="form-control" >
-                <br>
+
                 <label for="pass" style="position: relative;padding:10px;font-size:12px;">گذرواژه :</label>
                 <input style="background: transparent;color:white" name="pass" type="password" class="form-control" >
             </div>

@@ -29,7 +29,9 @@ Route::prefix('moshaver')->group(function(){
     Route::get('adduser',[Moshaver::class,'adduser']);
     Route::post('adduser_post',[Moshaver::class,'adduser_post']);
     Route::get('editfile/{fileid}',[Moshaver::class,'editfile_get']);
+    Route::get('fileinfo/{fileid}',[Moshaver::class,'fileinfo_get']);
 
+    
     
     Route::get('manage_files',[Moshaver::class,'manage_files']);
 

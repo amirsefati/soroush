@@ -207,9 +207,42 @@ a:hover{
     border-radius: 0px 0px 10px 10px;
     padding: 10px;
 }
+.manage_file_box{
+    background:white;
+    box-shadow: 0 0 51px 0 rgb(0 0 0 / 8%), 0 6px 18px 0 rgb(0 0 0 / 5%);
+    min-height: 150px;
+    border-radius: 0px 15px 15px 15px;
+}
+.manage_file_box_img{
+    width: 90%;
+    border-radius: 0px 15px 15px 15px;
+    min-height: 110px;
+}
+.manage_file_box_p{
+    margin: 5px;
+}
+.send_to_customer{
+    border: .5px solid black;
+    border-radius: 10px;
+    padding: 5px 8px;
+    font-size: 11px;
+}
 
-
-
+.fileinfo_headbox{
+    background: white;
+    border-radius: 15px;  
+}
+.fileinfo_btn_edit{
+    border: .5px solid black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    margin: 5px;
+}
+.feature_title{
+    color:#007aff;
+    margin: 5px;
+}
 @media only screen and (max-width: 600px) {
     .addfilelist_img{
         width: 110px;

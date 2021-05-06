@@ -4,8 +4,8 @@
                         <a href="/moshaver/addfile_get">
                             <button class="btn pr-5 pl-5" style="background:#1D3461;color:white">افزودن مشتری</button>
                         </a>  
-<div class="row">
-    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
                             <div class="row">
                     @foreach($users as $user)
                         <div class="col-md-4 mt-4  pr-2 pl-2">
