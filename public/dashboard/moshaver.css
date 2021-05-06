@@ -243,6 +243,31 @@ a:hover{
     color:#007aff;
     margin: 5px;
 }
+
+.chance_ok{
+    width: 80px;
+    height: 80px;
+    background: rgb(42, 74, 251);
+    border-radius: 0px 10px 10px 10px;
+}
+.chance_ok_text{
+    color:white;
+    text-align: center;
+    font-weight: lighter;
+}
+.chance_ok_percent{
+    color:white;
+    text-align: center;
+    padding-top: 20px;
+    margin: 2px;
+    font-weight: bold;
+}
+.verify_file{
+    border: .5px solid black;
+    border-radius: 10px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 @media only screen and (max-width: 600px) {
     .addfilelist_img{
         width: 110px;

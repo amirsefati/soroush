@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="col-md-3 p-2">
                                             <a href="/moshaver/fileinfo/{{$file->id}}">
-                                                <img src="{{$file->thumbnail}}" class="manage_file_box_img" alt="">
+                                                <img src="{{$file->thumbnail ? $file->thumbnail : '/img/noimg.png'}}" class="manage_file_box_img" alt="">
                                             </a>
                                         </div>
                                         <div class="col-md-9 pr-1">

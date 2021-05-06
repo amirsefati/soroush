@@ -313,7 +313,9 @@ class Moshaver extends Controller
     }
 
     public function manage_files(){
-        $files_yes_publish = File::where('publish',1)->orderBy('etc1','DESC')->orderBy('updated_at')->get();
+        $files_yes_publish = File::where('publish',1)
+        ->where('userid_moshaver',Auth::user()->id)
+        ->orderBy('etc1','DESC')->orderBy('updated_at')->get();
         return view('moshaver.manage_files',compact('files_yes_publish'));
     }
 
@@ -393,14 +395,16 @@ class Moshaver extends Controller
 
         if($user->kind_type == "sell"){
             $result = File::where('type',$user->type)
+                ->where('kind_type','sell')
                 ->whereBetween('price',[($user->price)*0.8,($user->price)*1.4])->get();
         }else{
             $result = File::where('type',$user->type)
+                ->where('kind_type','rent')
                 ->whereBetween('rent_annual',[($user->rent_annual)*0.6,($user->rent_annual)*1.6])
                 ->whereBetween('rent_month',[($user->rent_month)*0.6,($user->rent_month)*1.4])
                 ->get();
         }
-
+        
         return view('moshaver.show_user',compact(['user','result']));
     }
 
@@ -409,14 +413,15 @@ class Moshaver extends Controller
 
         if($file->kind_type == "sell"){
             $result = User::where('type',$file->type)
+                ->where('kind_type','sell')
                 ->whereBetween('price',[($file->price)*0.8,($file->price)*1.4])->get();
         }else{
             $result = User::where('type',$file->type)
+                ->where('kind_type','rent')
                 ->whereBetween('rent_annual',[($file->rent_annual)*0.6,($file->rent_annual)*1.6])
                 ->whereBetween('rent_month',[($file->rent_month)*0.6,($file->rent_month)*1.4])
                 ->get();
         }
-
         return view('moshaver.fileinfo',compact(['file','result']));
     }
 }

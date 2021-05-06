@@ -1,6 +1,17 @@
 @extends('moshaver.master')
 @section('content')
 
+<div style="display: none;">
+{{$f = 0}}
+{{{$t = 0}}}
+@foreach($result as $r)
+@if($r->userid_moshaver == Auth::user()->id)
+    {{$f++}}
+@else
+    {{$t++}}
+@endif
+@endforeach
+</div>
 
 <div class="row">
     <div class="col-md-1"></div>
@@ -21,7 +32,7 @@
                     </div>
                     <div class="col-md-4" style="font-weight: bold;">
                         متقاضی 
-                        
+                            {{$user->type}}
                             @if($user->kind_type == 'sell')
                                 خریدار
                             @else
@@ -47,10 +58,18 @@
                             <a class="nav-link active" data-toggle="tab" href="#home">جزئیات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu1">شانس قرارداد</a>
+                            <a class="nav-link" data-toggle="tab" href="#menu1"> شانس قرارداد &nbsp;
+                                @if($f)
+                                <span class="badge badge-success" style="border-radius:20px;padding:4px"> {{$f}}</span>
+                                @endif
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu2">تعاون</a>
+                            <a class="nav-link" data-toggle="tab" href="#menu2">تعاون &nbsp;
+                                @if($t)
+                                <span class="badge badge-danger" style="border-radius:20px;padding:4px"> {{$t}}</span>
+                                @endif
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#menu3">روند اقدامات</a>
@@ -63,6 +82,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tab-content">
+
                                 <div id="home" class="container tab-pane active"><br>
 
                                     <div class="row">
@@ -84,19 +104,19 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-3"></div>
-                                        <div class="col-md-2" style="text-align: center;">
+                                        <div class="col-md-2 col-4" style="text-align: center;">
                                             <img style="padding:5px" src="/img/beds.svg" alt=""><br>
                                             <strong style="font-size: 19px;">{{$user->bedroom_number}}</strong><br>
                                             <span>تعداد خواب</span>
                                         </div>
 
-                                        <div class="col-md-2" style="text-align: center;">
+                                        <div class="col-md-2 col-4" style="text-align: center;">
                                             <img style="padding:5px" src="/img/beds.svg" alt=""><br>
                                             <strong style="font-size: 19px;">{{$user->age}}</strong><br>
                                             <span>سن بنا</span>
                                         </div>
 
-                                        <div class="col-md-2" style="text-align: center;">
+                                        <div class="col-md-2 col-4" style="text-align: center;">
                                             <img style="padding:5px" src="/img/beds.svg" alt=""><br>
                                             <strong style="font-size: 19px;">{{$user->area   }}</strong><br>
                                             <span>متراژ</span>
@@ -108,7 +128,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
 
-                                        <div class="col-md-2" style="text-align:center">
+                                        <div class="col-md-2 col-3" style="text-align:center">
                                             انباری <br>
                                             @if($user->depot)
                                                 <img src="/img/check.svg" alt="">
@@ -117,7 +137,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-md-2" style="text-align:center">
+                                        <div class="col-md-2 col-3" style="text-align:center">
                                             آسانسور <br>
                                             @if($user->elevator)
                                                 <img src="/img/check.svg" alt="">
@@ -126,7 +146,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-md-2" style="text-align:center">
+                                        <div class="col-md-2 col-3" style="text-align:center">
                                             پارکینگ <br>
                                             @if($user->parking)
                                                 <img src="/img/check.svg" alt="">
@@ -135,7 +155,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-md-2" style="text-align:center">
+                                        <div class="col-md-2 col-3" style="text-align:center">
                                             بالکن <br>
                                             @if($user->balcony)
                                                 <img src="/img/check.svg" alt="">
@@ -155,45 +175,112 @@
                                 <div id="menu1" class="container tab-pane fade"><br>
                                     <div class="row">
                                         @foreach($result as $file)
-                                            <div class="col-md-6 list_file_in_user">
-                                                <div class="row">
-                                                    <div class="col-md-4 ">
-                                                        <img src="{{$file->thumbnail}}" width="100%" alt="">
+                                            @if($file->userid_moshaver == Auth::user()->id)
+                                            <div class="col-md-6 pt-1 pr-3 pl-3">
+                                                <div class="row list_file_in_user">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+
+                                                            <div class="col-md-3 p-0">
+                                                                <div class="chance_ok">
+                                                                    @if($file->kind_type == 'sell')
+                                                                        <p class="chance_ok_percent">%{{($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*100}}</p>
+                                                                    @else
+                                                                        <p class="chance_ok_percent">%{{($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*100}}</p>
+                                                                    @endif
+                                                                    <p class="chance_ok_text">شانس</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-8 p-2">
+                                                                {{$file->type}} {{$file->area}} متری <br>
+
+                                                                        @if($file->kind_type == 'sell')
+                                                                            قیمت :
+                                                                            <strong>{{$file->price}} میلیون تومان</strong>
+                                                                        @else
+                                                                            رهن : 
+                                                                            <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                                                            <br/>
+                                                                            اجاره :
+                                                                            <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                                                                        @endif
+                                                            </div>
+
+                                                        </div>
+                                                        <hr>    
                                                     </div>
-                                                    <div class="col-md-8 p-2">
-                                                        {{$file->type}} {{$file->area}} متری <br>
-
-                                                                @if($file->kind_type == 'sell')
-                                                                    قیمت :
-                                                                    <strong>{{$file->price}} میلیون تومان</strong>
-                                                                @else
-                                                                    رهن : 
-                                                                    <strong>{{$file->rent_annual}} میلیون تومان</strong>
-                                                                    <br/>
-                                                                    اجاره :
-                                                                    <strong>{{$file->rent_month}} میلیون تومان</strong>
-
-                                                                    
-                                                                @endif
-                                                    </div>
-
-                                                    <hr/>
+                                                    
                                                     <div class="row">
                                                         <div class="col-md-12">
-
+                                                            <span class="verify_file">تایید این فایل</span>
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                            </div>
 
+                                            </div>
+                                            @endif
                                         @endforeach 
                                     </div>
                                   
 
                                 </div>
+
+
                                 <div id="menu2" class="container tab-pane fade"><br>
-                                <h3>در حال به روز رسانی</h3>
+                                    <div class="row">
+                                        @foreach($result as $file)
+                                            @if($file->userid_moshaver != Auth::user()->id)
+                                            <div class="col-md-6 pt-1 pr-3 pl-3">
+                                                <div class="row list_file_in_user">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+
+                                                            <div class="col-md-3 p-0">
+                                                                <div class="chance_ok">
+                                                                    @if($file->kind_type == 'sell')
+                                                                        <p class="chance_ok_percent">%{{($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*100}}</p>
+                                                                    @else
+                                                                        <p class="chance_ok_percent">%{{($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*100}}</p>
+                                                                    @endif
+                                                                    <p class="chance_ok_text">شانس</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-8 p-2">
+                                                                {{$file->type}} {{$file->area}} متری <br>
+
+                                                                        @if($file->kind_type == 'sell')
+                                                                            قیمت :
+                                                                            <strong>{{$file->price}} میلیون تومان</strong>
+                                                                        @else
+                                                                            رهن : 
+                                                                            <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                                                            <br/>
+                                                                            اجاره :
+                                                                            <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                                                                        @endif
+                                                                        <br>
+                                                                        مشاور : {{App\Models\User::find($file->userid_moshaver)->name}}
+                                                            </div>
+
+                                                        </div>
+                                                        <hr>    
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <span class="verify_file"> درخواست تعاون</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            @endif
+                                        @endforeach 
+                                    </div>
 
                                 </div>
 
