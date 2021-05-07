@@ -213,7 +213,8 @@
                                                     
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <span class="verify_file">تایید این فایل</span>
+                                                            <a href="/moshaver/client_to_file_get/{{Auth::user()->id}}/{{$user->id}}/{{$file->id}}">
+                                                            <span class="verify_file"> شروع روند </span></a>
                                                         </div>
                                                     </div>
 

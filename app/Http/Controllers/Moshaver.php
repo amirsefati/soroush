@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Models\Taavon;
 use App\Models\User;
+use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,7 +99,7 @@ class Moshaver extends Controller
 
 
         ]);
-        return redirect('moshaver/addfilelist');
+        return redirect('moshaver/manage_files');
     }
 
     public function editfile_post(Request $request){
@@ -190,7 +191,7 @@ class Moshaver extends Controller
         User::create([
             'name' => $request->name,
             'phone' => $request->phone,
-            'userid_inter' => 1, //Auth::user()->id,
+            'userid_inter' => Auth::user()->id,
             'password' => '1234567801'
         ]);
 
@@ -308,13 +309,14 @@ class Moshaver extends Controller
         return view('moshaver.editfile',compact(['file','users']));
     }
     public function listusers(){
-        $users = User::where('userid_inter',Auth::user()->id)->get();
+        $users = User::where('userid_inter',Auth::user()->id)
+        ->where('level','1')
+        ->get();
         return view('moshaver.listusers',compact('users'));
     }
 
     public function manage_files(){
-        $files_yes_publish = File::where('publish',1)
-        ->where('userid_moshaver',Auth::user()->id)
+        $files_yes_publish = File::where('userid_moshaver',Auth::user()->id)
         ->orderBy('etc1','DESC')->orderBy('updated_at')->get();
         return view('moshaver.manage_files',compact('files_yes_publish'));
     }
@@ -423,5 +425,31 @@ class Moshaver extends Controller
                 ->get();
         }
         return view('moshaver.fileinfo',compact(['file','result']));
+    }
+
+    public function client_to_file_get($moshaver_id,$client_id,$file_id){
+        
+        $moshaver = User::find($moshaver_id);
+        $client = User::find($client_id);
+        $file = File::find($file_id);
+
+        return view('moshaver.client_to_file_get',compact(['moshaver','client','file']));
+    }
+
+    public function client_to_file_start($moshaver_id,$client_id,$file_id){
+        
+        if(Work::where('moshaver_id',$moshaver_id)
+            ->where('client_id',$client_id)
+            ->where('file_id',$file_id)->first()
+        ){
+            return 'Exist';
+        }
+
+        Work::create([
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'file_id' => $file_id,
+
+        ]);
     }
 }

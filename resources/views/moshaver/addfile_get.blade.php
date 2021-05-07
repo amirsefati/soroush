@@ -109,7 +109,7 @@
                         <div class="row  justify-content-center">
                             <div class="col-md-5">
                                 <label for="userid_file">اطلاعات مالک :</label>
-                                <select class="all_customers" name="userid_file" style="width: 100%">
+                                <select class="all_customers" name="userid_file" style="width: 100%" required>
                                         <option value="">کاربر را انتخاب کنید</option>
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>

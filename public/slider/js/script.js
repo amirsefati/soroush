@@ -6,7 +6,7 @@ $(function () {
     slides.find('a').addClass("speech-bubble");
 
 
-    var sliding = setInterval(slideIt, 3000);
+    var sliding = setInterval(slideIt, 6000);
 
     $("li a").mouseenter(function () {
         clearInterval(sliding);

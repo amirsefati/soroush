@@ -38,6 +38,12 @@
                                                 @endif
                                                 </p>
                                             </div>
+
+                                            @if($file->publish == 0)
+                                                <div class="manage_files_notpublish">
+                                                    <span class="manage_files_notpublish_span">ناقص</span>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <hr style="padding:2px;margin:2px"/>

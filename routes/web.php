@@ -59,6 +59,13 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('taavon_verify/{taavon_id}/{status}',[Moshaver::class,'taavon_verify']);
 
+
+
+
+    Route::get('client_to_file_get/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_get']);
+
+    Route::get('client_to_file_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_start']);
+
     
 });
 
