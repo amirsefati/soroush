@@ -28,6 +28,7 @@
                         - اجاره {{$file->rent_month}} میلیون تومان
                     @endif
                 </p>
+                <p style="margin:5px;font-size:10px">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
             </div>
         </div>
 
@@ -223,7 +224,9 @@
                                                     
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <span class="verify_file"> درخواست تعاون</span>
+                                                            <a href="/moshaver/client_to_file_get/{{Auth::user()->id}}/{{$user->id}}/{{$file->id}}">
+                                                                <span class="verify_file"> شروع روند</span>
+                                                            </a>                                                        
                                                         </div>
                                                     </div>
 
@@ -257,7 +260,7 @@
 
                                                             <div class="col-md-8 p-2">
                                                                 {{$user->type}} {{$user->area}} متری <br>
-
+                                                                
                                                                         @if($user->kind_type == 'sell')
                                                                             قیمت :
                                                                             <strong>{{$user->price}} میلیون تومان</strong>

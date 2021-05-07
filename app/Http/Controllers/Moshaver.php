@@ -375,13 +375,7 @@ class Moshaver extends Controller
         $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
         return view('moshaver.taavon_get',compact('taavons'));
     }
-
-    public function taavon_verify($taavon_id,$status){
-        Taavon::find($taavon_id)->update([
-            'verify' => $status
-        ]);
-        return back();
-    }  
+  
     
     public function show_user_get($id){
         $user = User::find($id);
@@ -427,21 +421,27 @@ class Moshaver extends Controller
         return view('moshaver.client_to_file_get',compact(['moshaver','client','file']));
     }
 
-    public function client_to_file_start($moshaver_id,$client_id,$file_id){
+    public function client_to_file_get_taavon($moshaver_id,$taavon_moshaver_id,$client_id,$file_id){
         
-        if(Work::where('moshaver_id',$moshaver_id)
-            ->where('client_id',$client_id)
-            ->where('file_id',$file_id)->first()
-        ){
-            return 'Exist';
-        }
+        $taavon_moshaver = User::find($taavon_moshaver_id);
+        $moshaver = User::find($moshaver_id);
+        $client = User::find($client_id);
+        $file = File::find($file_id);
+
+        return view('moshaver.client_to_file_get_taavon',compact(['taavon_moshaver','moshaver','client','file']));
+
+    }
+
+    public function client_to_file_start($moshaver_id,$client_id,$file_id){
 
         Work::create([
             'moshaver_id' => $moshaver_id,
             'client_id' => $client_id,
             'file_id' => $file_id,
-
+            'type' => 0,
         ]);
+
+        return redirect('/');
     }
 
     public function taavon_request($moshaver_id,$userid_taavon,$client_id,$file_id){
@@ -453,6 +453,16 @@ class Moshaver extends Controller
             'taavon_id' => $userid_taavon,
             'verify' => 0,
 
+        ]);
+
+        return back();
+    }
+
+    
+
+    public function verfiy_taavon($taavon_id,$status){
+        Taavon::find($taavon_id)->update([
+            'verify' => $status
         ]);
 
         return back();

@@ -87,6 +87,7 @@
 
                                     <div class="row">
                                         <div class="col-md-3">
+                                            <p style="margin:5px">کاربر : <strong>{{$user->name}}</strong></p>
                                             @if($user->kind_type == 'sell')
                                                 قیمت :
                                                 <strong>{{$user->price}} میلیون تومان</strong>
@@ -251,7 +252,6 @@
 
                                                             <div class="col-md-8 p-2">
                                                                 {{$file->type}} {{$file->area}} متری <br>
-
                                                                         @if($file->kind_type == 'sell')
                                                                             قیمت :
                                                                             <strong>{{$file->price}} میلیون تومان</strong>
@@ -290,10 +290,12 @@
                                                                         <span class="verify_file"> رد شده </span>
                                                                     </a>
                                                                 @elseif($taavon->verify == 2)
-                                                                    <a href="">
+                                                                    <a>
                                                                         <span class="verify_file"> تایید شده </span>
+                                                                    </a>&nbsp;
+                                                                    <a href="/moshaver/taavon_moshaver_id/client_to_file_get/{{Auth::user()->id}}/{{$file->userid_moshaver}}/{{$user->id}}/{{$file->id}}">
+                                                                        <span class="verify_file"> شروع روند</span>
                                                                     </a>
-
                                                                 @endif
 
                                                             @else
