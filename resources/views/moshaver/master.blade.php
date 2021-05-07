@@ -226,8 +226,8 @@
                                     <a href="/moshaver/taavon" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         تعاون
-                                        @if($taavon = App\Models\Taavon::where('user_id',Auth::user()->id)->where('verify',null)->count() > 0) 
-                                            <span class="badge badge-pill badge-success">{{$taavon}}</span>
+                                        @if(App\Models\Taavon::where('taavon_id',Auth::user()->id)->where('verify',0)->count() > 0) 
+                                            <span class="badge badge-pill badge-success">{{App\Models\Taavon::where('taavon_id',Auth::user()->id)->where('verify',0)->count()}}</span>
                                         @endif
 
                                     </a>

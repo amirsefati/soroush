@@ -16,7 +16,7 @@ class CreateTaavonsTable extends Migration
         Schema::create('taavons', function (Blueprint $table) {
             $table->id();
             $table->string('kind');
-            $table->integer('user_id')->nullable();
+            $table->integer('taavon_id')->nullable();
             $table->integer('moshaver_id')->nullable();
             $table->integer('client_id')->nullable();
             $table->integer('file_id')->nullable();

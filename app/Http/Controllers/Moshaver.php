@@ -22,7 +22,7 @@ class Moshaver extends Controller
     }
 
     public function addfile_get(){
-        $users = User::where('level','1')->get();
+        $users = User::where('level','1')->where('userid_inter',Auth::user()->id)->get();
         return view('moshaver.addfile_get',compact('users'));
     }
 
@@ -191,6 +191,7 @@ class Moshaver extends Controller
         User::create([
             'name' => $request->name,
             'phone' => $request->phone,
+            'kind_type' => 'sell',
             'userid_inter' => Auth::user()->id,
             'password' => '1234567801'
         ]);
@@ -370,18 +371,8 @@ class Moshaver extends Controller
         return view('moshaver.user_find_file',compact(['result','user']));
     }
 
-    public function request_taavon($file_id,$client_id,$user_id,$kind){
-        Taavon::create([
-            'kind' => $kind,
-            'user_id' => $user_id,
-            'moshaver_id' => Auth::user()->id,
-            'client_id' => $client_id,
-            'file_id' => $file_id,
-        ]);
-    }
-
     public function taavon_get(){
-        $taavons = Taavon::where('user_id',Auth::user()->id)->get();
+        $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
         return view('moshaver.taavon_get',compact('taavons'));
     }
 
@@ -451,5 +442,19 @@ class Moshaver extends Controller
             'file_id' => $file_id,
 
         ]);
+    }
+
+    public function taavon_request($moshaver_id,$userid_taavon,$client_id,$file_id){
+        Taavon::create([
+            'kind' => 0,
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'file_id' => $file_id,
+            'taavon_id' => $userid_taavon,
+            'verify' => 0,
+
+        ]);
+
+        return back();
     }
 }
