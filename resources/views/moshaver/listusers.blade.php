@@ -1,7 +1,7 @@
 @extends('moshaver.master')
 @section('content')
 
-                        <a href="/moshaver/addfile_get">
+                        <a href="/moshaver/adduser">
                             <button class="btn pr-5 pl-5" style="background:#1D3461;color:white">افزودن مشتری</button>
                         </a>  
             <div class="row">

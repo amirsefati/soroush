@@ -20,7 +20,6 @@ Route::get('/logoutpanel', [Page::class,'logoutpanel']);
 Route::prefix('moshaver')->group(function(){
 
     Route::get('/',[Moshaver::class,'index']);
-    Route::get('addfilelist',[Moshaver::class,'addfilelist']);
     Route::get('addfile_get',[Moshaver::class,'addfile_get']);
     Route::post('addfile_post',[Moshaver::class,'addfile_post']);
     Route::post('adduser_digest',[Moshaver::class,'adduser_digest']);
@@ -48,28 +47,42 @@ Route::prefix('moshaver')->group(function(){
     Route::get('/addpin/{id}',[Moshaver::class,'addpin']);
     Route::get('/delpin/{id}',[Moshaver::class,'delpin']);
 
-    Route::get('file_find_user/{id}',[Moshaver::class,'file_find_user']);
-
-    Route::get('user_find_file/{id}',[Moshaver::class,'user_find_file']);
-
-
-
     Route::get('taavon',[Moshaver::class,'taavon_get']);
 
     Route::get('client_to_file_get/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_get']);
 
+
     Route::get('taavon_moshaver_id/client_to_file_get/{moshaver_id}/{taavon_moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_get_taavon']);
+
+    Route::get('taavon_moshaver_id/file_to_client_get/{moshaver_id}/{taavon_moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_get_taavon']);
 
 
     Route::get('client_to_file_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_start']);
+ 
+
+    Route::get('taavon/user_file/{moshaver_id}/{userid_taavon}/{client_id}/{file_id}',[Moshaver::class,'taavon_request_user_file']);
+
+    Route::get('taavon/file_user/{moshaver_id}/{userid_taavon}/{client_id}/{file_id}',[Moshaver::class,'taavon_request_file_user']);
+
+
+    Route::get('taavon/client_to_file_start/{moshaver_id}/{userid_taavon}/{client_id}/{file_id}',[Moshaver::class,'client_to_file_start_taavon']);
+
+    Route::get('taavon/file_to_client_start/{moshaver_id}/{userid_taavon}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start_taavon']);
 
     
-    Route::get('taavon/user_file/{moshaver_id}/{userid_taavon}/{client_id}/{file_id}',[Moshaver::class,'taavon_request']);
 
     Route::get('verfiy_taavon/{taavon_id}/{status}',[Moshaver::class,'verfiy_taavon']);
 
     
+    Route::get('file_to_client_get/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_get']);
 
+    Route::get('client_to_file_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start']);
+
+    Route::get('file_to_client_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start']);
+
+    
+    
+    
     //action
 
     Route::get('/action',[Moshaver::class,'action']);

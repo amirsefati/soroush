@@ -61,6 +61,39 @@
             </div>
         </div>
 
+        <div class="row p-2">
+            <div class="col-md-12 client_to_file_box">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <strong>اطلاعات فایل</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        نوع فایل : {{$file->kind_type == 'sell' ? 'فروش' : 'اجاره'}} {{$file->type}}
+                    </div>
+                    <div class="col-md-3">
+                        متراژ : {{$file->area}}
+                    </div>
+                    <div class="col-md-3">
+                        @if($file->kind_type == 'sell')
+                            قیمت :
+                                <strong>{{$file->price}} میلیون تومان</strong>
+                        @else
+                            رهن : 
+                                <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                <br/>
+                            اجاره :
+                                <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                        منطقه : {{$file->region}}
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
 
         <div class="row p-2">
             <div class="col-md-12 client_to_file_box">
@@ -97,42 +130,8 @@
         </div>
 
         <div class="row p-2">
-            <div class="col-md-12 client_to_file_box">
-                <div class="row mb-3">
-                    <div class="col-md-12">
-                        <strong>اطلاعات فایل</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        نوع فایل : {{$file->kind_type == 'sell' ? 'فروش' : 'اجاره'}} {{$file->type}}
-                    </div>
-                    <div class="col-md-3">
-                        متراژ : {{$file->area}}
-                    </div>
-                    <div class="col-md-3">
-                        @if($file->kind_type == 'sell')
-                            قیمت :
-                                <strong>{{$file->price}} میلیون تومان</strong>
-                        @else
-                            رهن : 
-                                <strong>{{$file->rent_annual}} میلیون تومان</strong>
-                                <br/>
-                            اجاره :
-                                <strong>{{$file->rent_month}} میلیون تومان</strong>  
-                        @endif
-                    </div>
-                    <div class="col-md-3">
-                        منطقه : {{$file->region}}
-                    </div>
-                </div>
- 
-            </div>
-        </div>
-
-        <div class="row p-2">
             <div class="col-md-12"  style="text-align: center;">
-                <a href="/moshaver/taavon/client_to_file_start/{{$moshaver->id}}/{{$taavon_moshaver->id}}/{{$client->id}}/{{$file->id}}">
+                <a href="/moshaver/taavon/file_to_client_start/{{$moshaver->id}}/{{$taavon_moshaver->id}}/{{$client->id}}/{{$file->id}}">
                 <button class="btn btn-success">تایید و شروع</button></a>
             </div>
         </div>

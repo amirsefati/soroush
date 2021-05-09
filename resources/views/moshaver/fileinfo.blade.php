@@ -224,7 +224,7 @@
                                                     
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <a href="/moshaver/client_to_file_get/{{Auth::user()->id}}/{{$user->id}}/{{$file->id}}">
+                                                            <a href="/moshaver/file_to_client_get/{{Auth::user()->id}}/{{$user->id}}/{{$file->id}}">
                                                                 <span class="verify_file"> شروع روند</span>
                                                             </a>                                                        
                                                         </div>
@@ -281,8 +281,38 @@
                                                     
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <span class="verify_file"> درخواست تعاون</span>
-                                                        </div>
+                                                        <div style="display: none;">
+                                                                {{$taavon = App\Models\Taavon::
+                                                                where('moshaver_id',Auth::user()->id)
+                                                                ->where('client_id',$user->id)
+                                                                ->where('file_id',$file->id)->first()}}
+                                                            </div>
+
+                                                            @if($taavon)
+
+                                                                @if($taavon->verify == 0)
+                                                                    <a href="">
+                                                                        <span class="verify_file"> درانتظار تایید </span>
+                                                                    </a>
+                                                                @elseif($taavon->verify == 1)
+                                                                    <a href="">
+                                                                        <span class="verify_file"> رد شده </span>
+                                                                    </a>
+                                                                @elseif($taavon->verify == 2)
+                                                                    <a>
+                                                                        <span class="verify_file"> تایید شده </span>
+                                                                    </a>&nbsp;
+                                                                    <a href="/moshaver/taavon_moshaver_id/file_to_client_get/{{Auth::user()->id}}/{{$user->userid_inter}}/{{$user->id}}/{{$file->id}}">
+                                                                        <span class="verify_file"> شروع روند</span>
+                                                                    </a>
+                                                                @endif
+
+                                                            @else
+                                                                <a href="/moshaver/taavon/file_user/{{Auth::user()->id}}/{{$user->userid_inter}}/{{$user->id}}/{{$file->id}}">
+                                                                    <span class="verify_file"> درخواست تعاون</span>
+                                                                </a>
+                                                            @endif
+                                                    </div>
                                                     </div>
 
                                                 </div>

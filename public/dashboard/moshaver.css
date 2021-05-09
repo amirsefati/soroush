@@ -6,42 +6,12 @@ a:hover{
     text-decoration: none;
 }
 
-.addfilelist_img{
-    width:100%;
-    border-radius:10px;
-    min-height:130px;
-    max-width: 130px;
-}
-
 .row_box{
     border: 1px solid #d3d2d2;
     border-radius: 10px;
     padding:8px;
 }
 
-.addfilelist_sell_rent{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 12px;
-    width: 100%;
-    background: #5ABCB9;
-    height: 25px;
-    border-radius: 0px 0px 10px 10px;
-    color:white;
-    padding: 5px 35%;
-}
-.addfilelist_type{
-    position: absolute;
-    right: 8px;
-    top: 5px;
-    font-size: 8px;
-    border: .5px solid gray;
-    border-radius: 8px;
-    padding: 3px;
-    background: #204E4A;
-    color:white
-}
 
 .col_right_box{
     position: relative;
@@ -52,50 +22,11 @@ a:hover{
     padding: 8px;
 }
 
-.addfilelist_userid_file{
-    font-size: 13px;
-    margin:4px;
-}
-.addfilelist_area{
-    margin:2px;
-}
-
-.addfilelist_price{
-    font-size: 12px;
-    margin:2px 0px 3px 0px;
-}
-
-.addfilelist_colbottom{
-    position: absolute;
-    bottom: 5px;
-    height: 30px;
-    width: 50%;
-}
 
 .bottomcol_span{
     font-size: 10px;
 }
 
-.addfilelist_colbottom_span{
-    border-left: 1px solid rgb(233, 232, 232);
-    text-align: center;
-}
-
-.addfilelist_percent{
-    position: absolute;
-    left: 10px;
-    top:30px;
-    height: 15px;
-    width: 40px;
-    transform: rotate(-45deg);
-    font-size: 11px;
-    padding-right: 8px;
-}
-.addfilelist_percent_complete{
-    position: absolute;
-    top:40px;
-    left: 20px;
-}
 .filefinduser_percent_complete{
     position: absolute;
     top:18px;
@@ -286,20 +217,14 @@ a:hover{
     font-size: 10px;
 }
 @media only screen and (max-width: 600px) {
-    .addfilelist_img{
-        width: 110px;
-        min-height:110px;
-
-    }
+    
     .img_seatchpng{
         width: 60px;
     }
     .hideinphone{
         display: none;
     }
-    .addfilelist_colbottom{
-        bottom: 10px;
-    }
+    
     .filefinduser_percent_complete{
         position: absolute;
         top:18px;
@@ -316,7 +241,5 @@ a:hover{
     .taavon_img{
         width: 150px;
     }
-    .addfilelist_sell_rent{
-        padding: 5px 27%;
-    }
+   
   }

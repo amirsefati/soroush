@@ -15,11 +15,7 @@ class Moshaver extends Controller
         return view('moshaver.master');
     }
 
-    //add file
-    public function addfilelist(){
-        $files_no_publish = File::where('publish',0)->get();
-        return view('moshaver.addfilelist',compact('files_no_publish'));
-    }
+  
 
     public function addfile_get(){
         $users = User::where('level','1')->where('userid_inter',Auth::user()->id)->get();
@@ -173,12 +169,8 @@ class Moshaver extends Controller
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
         ]);
-        if($publish == 1){
+        
             return redirect('moshaver/manage_files');
-
-        }else{
-            return redirect('moshaver/addfilelist');
-        }
 
     }
 
@@ -336,41 +328,7 @@ class Moshaver extends Controller
         File::find($id)->update(['etc1'=>'0']);
         return back();
     }
-
-    public function file_find_user($id){
-
-        $file = File::find($id);
-
-        if($file->kind_type == "sell"){
-            $result = User::where('type',$file->type)
-                ->whereBetween('price',[($file->price)*0.8,($file->price)*1.4])->get();
-        }else{
-            $result = User::where('type',$file->type)
-                ->whereBetween('rent_annual',[($file->rent_annual)*0.6,($file->rent_annual)*1.6])
-                ->whereBetween('rent_month',[($file->rent_month)*0.6,($file->rent_month)*1.4])
-                ->get();
-        }
-        
-        return view('moshaver.file_find_user',compact(['result','file']));
-    }
-
-    public function user_find_file($id){
-
-        $user = User::find($id);
-
-        if($user->kind_type == "sell"){
-            $result = File::where('type',$user->type)
-                ->whereBetween('price',[($user->price)*0.8,($user->price)*1.4])->get();
-        }else{
-            $result = File::where('type',$user->type)
-                ->whereBetween('rent_annual',[($user->rent_annual)*0.6,($user->rent_annual)*1.6])
-                ->whereBetween('rent_month',[($user->rent_month)*0.6,($user->rent_month)*1.4])
-                ->get();
-        }
-        
-        return view('moshaver.user_find_file',compact(['result','user']));
-    }
-
+   
     public function taavon_get(){
         $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
         return view('moshaver.taavon_get',compact('taavons'));
@@ -421,6 +379,15 @@ class Moshaver extends Controller
         return view('moshaver.client_to_file_get',compact(['moshaver','client','file']));
     }
 
+    public function file_to_client_get($moshaver_id,$client_id,$file_id){
+        $moshaver = User::find($moshaver_id);
+        $client = User::find($client_id);
+        $file = File::find($file_id);
+
+        return view('moshaver.file_to_client_get',compact(['moshaver','client','file']));
+    }
+
+
     public function client_to_file_get_taavon($moshaver_id,$taavon_moshaver_id,$client_id,$file_id){
         
         $taavon_moshaver = User::find($taavon_moshaver_id);
@@ -431,6 +398,19 @@ class Moshaver extends Controller
         return view('moshaver.client_to_file_get_taavon',compact(['taavon_moshaver','moshaver','client','file']));
 
     }
+
+
+    public function file_to_client_get_taavon($moshaver_id,$taavon_moshaver_id,$client_id,$file_id){
+        
+        $taavon_moshaver = User::find($taavon_moshaver_id);
+        $moshaver = User::find($moshaver_id);
+        $client = User::find($client_id);
+        $file = File::find($file_id);
+
+        return view('moshaver.file_to_client_get_taavon',compact(['taavon_moshaver','moshaver','client','file']));
+
+    }
+    
 
     public function client_to_file_start($moshaver_id,$client_id,$file_id){
 
@@ -444,9 +424,19 @@ class Moshaver extends Controller
         return redirect('/');
     }
 
-    public function taavon_request($moshaver_id,$userid_taavon,$client_id,$file_id){
+    public function file_to_client_start($moshaver_id,$client_id,$file_id){
+        Work::create([
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'file_id' => $file_id,
+            'type' => 1,
+        ]);
+
+        return redirect('/');
+    }
+    public function taavon_request_user_file($moshaver_id,$userid_taavon,$client_id,$file_id){
         
-        if(Taavon::where('moshaver_id',$moshaver_id)->where('userid_taavon',$userid_taavon)
+        if(Taavon::where('moshaver_id',$moshaver_id)->where('taavon_id',$userid_taavon)
         ->where('client_id',$client_id)->where('file_id',$file_id)->count() > 0){
             return back();  
         }
@@ -464,8 +454,48 @@ class Moshaver extends Controller
         return back();
     }
 
-    
+    public function taavon_request_file_user($moshaver_id,$userid_taavon,$client_id,$file_id){
+        
+        if(Taavon::where('moshaver_id',$moshaver_id)->where('taavon_id',$userid_taavon)
+        ->where('client_id',$client_id)->where('file_id',$file_id)->count() > 0){
+            return back();  
+        }
+        
+        Taavon::create([
+            'kind' => 1,
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'file_id' => $file_id,
+            'taavon_id' => $userid_taavon,
+            'verify' => 0,
 
+        ]);
+
+        return back();
+    }
+
+    public function client_to_file_start_taavon($moshaver_id,$userid_taavon,$client_id,$file_id){
+        Work::create([
+            'type' => 0,
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'taavon_id' =>$userid_taavon,
+            'file_id' => $file_id,
+        ]);
+        return redirect('/');
+    }
+
+    public function file_to_client_start_taavon($moshaver_id,$userid_taavon,$client_id,$file_id){
+        Work::create([
+            'type' => 1,
+            'moshaver_id' => $moshaver_id,
+            'client_id' => $client_id,
+            'taavon_id' =>$userid_taavon,
+            'file_id' => $file_id,
+        ]);
+        return redirect('/');
+    }
+    
     public function verfiy_taavon($taavon_id,$status){
         Taavon::find($taavon_id)->update([
             'verify' => $status
