@@ -69,6 +69,10 @@ Route::prefix('moshaver')->group(function(){
     Route::get('verfiy_taavon/{taavon_id}/{status}',[Moshaver::class,'verfiy_taavon']);
 
     
+
+    //action
+
+    Route::get('/action',[Moshaver::class,'action']);
 });
 
 

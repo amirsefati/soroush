@@ -445,6 +445,12 @@ class Moshaver extends Controller
     }
 
     public function taavon_request($moshaver_id,$userid_taavon,$client_id,$file_id){
+        
+        if(Taavon::where('moshaver_id',$moshaver_id)->where('userid_taavon',$userid_taavon)
+        ->where('client_id',$client_id)->where('file_id',$file_id)->count() > 0){
+            return back();  
+        }
+        
         Taavon::create([
             'kind' => 0,
             'moshaver_id' => $moshaver_id,
@@ -466,5 +472,9 @@ class Moshaver extends Controller
         ]);
 
         return back();
+    }
+
+    public function action(){
+        return view('moshaver.action.action');
     }
 }

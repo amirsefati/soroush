@@ -25,7 +25,7 @@
             <td>
                 @if($taavon->kind == '0')
                     <a href="/moshaver/fileinfo/{{$taavon->id}}">
-                        فایل شماره {{$taavon->id}}
+                        فایل شماره {{$taavon->file_id}}
                     </a>
                 @else
                         <span class="badge badge-warning">درخواست کاربر</span>

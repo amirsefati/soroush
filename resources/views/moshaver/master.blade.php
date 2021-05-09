@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('dashboard/moshaver.css')}}">
     <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('action/main.min.css')}}">
 
 </head>
 <body>
@@ -62,6 +63,92 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade mt-5" id="action">
+  <div class="modal-dialog">
+    
+    <div class="row" style="direction: rtl;">
+        <div class="col-md-12">
+
+            <div class="row mb-3">
+                <div class="col-md-12 p-3" style="background:#83c1f7;border-radius:8px;color:white">
+                    <div class="row">
+                        <div class="col-md-2 action_col">
+                            <img class="img_action_col" src="/img/visit.svg" alt="">
+                        </div>
+
+                        <div class="col-md-10">
+                            <p style="margin:0px 3px 3px 3px;font-weight:bold;font-size:16px">بازدید ملک</p>
+                            <p style="margin:3px;font-size:12px">قرار بازدید ملک رو بهم یادآوری کن</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12 p-3" style="background:#80b2f1;border-radius:8px;color:white">
+                    <div class="row">
+                        <div class="col-md-2 action_col">
+                            <img class="img_action_col" src="/img/meeting.svg" alt="">
+                        </div>
+
+                        <div class="col-md-10">
+                            <p style="margin:0px 3px 3px 3px;font-weight:bold;font-size:16px">نشست قرارداد</p>
+                            <p style="margin:3px;font-size:12px">یادآوری نشست جهت بستن قرارداد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12 p-3" style="background:#4f7ac8;border-radius:8px;color:white">
+                    <div class="row">
+                        <div class="col-md-2 action_col">
+                            <img class="img_action_col" src="/img/expertise.svg" alt="">
+                        </div>
+
+                        <div class="col-md-10">
+                            <p style="margin:0px 3px 3px 3px;font-weight:bold;font-size:16px">کارشناسی ملک</p>
+                            <p style="margin:3px;font-size:12px">قرار کارشناسی ملک رو بهم یادآوری کن</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12 p-3" style="background:#35488d;border-radius:8px;color:white">
+                    <div class="row">
+                        <div class="col-md-2 action_col">
+                            <img class="img_action_col" src="/img/call.svg" alt="">
+                        </div>
+
+                        <div class="col-md-10">
+                            <p style="margin:0px 3px 3px 3px;font-weight:bold;font-size:16px">یادآوری تماس</p>
+                            <p style="margin:3px;font-size:12px">تماس با مشتری رو بهم یادآوری کن</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 p-3" style="background:#16193c;border-radius:8px;color:white">
+                    <div class="row">
+                        <div class="col-md-2 action_col">
+                            <img class="img_action_col" src="/img/other.svg" alt="">
+                        </div>
+
+                        <div class="col-md-10">
+                            <p style="margin:0px 3px 3px 3px;font-weight:bold;font-size:16px">سایر یادآوری ها</p>
+                            <p style="margin:3px;font-size:12px">افزودن یادآوری های مهم دیگر</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -234,7 +321,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="" class="">
+                                    <a href="/moshaver/action" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         اقدامات پیش رو
                                     </a>
@@ -281,6 +368,9 @@
 <script type="text/javascript" src="{{asset('js/i18n/fa.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/persian-date.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/persian-datepicker.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('action/main.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('action/fa.js')}}"></script>
+<script type="text/javascript" src="{{asset('action/script.js')}}"></script>
 
 
 <script>
