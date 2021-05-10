@@ -76,7 +76,7 @@ Route::prefix('moshaver')->group(function(){
     
     Route::get('file_to_client_get/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_get']);
 
-    Route::get('client_to_file_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start']);
+    Route::get('file_to_client_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start']);
 
     Route::get('file_to_client_start/{moshaver_id}/{client_id}/{file_id}',[Moshaver::class,'file_to_client_start']);
 

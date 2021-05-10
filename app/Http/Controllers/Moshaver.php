@@ -512,12 +512,14 @@ class Moshaver extends Controller
     }
 
     public function work_flow_file($file_id){
-        $works = Work::where('file_id',$file_id)->where('moshaver_id',Auth::user()->id)->get();
+        $works = Work::where('file_id',$file_id)->where('moshaver_id',Auth::user()->id)
+        ->where('type',1)->get();
         return view("moshaver.work_flow_file",compact(['works','file_id']));
     }
 
     public function work_flow_user($user_id){
-        $works = Work::where('client_id',$user_id)->where('moshaver_id',Auth::user()->id)->get();
+        $works = Work::where('client_id',$user_id)->where('moshaver_id',Auth::user()->id)
+        ->where('type',0)->get();
         return view("moshaver.work_flow_user",compact(['works','user_id']));
     }
 
@@ -527,9 +529,12 @@ class Moshaver extends Controller
         
         if($request->like == "0"){
             Work::find($request->workid)->update([
-                "etc1" => $request->step,
-                "etc2" => $request->item
+                "etc1" => 0,
+                "etc2" => $item,
+                "etc3" => $request->step
+
             ]);
+            return back();
         }
 
 

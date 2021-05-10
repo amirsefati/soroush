@@ -63,7 +63,7 @@
                                         <span><a href="/moshaver/show_user/{{$u->id}}">{{$u->name}}</a></span> -
                                         <span>  {{$u->phone}}</span> -
                                         <span>
-                                            <a href="/moshaver/work_flow_user/{{$f->id}}">
+                                            <a href="/moshaver/work_flow_user/{{$u->id}}">
                                                 🔥
                                             </a>
                                         </span>
