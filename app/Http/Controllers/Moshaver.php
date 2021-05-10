@@ -549,9 +549,22 @@ class Moshaver extends Controller
                 "etc1" => 4
             ]);
         }elseif($request->step == 4){
+
+            $picture = [];
+                if(strlen(json_encode($request->picture)) > 5){
+                    foreach($request->picture as $doc){
+                        $name = Auth::user()->id . '_' . rand(1,99999).'.'.$doc->getClientOriginalExtension();
+                        $destinationPath = public_path('/contract/');
+                        $doc->move($destinationPath, $name);
+                        $file_item = '/contract/' . $name ; 
+                        array_push($picture,$file_item);
+                    }
+                }
+            
             Work::find($request->workid)->update([
                 "contruct" => json_encode($item),
-                "etc1" => 5
+                "etc1" => 5,
+                "picture" => json_encode($picture)
             ]);
         }
         
