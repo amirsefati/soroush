@@ -86,6 +86,12 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/work_flow_user/{user_id}',[Moshaver::class,'work_flow_user']);
 
+
+
+    Route::post('/work_flow_file_item',[Moshaver::class,'work_flow_file_item']);
+
+
+    
     //action
 
     Route::get('/action',[Moshaver::class,'action']);

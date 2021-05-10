@@ -33,6 +33,7 @@
                                         </span>
                                         <span>📞</span>
                                     @endif
+                                    <br>    
                                 @endforeach
                             
                             </div>

@@ -513,11 +513,49 @@ class Moshaver extends Controller
 
     public function work_flow_file($file_id){
         $works = Work::where('file_id',$file_id)->where('moshaver_id',Auth::user()->id)->get();
-        return view("moshaver.work_flow_file",compact('works'));
+        return view("moshaver.work_flow_file",compact(['works','file_id']));
     }
 
     public function work_flow_user($user_id){
         $works = Work::where('client_id',$user_id)->where('moshaver_id',Auth::user()->id)->get();
-        return view("moshaver.work_flow_user",compact('works'));
+        return view("moshaver.work_flow_user",compact(['works','user_id']));
+    }
+
+    public function work_flow_file_item(Request $request){
+
+        $item = ["like" => $request->like , "desc" => $request->desc , "timer" => $request->timer];
+        
+        if($request->like == "0"){
+            Work::find($request->workid)->update([
+                "etc1" => $request->step,
+                "etc2" => $request->item
+            ]);
+        }
+
+
+        if($request->step == 1){
+            Work::find($request->workid)->update([
+                "showfile" => json_encode($item),
+                "etc1" => 2
+            ]);
+        }elseif($request->step == 2){
+            Work::find($request->workid)->update([
+                "gotofile" => json_encode($item),
+                "etc1" => 3
+            ]);
+        }elseif($request->step == 3){
+            Work::find($request->workid)->update([
+                "meeting" => json_encode($item),
+                "etc1" => 4
+            ]);
+        }elseif($request->step == 4){
+            Work::find($request->workid)->update([
+                "contruct" => json_encode($item),
+                "etc1" => 5
+            ]);
+        }
+        
+        return back();
+
     }
 }
