@@ -82,7 +82,10 @@ Route::prefix('moshaver')->group(function(){
 
     
     
-    
+    Route::get('/work_flow_file/{file_id}',[Moshaver::class,'work_flow_file']);
+
+    Route::get('/work_flow_user/{user_id}',[Moshaver::class,'work_flow_user']);
+
     //action
 
     Route::get('/action',[Moshaver::class,'action']);

@@ -216,6 +216,16 @@ a:hover{
     border-radius: 20px;
     font-size: 10px;
 }
+
+.index_box{
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 51px 0 rgb(0 0 0 / 8%), 0 6px 18px 0 rgb(0 0 0 / 5%);
+    height: 300px;
+}
+.index_box_work_p{
+    font-weight: bold;
+}
 @media only screen and (max-width: 600px) {
     
     .img_seatchpng{

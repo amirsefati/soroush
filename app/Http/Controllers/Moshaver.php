@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class Moshaver extends Controller
 {
-    public function index(){      
-        return view('moshaver.master');
+    public function index(){
+        $works = Work::where('moshaver_id',Auth::user()->id)->get();    
+        return view('moshaver.index',compact('works'));
     }
 
   
@@ -330,7 +331,9 @@ class Moshaver extends Controller
     }
    
     public function taavon_get(){
-        $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
+        $taavons = Taavon::where('taavon_id',Auth::user()->id)
+        ->orWhere('moshaver_id',Auth::user()->id)
+        ->get();
         return view('moshaver.taavon_get',compact('taavons'));
     }
   
@@ -506,5 +509,15 @@ class Moshaver extends Controller
 
     public function action(){
         return view('moshaver.action.action');
+    }
+
+    public function work_flow_file($file_id){
+        $works = Work::where('file_id',$file_id)->where('moshaver_id',Auth::user()->id)->get();
+        return view("moshaver.work_flow_file",compact('works'));
+    }
+
+    public function work_flow_user($user_id){
+        $works = Work::where('client_id',$user_id)->where('moshaver_id',Auth::user()->id)->get();
+        return view("moshaver.work_flow_user",compact('works'));
     }
 }
