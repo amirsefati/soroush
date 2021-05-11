@@ -577,61 +577,107 @@ class Moshaver extends Controller
         return back();
 
     }
-
+    function convertpe($string) {
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    
+        $num = range(0, 9);
+        $convertedPersianNums = str_replace($persian, $num, $string);
+    
+        return $convertedPersianNums;
+    }
 
     public function reminder_visitfile(Request $request){
+        $time = $request->timer;
+        $time = explode('/',$time);
+        $time = \Morilog\Jalali\CalendarUtils::toGregorian($this->convertpe($time[0]), $this->convertpe($time[1]), $this->convertpe($time[2]));
+        $hour = $request->hour;
+        $hour = explode(':',$hour);
+        if($time[1] < 10){$time[1] = '0' . $time[1];}
+        $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         Action::create([
             'moshaver_id' => Auth::user()->id,
             'kind' => 1,
             'file_id' => $request->file_id,
             'client_id' => $request->client_id,
-            'date' => $request->timer . '-' .$request->hour,
+            'date' => $time,
             'text' => $request->desc
         ]);
         return back();
     }
 
     public function reminder_session(Request $request){
+        $time = $request->timer;
+        $time = explode('/',$time);
+        $time = \Morilog\Jalali\CalendarUtils::toGregorian($this->convertpe($time[0]), $this->convertpe($time[1]), $this->convertpe($time[2]));
+        $hour = $request->hour;
+        $hour = explode(':',$hour);
+        if($time[1] < 10){$time[1] = '0' . $time[1];}
+        $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
+        
         Action::create([
             'moshaver_id' => Auth::user()->id,
             'kind' => 2,
             'file_id' => $request->file_id,
             'client_id' => $request->client_id,
-            'date' => $request->timer . '-' .$request->hour,
+            'date' => $time,
             'text' => $request->desc
         ]);
         return back();
     }
     
     public function reminder_assets(Request $request){
+        $time = $request->timer;
+        $time = explode('/',$time);
+        $time = \Morilog\Jalali\CalendarUtils::toGregorian($this->convertpe($time[0]), $this->convertpe($time[1]), $this->convertpe($time[2]));
+        $hour = $request->hour;
+        $hour = explode(':',$hour);
+        if($time[1] < 10){$time[1] = '0' . $time[1];}
+        $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
+        
         Action::create([
             'moshaver_id' => Auth::user()->id,
             'kind' => 3,
             'file_id' => $request->file_id,
-            'date' => $request->timer . '-' .$request->hour,
+            'date' => $time,
             'text' => $request->desc
         ]);
         return back();
     }
 
     public function reminder_call(Request $request){
+        $time = $request->timer;
+        $time = explode('/',$time);
+        $time = \Morilog\Jalali\CalendarUtils::toGregorian($this->convertpe($time[0]), $this->convertpe($time[1]), $this->convertpe($time[2]));
+        $hour = $request->hour;
+        $hour = explode(':',$hour);
+        if($time[1] < 10){$time[1] = '0' . $time[1];}
+        $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
+        
         Action::create([
             'moshaver_id' => Auth::user()->id,
             'kind' => 4,
             'client_id' => $request->client_id,
-            'date' => $request->timer . '-' .$request->hour,
+            'date' => $time,
             'text' => $request->desc
         ]);
         return back();
     }
 
     public function reminder_etc(Request $request){
+        $time = $request->timer;
+        $time = explode('/',$time);
+        $time = \Morilog\Jalali\CalendarUtils::toGregorian($this->convertpe($time[0]), $this->convertpe($time[1]), $this->convertpe($time[2]));
+        $hour = $request->hour;
+        $hour = explode(':',$hour);
+        if($time[1] < 10){$time[1] = '0' . $time[1];}
+        $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
+        
         Action::create([
             'moshaver_id' => Auth::user()->id,
             'kind' => 5,
             'file_id' => $request->file_id,
             'client_id' => $request->client_id,
-            'date' => $request->timer . '-' .$request->hour,
+            'date' => $time,
             'text' => $request->desc,
             'title' => $request->title
             

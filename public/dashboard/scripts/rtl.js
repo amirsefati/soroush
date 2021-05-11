@@ -1,4 +1,5 @@
 $('document').ready(function(){
+    window.formatPersian  = false;
 
     var url = window.location.href;
     var filename = url.substr(url.lastIndexOf("/"))
@@ -247,16 +248,16 @@ $('document').ready(function(){
         dir: "rtl",
         language:'fa',
       });
-      
 
+
+      $("#timepickeruser").pDatepicker({
+        format:"HH:mm",
+        onlyTimePicker: true
+    });
+
+    
         $("#datepickeruser").pDatepicker({
             format:"L",
-            
-        });
-
-        $("#timepickeruser").pDatepicker({
-            format:"HH:mm",
-            onlyTimePicker: true
         });
 
         $("#datepickeruser2").pDatepicker({

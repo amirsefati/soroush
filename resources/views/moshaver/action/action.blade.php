@@ -1,7 +1,7 @@
 @extends('moshaver.master')
 @section('content')
 
-<input type="text" id="actions" value="{{$action}}" style="display: none;">
+<input type="text" id="actions" value="{{json_encode($action)}}" style="display: none;">
 
 <div class="row">
     <div class="col-md-4">
