@@ -101,6 +101,10 @@ Route::prefix('moshaver')->group(function(){
 
     Route::post('/reminder_etc',[Moshaver::class,'reminder_etc']);
 
+    Route::get('/phonebook',[Moshaver::class,'phonebook']);
+
+    Route::post('/phonebook',[Moshaver::class,'phonebook_post']);
+
     
     //action
 

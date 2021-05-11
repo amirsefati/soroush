@@ -685,6 +685,13 @@ class Moshaver extends Controller
         return back();
     }
 
+    public function phonebook(){
+        $users = User::where('userid_inter',Auth::user()->id)->get();
+        return view('moshaver.phonebook',compact('users'));
+    }
 
+    public function phonebook_post(Request $request){
+        return back();
+    }
     
 }

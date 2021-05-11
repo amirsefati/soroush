@@ -74,7 +74,61 @@
   </div>
 </div>
 
+<div class="modal pt-5" id="phonebook">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">ثبت نام کاربر جدید</h5>
+      </div>
+    <form action="/moshaver/phonebook" method="POST">
+    @csrf
+      <!-- Modal body -->
+      <div class="modal-body" style="direction: rtl;">
+        <div class="row">
+
+            <div class="col-6">
+                <label for="name"> نام کاربر :</label>
+                <input name="name" type="text" class="form-control" required>
+            </div>
+
+            <div class="col-6">
+                <label for="name">  شماره تلفن :</label>
+                <input name="phone" type="text" class="form-control" required>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="">نوع تقاضا : </label>
+                <select name="kind" class="form-control" id="">
+                    <option value="">انتخاب کنید....</option>
+                    <option value="1">خریدار</option>
+                    <option value="2">فروشنده</option>
+                    <option value="3">مستاجر</option>
+                    <option value="4">موجر</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12" style="text-align:center">
+                <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+            </div>
+        </div>
+        
+      </div>
+    </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+      </div>
+    </div>
+  </div>
+</div>  
 
 
 <div class="modal pt-5" id="mm1">
@@ -622,7 +676,7 @@
 
                                 
                                 <li>
-                                    <a href="" class="">
+                                    <a href="/moshaver/phonebook" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         دفترچه تلفن
                                     </a>
@@ -656,10 +710,28 @@
 <script type="text/javascript" src="{{asset('action/fa.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
 
-
 <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
 
-
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 </script>
 </body>
 
