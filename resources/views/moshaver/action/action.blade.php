@@ -1,41 +1,33 @@
 @extends('moshaver.master')
 @section('content')
 
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<input type="text" id="actions" value="{{$action}}" style="display: none;">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 <div class="row">
     <div class="col-md-4">
         <p style="font-size: 22px;padding:20px;">اقدامات پیش روی</p>
     </div>
 
-    <div class="col-md-8" style="text-align: left;">  
-        <span class="new_action_btn" data-toggle="modal" data-target="#action">
-            یادآوری جدید
-            <img style="filter:invert(80%) sepia(91%) saturate(0) hue-rotate(276deg) brightness(145%) contrast(117%)" src="/img/add-round.svg" alt="">
-        </span>
+    <div class="col-md-8 pl-5" style="text-align: left;">  
+
+        <div class="dropdown">
+          <button onclick="myFunction32()" class="new_action_btn dropbtn">یادآوری جدید
+          <img style="filter:invert(80%) sepia(91%) saturate(0) hue-rotate(276deg) brightness(145%) contrast(117%)" src="/img/add-round.svg" alt="">
+
+        </button>
+          <div id="myDropdown" class="dropdown-content" style="text-align:right;">
+            <a data-toggle="modal" data-target="#mm1">بازدید ملک</a>
+            <a data-toggle="modal" data-target="#mm2">نشست قرارداد</a>
+            <a data-toggle="modal" data-target="#mm3">کارشناسی ملک</a>
+            <a data-toggle="modal" data-target="#mm4">یادآوری تماس</a>
+            <a data-toggle="modal" data-target="#mm5">سایر یادآوری ها</a>
+
+          </div>
+        </div>
     </div>
 </div>
+
+
 <div class="row">
     <div class="col-md-12">
         <div id="calendar_actoin"></div>

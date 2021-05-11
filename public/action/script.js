@@ -1,6 +1,13 @@
+var url = window.location.href;
+var filename = url.substr(url.lastIndexOf("/"))
+
+if(filename === "/action")
+{
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar_actoin');
 
+    var actionss = $("#actions").val()
+    
     var calendar = new FullCalendar.Calendar(calendarEl, {
       locale: 'fa',
       headerToolbar: {
@@ -37,10 +44,28 @@ document.addEventListener('DOMContentLoaded', function() {
           start: '2020-09-12',
           end: '2020-09-14',
           url: 'http://google.com/',
-
         },
       ]
     });
 
     calendar.render();
   });
+
+  function myFunction32() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+}

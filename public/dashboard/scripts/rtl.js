@@ -250,11 +250,56 @@ $('document').ready(function(){
       
 
         $("#datepickeruser").pDatepicker({
-            format:"L"
+            format:"L",
+            
         });
 
+        $("#timepickeruser").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true
+        });
 
+        $("#datepickeruser2").pDatepicker({
+            format:"L",
+            
+        });
 
+        $("#timepickeruser2").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true
+        });
+        
+        $("#datepickeruser3").pDatepicker({
+            format:"L",
+            
+        });
+
+        $("#timepickeruser3").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true
+        });
+        
+        $("#datepickeruser4").pDatepicker({
+            format:"L",
+            
+        });
+
+        $("#timepickeruser4").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true
+        });
+        
+        $("#datepickeruser5").pDatepicker({
+            format:"L",
+            
+        });
+
+        $("#timepickeruser5").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true
+        });
+
+        
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){
             sellersection()

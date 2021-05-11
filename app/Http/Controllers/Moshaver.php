@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\File;
 use App\Models\Taavon;
 use App\Models\User;
@@ -508,7 +509,8 @@ class Moshaver extends Controller
     }
 
     public function action(){
-        return view('moshaver.action.action');
+        $action = Action::all();
+        return view('moshaver.action.action',compact('action'));
     }
 
     public function work_flow_file($file_id){
@@ -532,7 +534,6 @@ class Moshaver extends Controller
                 "etc1" => 0,
                 "etc2" => $item,
                 "etc3" => $request->step
-
             ]);
             return back();
         }
@@ -576,4 +577,68 @@ class Moshaver extends Controller
         return back();
 
     }
+
+
+    public function reminder_visitfile(Request $request){
+        Action::create([
+            'moshaver_id' => Auth::user()->id,
+            'kind' => 1,
+            'file_id' => $request->file_id,
+            'client_id' => $request->client_id,
+            'date' => $request->timer . '-' .$request->hour,
+            'text' => $request->desc
+        ]);
+        return back();
+    }
+
+    public function reminder_session(Request $request){
+        Action::create([
+            'moshaver_id' => Auth::user()->id,
+            'kind' => 2,
+            'file_id' => $request->file_id,
+            'client_id' => $request->client_id,
+            'date' => $request->timer . '-' .$request->hour,
+            'text' => $request->desc
+        ]);
+        return back();
+    }
+    
+    public function reminder_assets(Request $request){
+        Action::create([
+            'moshaver_id' => Auth::user()->id,
+            'kind' => 3,
+            'file_id' => $request->file_id,
+            'date' => $request->timer . '-' .$request->hour,
+            'text' => $request->desc
+        ]);
+        return back();
+    }
+
+    public function reminder_call(Request $request){
+        Action::create([
+            'moshaver_id' => Auth::user()->id,
+            'kind' => 4,
+            'client_id' => $request->client_id,
+            'date' => $request->timer . '-' .$request->hour,
+            'text' => $request->desc
+        ]);
+        return back();
+    }
+
+    public function reminder_etc(Request $request){
+        Action::create([
+            'moshaver_id' => Auth::user()->id,
+            'kind' => 5,
+            'file_id' => $request->file_id,
+            'client_id' => $request->client_id,
+            'date' => $request->timer . '-' .$request->hour,
+            'text' => $request->desc,
+            'title' => $request->title
+            
+        ]);
+        return back();
+    }
+
+
+    
 }

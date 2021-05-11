@@ -91,6 +91,16 @@ Route::prefix('moshaver')->group(function(){
     Route::post('/work_flow_file_item',[Moshaver::class,'work_flow_file_item']);
 
 
+    Route::post('/reminder_visitfile',[Moshaver::class,'reminder_visitfile']);
+    
+    Route::post('/reminder_session',[Moshaver::class,'reminder_session']);
+
+    Route::post('/reminder_assets',[Moshaver::class,'reminder_assets']);
+
+    Route::post('/reminder_call',[Moshaver::class,'reminder_call']);
+
+    Route::post('/reminder_etc',[Moshaver::class,'reminder_etc']);
+
     
     //action
 
