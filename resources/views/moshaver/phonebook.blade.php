@@ -24,6 +24,26 @@
 
         </tr>
         
+        @foreach($users as $user)
+            <tr>
+                <td>{{$user->name}}</td>
+                <td>{{$user->phone}}</td>
+                <td>
+                    @if($user->etc1 == 1)
+                        <span class="badge badge-pill badge-success">خریدار</span>
+                        @endif
+                    @if($user->etc2 == 1)
+                        <span class="badge badge-pill badge-info">فروشنده</span>
+                        @endif
+                    @if($user->etc3 == 1)
+                        <span class="badge badge-pill badge-warning">مستاجر</span>
+                        @endif
+                    @if($user->etc4 == 1)
+                        <span class="badge badge-pill badge-dark">موجر</span>
+                        @endif
+                </td>
+            </tr>
+        @endforeach
         </table>
     
     </div>

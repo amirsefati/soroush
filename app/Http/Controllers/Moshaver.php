@@ -691,6 +691,28 @@ class Moshaver extends Controller
     }
 
     public function phonebook_post(Request $request){
+        
+        $exist = User::where('phone',$request->phone)->first();
+        
+        if(!$exist){
+            User::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'userid_inter' => Auth::user()->id,
+                'password' => '1234567801',
+                'etc1' => $request->kind == 1 ? '1' : null,
+                'etc2' => $request->kind == 2 ? '1' : null,
+                'etc3' => $request->kind == 3 ? '1' : null,
+                'etc4' => $request->kind == 4 ? '1' : null,
+                'kind_type' => $request->kind < 3 ? 'sell' : 'rent' 
+            ]);
+        }else{
+            User::where('phone',$request->phone)->update([
+                'etc1' => (($exist->etc1 == null && $request->kind == 1) ? '1' : $exist->etc1),
+                'etc2' => (($exist->etc2 == null && $request->kind == 1) ? '1' : $exist->etc2)
+            ]);
+        }
+
         return back();
     }
     

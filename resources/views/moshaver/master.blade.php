@@ -709,6 +709,8 @@
 <script type="text/javascript" src="{{asset('action/main.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/fa.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script type="text/javascript" src="{{asset('apex/script.js')}}"></script>
 
 <script>
 function myFunction() {
