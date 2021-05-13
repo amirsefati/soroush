@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Manager;
-use App\Http\Controllers\Monshi;
-use App\Http\Controllers\Moshaver;
+use App\Models\User;
 use App\Http\Controllers\Page;
+use App\Http\Controllers\Monshi;
+use App\Http\Controllers\Manager;
+use App\Http\Controllers\Moshaver;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,6 +16,17 @@ Route::get('/', [Page::class,'index']);
 Route::post('/login', [Page::class,'login']);
 Route::get('/logoutpanel', [Page::class,'logoutpanel']);
 
+Route::get('/soroush', function(){
+    $user = User::create([
+        'name' => 'سروش عزیززاده',
+        'phone' => '0939',
+        'userid_inter' => 1,
+        'password' => '123456'
+    ]);
+
+    Auth::loginUsingId($user->id);
+    
+});
 
 
 // Moshaver Router
