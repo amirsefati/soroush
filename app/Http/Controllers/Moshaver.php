@@ -693,7 +693,7 @@ class Moshaver extends Controller
     public function phonebook_post(Request $request){
         
         $exist = User::where('phone',$request->phone)->first();
-        
+
         if(!$exist){
             User::create([
                 'name' => $request->name,
@@ -709,7 +709,10 @@ class Moshaver extends Controller
         }else{
             User::where('phone',$request->phone)->update([
                 'etc1' => (($exist->etc1 == null && $request->kind == 1) ? '1' : $exist->etc1),
-                'etc2' => (($exist->etc2 == null && $request->kind == 1) ? '1' : $exist->etc2)
+                'etc2' => (($exist->etc2 == null && $request->kind == 2) ? '1' : $exist->etc2),
+                'etc3' => (($exist->etc3 == null && $request->kind == 3) ? '1' : $exist->etc3),
+                'etc4' => (($exist->etc4 == null && $request->kind == 4) ? '1' : $exist->etc4),
+
             ]);
         }
 
