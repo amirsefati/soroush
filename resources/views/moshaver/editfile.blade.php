@@ -92,21 +92,18 @@
 
                             <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
-                                    <label for="price">قیمت :</label>
+                                    <label for="price">قیمت متری :</label>
                                     <input type="number" name="price" id="price" class="form-control" value="{{$file->price}}">
-                                    <small id="pricetopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="colrent">
                                     <label for="rent_annual">رهن :</label>
                                     <input type="number" name="rent_annual" id="rentrpice" class="form-control" value="{{$file->rent_annual}}">
-                                    <small id="renttopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="colrentmonth">
                                     <label for="rent_month">اجاره :</label>
                                     <input type="number" name="rent_month" id="rent_month" class="form-control" value="{{$file->rent_month}}">
-                                    <small id="rent_monthtopersion"></small>
                                 </div>
 
                                 <div class="col-md-3" id="bedroom_number">
@@ -118,6 +115,8 @@
                                     <label for="floor"> طبقه واحد :</label>
                                     <input type="number" name="floor" class="form-control" value="{{$file->floor}}">
                                 </div>
+
+                                
                             </div>
 
 
@@ -148,13 +147,18 @@
                                 <label for="phone1">شماره تلفن :</label>
                                 <input type="number" name="phone1" class="form-control" value="{{$file->phone1}}">
                             </div>
-                            <div class="col-md-6">
-                                <label for="address">آدرس ملک :</label>
-                                <input type="text" name="address" class="form-control" value="{{$file->address}}">
+                            <div class="col-md-2">
+                                <label for="address"> کد قطعه بلوک :</label>
+                                <input type="text" name="code_block" id="region" class="form-control" value="{{$file->code_block}}">
                             </div>
                             <div class="col-md-2">
                                 <label for="phone1"> منطقه :</label>
                                 <input type="number" name="region" id="region" class="form-control" value="{{$file->region}}">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address">آدرس ملک :</label>
+                                <input type="text" name="address" class="form-control">
                             </div>
                         </div>
                         <div class="row mt-3">

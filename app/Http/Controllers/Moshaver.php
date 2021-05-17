@@ -43,7 +43,7 @@ class Moshaver extends Controller
         }else{
             $publish = 0;
         }
-
+        
         File::create([
             'type' => $request->type,
             'kind_type' => $request->kind_type,
@@ -95,6 +95,8 @@ class Moshaver extends Controller
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
 
+            'etc2' => $request->kind_type == 'sell' ? '1' : null,
+            'etc4' => $request->kind_type == 'rent' ? '1' : null,
 
         ]);
         return redirect('moshaver/manage_files');
@@ -170,6 +172,9 @@ class Moshaver extends Controller
             'evacuation_status' => $request->evacuation_status,
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
+
+            'etc2' => $request->kind_type == 'sell' ? '1' : null,
+            'etc4' => $request->kind_type == 'rent' ? '1' : null,
         ]);
         
             return redirect('moshaver/manage_files');
@@ -231,7 +236,7 @@ class Moshaver extends Controller
 
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),
-            'work' => json_encode($request->work),
+            'work' => $request->work,
             'likes' => json_encode($request->likes),
 
             'elevator' =>  ($request->elevator == 'on' ? 1 : null),
@@ -239,7 +244,10 @@ class Moshaver extends Controller
             'parking'  =>  ( $request->parking == 'on' ? 1 : null),
             'balcony'  =>  ( $request->balcony == 'on' ? 1 : null),
 
-            'password' => '1234567801'
+            'password' => '1234567801',
+
+            'etc1' => $request->kind_type == 'sell' ? 1 : null,
+            'etc3' => $request->kind_type == 'rent' ? 1 : null
 
         ]);
         return redirect('moshaver/listusers');
@@ -283,7 +291,7 @@ class Moshaver extends Controller
 
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),
-            'work' => json_encode($request->work),
+            'work' => $request->work,
             'likes' => json_encode($request->likes),
 
             'elevator' =>  ($request->elevator == 'on' ? 1 : null),
@@ -291,7 +299,10 @@ class Moshaver extends Controller
             'parking'  =>  ( $request->parking == 'on' ? 1 : null),
             'balcony'  =>  ( $request->balcony == 'on' ? 1 : null),
 
-            'password' => '1234567801'
+            'password' => '1234567801',
+
+            'etc1' => $request->kind_type == 'sell' ? 1 : null,
+            'etc3' => $request->kind_type == 'rent' ? 1 : null
 
         ]);
         return redirect('moshaver/listusers');

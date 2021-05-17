@@ -57,28 +57,6 @@ $('document').ready(function(){
         }
     })
 
-    $("#price").keyup(function(){
-        $("#pricetopersion").text(($("#price").val()*1000000).num2persian() + ' تومان ')
-    })
-    $("#rentrpice").keyup(function(){
-        $("#renttopersion").text(($("#rentrpice").val()*1000000).num2persian() + ' تومان ')
-    })
-    $("#rent_month").keyup(function(){
-        $("#rent_monthtopersion").text(($("#rent_month").val()*1000000).num2persian() + ' تومان ')
-    })
-
-    $("#adduser_price").keyup(function(){
-        $("#adduser_price_small").text(($("#adduser_price").val()*1000000).num2persian() + ' تومان ')
-    })
-
-    $("#adduser_rent_annual").keyup(function(){
-        $("#adduser_rent_annual_small").text(($("#adduser_rent_annual").val()*1000000).num2persian() + ' تومان ')
-    })
-
-    $("#adduser_rent_month").keyup(function(){
-        $("#adduser_rent_month_small").text(($("#adduser_rent_month").val()*1000000).num2persian() + ' تومان ')
-    })
-
     function sellsection(){
         if(type_select === 1){
             return true;
@@ -120,7 +98,7 @@ $('document').ready(function(){
         $("#colrent").show()
         $("#colrentmonth").show()
         $("#kind_type_select").val('rent')
-        
+
     }
     //when click on sell button 
     $("#sell").click(function(){
@@ -147,7 +125,7 @@ $('document').ready(function(){
         $("#colrentermonth").hide()
         $("#colseller").show()
         $("#kind_type").val('sell')
-
+        
     }
 
     function rentersection(){
@@ -202,7 +180,6 @@ $('document').ready(function(){
         $("#colrentermonth").show()
         $("#colseller").hide()
         $("#kind_type").val('rent')
-
         
     })
       
@@ -300,7 +277,6 @@ $('document').ready(function(){
             onlyTimePicker: true
         });
 
-        
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){
             sellersection()
@@ -359,8 +335,7 @@ $('document').ready(function(){
             )
         })
     }
-
-   
+    
     if($("#pageedituser").length){
 
         if($("#what_elevator").val() === '1'){
@@ -388,14 +363,6 @@ $('document').ready(function(){
         what_religen_arr = JSON.parse(what_religen)
         what_religen_arr && what_religen_arr.map((item)=>{
             $("#religen").append(
-                `<option value="${item}" selected>${item}</option>`
-            )
-        })
-
-        what_work = $("#what_work").val()
-        what_work_arr = JSON.parse(what_work)
-        what_work_arr && what_work_arr.map((item)=>{
-            $("#work").append(
                 `<option value="${item}" selected>${item}</option>`
             )
         })
