@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class Moshaver extends Controller
 {
     public function index(){
+        $clients = User::where('userid_inter',Auth::user()->id)->get();
+        $files = File::where('userid_moshaver',Auth::user()->id)->get();
+        $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
         $works = Work::where('moshaver_id',Auth::user()->id)->get();    
-        return view('moshaver.index',compact('works'));
+        return view('moshaver.index',compact(['works','clients','files','taavons']));
     }
 
   
@@ -61,9 +64,6 @@ class Moshaver extends Controller
             'elevator' => $request->elevator,
             'balcony' => $request->balcony,
             'shell' => $request->shell,
-            'thumbnail' => $thumbnail,
-            'images' => $images,
-            'videos' => $videos,
             'publish' => $publish,
 
             'wc' => json_encode($request->wc),
@@ -139,9 +139,6 @@ class Moshaver extends Controller
             'elevator' => $request->elevator,
             'balcony' => $request->balcony,
             'shell' => $request->shell,
-            'thumbnail' => $thumbnail,
-            'images' => $images,
-            'videos' => $videos,
             'publish' => $publish,
 
             'wc' => json_encode($request->wc),
