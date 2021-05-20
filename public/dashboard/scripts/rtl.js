@@ -12,6 +12,8 @@ $('document').ready(function(){
 
     const type_sell_maskoni = ['آپارتمان','ویلا','زمین مسکونی','کلنگی','مستغلات مسکونی','برج','پنت هاوس','برج باغ'];
     const type_rent_maskoni = ['آپارتمان','ویلا','مستغلات مسکونی','پنت هاوس','برج','برج باغ'];
+    const onsell = ['آپارتمان'];
+
     var type_select = 1;
     
     //load default type
@@ -70,8 +72,12 @@ $('document').ready(function(){
         })
         $("#sell").css('font-size','110%')
         $("#rent").css('font-size','100%')
+        $("#onsell").css('font-size','100%')
+
         $("#sell").css('opacity','1')
         $("#rent").css('opacity','.5')
+        $("#onsell").css('opacity','.5')
+
         $("#colprice").show()
         $("#colrent").hide()
         $("#colrentmonth").hide()
@@ -79,6 +85,31 @@ $('document').ready(function(){
 
     }
 
+    function onsellsection(){
+        if(type_select === 3){
+            return true;
+        }
+        type_select = 3
+        $("#type_maskoni").find('option').remove()
+        onsell.map((item)=>{
+            $("#type_maskoni").append(
+                `<option value="${item}">${item}</option>`
+            )
+        })
+        $("#sell").css('font-size','100%')
+        $("#rent").css('font-size','100%')
+        $("#onsell").css('font-size','110%')
+
+        $("#sell").css('opacity','.5')
+        $("#rent").css('opacity','.5')
+        $("#onsell").css('opacity','1')
+
+        $("#colprice").show()
+        $("#colrent").hide()
+        $("#colrentmonth").hide()
+        $("#kind_type_select").val('sell')
+
+    }
     function rentsection(){
         if(type_select === 0){
             return true;
@@ -92,6 +123,8 @@ $('document').ready(function(){
         })
         $("#sell").css('font-size','100%')
         $("#rent").css('font-size','110%')
+        $("#onsell").css('font-size','100%')
+        $("#onsell").css('opacity','.5')
         $("#sell").css('opacity','.5')
         $("#rent").css('opacity','1')
         $("#colprice").hide()
@@ -109,6 +142,11 @@ $('document').ready(function(){
     //when click on rent button 
     $("#rent").click(()=>{
         rentsection() 
+    })
+
+    //when click on onsell button 
+    $("#onsell").click(function(){
+        onsellsection()
     })
 
     function sellersection(){
@@ -392,4 +430,71 @@ $('document').ready(function(){
         $("#collaps1").removeClass("show")
     })
 
+    $("#step1").click(function(){
+        $("#collaps2").removeClass("show")
+        $("#collaps3").removeClass("show")
+
     })
+
+    $("#step2").click(function(){
+        $("#collaps1").removeClass("show")
+        $("#collaps3").removeClass("show")
+    })
+
+    $("#step3").click(function(){
+        $("#collaps2").removeClass("show")
+        $("#collaps1").removeClass("show")
+    })
+
+    $("#step1").click(function(){
+        $("#step2_span").addClass("stepgreen")
+        $("#step2_span_span").addClass("stepgreenp")
+
+        if($("#step2_span").hasClass("stepgreen")){
+            $("#step2_span").removeClass("stepgreen")
+            $("#step2_span_span").removeClass("stepgreenp")
+            $("#step2img").removeClass("greensvg")
+
+        }
+
+        if($("#step3_span").hasClass("stepgreen")){
+            $("#step3_span").removeClass("stepgreen")
+            $("#step3_span_span").removeClass("stepgreenp")
+            $("#step3img").removeClass("greensvg")
+
+        }
+    })
+
+    $("#step2").click(function(){
+        $("#step2_span").addClass("stepgreen")
+        $("#step2_span_span").addClass("stepgreenp")
+        $("#step2img").addClass("greensvg")
+
+        if($("#step3_span").hasClass("stepgreen")){
+
+            $("#step3_span").removeClass("stepgreen")
+            $("#step3_span_span").removeClass("stepgreenp")
+            $("#step3img").removeClass("greensvg")
+
+        }
+    })
+
+    $("#step3").click(function(){
+        $("#step3_span").addClass("stepgreen")
+        $("#step3_span_span").addClass("stepgreenp")
+        $("#step3img").addClass("greensvg")
+
+        if(!$("#step2_span").hasClass("stepgreen")){
+            $("#step2img").addClass("greensvg")
+            $("#step2_span").addClass("stepgreen")
+            $("#step2_span_span").addClass("stepgreenp")
+        }
+    })
+
+    $("#imagesblob").onchange = evt => {
+        const [file] = $("#images").files
+        if (file) {
+          $("#show_images").src = URL.createObjectURL(file)
+        }
+      }
+})

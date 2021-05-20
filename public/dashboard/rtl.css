@@ -119,3 +119,54 @@ input[type=number] {
   width: 60px;
   text-align: center;
 }
+
+.step_page{
+  text-align: center;
+  font-size: 11px;
+}
+
+.step_dot{
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  border:3px solid black
+}
+
+.step_page_line1:after{
+  content: "";
+  position: absolute;
+  top: 29px;
+  right: 78px;
+  background: #e5e5e5 none repeat scroll 0 0;
+  height: 4px;
+  width: 50px;
+  z-index: 0;
+}
+
+.step_page_line2:after{
+  content: "";
+  position: absolute;
+  top: 29px;
+  right: 78px;
+  background: #e5e5e5 none repeat scroll 0 0;
+  height: 4px;
+  width: 50px;
+  z-index: 0;
+}
+.imgstepdot{
+  width: 30px;
+  padding-top: 10px;
+  color: green;
+}
+
+.stepgreen{
+  border:3px solid green;
+}
+.stepgreenp{
+  color: green;
+}
+.greensvg{
+  filter: invert(48%) sepia(98%) saturate(347%) hue-rotate(82deg) brightness(90%) contrast(95%);
+}

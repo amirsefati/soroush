@@ -43,8 +43,19 @@
             
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <button class="btn btn-primary" id="collapsbtn1" type="button" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">مشخصات اولیه مشتری</button>
-                        <button class="btn btn-primary" id="collapsbtn2" type="button" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">اطلاعات تکمیلی</button>
+                            <div class="row" style="justify-content: center;">
+                            <span id="step1" class="col-md-1 col-4 step_page step_page_line1" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">
+                                <span  class="step_dot stepgreen">
+                                    <img class="imgstepdot greensvg" id="step1img" src="/img/step1.svg" alt="">
+                                </span> <br>  
+                            <span class="stepgreenp"> مشخصات اولیه مشتری </span></span>
+
+                            <span id="step2" class="col-md-1 col-4 step_page" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">
+                                <span id="step2_span" class="step_dot">
+                                    <img class="imgstepdot" id="step2img" src="/img/step2.svg" alt="">
+                                </span> <br> 
+                            <span id="step2_span_span" class=""> اطلاعات تکمیلی</span></span>
+                            </div>
                     </div>
                 </div>
 
@@ -161,7 +172,6 @@
                                     </div>
                                 </div>
                             </div>
-                       
                         </div>
                     </div>
                     <br>

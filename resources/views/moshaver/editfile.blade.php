@@ -46,17 +46,35 @@
             </div>
             <div class="card-body">
             
-                <div class="row">
+            <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <button class="btn btn-primary" id="collapsbtn1" type="button" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">مشخصات اولیه فایل</button>
-                        <button class="btn btn-primary" id="collapsbtn2" type="button" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">اطلاعات تکمیلی</button>
-                        <button class="btn btn-primary" id="collapsbtn3" type="button" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">افزودن عکس و فیلم</button>
+                        <div class="row" style="justify-content: center;">
+
+                            <span id="step1" class="col-md-1 col-4 step_page step_page_line1" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">
+                                <span  class="step_dot stepgreen">
+                                    <img class="imgstepdot greensvg" id="step1img" src="/img/step1.svg" alt="">
+                                </span> <br>  
+                            <span class="stepgreenp">مشخصات اولیه فایل</span></span>
+
+                            <span id="step2" class="col-md-1 col-4 step_page step_page_line2" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">
+                                <span id="step2_span" class="step_dot stepgreen">
+                                    <img class="imgstepdot greensvg" id="step2img" src="/img/step2.svg" alt="">
+                                </span> <br> 
+                            <span id="step2_span_span" class="stepgreenp"> اطلاعات تکمیلی</span></span>
+
+                            <span id="step3" class="col-md-1 col-4 step_page" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">
+                                <span id="step3_span" class="step_dot">
+                                    <img class="imgstepdot" id="step3img" src="/img/step3.svg" alt="">
+                                </span> <br>  
+                            <span id="step3_span_span">افزودن عکس و فیلم</span></span>
+                        </div>
                     </div>
                 </div>
 
+
             <div class="row">
                 <div class="col-md-12">
-                    <div class="multi-collapse collapse show" id="collaps1">
+                    <div class="multi-collapse collapse " id="collaps1">
                         <div class="card card-body m-3" style="background:#f4f6f9;box-shadow:0 0 51px 0 rgba(0,0,0,.08),0 6px 18px 0 rgba(0,0,0,.05)!important">
                             <div class="row">
                                 <div class="col-md-12" style="text-align: center;">
@@ -167,10 +185,19 @@
                                 <textarea name="note" class="form-control" id="" rows="3"></textarea>
                             </div>
                         </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label for="ad_text"> متن آگهی :</label>
+                                <textarea name="ad_text" class="form-control" id="" rows="3">{{$file->ad_text}}</textarea>
+                            </div>
+                        </div>
+
+                        
                         </div>
                     </div>
                     <br>
-                    <div class="collapse multi-collapse" id="collaps2">
+                    <div class="collapse multi-collapse show" id="collaps2">
                         <div class="card card-body" style="background:#f4f6f9;box-shadow:0 0 51px 0 rgba(0,0,0,.08),0 6px 18px 0 rgba(0,0,0,.05)!important">
                             <div class="row">
                                 <div class="col-md-8">
@@ -398,19 +425,53 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="kitchen">آشپزخانه :</label>
-                                        <select class="multiselectfiles" name="kitchen" id="" style="width:100%">
-                                            <option value=""></option>
+                                        <select class="multiselectfiles" name="kitchen[]" multiple="multiple" id="" style="width:100%">
+                                            <option value="مطبخ">مطبخ</option>
+                                            <option value="هود">هود</option>
+                                            <option value="اپن">اپن</option>
+                                            <option value="گاز رومیزی">گاز رومیزی</option>
+                                            <option value="جزیره">جزیره</option>
+                                            <option value="شوتینگ">شوتینگ</option>
+                                            <option value="فورمات">فورمات</option>
+                                            <option value="نورپردازی">نورپردازی</option>
+                                            <option value="نورگیر سقفی">نورگیر سقفی</option>
+                                            <option value="فول فرنیه">فول فرنیه</option>
+                                            <option value="نیمه فرنیش">نیمه فرنیش</option>
+                                            <option value="هواکش">هواکش</option>
+                                            <option value="صفحه کورین">صفحه کورین</option>
+                                            <option value="صفحه سنگ">صفحه سنگ</option>
+                                            <option value="صفحه چوب">صفحه چوب</option>
+                                            <option value="طراحی کلاسیک">طراحی کلاسیک</option>
+                                            <option value="طراحی مدرن">طراحی مدرن</option>
+                                            <option value="طراحی معاصر">طراحی معاصر</option>
+                                            <option value="سینک تک">سینک تک</option>
+                                            <option value="سینک دوقلو">سینک دوقلو</option>
+                                            <option value="سوپر مارکت">سوپر مارکت</option>
+
                                         </select>
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indoor_facility">امکانات اصلی :</label>
-                                        <select class="multiselectfiles" name="indoor_facility" id="" style="width:100%">
-                                            <option value=""></option>
+                                        <select class="multiselectfiles" name="indoor_facility[]" multiple="multiple" id="" style="width:100%">
+                                            <option value="آب">آب</option>
+                                            <option value="برق">برق</option>
+                                            <option value="گاز">گاز</option>
+                                            <option value="تلفن">تلفن</option>
+
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="secure_facility">امکانات امنیتی :</label>
-                                        <select class="multiselectfiles" name="secure_facility" id="" style="width:100%">
-                                            <option value=""></option>
+                                        <select class="multiselectfiles" name="secure_facility[]" multiple="multiple" id="" style="width:100%">
+                                            <option value="اطفا حریق">اطفا حریق</option>
+                                            <option value="اعلام حریق">اعلام حریق</option>
+                                            <option value="آیفون تصویری">آیفون تصویری   </option>
+                                            <option value="حفاظ شاخ گوزنی">حفاظ شاخ گوزنی</option>
+                                            <option value="حفاظ آکاردئونی">حفاظ آکاردئونی</option>
+                                            <option value="درب ریموت دار">درب ریموت دار</option>
+                                            <option value="نگهبانی ۲۴ ساعته">نگهبانی ۲۴ ساعته</option>
+                                            <option value="دوربین مدار بسته">دوربین مدار بسته</option>
+                                            <option value="درب ضد سرقت">درب ضد سرقت</option>
+
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="sport_facility">امکانات ورزشی :</label>
@@ -423,8 +484,14 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="welfair_facility">امکانات رفاهی تفریحی :</label>
-                                        <select class="multiselectfiles" name="welfair_facility" id="" style="width:100%">
-                                            <option value=""></option>
+                                        <select class="multiselectfiles" name="sport_facility[]" multiple="multiple" id="" style="width:100%">
+                                            <option value="استخر روباز">استخر روباز</option>
+                                            <option value="استخر مشاع">استخر مشاع   </option>
+                                            <option value="استخر اختصاصی">استخر اختصاصی</option>
+                                            <option value="سونا">سونا</option>
+                                            <option value="جکوزی">جکوزی</option>
+                                            <option value="سالن بدنسازی">سالن بدنسازی</option>
+                                            <option value="سالن یوگا">سالن یوگا</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3">
@@ -464,31 +531,24 @@
 
                     <div class="collapse multi-collapse" id="collaps3">
                         <div class="card card-body">
-                            <p style="margin-bottom: 3px;font-size:12px"> - بخش عکس پروژه و ویدیو پروژه قابلیت آپلود چندین فایل را دارد</p>
-                            <p style="font-size:12px"> - در صورت آپلود ویدیو سرعت ذخیره فایل به شدت کاهش می یابد</p>
-                            <br>
-                            <label for="thumbnail" class="box_upload_thumbnail">
-                                <p class="box_upload_thumbnailspan">آپلود عکس شاخص</p>
-                                <img src="../img/uploadimg.png" class="box_upload_thumbnailimg" alt="">
-                            </label>
-                            <input type="file" name="thumbnail" id="thumbnail" style="display: none;" accept="image/x-png,image/gif,image/jpeg">
-                            <br>
+                           
                             <div class="row">
-                                <div class="col-md-6 mt-2">
+                                <div class="col-md-12" style="text-align: center;">
                                     <label for="images">عکس پروژه :</label>
-                                    <input type="file" name="images[]" id="images" accept="image/x-png,image/gif,image/jpeg"  multiple>
+                                    <input type="file" name="images[]" id="imagesblob" accept="image/x-png,image/gif,image/jpeg"  multiple>
                                 </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="videos">ویدیو پروژه :</label>
-                                    <input type="file" name="videos[]" id="videos" accept="video/mp4,video/x-m4v,video/*"  multiple>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3" id="blobimages">
+                                    <img id="show_images" src="#" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="row m-2">
-                            <div class="col-md-3" style="text-align: center;">
+                            <div class="col-md-12" style="text-align: center;">
                                 <a href="{{$file->thumbnail}}" target="blank">
                                 <img src="{{$file->thumbnail}}" style="width:100%;padding:5px;cursor:zoom-in;" alt="">
-                                <span style="padding: 5px;font-size:12px">تصویر شاخص</span>
                                 </a>
                             </div>
                         </div>

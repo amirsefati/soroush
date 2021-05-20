@@ -48,16 +48,27 @@
                                     </div>
                                     <hr style="padding:2px;margin:2px"/>
                                     <div class="row p-2">
-                                        <div class="col-md-4">
-                                            <img src="/img/area.svg" style="margin-top:-3px" alt="">
-                                            <span style="font-size: 12px;">{{$file->area}}</span>
-                                        </div>
-                                        <div class="col-md-8" style="text-align: left;">
-                                            <span class="send_to_customer">
-                                                <img src="/img/share.svg" alt="">
-                                                ارسال به مشتری
-                                            </span>
-                                        </div>                
+                                        <div class="col-md-8">
+                                            @if($file->area)
+                                                <img src="/img/area.svg" style="margin-top:-3px" alt="">
+                                                <span style="font-size: 12px;">{{$file->area}}</span>
+                                            @endif
+                                            @if($file->bedroom_number)
+
+                                                <img src="/img/beds.svg" style="margin-top:-3px;margin-right:5px" alt="">
+                                                <span style="font-size: 12px;">{{$file->bedroom_number}}</span>
+                                            @endif
+                                            @if($file->floor)
+                                                
+                                                <img src="/img/floor.svg" style="margin-top:-8px;margin-right:5px" alt="">
+                                                <span style="font-size: 12px;">{{$file->floor}}</span>
+                                            @endif  
+                                            @if($file->floor)
+                                                
+                                                <img src="/img/age.svg" style="margin-top:-8px;margin-right:5px" alt="">
+                                                <span style="font-size: 12px;">{{$file->age}}</span>
+                                            @endif  
+                                        </div>              
                                     </div>
                                 </div>
                             </div>

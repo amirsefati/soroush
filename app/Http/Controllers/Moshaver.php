@@ -26,25 +26,16 @@ class Moshaver extends Controller
 
     public function addfile_post(Request $request){
         
-        $images = '';
-        $videos = '';
-
-        $thumbnail = '';
-        if ($request->hasFile('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $name = time().'-'. rand(100,10000) .'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/projectsfiles');
-            $image->move($destinationPath, $name);   
-            $thumbnail = '/projectsfiles/' . $name; 
-        }
-
         if($request->publish == 'on'){
             $publish = 1;
         }else{
             $publish = 0;
         }
         
-        File::create([
+        $address = $request->address1 .'-'. $request->address2 .'-'. $request->address3
+        .'-'. $request->address4 .'-'. $request->address5;
+        
+        $file = File::create([
             'type' => $request->type,
             'kind_type' => $request->kind_type,
             'userid_moshaver' => $request->userid_moshaver,
@@ -57,7 +48,7 @@ class Moshaver extends Controller
             'bedroom_number' => $request->bedroom_number,
             'floor' => $request->floor,
             'phone1' => $request->phone1,
-            'address' => $request->address,
+            'address' => $address,
             'note' => $request->note,
             'name' => $request->name,
             'allfloor' => $request->allfloor,
@@ -99,7 +90,7 @@ class Moshaver extends Controller
             'etc4' => $request->kind_type == 'rent' ? '1' : null,
 
         ]);
-        return redirect('moshaver/manage_files');
+        return redirect('moshaver/editfile/'.$file->id);
     }
 
     public function editfile_post(Request $request){
@@ -206,18 +197,8 @@ class Moshaver extends Controller
 
     public function adduser_post(Request $request){
 
-        $all_images = [];
-        if(strlen($request->documnts) > 5){
-            foreach($request->documnts as $doc){
-                $name = rand(10000,99999).'.'.$doc->getClientOriginalExtension();
-                $destinationPath = public_path('/userdocs/');
-                $doc->move($destinationPath, $name);
-                $file_item = '/userdocs/' . $name ; 
-                array_push($all_images,$file_item);
-            }
-        }
         
-        User::create([
+        $user = User::create([
             'userid_inter' => $request->userid_inter,
             'name' => $request->name,
             'phone' => $request->phone,
@@ -250,7 +231,7 @@ class Moshaver extends Controller
             'etc3' => $request->kind_type == 'rent' ? 1 : null
 
         ]);
-        return redirect('moshaver/listusers');
+        return redirect('moshaver/edituser/'.$user->id);
 
     }
 

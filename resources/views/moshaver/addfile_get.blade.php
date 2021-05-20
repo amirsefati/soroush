@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-6" style="text-align: left;">
-                                <button type="submit" class="btn btn-success pr-4 pl-4">ارسال فایل</button>
+                                <button type="submit" class="btn btn-secondary pr-4 pl-4"  disabled>ارسال فایل</button>
                             </div>
                         </div>
                     </div>
@@ -31,9 +31,26 @@
             
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">مشخصات اولیه فایل</button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">اطلاعات تکمیلی</button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">افزودن عکس و فیلم</button>
+                        <div class="row" style="justify-content: center;">
+
+                            <span id="step1" class="col-md-1 col-4 step_page step_page_line1" data-toggle="collapse" data-target="#collaps1" aria-expanded="false" aria-controls="collaps1">
+                                <span  class="step_dot stepgreen">
+                                    <img class="imgstepdot greensvg" id="step1img" src="/img/step1.svg" alt="">
+                                </span> <br>  
+                            <span class="stepgreenp">مشخصات اولیه فایل</span></span>
+
+                            <span id="step2" class="col-md-1 col-4 step_page step_page_line2" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">
+                                <span id="step2_span" class="step_dot">
+                                    <img class="imgstepdot " id="step2img" src="/img/step2.svg" alt="">
+                                </span> <br> 
+                            <span id="step2_span_span"> اطلاعات تکمیلی</span></span>
+
+                            <span id="step3" class="col-md-1 col-4 step_page" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">
+                                <span id="step3_span" class="step_dot">
+                                    <img class="imgstepdot" id="step3img" src="/img/step3.svg" alt="">
+                                </span> <br>  
+                            <span id="step3_span_span">افزودن عکس و فیلم</span></span>
+                        </div>
                     </div>
                 </div>
 
@@ -43,8 +60,9 @@
                         <div class="card card-body m-3" style="background:#f4f6f9;box-shadow:0 0 51px 0 rgba(0,0,0,.08),0 6px 18px 0 rgba(0,0,0,.05)!important">
                             <div class="row">
                                 <div class="col-md-12" style="text-align: center;">
-                                    <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="sell">خرید و فروش</button>
+                                    <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="sell">خرید و فروش</button>         
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="rent">رهن و اجاره</button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="onsell"> پیش فروش</button>
                                 </div>
                             </div>
                             <br>
@@ -135,10 +153,34 @@
                                 <label for="phone1"> منطقه :</label>
                                 <input type="number" name="region" id="region" class="form-control">
                             </div>
+                        </div>
+                        <hr>
+                        <span style="color: gray;font-size:11px;">آدرس :</span> 
+                        <div class="row pt-1">
+                        
+                        <div class="col-md-3 mt-2">
+                                <label for="address">خیابان اصلی  :</label>
+                                <input type="text" name="address1" class="form-control">
+                            </div>
 
-                            <div class="col-md-4 mt-2">
-                                <label for="address">آدرس ملک :</label>
-                                <input type="text" name="address" class="form-control">
+                            <div class="col-md-3 mt-2">
+                                <label for="address">خیابان فرعی  :</label>
+                                <input type="text" name="address2" class="form-control">
+                            </div>
+
+                            <div class="col-md-2 mt-2">
+                                <label for="address"> کوچه  :</label>
+                                <input type="text" name="address3" class="form-control">
+                            </div>
+
+                            <div class="col-md-1 mt-2">
+                                <label for="address"> پلاک  :</label>
+                                <input type="text" name="address4" class="form-control">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="address"> اسم ساختمان  :</label>
+                                <input type="text" name="address5" class="form-control">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -147,6 +189,20 @@
                                 <textarea name="note" class="form-control" id="" rows="3"></textarea>
                             </div>
                         </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label for="ad_text"> متن آگهی :</label>
+                                <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">   
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-warning">ارسال اطلاعات اولیه</button>
+                            </div>
+                        </div>
+
                         </div>
                     </div>
                     <br>
@@ -485,6 +541,14 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="row mt-4">   
+                                    <div class="col-md-12" style="text-align: center;">
+                                        <button class="btn btn-warning">ارسال اطلاعات تکمیلی</button>
+                                    </div>
+                                </div>
+
+
                         </div>
                     </div>
 
