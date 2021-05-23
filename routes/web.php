@@ -122,6 +122,11 @@ Route::prefix('moshaver')->group(function(){
     //action
 
     Route::get('/action',[Moshaver::class,'action']);
+
+    Route::post('/uploadfilesimg/{file_id}',[Moshaver::class,'uploadfilesimg']);
+
+
+    
 });
 
 

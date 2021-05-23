@@ -553,27 +553,7 @@
                     </div>
 
                     <div class="collapse multi-collapse" id="collaps3">
-                        <div class="card card-body">
-                            <p style="margin-bottom: 3px;font-size:12px"> - بخش عکس پروژه و ویدیو پروژه قابلیت آپلود چندین فایل را دارد</p>
-                            <p style="font-size:12px"> - در صورت آپلود ویدیو سرعت ذخیره فایل به شدت کاهش می یابد</p>
-                            <br>
-                            <label for="thumbnail" class="box_upload_thumbnail">
-                                <p class="box_upload_thumbnailspan">آپلود عکس شاخص</p>
-                                <img src="../img/uploadimg.png" class="box_upload_thumbnailimg" alt="">
-                            </label>
-                            <input type="file" name="thumbnail" id="thumbnail" style="display: none;" accept="image/x-png,image/gif,image/jpeg">
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6 mt-2">
-                                    <label for="images">عکس پروژه :</label>
-                                    <input type="file" name="images[]" id="images" accept="image/x-png,image/gif,image/jpeg"  multiple>
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="videos">ویدیو پروژه :</label>
-                                    <input type="file" name="videos[]" id="videos" accept="video/mp4,video/x-m4v,video/*"  multiple>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

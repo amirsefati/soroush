@@ -17,7 +17,7 @@
     <div class="col-md-12">
     <form action="/moshaver/editfile_post" method="POST" enctype="multipart/form-data">
     @csrf
-        <input type="text" name="fileid" value="{{$file->id}}" hidden>
+        <input type="text" name="fileid" value="{{$file->id}}" id="fileid_edit" hidden>
         <input type="text" name="userid_moshaver" value="{{Auth::user()->id}}" hidden>
         <input type="text" name="kind_type" id="kind_type_select" hidden>
         <div class="card">
@@ -530,28 +530,41 @@
                     </div>
 
                     <div class="collapse multi-collapse" id="collaps3">
-                        <div class="card card-body">
-                           
-                            <div class="row">
-                                <div class="col-md-12" style="text-align: center;">
-                                    <label for="images">عکس پروژه :</label>
-                                    <input type="file" name="images[]" id="imagesblob" accept="image/x-png,image/gif,image/jpeg"  multiple>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-3" id="blobimages">
-                                    <img id="show_images" src="#" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-2">
+                    <div class="row">       
+                    <br>
                             <div class="col-md-12" style="text-align: center;">
-                                <a href="{{$file->thumbnail}}" target="blank">
-                                <img src="{{$file->thumbnail}}" style="width:100%;padding:5px;cursor:zoom-in;" alt="">
-                                </a>
+                                <p>عکس های عادی</p>
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne" style="text-align: center;margin:auto;">
+                                        <h5 class="mb-0">
+                                            <span class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            مشاهده عکس های آرشیو
+                                            </span>
+                                        </h5>
+                                        </div>
+                                        @if($file->images)
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <div class="row" style="justify-content: center;">
+                                                    @foreach(json_decode($file->images) as $img) 
+                                                        <div class="col-md-2">
+                                                            <img src="{{$img}}" style="width: 100%;" alt="">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
+
+                                    
+                                    </div>
+                                <div class="card card-body" style="text-align: center;">
+                                    <div id="drag-drop-area" name="images"></div>
+                                </div>
                             </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

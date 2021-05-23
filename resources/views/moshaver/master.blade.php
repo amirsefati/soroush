@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('action/main.min.css')}}">
+    <link href="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -722,8 +723,28 @@
 <script type="text/javascript" src="{{asset('action/main.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/fa.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
+<script src="{{asset('js/uppy.min.js')}}"></script>
+<script src="{{asset('js/fa_IR.min.js')}}"></script>
 
 <script>
+        if($("#fileid_edit")){
+            var fileid_edit = $("#fileid_edit").val()
+        }
+
+        var uppy = Uppy.Core({
+            locale: Uppy.locales.fa_IR
+        })
+        .use(Uppy.Dashboard, {
+          inline: true,
+          target: '#drag-drop-area',
+        })
+        .use(Uppy.XHRUpload, {endpoint: '/moshaver/uploadfilesimg/'+fileid_edit})
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+
+
 function myFunction() {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;

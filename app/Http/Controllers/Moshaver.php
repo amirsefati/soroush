@@ -719,4 +719,34 @@ class Moshaver extends Controller
         return back();
     }
     
+    public function uploadfilesimg(Request $request,$file_id){
+        
+        $allimage = [];
+        if ($request->hasFile('files')) {
+            $image = $request->file('files')[0];
+            $name = time().'-'. rand(100,10000) .'-'. $request->name .'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/projectsfiles');
+            $image->move($destinationPath, $name);   
+            $img = '/projectsfiles/' . $name; 
+        }
+        $images = File::find($file_id)->images;
+        $images = json_decode($images);
+
+        if($images){
+            foreach($images as $i){
+                array_push($allimage,$i);
+            }
+        }
+
+        array_push($allimage,$img);
+
+        File::find($file_id)->update([
+            'images' => json_encode($allimage)
+        ]); 
+        File::find($file_id)->update([
+            'thumbnail' => $allimage[0]
+        ]);
+    }
+
+    
 }
