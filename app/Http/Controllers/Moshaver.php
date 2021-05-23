@@ -7,17 +7,21 @@ use App\Models\File;
 use App\Models\Taavon;
 use App\Models\User;
 use App\Models\Work;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class Moshaver extends Controller
 {
     public function index(){
-        $clients = User::where('userid_inter',Auth::user()->id)->get();
-        $files = File::where('userid_moshaver',Auth::user()->id)->get();
-        $taavons = Taavon::where('taavon_id',Auth::user()->id)->get();
-        $works = Work::where('moshaver_id',Auth::user()->id)->get();    
-        return view('moshaver.index',compact(['works','clients','files','taavons']));
+        $clients = User::where('userid_inter',Auth::user()->id)->orderBy("updated_at","DESC")->get();
+        $files = File::where('userid_moshaver',Auth::user()->id)->orderBy("updated_at","DESC")->get();
+        $taavons = Taavon::where('moshaver_id',Auth::user()->id)->orderBy("updated_at","DESC")->get();
+        $works = Work::where('moshaver_id',Auth::user()->id)->orderBy("updated_at","DESC")->get();
+        $today = Carbon::now()->toDateString();
+        $tomorrow = Carbon::now()->addDays(1)->toDateString();
+        $actions = Action::where('moshaver_id',Auth::user()->id)->whereBetween('date',[$today,$tomorrow])->get(); 
+        return view('moshaver.index',compact(['works','clients','files','taavons','actions']));
     }
 
   
@@ -28,7 +32,7 @@ class Moshaver extends Controller
     }
 
     public function addfile_post(Request $request){
-        
+        return $request;
         if($request->publish == 'on'){
             $publish = 1;
         }else{
@@ -418,6 +422,12 @@ class Moshaver extends Controller
     }
 
     public function file_to_client_start($moshaver_id,$client_id,$file_id){
+        $work = Work::where('moshaver_id', $moshaver_id)
+                ->where('client_id' , $client_id,)
+                ->where('file_id', $file_id)->first();
+        if($work){
+            return back();
+        }
         Work::create([
             'moshaver_id' => $moshaver_id,
             'client_id' => $client_id,
@@ -425,7 +435,7 @@ class Moshaver extends Controller
             'type' => 1,
         ]);
 
-        return redirect('/');
+        return redirect('/moshaver/work_flow_file/'.$file_id);
     }
     public function taavon_request_user_file($moshaver_id,$userid_taavon,$client_id,$file_id){
         
@@ -441,6 +451,7 @@ class Moshaver extends Controller
             'file_id' => $file_id,
             'taavon_id' => $userid_taavon,
             'verify' => 0,
+            'etc1' => $userid_taavon,
 
         ]);
 

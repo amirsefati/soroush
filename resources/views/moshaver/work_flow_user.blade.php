@@ -44,8 +44,8 @@
                                             متوقف شد.
                                         </span>
                                         <p>خلاصه مرحله آخر</p>
-                                        <span>توضیحات : {{json_decode($work->etc2)->desc}}</span> <br>
-                                        <span>تاریخ : {{json_decode($work->etc2)->timer}}</span> <br>
+                                        <span>توضیحات : {{json_decode($work->etc2) ? json_decode($work->etc2)->desc : ''}}</span> <br>
+                                        <span>تاریخ : {{json_decode($work->etc2) ? json_decode($work->etc2)->timer : ''}}</span> <br>
 
                                     @endif
                                     @if($work->etc1 >= 2)

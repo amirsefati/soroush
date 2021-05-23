@@ -130,6 +130,12 @@
             </div>
         </div>
 
+        <div class="row">
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="percent_taavon" name="percent_taavon" value="30">
+                    </div>
+                </div>
+                
         <div class="row p-2">
             <div class="col-md-12"  style="text-align: center;">
                 <a href="/moshaver/taavon/client_to_file_start/{{$moshaver->id}}/{{$taavon_moshaver->id}}/{{$client->id}}/{{$file->id}}">

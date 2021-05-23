@@ -242,25 +242,24 @@
                                                             <div class="col-md-3 p-0">
                                                                 <div class="chance_ok">
                                                                     @if($file->kind_type == 'sell')
-                                                                        <p class="chance_ok_percent">%{{($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*100}}</p>
+                                                                        <p class="chance_ok_percent">%{{floor(($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*10)*10}}~</p>
                                                                     @else
-                                                                        <p class="chance_ok_percent">%{{($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*100}}</p>
+                                                                        <p class="chance_ok_percent">%{{floor(($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*10)*10}}~</p>
                                                                     @endif
                                                                     <p class="chance_ok_text">شانس</p>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-8 p-2">
-                                                                {{$file->type}} {{$file->area}} متری <br>
                                                                         @if($file->kind_type == 'sell')
                                                                             قیمت :
-                                                                            <strong>{{$file->price}} میلیون تومان</strong>
+                                                                            <strong>حدودا {{floor($file->price/1000)*1000}} میلیون تومان</strong>
                                                                         @else
                                                                             رهن : 
-                                                                            <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                                                            <strong>حدودا {{floor($file->rent_annual/1000)*1000}} میلیون تومان</strong>
                                                                             <br/>
                                                                             اجاره :
-                                                                            <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                                                                            <strong>حدودا {{floor($file->rent_month/1000)*1000}} میلیون تومان</strong>  
                                                                         @endif
                                                                         <br>
                                                                         مشاور : {{App\Models\User::find($file->userid_moshaver)->name}}

@@ -130,6 +130,21 @@
         </div>
 
         <div class="row p-2">
+            <div class="col-md-12 client_to_file_box">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <strong>درصد تعاون </strong>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="percent_taavon" name="percent_taavon" value="30">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-2">
             <div class="col-md-12"  style="text-align: center;">
                 <a href="/moshaver/taavon/file_to_client_start/{{$moshaver->id}}/{{$taavon_moshaver->id}}/{{$client->id}}/{{$file->id}}">
                 <button class="btn btn-success">تایید و شروع</button></a>

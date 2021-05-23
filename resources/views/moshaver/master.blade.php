@@ -489,6 +489,20 @@
   </div>
 </div>
 
+<div id="show_details" class="modal_details">
+
+  <!-- Modal content -->
+  <div class="modal_details-content">
+    <span class="close2">&times;</span>
+    <p>مشتری : <span id="client_action"></span></p>
+    <p>کاربر : <span id="file_action"></span></p>
+    <p>متن : <span id="text_action"></span></p>
+    <p>عنوان : <span id="title_action"></span></p>
+
+  </div>
+
+</div>
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -708,8 +722,6 @@
 <script type="text/javascript" src="{{asset('action/main.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/fa.js')}}"></script>
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script type="text/javascript" src="{{asset('apex/script.js')}}"></script>
 
 <script>
 function myFunction() {
@@ -735,7 +747,33 @@ function myFunction() {
 }
 
 
+var modal = document.getElementById("show_details");
 
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close2")[0];
+
+// When the user clicks the button, open the modal 
+function action_showdetails(actioninfo) {
+  modal.style.display = "block";
+  $("#client_action").text(actioninfo.event._def.extendedProps.client_id)
+  $("#file_action").text(actioninfo.event._def.extendedProps.file_id)
+  $("#text_action").text(actioninfo.event._def.extendedProps.text)
+  $("#title_action").text(actioninfo.event._def.title)
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 </body>
 

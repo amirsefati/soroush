@@ -247,8 +247,22 @@ $('document').ready(function(){
             else
               $(this).val($(this).data("old"));
           });
+
+          $("#percent_taavon").keydown(function () {
+            // Save old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 100 && parseInt($(this).val()) >= 0))
+            $(this).data("old", $(this).val());
+          });
+          $("#percent_taavon").keyup(function () {
+            // Check correct, else revert back to old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 100 && parseInt($(this).val()) >= 0))
+              ;
+            else
+              $(this).val($(this).data("old"));
+          });
       });
    
+      
       $(".all_customers").select2({
         dir: "rtl",
         language:'fa'
@@ -497,4 +511,9 @@ $('document').ready(function(){
           $("#show_images").src = URL.createObjectURL(file)
         }
       }
+
 })
+
+
+
+

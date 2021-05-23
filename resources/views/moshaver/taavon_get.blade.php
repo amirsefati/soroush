@@ -7,6 +7,7 @@
             <th>نوع درخواست</th>
             <th>مشاور </th>
             <th>درخواست</th>
+            <th>درصد خواست شده</th>
             <th>عملیات</th>
             <th>وضعیت</th>
         </tr>
@@ -34,6 +35,7 @@
                             </a>
                         @endif
                     </td>
+                    <td>در حال تکمیل</td>
                     <td> 
                         <a href="/moshaver/verfiy_taavon/{{$taavon->id}}/2">
                             <button class="btn btn-success">قبول</button>
@@ -80,6 +82,7 @@
                             <span>****</span>
                         @endif
                     </td>
+                    <td>در حال تکمیل</td>
                     <td> 
                         -
                     </td>

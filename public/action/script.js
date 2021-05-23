@@ -31,7 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
       var p = {
         title: kk,
         start: item.date, 
-        backgroundColor:color
+        backgroundColor:color,
+        file_id : item.file_id,
+        client_id : item.client_id,
+        text : item.text
+
       }
       eventss.push(p)
     })
@@ -40,8 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
       locale: 'fa',
 
       eventClick: function(info) {
-          alert(JSON.stringify(info))
-        
+        action_showdetails(info)
       },
 
 
