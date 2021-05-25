@@ -31,7 +31,7 @@
                                                 <p class="manage_file_box_p">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
                                                 <p class="manage_file_box_p">
                                                 @if($file->kind_type == 'sell')
-                                                        بودجه : {{$file->price}} میلیون تومان
+                                                        بودجه : {{$file->price * $file->area}} میلیون تومان
                                                     @else
                                                         رهن {{$file->rent_annual}} میلیون تومان
                                                         -اجاره {{$file->rent_month}} میلیون تومان

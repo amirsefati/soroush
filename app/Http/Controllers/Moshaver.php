@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Action;
+use Carbon\Carbon;
 use App\Models\File;
-use App\Models\Taavon;
 use App\Models\User;
 use App\Models\Work;
-use Carbon\Carbon;
+use App\Models\Action;
+use App\Models\Taavon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class Moshaver extends Controller
@@ -32,7 +33,7 @@ class Moshaver extends Controller
     }
 
     public function addfile_post(Request $request){
-        return $request;
+
         if($request->publish == 'on'){
             $publish = 1;
         }else{
@@ -174,20 +175,22 @@ class Moshaver extends Controller
     }
 
     public function adduser_digest(Request $request){
+
         $request->validate([
             'name' => 'required',
             'phone' => 'required|unique:users'
         ]);
         
-        User::create([
+        $newuser = User::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'kind_type' => 'sell',
+            'etc2' => 1,
             'userid_inter' => Auth::user()->id,
             'password' => '1234567801'
         ]);
-
-        return back();
+        
+        return ["status" => 200,"data" => $newuser];
     }
 
    
@@ -338,7 +341,8 @@ class Moshaver extends Controller
         if($user->kind_type == "sell"){
             $result = File::where('type',$user->type)
                 ->where('kind_type','sell')
-                ->whereBetween('price',[($user->price)*0.8,($user->price)*1.4])->get();
+                ->whereBetween(DB::raw('price * area'),[($user->price)*0.8,($user->price)*1.4])
+                ->get();
         }else{
             $result = File::where('type',$user->type)
                 ->where('kind_type','rent')
@@ -356,7 +360,7 @@ class Moshaver extends Controller
         if($file->kind_type == "sell"){
             $result = User::where('type',$file->type)
                 ->where('kind_type','sell')
-                ->whereBetween('price',[($file->price)*0.8,($file->price)*1.4])->get();
+                ->whereBetween('price',[($file->price)*($file->area)*0.8,($file->price)*($file->area)*1.4])->get();
         }else{
             $result = User::where('type',$file->type)
                 ->where('kind_type','rent')
@@ -748,5 +752,12 @@ class Moshaver extends Controller
         ]);
     }
 
+    public function getshowuser_id($id){
+        return User::find($id);
+    }
+
+    public function getshowfile_id($id){
+        return File::find($id);
+    }
     
 }

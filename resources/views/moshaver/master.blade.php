@@ -7,7 +7,8 @@
     <title>داشبورد مشاور</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="داشبورد مشاور برنامه">
-   
+    <meta name="csrf-token" content="{{ Session::token() }}"> 
+
     <link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/rtl.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/moshaver.css')}}">
@@ -15,9 +16,11 @@
     <link rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('action/main.min.css')}}">
     <link href="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('map/mapp.min.css')}}">
+    <link rel="stylesheet" href="{{asset('map/fa/style.css')}}">
 
 </head>
-<body>
+<body id="bbody">
 <div style="display: none;">
 {{
     $fs = App\Models\File::where('userid_moshaver',Auth::user()->id)->get()
@@ -38,26 +41,24 @@
 
         <h5 class="modal-title">ثبت نام کاربر جدید</h5>
       </div>
-    <form action="/moshaver/adduser_digest" method="POST">
-    @csrf
       <!-- Modal body -->
       <div class="modal-body" style="direction: rtl;">
         <div class="row">
 
             <div class="col-6">
                 <label for="name"> نام کاربر :</label>
-                <input name="name" type="text" class="form-control" required>
+                <input id="name_digest" type="text" class="form-control" required>
             </div>
 
             <div class="col-6">
                 <label for="name">  شماره تلفن :</label>
-                <input name="phone" type="text" class="form-control" required>
+                <input id="phone_digest" type="text" class="form-control" required>
             </div>
             
         </div>
         <div class="row mt-4">
             <div class="col-md-12" style="text-align:center">
-                <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                <button type="button" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
             </div>
         </div>
         <div class="row mt-2">
@@ -66,7 +67,6 @@
             </div>
         </div>
       </div>
-    </form>
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
@@ -494,7 +494,7 @@
 
   <!-- Modal content -->
   <div class="modal_details-content">
-    <span class="close2">&times;</span>
+    <span class="close2" id="close2">&times;</span>
     <p>مشتری : <span id="client_action"></span></p>
     <p>کاربر : <span id="file_action"></span></p>
     <p>متن : <span id="text_action"></span></p>
@@ -706,12 +706,13 @@
                 </div>    <div class="app-main__outer">
                     <div class="app-main__inner">
                                 @yield('content')
-                                
+                                <div id="appmap"></div>
                        </div>
         </div>
 
             
     </div>
+
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
@@ -727,23 +728,35 @@
 <script src="{{asset('js/fa_IR.min.js')}}"></script>
 
 <script>
+
+$("#send_digest").click(function(){
+    var name_digest = $("#name_digest").val()
+    var phone_digest = $("#phone_digest").val()
+    $.post('/moshaver/adduser_digest',{
+        '_token': $('meta[name=csrf-token]').attr('content'),
+        name : name_digest,
+        phone : phone_digest
+    })
+    .then((res)=>{
+        if(res.status === 200){
+            $("#digest_user_all").append(
+                `<option value="${res.data.id}" selected>${res.data.name} - ${res.data.phone}</option>`
+            )
+            $("#myModal").removeClass("show")
+            $("#myModal").css("display","none")
+            $("#bbody").removeClass("modal-open")
+            $(".modal-backdrop").remove(); 
+        }
+        
+    })
+
+})
+
         if($("#fileid_edit")){
             var fileid_edit = $("#fileid_edit").val()
         }
 
-        var uppy = Uppy.Core({
-            locale: Uppy.locales.fa_IR
-        })
-        .use(Uppy.Dashboard, {
-          inline: true,
-          target: '#drag-drop-area',
-        })
-        .use(Uppy.XHRUpload, {endpoint: '/moshaver/uploadfilesimg/'+fileid_edit})
-
-      uppy.on('complete', (result) => {
-        console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      })
-
+       
 
 function myFunction() {
   // Declare variables
@@ -776,25 +789,52 @@ var span = document.getElementsByClassName("close2")[0];
 
 // When the user clicks the button, open the modal 
 function action_showdetails(actioninfo) {
-  modal.style.display = "block";
-  $("#client_action").text(actioninfo.event._def.extendedProps.client_id)
-  $("#file_action").text(actioninfo.event._def.extendedProps.file_id)
-  $("#text_action").text(actioninfo.event._def.extendedProps.text)
-  $("#title_action").text(actioninfo.event._def.title)
 
+    $("#client_action").text("")
+    $("#file_action").text("")
+
+    $("#show_details").addClass("showddd")
+    
+    $.get('/moshaver/getshowuser_id/'+actioninfo.event._def.extendedProps.client_id)
+    .then((res)=>{
+        $("#client_action").text(res.name)
+    })
+
+    $.get('/moshaver/getshowfile_id/'+actioninfo.event._def.extendedProps.file_id)
+    .then((res)=>{
+        $("#file_action").text(res.name)
+    })
+
+    $("#text_action").text(actioninfo.event._def.extendedProps.text)
+    $("#title_action").text(actioninfo.event._def.title)
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+$("#close2").click(function(){
+    $("#show_details").removeClass("showddd")
+})
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    if (event.target == modal) {
+        $("#show_details").removeClass("showddd")
+    }
 }
+if($("#infileedit").val()){
+    var uppy = Uppy.Core({
+            locale: Uppy.locales.fa_IR
+        })
+        .use(Uppy.Dashboard, {
+          inline: true,
+          target: '#drag-drop-area',
+        })
+        .use(Uppy.XHRUpload, {endpoint: '/moshaver/uploadfilesimg/'+fileid_edit})
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+
+}
+
+
 </script>
 </body>
 

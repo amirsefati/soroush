@@ -126,6 +126,10 @@ Route::prefix('moshaver')->group(function(){
     Route::post('/uploadfilesimg/{file_id}',[Moshaver::class,'uploadfilesimg']);
 
 
+    Route::get('/getshowuser_id/{user_id}',[Moshaver::class,'getshowuser_id']);
+
+    Route::get('/getshowfile_id/{user_id}',[Moshaver::class,'getshowfile_id']);
+
     
 });
 

@@ -76,7 +76,7 @@
 
                                 <div class="col-md-4">
                                     <label for="area"> متراژ(مترمربع) :</label>
-                                    <input name="area" type="number" id="area" class="form-control">
+                                    <input name="area" type="number" id="area" value="{{ old('area') }}" class="form-control">
 
                                 </div>
 
@@ -126,7 +126,7 @@
                         <div class="row  justify-content-center">
                             <div class="col-md-5">
                                 <label for="userid_file">اطلاعات مالک :</label>
-                                <select class="all_customers" name="userid_file" style="width: 100%" required>
+                                <select class="all_customers" name="userid_file" id="digest_user_all" style="width: 100%" required>
                                         <option value="">کاربر را انتخاب کنید</option>
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>

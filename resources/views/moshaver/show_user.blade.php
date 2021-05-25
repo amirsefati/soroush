@@ -185,9 +185,9 @@
                                                             <div class="col-md-3 p-0">
                                                                 <div class="chance_ok">
                                                                     @if($file->kind_type == 'sell')
-                                                                        <p class="chance_ok_percent">%{{($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*100}}</p>
+                                                                        <p class="chance_ok_percent">%{{floor((($file->price*$file->area) / $user->price < 1 ? ($file->price*$file->area) / $user->price : $user->price / ($file->price*$file->area))*100)}}</p>
                                                                     @else
-                                                                        <p class="chance_ok_percent">%{{($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*100}}</p>
+                                                                        <p class="chance_ok_percent">%{{floor(($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*100)}}</p>
                                                                     @endif
                                                                     <p class="chance_ok_text">شانس</p>
                                                                 </div>

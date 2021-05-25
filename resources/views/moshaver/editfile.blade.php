@@ -3,7 +3,7 @@
 <input type="text" id="what_kind_type" value="{{$file->kind_type}}"  hidden>
 
 <input type="text" id="what_type" value="{{$file->type}}" hidden>
-
+<input type="text" id="infileedit" value="1" hidden>
 
 <input type="text" id="what_wc"  value="{{$file->wc}}" hidden>
 <input type="text" id="what_floor_type"  value="{{$file->floor_type}}" hidden>
