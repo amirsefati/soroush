@@ -147,10 +147,12 @@ Route::prefix('monshi')->group(function(){
     Route::post('adduser_digest',[Monshi::class,'adduser_digest']);
     Route::get('editfile/{fileid}',[Monshi::class,'editfile_get']);
     Route::post('editfile_post',[Monshi::class,'editfile_post']);
+    Route::get('fileinfo/{fileid}',[Monshi::class,'fileinfo_get']);
 
     Route::get('listusers',[Monshi::class,'listusers']);
     Route::get('adduser',[Monshi::class,'adduser']);
     Route::get('show_user/{userid}',[Monshi::class,'show_user_get']);
+    Route::post('adduser_post',[Moshaver::class,'adduser_post']);
 
     Route::get('edituser/{userid}',[Monshi::class,'edituser_get']);
     Route::post('edituser_post',[Monshi::class,'edituser_post']);
@@ -158,11 +160,26 @@ Route::prefix('monshi')->group(function(){
 
     Route::get('/phonebook',[Monshi::class,'phonebook']);
 
-    Route::get('/followup',[Monshi::class,'followup_get']);
+    Route::get('/followup',[Monshi::class,'followup']);
+
+
+    Route::post('addfollowup',[Monshi::class,'addfollowup']);
 
     
 
     Route::post('/uploadfilesimg/{file_id}',[Monshi::class,'uploadfilesimg']);
+
+
+    
+    Route::get('/getshowuser_id/{user_id}',[Monshi::class,'getshowuser_id']);
+
+    Route::get('/getshowfile_id/{user_id}',[Monshi::class,'getshowfile_id']);
+
+    Route::get('/followuphistoryinreport/{user_id}',[Monshi::class,'followuphistoryinreport']);
+
+    Route::post('/addfollowup_to_report',[Monshi::class,'addfollowup_to_report']);
+
+    Route::get('/verify_moshaver_file',[Monshi::class,'verify_moshaver_file']);
 
 });
 

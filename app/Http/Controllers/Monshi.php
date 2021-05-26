@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Followup;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +64,8 @@ class Monshi extends Controller
             'elevator' => $request->elevator,
             'balcony' => $request->balcony,
             'shell' => $request->shell,
-            'publish' => $publish,
+            'publish' => 1,
+            'verify' => 1,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -87,6 +90,17 @@ class Monshi extends Controller
             'etc1' => 1,
 
         ]);
+
+        if($request->kind_type == 'sell'){
+            User::find($request->userid_file)->update([
+                'etc2' => 1
+            ]);
+        }else{
+            User::find($request->userid_file)->update([
+                'etc4' => 1
+            ]); 
+        }
+
         return redirect('monshi/editfile/'.$file->id);
     }
 
@@ -106,7 +120,6 @@ class Monshi extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'kind_type' => 'sell',
-            'etc2' => 1,
             'userid_inter' => Auth::user()->id,
             'password' => '1234567801',
             'etc5' => $etc5
@@ -118,27 +131,10 @@ class Monshi extends Controller
     public function editfile_get($fileid){
         $file = File::find($fileid);
         $users = User::where('level','1')->where('userid_inter',Auth::user()->id)->get();
-        return view('moshaver.editfile',compact(['file','users']));
+        return view('monshi.editfile',compact(['file','users']));
     }
     public function editfile_post(Request $request){
 
-        $images = '';
-        $videos = '';
-
-        $thumbnail = File::find($request->fileid)->thumbnail;
-        if ($request->hasFile('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $name = time().'-'. rand(100,10000) .'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/projectsfiles');
-            $image->move($destinationPath, $name);   
-            $thumbnail = '/projectsfiles/' . $name; 
-        }
-
-        if($request->publish == 'on'){
-            $publish = 1;
-        }else{
-            $publish = 0;
-        }
 
         File::where('id',$request->fileid)->update([
             'type' => $request->type,
@@ -166,7 +162,7 @@ class Monshi extends Controller
             'elevator' => $request->elevator,
             'balcony' => $request->balcony,
             'shell' => $request->shell,
-            'publish' => $publish,
+           
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -189,7 +185,15 @@ class Monshi extends Controller
             'convertible' => $request->convertible,
 
         ]);
-        
+        if($request->kind_type == 'sell'){
+            User::find($request->userid_file)->update([
+                'etc2' => 1
+            ]);
+        }else{
+            User::find($request->userid_file)->update([
+                'etc4' => 1
+            ]); 
+        }
             return redirect('monshi/manage_files');
 
     }
@@ -305,6 +309,17 @@ class Monshi extends Controller
             'etc3' => $request->kind_type == 'rent' ? 1 : null
 
         ]);
+
+        if($request->kind_type == 'sell'){
+            User::find($user->id)->update([
+                'etc1' => 1
+            ]);
+        }else{
+            User::find($user->id)->update([
+                'etc3' => 1
+            ]);
+        }
+
         return redirect('monshi/listusers');
     }
 
@@ -313,11 +328,115 @@ class Monshi extends Controller
         return view('monshi.phonebook',compact('users'));
     }
 
-    public function followup_get(){
-        $users = User::where('userid_inter',Auth::user()->id)
-        ->where('level','1')
-        ->get();
-        return view('monshi.followup',compact('users'));
+    public function adduser_post(Request $request){
+
+        
+        $user = User::create([
+            'userid_inter' => $request->userid_inter,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'price' => $request->price ? str_replace(",","",$request->price) : null,
+            'rent_annual' => $request->rent_annual ? str_replace(",","", $request->rent_annual) : null,
+            'rent_month' => $request->rent_month ? str_replace(",","", $request->rent_month) : null,
+            'type' => $request->type,
+            'religen' => $request->religen,
+            'bedroom_number' => $request->bedroom_number,
+            'desc' => $request->desc,
+            'age' => $request->age,
+            'info' => $request->info,
+            'region' => $request->region,
+            'kind_type' => $request->kind_type,
+            'area' => $request->area,
+
+            'sporty' => json_encode($request->sporty),
+            'religen' => json_encode($request->religen),
+            'work' => $request->work,
+            'likes' => json_encode($request->likes),
+
+            'elevator' =>  ($request->elevator == 'on' ? 1 : null),
+            'depot'    =>  (   $request->depot == 'on' ? 1 : null),
+            'parking'  =>  ( $request->parking == 'on' ? 1 : null),
+            'balcony'  =>  ( $request->balcony == 'on' ? 1 : null),
+
+            'password' => '1234567801',
+        ]);
+        if($request->kind_type == 'sell'){
+            User::find($user->id)->update([
+                'etc1' => 1
+            ]);
+        }else{
+            User::find($user->id)->update([
+                'etc3' => 1
+            ]);
+        }
+        return redirect('monshi/edituser/'.$user->id);
+
     }
+
+    public function fileinfo_get($id){
+        $file = File::find($id);
+
+        if($file->kind_type == "sell"){
+            $result = User::where('type',$file->type)
+                ->where('kind_type','sell')
+                ->whereBetween('price',[($file->price)*($file->area)*0.8,($file->price)*($file->area)*1.4])->get();
+        }else{
+            $result = User::where('type',$file->type)
+                ->where('kind_type','rent')
+                ->whereBetween('rent_annual',[($file->rent_annual)*0.6,($file->rent_annual)*1.6])
+                ->whereBetween('rent_month',[($file->rent_month)*0.6,($file->rent_month)*1.4])
+                ->get();
+        }
+        return view('monshi.fileinfo',compact(['file','result']));
+    }
+
+    public function followup(){
+        $followups = Followup::where('monshi_id',Auth::user()->id)->get();
+        return view('monshi.followup',compact('followups'));
+    }
+
+    public function addfollowup(Request $request){
+        if(Followup::where('user_id',$request->user_id)->first()){
+            return back();
+        }
+        Followup::create([
+            'user_id' => $request->user_id,
+            'monshi_id' => Auth::user()->id,
+            'desc' => $request->desc,
+            'date' => $request->date,
+        ]);
+        return back();
+    }
+
+    public function followuphistoryinreport($id){
+        $followup = Report::where('user_id',$id)->where('monshi_id',Auth::user()->id)->get();
+        return $followup;
+    }
+
+    public function getshowuser_id($id){
+        return User::find($id);
+    }
+
+    public function getshowfile_id($id){
+        return File::find($id);
+    }
+
+    public function addfollowup_to_report(Request $request){
+
+        Report::create([
+            'user_id' => $request->user_id,
+            'desc' => $request->desc,
+            'date' => $request->date .'-'. $request->time,
+            'monshi_id' => Auth::user()->id,
+            'type' => 'followup_monshi'
+        ]);
+        return back();
+    }
+
+    public function verify_moshaver_file(){
+        $files = File::where('publish',1)->where('verify',0)->where('etc2','monshi')->get();
+        return view('monshi.verify_moshaver_file',compact('files'));
+    }
+
 
 }

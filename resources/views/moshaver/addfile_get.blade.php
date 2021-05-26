@@ -16,9 +16,11 @@
                         <div class="row">
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <div class="custom-control custom-switch pt-2">
-                                    <input type="checkbox" class="custom-control-input" id="switch1" name="publish">
-                                    <label class="custom-control-label" for="switch1">انتشار فایل</label>
-                                </div>
+                                <select style="width: 200px;" name="publish" class="form-control" id="">
+                                        <option value="">ارسال برای تایید</option>
+                                        <option value="monshi">ارسال برای منشی</option>
+                                        <option value="modir">ارسال برای مدیر</option>
+                                    </select>  </div>
                             </div>
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <button type="submit" class="btn btn-secondary pr-4 pl-4"  disabled>ارسال فایل</button>

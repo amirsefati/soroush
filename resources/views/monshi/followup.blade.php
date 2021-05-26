@@ -1,53 +1,55 @@
 @extends('monshi.master')
 @section('content')
-
-
-            <div class="row">
-                <div class="col-md-12">
-                            <div class="row">
-
-                            <input type="text" id="myInput" onkeyup="myFunction2()" placeholder="جست جو کاربر">
-
-                    @foreach($users as $user)
-                        <div class="col-md-4 mt-4  pr-2 pl-2">
-                            <div class="user_box p-1">
-                            <span data-toggle="modal" data-target="#mm1" onclick="followup_data('{{$user->id}}')">
-                                <p class="pr-2 pt-3" style="font-size: 12px;margin-bottom:5px;">مشتری : {{$user->name}}</p>
-
-                                <p class="pr-2" style="margin-bottom:5px;"> 
-                                    @if($user->kind_type == 'sell')
-                                        بودجه : {{$user->price}} میلیون تومان
-                                    @else
-                                        رهن {{$user->rent_annual}} میلیون تومان
-                                        <br>
-                                        اجاره {{$user->rent_month}} میلیون تومان
-
-                                    @endif
-                                </p>
-
-                                
-                                    @if($user->kind_type == 'sell')
-                                        <div class="user_box_kind_type">
-                                            <p class="user_box_kind_type_p">خریدار</p>
-                                        </div>
-                                    @else
-                                        <div class="user_box_kind_type_r">
-                                            <p class="user_box_kind_type_p">اجاره</p>
-                                        </div>
-
-                                    @endif
-                                
-                                
-                                <div>
-                                    <p class="pr-2">متراژ : {{$user->area}}</p>
-                                </div>
-                            </span>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+<br>
+<div class="row">
+    <div class="col-md-12" style="text-align: left;">
+        <button class="btn btn-info" data-toggle="modal" data-target="#addfollowup">افزودن پیگیری</button>
+    </div>
 </div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="جست جو کاربر">
 
+        <table id="myTable">
+        <tr class="header">
+            <th style="width:20%;">نام</th>
+            <th style="width:10%;">شماره تلفن</th>
+            <th style="width:30%;">نوع تقاضا</th>
+            <th style="width:30%;">هدف</th>
+            <th style="width:10%;">عملیات</th>
 
+        </tr>
+        
+        @foreach($followups as $followup)
+            <tr>    
+                <div style="display: none;">
+                    {{$user = App\Models\User::find($followup->user_id)}}
+                </div>
+                <td><a href="/monshi/show_user/{{$followup->user_id}}">{{$user->name}}</a></td>
+                <td><a href="tel://{{$user->phone}}">{{$user->phone}}</a></td>
+                <td>
+                    @if($user->etc1 == 1)
+                        <span class="badge badge-pill badge-success">خریدار</span>
+                        @endif
+                    @if($user->etc2 == 1)
+                        <span class="badge badge-pill badge-info">فروشنده</span>
+                        @endif
+                    @if($user->etc3 == 1)
+                        <span class="badge badge-pill badge-warning">مستاجر</span>
+                        @endif
+                    @if($user->etc4 == 1)
+                        <span class="badge badge-pill badge-dark">موجر</span>
+                        @endif
+                </td>
+                <td><span style="font-size: 11px;">{{$followup->desc}}</span></td>
+                <td>
+                    <img src="/img/phone-call.svg" data-toggle="modal" data-target="#followupm" onclick="followupmodal('{{$user->id}}')" style="width:20px;" alt="">
+                </td>
+            </tr>
+        @endforeach
+        </table>
+    
+    </div>
+</div>
 @endsection

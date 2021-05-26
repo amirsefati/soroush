@@ -29,12 +29,11 @@
                         <div class="row">
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <div class="custom-control custom-switch pt-2">
-                                    @if($file->publish == 1)
-                                        <input type="checkbox" class="custom-control-input" id="switch1" checked="checked" name="publish">
-                                    @else
-                                        <input type="checkbox" class="custom-control-input" id="switch1" name="publish">
-                                    @endif
-                                    <label class="custom-control-label" for="switch1">انتشار فایل</label>
+                                    <select style="width: 200px;" name="publish" class="form-control" id="">
+                                        <option value="">ارسال برای تایید</option>
+                                        <option value="monshi">ارسال برای منشی</option>
+                                        <option value="modir">ارسال برای مدیر</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-6" style="text-align: left;">

@@ -316,6 +316,8 @@ $('document').ready(function(){
             
         });
 
+       
+
         $("#timepickeruser4").pDatepicker({
             format:"HH:mm",
             onlyTimePicker: true
@@ -329,6 +331,16 @@ $('document').ready(function(){
         $("#timepickeruser5").pDatepicker({
             format:"HH:mm",
             onlyTimePicker: true
+        });
+
+        $("#datepickeruser11").pDatepicker({
+            format:"L",
+        });
+
+        $("#datepickeruser12").pDatepicker({
+            format:"HH:mm",
+            onlyTimePicker: true,
+
         });
 
     if($("#what_kind_type").length){

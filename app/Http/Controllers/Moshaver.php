@@ -33,10 +33,15 @@ class Moshaver extends Controller
 
     public function addfile_post(Request $request){
 
-        if($request->publish == 'on'){
+        $etc2 = null;
+        $publish = 0;
+
+        if($request->publish == 'monshi'){
+            $etc2 = 'monshi';
             $publish = 1;
-        }else{
-            $publish = 0;
+        }elseif($request->publish == 'modir'){
+            $etc2 = 'modir';
+            $publish = 1;
         }
         
         $address = $request->address1 .'-'. $request->address2 .'-'. $request->address3
@@ -69,6 +74,7 @@ class Moshaver extends Controller
             'balcony' => $request->balcony,
             'shell' => $request->shell,
             'publish' => $publish,
+            'etc2' => $etc2,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -91,27 +97,31 @@ class Moshaver extends Controller
             'convertible' => $request->convertible,
 
         ]);
+        if($request->kind_type == 'sell'){
+            User::find($request->userid_file)->update([
+                'etc2' => 1
+            ]);
+        }else{
+            User::find($request->userid_file)->update([
+                'etc4' => 1
+            ]); 
+        }
+        
         return redirect('moshaver/editfile/'.$file->id);
     }
 
     public function editfile_post(Request $request){
 
-        $images = '';
-        $videos = '';
+        
+        $etc2 = null;
+        $publish = 0;
 
-        $thumbnail = File::find($request->fileid)->thumbnail;
-        if ($request->hasFile('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $name = time().'-'. rand(100,10000) .'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/projectsfiles');
-            $image->move($destinationPath, $name);   
-            $thumbnail = '/projectsfiles/' . $name; 
-        }
-
-        if($request->publish == 'on'){
+        if($request->publish == 'monshi'){
+            $etc2 = 'monshi';
             $publish = 1;
-        }else{
-            $publish = 0;
+        }elseif($request->publish == 'modir'){
+            $etc2 = 'modir';
+            $publish = 1;
         }
 
         File::where('id',$request->fileid)->update([
@@ -141,6 +151,7 @@ class Moshaver extends Controller
             'balcony' => $request->balcony,
             'shell' => $request->shell,
             'publish' => $publish,
+            'etc2' => $etc2,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -163,8 +174,16 @@ class Moshaver extends Controller
             'convertible' => $request->convertible,
 
         ]);
-        
-            return redirect('moshaver/manage_files');
+        if($request->kind_type == 'sell'){
+            User::find($request->userid_file)->update([
+                'etc2' => 1
+            ]);
+        }else{
+            User::find($request->userid_file)->update([
+                'etc4' => 1
+            ]); 
+        }
+        return redirect('moshaver/manage_files');
 
     }
 
@@ -184,7 +203,6 @@ class Moshaver extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'kind_type' => 'sell',
-            'etc2' => 1,
             'userid_inter' => Auth::user()->id,
             'password' => '1234567801',
             'etc5' => $etc5
@@ -230,11 +248,16 @@ class Moshaver extends Controller
             'balcony'  =>  ( $request->balcony == 'on' ? 1 : null),
 
             'password' => '1234567801',
-
-            'etc1' => $request->kind_type == 'sell' ? 1 : null,
-            'etc3' => $request->kind_type == 'rent' ? 1 : null
-
         ]);
+        if($request->kind_type == 'sell'){
+            User::find($user->id)->update([
+                'etc1' => 1
+            ]);
+        }else{
+            User::find($user->id)->update([
+                'etc3' => 1
+            ]);
+        }
         return redirect('moshaver/edituser/'.$user->id);
 
     }

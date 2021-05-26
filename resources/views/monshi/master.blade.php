@@ -166,6 +166,169 @@
   </div>
 </div>
 
+<div class="modal pt-5" id="addfollowup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">افزودن پیگیری</h5>
+      </div>
+    <form action="/monshi/addfollowup" method="POST">
+    @csrf
+      <!-- Modal body -->
+      <div class="modal-body" style="direction:rtl;font-family:sefati">
+        
+            <div class="row">
+                <div class="col-md-12">
+                    <label>انتخاب مشتری :</label>
+                    <select name="user_id" class="form-control" id="" required>
+                        <option value="">انتخاب کنید...</option>
+                        @foreach($us as $u)
+                            <option value="{{$u->id}}">{{$u->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <br>
+                <div class="row">   
+                    <div class="col-md-12">
+                        <label for="">هدف و توضیحات : </label>
+                        <textarea name="desc" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">   
+                    <div class="col-md-12">
+                        <label for="">تاریخ شروع روند : </label>
+                        <input type="text" class="form-control" id="datepickeruser4" name="date" required/>
+                    </div>
+                </div>
+            <br>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <button class="btn btn-success pr-5 pl-5"> افزودن</button>
+            </div>
+        </div>
+      </div>
+    </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal pt-5" id="followupm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">پیگیری مشتری</h5>
+      </div>
+    <form action="/monshi/addfollowup_to_report" method="POST">
+    @csrf
+      <!-- Modal body -->
+      <div class="modal-body" style="direction:rtl;font-family:sefati">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="accordianId" role="tablist" aria-multiselectable="true">
+                    <div class="card">
+                        <div class="card-header" role="tab" id="section1HeaderId">
+                            <h5 class="mb-0">
+                                <a style="font-size:10px" data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true" aria-controls="section1ContentId">
+                          تاریخچه پیگیری ها
+                        </a>
+                            </h5>
+                        </div>
+                        <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+                            <div class="card-body">
+                                <table style="width: 100%;" class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>تاریخ</th>
+                                            <th>توضیحات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="trtable_followup">
+                                           
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <br>
+            <input type="text" id="followupmodal_userid" name="user_id" hidden>
+            <div class="row">   
+                    <div class="col-md-12">
+                        <label for=""> توضیحات : </label>
+                        <textarea name="desc" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">   
+                    <div class="col-md-12">
+                        <label for="">تاریخ شروع روند : </label>
+                        <input type="text" class="form-control" id="datepickeruser11" name="date" required/>
+                        <br>
+                        <input type="text" class="form-control" id="datepickeruser12" name="time" required/>
+
+                  
+                    </div>
+                </div>
+            <br>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <button class="btn btn-success"> افزودن</button>
+            </div>
+        </div>
+      </div>
+    </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal pt-5" id="show_file_verify">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">تایید فایل مشاور</h5>
+      </div>
+    <form action="/monshi/addfollowup_to_report" method="POST">
+    @csrf
+      <!-- Modal body -->
+      <div class="modal-body" style="direction:rtl;font-family:sefati">
+        
+      </div>
+    </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -378,14 +541,20 @@
 
 <script>
 
+    function followupmodal(id){
+        $("#trtable_followup").empty()
 
-    function followup_data(id){
-        $.get('/moshaver/getshowuser_id/'+id)
-    .then((res)=>{
-        $("#name_client").text("")
-        $("#name_client").text(res.name)
-    })
+        $("#followupmodal_userid").val("")
+        $("#followupmodal_userid").val(id)
+        $.get('/monshi/followuphistoryinreport/'+id)
+            .then((res)=>{
+                res.map((item) => {
+                    $("#trtable_followup").append(`<tr><td>${item.date}</td><td>${item.desc}</td></tr>`)
+                })
+            })
     }
+
+    
     String.prototype.reverse = function () {
         return this.split("").reverse().join("");
     }
@@ -468,12 +637,12 @@ function action_showdetails(actioninfo) {
 
     $("#show_details").addClass("showddd")
     
-    $.get('/moshaver/getshowuser_id/'+actioninfo.event._def.extendedProps.client_id)
+    $.get('/monshi/getshowuser_id/'+actioninfo.event._def.extendedProps.client_id)
     .then((res)=>{
         $("#client_action").text(res.name)
     })
 
-    $.get('/moshaver/getshowfile_id/'+actioninfo.event._def.extendedProps.file_id)
+    $.get('/monshi/getshowfile_id/'+actioninfo.event._def.extendedProps.file_id)
     .then((res)=>{
         $("#file_action").text(res.name)
     })
