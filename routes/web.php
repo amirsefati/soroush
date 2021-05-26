@@ -28,19 +28,21 @@ Route::get('/soroush', function(){
     
 });
 
+Route::post('moshaver/phonebook',[Moshaver::class,'phonebook_post']);
 
 // Moshaver Router
 Route::prefix('moshaver')->group(function(){
 
     Route::get('/',[Moshaver::class,'index']);
+
     Route::get('addfile_get',[Moshaver::class,'addfile_get']);
     Route::post('addfile_post',[Moshaver::class,'addfile_post']);
     Route::post('adduser_digest',[Moshaver::class,'adduser_digest']);
     Route::post('editfile_post',[Moshaver::class,'editfile_post']);
+    Route::get('editfile/{fileid}',[Moshaver::class,'editfile_get']);
 
     Route::get('adduser',[Moshaver::class,'adduser']);
     Route::post('adduser_post',[Moshaver::class,'adduser_post']);
-    Route::get('editfile/{fileid}',[Moshaver::class,'editfile_get']);
     Route::get('fileinfo/{fileid}',[Moshaver::class,'fileinfo_get']);
 
     
@@ -116,7 +118,6 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/phonebook',[Moshaver::class,'phonebook']);
 
-    Route::post('/phonebook',[Moshaver::class,'phonebook_post']);
 
     
     //action
@@ -139,6 +140,30 @@ Route::prefix('monshi')->group(function(){
 
     Route::get('/',[Monshi::class,'index']);
     
+    Route::get('manage_files',[Monshi::class,'manage_files']);
+
+    Route::get('addfile_get',[Monshi::class,'addfile_get']);
+    Route::post('addfile_post',[Monshi::class,'addfile_post']);
+    Route::post('adduser_digest',[Monshi::class,'adduser_digest']);
+    Route::get('editfile/{fileid}',[Monshi::class,'editfile_get']);
+    Route::post('editfile_post',[Monshi::class,'editfile_post']);
+
+    Route::get('listusers',[Monshi::class,'listusers']);
+    Route::get('adduser',[Monshi::class,'adduser']);
+    Route::get('show_user/{userid}',[Monshi::class,'show_user_get']);
+
+    Route::get('edituser/{userid}',[Monshi::class,'edituser_get']);
+    Route::post('edituser_post',[Monshi::class,'edituser_post']);
+
+
+    Route::get('/phonebook',[Monshi::class,'phonebook']);
+
+    Route::get('/followup',[Monshi::class,'followup_get']);
+
+    
+
+    Route::post('/uploadfilesimg/{file_id}',[Monshi::class,'uploadfilesimg']);
+
 });
 
 
@@ -146,5 +171,6 @@ Route::prefix('monshi')->group(function(){
 Route::prefix('manager')->group(function(){
 
     Route::get('/',[Manager::class,'index']);
-    
+   
+
 });

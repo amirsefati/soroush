@@ -1,4 +1,4 @@
-@extends('moshaver.master')
+@extends('monshi.master')
 @section('content')
 
 <div class="row">
@@ -26,7 +26,7 @@
         
         @foreach($users as $user)
             <tr>
-            <td><a href="/moshaver/show_user/{{$user->id}}">{{$user->name}}</a></td>
+                <td><a href="/monshi/show_user/{{$user->id}}">{{$user->name}}</a></td>
                 <td>{{$user->phone}}</td>
                 <td>
                     @if($user->etc1 == 1)

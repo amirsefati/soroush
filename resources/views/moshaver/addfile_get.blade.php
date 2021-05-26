@@ -94,17 +94,17 @@
                             <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
                                     <label for="price">قیمت متری :</label>
-                                    <input type="number" name="price" id="price" class="form-control" >
+                                    <input type="text" name="price" onkeyup="reformatText(this)" id="price" class="form-control" >
                                 </div>
 
                                 <div class="col-md-3" id="colrent">
                                     <label for="rent_annual">رهن :</label>
-                                    <input type="number" name="rent_annual" id="rentrpice" class="form-control" >
+                                    <input type="text" name="rent_annual" onkeyup="reformatText(this)" id="rentrpice" class="form-control" >
                                 </div>
 
                                 <div class="col-md-3" id="colrentmonth">
                                     <label for="rent_month">اجاره :</label>
-                                    <input type="number" name="rent_month" id="rent_month" class="form-control" >
+                                    <input type="text" name="rent_month" onkeyup="reformatText(this)" id="rent_month" class="form-control" >
                                 </div>
 
                                 <div class="col-md-3" id="bedroom_number">

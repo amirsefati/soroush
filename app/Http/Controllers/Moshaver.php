@@ -25,7 +25,6 @@ class Moshaver extends Controller
         return view('moshaver.index',compact(['works','clients','files','taavons','actions']));
     }
 
-  
 
     public function addfile_get(){
         $users = User::where('level','1')->where('userid_inter',Auth::user()->id)->get();
@@ -50,9 +49,9 @@ class Moshaver extends Controller
             'userid_file' => $request->userid_file,
             'area' => $request->area,
             'age' => $request->age,
-            'price' => $request->price,
-            'rent_annual' => $request->rent_annual,
-            'rent_month' => $request->rent_month,
+            'price' => $request->price ? str_replace(",","",$request->price) : null,
+            'rent_annual' => $request->rent_annual ? str_replace(",","", $request->rent_annual) : null,
+            'rent_month' => $request->rent_month ? str_replace(",","", $request->rent_month) : null,
             'bedroom_number' => $request->bedroom_number,
             'floor' => $request->floor,
             'phone1' => $request->phone1,
@@ -91,9 +90,6 @@ class Moshaver extends Controller
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
 
-            'etc2' => $request->kind_type == 'sell' ? '1' : null,
-            'etc4' => $request->kind_type == 'rent' ? '1' : null,
-
         ]);
         return redirect('moshaver/editfile/'.$file->id);
     }
@@ -125,9 +121,9 @@ class Moshaver extends Controller
             'userid_file' => $request->userid_file,
             'area' => $request->area,
             'age' => $request->age,
-            'price' => $request->price,
-            'rent_annual' => $request->rent_annual,
-            'rent_month' => $request->rent_month,
+            'price' => $request->price ? str_replace(",","",$request->price) : null,
+            'rent_annual' => $request->rent_annual ? str_replace(",","", $request->rent_annual) : null,
+            'rent_month' => $request->rent_month ? str_replace(",","", $request->rent_month) : null,
             'bedroom_number' => $request->bedroom_number,
             'floor' => $request->floor,
             'phone1' => $request->phone1,
@@ -166,8 +162,6 @@ class Moshaver extends Controller
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
 
-            'etc2' => $request->kind_type == 'sell' ? '1' : null,
-            'etc4' => $request->kind_type == 'rent' ? '1' : null,
         ]);
         
             return redirect('moshaver/manage_files');
@@ -180,6 +174,11 @@ class Moshaver extends Controller
             'name' => 'required',
             'phone' => 'required|unique:users'
         ]);
+
+        $etc5 = 0;
+        if(Auth::user()->level == 3){
+            $etc5 = 1;
+        }
         
         $newuser = User::create([
             'name' => $request->name,
@@ -187,7 +186,8 @@ class Moshaver extends Controller
             'kind_type' => 'sell',
             'etc2' => 1,
             'userid_inter' => Auth::user()->id,
-            'password' => '1234567801'
+            'password' => '1234567801',
+            'etc5' => $etc5
         ]);
         
         return ["status" => 200,"data" => $newuser];
@@ -206,9 +206,9 @@ class Moshaver extends Controller
             'userid_inter' => $request->userid_inter,
             'name' => $request->name,
             'phone' => $request->phone,
-            'price' => $request->price,
-            'rent_annual' => $request->rent_annual,
-            'rent_month' => $request->rent_month,
+            'price' => $request->price ? str_replace(",","",$request->price) : null,
+            'rent_annual' => $request->rent_annual ? str_replace(",","", $request->rent_annual) : null,
+            'rent_month' => $request->rent_month ? str_replace(",","", $request->rent_month) : null,
             'type' => $request->type,
             'religen' => $request->religen,
             'bedroom_number' => $request->bedroom_number,
@@ -260,10 +260,9 @@ class Moshaver extends Controller
         User::where('id',$request->userid)->update([
             'userid_inter' => $request->userid_inter,
             'name' => $request->name,
-            'phone' => $request->phone,
-            'price' => $request->price,
-            'rent_annual' => $request->rent_annual,
-            'rent_month' => $request->rent_month,
+            'price' => $request->price ? str_replace(",","",$request->price) : null,
+            'rent_annual' => $request->rent_annual ? str_replace(",","", $request->rent_annual) : null,
+            'rent_month' => $request->rent_month ? str_replace(",","", $request->rent_month) : null,
             'type' => $request->type,
             'religen' => $request->religen,
             'bedroom_number' => $request->bedroom_number,
@@ -296,7 +295,7 @@ class Moshaver extends Controller
 
     public function editfile_get($fileid){
         $file = File::find($fileid);
-        $users = User::where('level','1')->get();
+        $users = User::where('level','1')->where('userid_inter',Auth::user()->id)->get();
         return view('moshaver.editfile',compact(['file','users']));
     }
     public function listusers(){
@@ -308,7 +307,7 @@ class Moshaver extends Controller
 
     public function manage_files(){
         $files_yes_publish = File::where('userid_moshaver',Auth::user()->id)
-        ->orderBy('etc1','DESC')->orderBy('updated_at')->get();
+        ->orderBy('updated_at')->get();
         return view('moshaver.manage_files',compact('files_yes_publish'));
     }
 
@@ -318,14 +317,7 @@ class Moshaver extends Controller
         return view('moshaver.search_files');
     }
 
-    public function addpin($id){
-        File::find($id)->update(['etc1'=>'1']);
-        return back();
-    }
-    public function delpin($id){
-        File::find($id)->update(['etc1'=>'0']);
-        return back();
-    }
+    
    
     public function taavon_get(){
         $taavons = Taavon::where('taavon_id',Auth::user()->id)

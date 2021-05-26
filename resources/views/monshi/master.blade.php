@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>داشبورد مشاور</title>
+    <title>داشبورد منشی</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="داشبورد مشاور برنامه">
+    <meta name="description" content="داشبورد منشی">
     <meta name="csrf-token" content="{{ Session::token() }}"> 
 
     <link rel="stylesheet" href="{{asset('dashboard/main.css')}}">
@@ -131,7 +131,6 @@
   </div>
 </div>  
 
-
 <div class="modal pt-5" id="mm1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -140,60 +139,21 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-        <h5 class="modal-title">بازدید ملک</h5>
+        <h5 class="modal-title">پیگیری مشتری</h5>
       </div>
     <form action="/moshaver/reminder_visitfile" method="POST">
     @csrf
       <!-- Modal body -->
       <div class="modal-body" style="direction:rtl;font-family:sefati">
         <div class="row">
-            <div class="col-md-12">
-                <span>انتخاب فایل :</span>
-                <select name="file_id" class="form-control" id="" required>
-                    <option value="">انتخاب کنید...</option>
-                    @foreach($fs as $f)
-                        <option value="{{$f->id}}">{{$f->type}} {{$f->name}}</option>
-                    @endforeach
-                </select>
-            </div>
+            نام مشتری : <span id="name_client"></span>
         </div>
 
-        <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب مشتری :</span>
-                    <select name="client_id" class="form-control" id="" required>
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($us as $u)
-                            <option value="{{$u->id}}">{{$u->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <span>تاریخ :</span>
-                <input type="text" class="form-control" id="datepickeruser" name="timer" required/>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <span>ساعت :</span>
-                <input type="text" class="form-control" id="timepickeruser" name="hour" required/>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <span>توضیحات :</span>
-                <textarea name="desc" class="form-control" rows="4"></textarea>
-            </div>
-        </div>
+       
 
         <div class="row">
             <div class="col-md-12" style="text-align: center;">
-                <button class="btn btn-success">ثبت یادآوری</button>
+                <button class="btn btn-success"> افزودن</button>
             </div>
         </div>
       </div>
@@ -204,304 +164,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="modal pt-5" id="mm2">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h5 class="modal-title">نشست قرارداد</h5>
-      </div>
-        <form action="/moshaver/reminder_session" method="POST">
-        @csrf
-        <!-- Modal body -->
-        <div class="modal-body" style="direction:rtl;font-family:sefati">
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب فایل :</span>
-                    <select name="file_id" class="form-control" id="" required>
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($fs as $f)
-                            <option value="{{$f->id}}">{{$f->type}} {{$f->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب مشتری :</span>
-                    <select name="client_id" class="form-control" id="" required>
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($us as $u)
-                            <option value="{{$u->id}}">{{$u->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>تاریخ :</span>
-                    <input type="text" class="form-control" id="datepickeruser2" name="timer" required/>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>ساعت :</span>
-                    <input type="text" class="form-control" id="timepickeruser2" name="hour" required/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>توضیحات :</span>
-                    <textarea name="desc" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <button class="btn btn-success">ثبت یادآوری</button>
-                </div>
-            </div>
-        </div>
-        </form>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal pt-5" id="mm3">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h5 class="modal-title">کارشناسی ملک</h5>
-      </div>
-        <form action="/moshaver/reminder_assets" method="POST">
-        @csrf
-        <!-- Modal body -->
-        <div class="modal-body" style="direction:rtl;font-family:sefati">
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب فایل :</span>
-                    <select name="file_id" class="form-control" id="" required>
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($fs as $f)
-                            <option value="{{$f->id}}">{{$f->type}} {{$f->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>تاریخ :</span>
-                    <input type="text" class="form-control" id="datepickeruser3" name="timer" required/>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>ساعت :</span>
-                    <input type="text" class="form-control" id="timepickeruser3" name="hour" required/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>توضیحات :</span>
-                    <textarea name="desc" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <button class="btn btn-success">ثبت یادآوری</button>
-                </div>
-            </div>
-        </div>
-        </form>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal pt-5" id="mm4">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h5 class="modal-title">یادآوری تماس</h5>
-      </div>
-        <form action="/moshaver/reminder_call" method="POST">
-        @csrf
-        <!-- Modal body -->
-        <div class="modal-body" style="direction:rtl;font-family:sefati">
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب مشتری :</span>
-                    <select name="client_id" class="form-control" id="" required>
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($us as $u)
-                            <option value="{{$u->id}}">{{$u->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>تاریخ :</span>
-                    <input type="text" class="form-control" id="datepickeruser4" name="timer" required/>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>ساعت :</span>
-                    <input type="text" class="form-control" id="timepickeruser4" name="hour" required/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>توضیحات :</span>
-                    <textarea name="desc" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <button class="btn btn-success">ثبت یادآوری</button>
-                </div>
-            </div>
-        </div>
-        </form>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal pt-5" id="mm5">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h5 class="modal-title">سایر یادآوری ها</h5>
-      </div>
-        <form action="/moshaver/reminder_etc" method="POST">
-        @csrf
-        <!-- Modal body -->
-        <div class="modal-body" style="direction:rtl;font-family:sefati">
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span> عنوان :</span>
-                    <input type="text" class="form-control" name="title">
-                </div>
-            </div>
-            
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب فایل :</span>
-                    <select name="file_id" class="form-control" id="">
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($fs as $f)
-                            <option value="{{$f->id}}">{{$f->type}} {{$f->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>انتخاب مشتری :</span>
-                    <select name="client_id" class="form-control" id="">
-                        <option value="">انتخاب کنید...</option>
-                        @foreach($us as $u)
-                            <option value="{{$u->id}}">{{$u->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>تاریخ :</span>
-                    <input type="text" class="form-control" id="datepickeruser5" name="timer" required/>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <span>ساعت :</span>
-                    <input type="text" class="form-control" id="timepickeruser5" name="hour" required/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <span>توضیحات :</span>
-                    <textarea name="desc" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <button class="btn btn-success">ثبت یادآوری</button>
-                </div>
-            </div>
-        </div>
-        </form>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="show_details" class="modal_details">
-
-  <!-- Modal content -->
-  <div class="modal_details-content">
-    <span class="close2" id="close2">&times;</span>
-    <p>مشتری : <span id="client_action"></span></p>
-    <p>کاربر : <span id="file_action"></span></p>
-    <p>متن : <span id="text_action"></span></p>
-    <p>عنوان : <span id="title_action"></span></p>
-
-  </div>
-
 </div>
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -642,7 +304,7 @@
                                 <li class="app-sidebar__heading"></li>
 
                                 <li>
-                                    <a href="/moshaver" class="">
+                                    <a href="/monshi" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         داشبورد
                                     </a>
@@ -650,54 +312,41 @@
 
                                 
                                 <li>
-                                    <a href="/moshaver/manage_files">
+                                    <a href="/monshi/manage_files">
                                         <i class="metismenu-icon pe-7s-display2"></i>
                                           فایل ها
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="/moshaver/listusers" class="">
+                                    <a href="/monshi/listusers" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                          مشتری ها
                                     </a>
                                 </li> 
 
                                 <li>
-                                    <a href="/moshaver/taavon" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        تعاون
-                                        @if(App\Models\Taavon::where('taavon_id',Auth::user()->id)->where('verify',0)->count() > 0) 
-                                            <span class="badge badge-pill badge-success">{{App\Models\Taavon::where('taavon_id',Auth::user()->id)->where('verify',0)->count()}}</span>
-                                        @endif
-
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/moshaver/action" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        اقدامات پیش رو
-                                    </a>
-                                </li>
-
-
-                                <li>
-                                    <a href="" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        اعلامیه
-                                    </a>
-                                </li>
-
-                                
-                                <li>
-                                    <a href="/moshaver/phonebook" class="">
+                                    <a href="/monshi/phonebook" class="">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         دفترچه تلفن
                                     </a>
                                 </li>
                         
 
+                                <li>
+                                    <a href="/monshi/followup" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                            پیگیری
+                                    </a>
+                                </li>
+
+                                
+                                <li>
+                                    <a href="/monshi/verify_moshaver_file" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                         تایید فایل مشاورین
+                                    </a>
+                                </li>
                                
 
                             </ul>
@@ -729,6 +378,14 @@
 
 <script>
 
+
+    function followup_data(id){
+        $.get('/moshaver/getshowuser_id/'+id)
+    .then((res)=>{
+        $("#name_client").text("")
+        $("#name_client").text(res.name)
+    })
+    }
     String.prototype.reverse = function () {
         return this.split("").reverse().join("");
     }
@@ -748,7 +405,7 @@
 $("#send_digest").click(function(){
     var name_digest = $("#name_digest").val()
     var phone_digest = $("#phone_digest").val()
-    $.post('/moshaver/adduser_digest',{
+    $.post('/monshi/adduser_digest',{
         '_token': $('meta[name=csrf-token]').attr('content'),
         name : name_digest,
         phone : phone_digest
@@ -842,7 +499,7 @@ if($("#infileedit").val()){
           inline: true,
           target: '#drag-drop-area',
         })
-        .use(Uppy.XHRUpload, {endpoint: '/moshaver/uploadfilesimg/'+fileid_edit})
+        .use(Uppy.XHRUpload, {endpoint: '/monshi/uploadfilesimg/'+fileid_edit})
 
       uppy.on('complete', (result) => {
         console.log('Upload complete! We’ve uploaded these files:', result.successful)

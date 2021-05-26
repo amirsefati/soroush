@@ -1,4 +1,4 @@
-@extends('moshaver.master')
+@extends('monshi.master')
 @section('content')
 <input type="text" id="what_kind_type" value="{{$file->kind_type}}"  hidden>
 
@@ -15,7 +15,7 @@
 
 <div class="row">
     <div class="col-md-12">
-    <form action="/moshaver/editfile_post" method="POST" enctype="multipart/form-data">
+    <form action="/monshi/editfile_post" method="POST" enctype="multipart/form-data">
     @csrf
         <input type="text" name="fileid" value="{{$file->id}}" id="fileid_edit" hidden>
         <input type="text" name="userid_moshaver" value="{{Auth::user()->id}}" hidden>

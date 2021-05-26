@@ -222,6 +222,8 @@ $('document').ready(function(){
     })
       
     $(function () {
+
+
         $("#area").keydown(function () {
           // Save old value.
           if (!$(this).val() || (parseInt($(this).val()) <= 5000000 && parseInt($(this).val()) >= 0))

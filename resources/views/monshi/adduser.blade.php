@@ -1,10 +1,10 @@
-@extends('moshaver.master')
+@extends('monshi.master')
 @section('content')
 
 
 <div class="row">
     <div class="col-md-12">
-    <form action="/moshaver/adduser_post" method="POST" enctype="multipart/form-data">
+    <form action="/monshi/adduser_post" method="POST" enctype="multipart/form-data">
     @csrf
     
         <input type="text" name="userid_inter" value="1" hidden>

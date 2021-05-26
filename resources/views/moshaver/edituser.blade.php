@@ -89,15 +89,15 @@
                             <div class="row mt-2 justify-content-center">
                                 <div class="col-md-4 " id="colseller">
                                     <label for="price">بودجه خریدار :</label>
-                                    <input type="number" class="form-control" name="price" value="{{$user->price}}" id="adduser_price">
+                                    <input type="text" class="form-control" onkeyup="reformatText(this)" name="price" value="{{$user->price}}" id="adduser_price">
                                 </div>
                                 <div class="col-md-4 " id="colrenterannual">
                                     <label for="rent_annual">بودجه رهن :</label>
-                                    <input type="number" class="form-control" name="rent_annual" value="{{$user->rent_annual}}"   id="adduser_rent_annual">
+                                    <input type="text" class="form-control" onkeyup="reformatText(this)" name="rent_annual" value="{{$user->rent_annual}}"   id="adduser_rent_annual">
                                 </div>
                                 <div class="col-md-4 " id="colrentermonth">
                                     <label for="price">بودجه اجاره :</label>
-                                    <input type="number" class="form-control" name="rent_month" value="{{$user->rent_month}}" id="adduser_rent_month">
+                                    <input type="text" class="form-control" onkeyup="reformatText(this)" name="rent_month" value="{{$user->rent_month}}" id="adduser_rent_month">
                                 </div>
                             </div>
 
