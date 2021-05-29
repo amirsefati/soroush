@@ -438,5 +438,21 @@ class Monshi extends Controller
         return view('monshi.verify_moshaver_file',compact('files'));
     }
 
+    public function file_id_selected($id){
+        File::where('id',$id)->update([
+            'verify' => 1
+        ]);
+        return ['status',200];
+    }
 
+    public function file_id_selected_failed($id){
+        File::where('id',$id)->update([
+            'verify' => -1
+        ]);
+        return ['status',200];
+    }
+
+
+
+    
 }

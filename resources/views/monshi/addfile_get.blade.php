@@ -217,10 +217,10 @@
                                     <input type="text" name="name" class="form-control">
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="name">لوکیشن :</label>
-                                    <input type="text" name="name" placeholder="در حال ساخت" class="form-control" disabled>
-                                </div>
+                                <div class="col-md-4">  
+                                    <label for="">لوکیشن :</label>
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder="در حال ساخت" class="form-control">
+                                </div> 
                             </div>
 
                             <div class="row mt-3">
@@ -251,7 +251,7 @@
 
                                 <div class="col-md-3">
                                     <label for="wc">نوع سرویس بهداشتی :</label>
-                                    <select class="multiselectfiles" name="wc[]" id="" multiple="multiple" style="width:100%">
+                                    <select class="multiselectfiles" name="wc[]"  multiple="multiple" style="width:100%">
                                         <option value="ایرانی">ایرانی</option>
                                         <option value="فرنگی">فرنگی</option>
                                         <option value="وان حمام">وان حمام</option>
@@ -260,7 +260,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="direction"> جهت ملک :</label>
-                                    <select class="multiselectfiles" name="direction" id="" style="width:100%">
+                                    <select class="multiselectfiles" name="direction"  style="width:100%">
                                         <option value="">انتخاب کنید</option> 
                                         <option value="شمالی">شمالی</option> 
                                         <option value="جنوبی">جنوبی</option> 
@@ -274,7 +274,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="depot">انباری :</label>
-                                    <select class="multiselectfiles" name="depot" id="" style="width:100%">
+                                    <select class="multiselectfiles" name="depot"  style="width:100%">
                                         <option value="">انتخاب کنید</option> 
                                         <option value="1">دارد</option>
                                         <option value="0">ندارد</option>
@@ -284,7 +284,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="elevator">آسانسور :</label>
-                                        <select class="multiselectfiles" name="elevator" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="elevator"  style="width:100%">
                                             <option value="">انتخاب کنید</option> 
                                             <option value="1">دارد</option>
                                             <option value="0">ندارد</option>
@@ -292,7 +292,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="balcony">بالکن :</label>
-                                        <select class="multiselectfiles" name="balcony" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="balcony"  style="width:100%">
                                             <option value="">انتخاب کنید</option> 
                                             <option value="1">دارد</option>
                                             <option value="0">ندارد</option>
@@ -300,7 +300,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="wc">کف :</label>
-                                        <select class="multiselectfiles" name="floor_type[]" id="" multiple="multiple" style="width:100%">
+                                        <select class="multiselectfiles" name="floor_type[]" multiple="multiple" style="width:100%">
                                             <option value="سنگ">سنگ</option>
                                             <option value="موزائیک">موزائیک</option>
                                             <option value="کاشی">کاشی</option>
@@ -319,7 +319,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="shell">نوع اسکلت :</label>
-                                        <select class="multiselectfiles" name="shell" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="shell"  style="width:100%">
                                             <option value="">انتخاب کنید</option> 
                                             <option value="بتنی">بتنی</option>
                                             <option value="فلزی پیچ مهره">فلزی پیچ مهره</option>
@@ -331,7 +331,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="outdoor_face">نمای خارجی :</label>
-                                        <select class="multiselectfiles" name="outdoor_face[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="outdoor_face[]" multiple="multiple"  style="width:100%">
                                             <option value="سرامیک">سرامیک</option>
                                             <option value="آجر">آجر</option>
                                             <option value="سنگ ترمو">سنگ ترمو</option>
@@ -351,7 +351,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indoor_face">نمای داخلی :</label>
-                                        <select class="multiselectfiles" name="indoor_face[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="indoor_face[]" multiple="multiple"  style="width:100%">
                                             <option value="دیوار نقاشی">دیوار نقاشی</option>
                                             <option value="کاغذ اپوکسی">کاغذ اپوکسی</option>
                                             <option value="کاغذ دیواری">کاغذ دیواری</option>
@@ -363,7 +363,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="cabinet">کابینت :</label>
-                                        <select class="multiselectfiles" name="cabinet[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="cabinet[]" multiple="multiple"  style="width:100%">
                                             <option value="فلزی">فلزی</option>
                                             <option value="فایبرگلس">فایبرگلس</option>
                                             <option value="های گلس">های گلس</option>
@@ -383,7 +383,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="cooling">سرمایش گرمایش :</label>
-                                        <select class="multiselectfiles" name="cooling[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="cooling[]" multiple="multiple"  style="width:100%">
                                             <option value="گرمایش از کف">گرمایش از کف</option>
                                             <option value="شوفاژ">شوفاژ</option>
                                             <option value="پکیج">پکیج</option>
@@ -417,7 +417,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="kitchen">آشپزخانه :</label>
-                                        <select class="multiselectfiles" name="kitchen[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="kitchen[]" multiple="multiple"  style="width:100%">
                                             <option value="مطبخ">مطبخ</option>
                                             <option value="هود">هود</option>
                                             <option value="اپن">اپن</option>
@@ -444,7 +444,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indoor_facility">امکانات اصلی :</label>
-                                        <select class="multiselectfiles" name="indoor_facility[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="indoor_facility[]" multiple="multiple"  style="width:100%">
                                             <option value="آب">آب</option>
                                             <option value="برق">برق</option>
                                             <option value="گاز">گاز</option>
@@ -453,7 +453,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="secure_facility">امکانات امنیتی :</label>
-                                        <select class="multiselectfiles" name="secure_facility[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="secure_facility[]" multiple="multiple"  style="width:100%">
                                             <option value="اطفا حریق">اطفا حریق</option>
                                             <option value="اعلام حریق">اعلام حریق</option>
                                             <option value="آیفون تصویری">آیفون تصویری   </option>
@@ -467,7 +467,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="sport_facility">امکانات ورزشی :</label>
-                                        <select class="multiselectfiles" name="sport_facility[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="sport_facility[]" multiple="multiple" style="width:100%">
                                             <option value="استخر روباز">استخر روباز</option>
                                             <option value="استخر مشاع">استخر مشاع   </option>
                                             <option value="استخر اختصاصی">استخر اختصاصی</option>
@@ -482,7 +482,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="welfair_facility">امکانات رفاهی تفریحی :</label>
-                                        <select class="multiselectfiles" name="welfair_facility[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="welfair_facility[]" multiple="multiple"  style="width:100%">
                                         <option value="باربیکیو">باربیکیو</option>
                                         <option value="آلاچیق">آلاچیق</option>
                                         <option value="فضای بازی کودکان">فضای بازی کودکان</option>
@@ -495,7 +495,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="outdoor_status">وضعیت بیرونی :</label>
-                                        <select class="multiselectfiles" name="outdoor_status[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="outdoor_status[]" multiple="multiple"  style="width:100%">
                                             <option value="بن بست">بن بست</option>
                                             <option value="تو دلی">تو دلی</option>
                                             <option value="شهرکی">شهرکی</option>
@@ -504,7 +504,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="indoor_status">وضعیت داخلی :</label>
-                                        <select class="multiselectfiles" name="indoor_status[]" multiple="multiple" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="indoor_status[]" multiple="multiple"  style="width:100%">
                                             <option value="بازسازی شده">بازسازی شده</option>
                                             <option value="فول بازسازی شده">فول بازسازی شده</option>
                                             <option value="نیمه دوبلکس">نیمه دوبلکس</option>
@@ -512,7 +512,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="evacuation_status">وضعیت سکونت</label>
-                                        <select class="multiselectfiles" name="evacuation_status" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="evacuation_status" style="width:100%">
                                             <option value="تخلیه">تخلیه</option>
                                             <option value="مالک مستقر">مالک مستقر</option>
                                             <option value="مستاجر مستقر">مستاجر مستقر</option>
@@ -523,7 +523,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="deed_type"> نوع سند :</label>
-                                        <select class="multiselectfiles" name="deed_type" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="deed_type"  style="width:100%">
                                             <option value="تجاری">تجاری</option>
                                             <option value="اداری">اداری</option>
                                             <option value="مسکونی">مسکونی</option>
@@ -537,7 +537,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="convertible"> معاوضه :</label>
-                                        <select class="multiselectfiles" name="convertible" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="convertible"  style="width:100%">
                                             <option value="دارد">دارد</option>
                                             <option value="ندارد">ندارد</option>
 

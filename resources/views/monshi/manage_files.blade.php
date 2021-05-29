@@ -41,8 +41,9 @@
 
                                             @if($file->publish == 0)
                                                 <div class="manage_files_notpublish">
-                                                    <span class="manage_files_notpublish_span">ناقص</span>
+                                                    <span class="manage_files_notpublish_span">پیش نویس</span>
                                                 </div>
+                                            
                                             @endif
                                         </div>
                                     </div>

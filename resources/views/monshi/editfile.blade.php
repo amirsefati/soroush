@@ -205,9 +205,9 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="name">لوکیشن :</label>
-                                    <input type="text" name="name" placeholder="در حال ساخت" class="form-control" disabled>
-                                </div>
+                                    <label for="">لوکیشن :</label>
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder="افزودن" class="form-control">
+                       </div>
                             </div>
 
                             <div class="row mt-3">

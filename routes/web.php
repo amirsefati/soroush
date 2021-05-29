@@ -181,6 +181,13 @@ Route::prefix('monshi')->group(function(){
 
     Route::get('/verify_moshaver_file',[Monshi::class,'verify_moshaver_file']);
 
+
+    Route::get('/file_id_selected/{file_id}',[Monshi::class,'file_id_selected']);
+
+    Route::get('/file_id_selected_failed/{file_id}',[Monshi::class,'file_id_selected_failed']);
+
+    
+    
 });
 
 

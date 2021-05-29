@@ -18,7 +18,9 @@
     <link href="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('map/mapp.min.css')}}">
     <link rel="stylesheet" href="{{asset('map/fa/style.css')}}">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
 </head>
 <body id="bbody">
 <div style="display: none;">
@@ -307,27 +309,122 @@
 <div class="modal pt-5" id="show_file_verify">
   <div class="modal-dialog">
     <div class="modal-content">
-       
+       <input id="file_id_selected" hidden>
       <!-- Modal Header -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h5 class="modal-title">تایید فایل مشاور</h5>
       </div>
-    <form action="/monshi/addfollowup_to_report" method="POST">
-    @csrf
       <!-- Modal body -->
       <div class="modal-body" style="direction:rtl;font-family:sefati">
-        
+            <div class="row">
+                <div class="col-md-6">
+                    نام مشاور : <span id="moshaver_name"></span>
+                </div>
+                <div class="col-md-6">
+                    شماره تلفن مشاور  : <span id="moshaver_phone"></span>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    نام مالک فایل : <span id="client_name"></span>
+                </div>
+                <div class="col-md-6">
+                    شماره تلفن مالک فایل : <span id="client_phone"></span>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-md-3" style="text-align: center;">
+                    <img src="/img/area.svg" alt="">
+                    <p style="margin:10px;font-weight:bold;font-size:20px" id="file_area"></p>
+                    <p style="color:#b5b5b5;font-size:12px">متری</p>
+                </div>
+
+                <div class="col-md-3" style="text-align: center;">
+                    <img src="/img/age.svg" alt="">
+                    <p style="margin:10px;font-weight:bold;font-size:20px" id="file_age"></p>
+                    <p style="color:#b5b5b5;font-size:12px">سن بنا</p>
+                </div>
+
+                <div class="col-md-3" style="text-align: center;">
+                    <img src="/img/age.svg" alt="">
+                    <p style="margin:10px;font-weight:bold;font-size:20px" id="file_bedroom_number"></p>
+                    <p style="color:#b5b5b5;font-size:12px">تعداد خواب</p>
+                </div>
+
+                <div class="col-md-3" style="text-align: center;">
+                    <img src="/img/age.svg" alt="">
+                    <p style="margin:10px;font-weight:bold;font-size:20px" id="file_floor"></p>
+                    <p style="color:#b5b5b5;font-size:12px">طبقه واحد</p>
+                </div>
+            </div>
+
+            <hr>
+            <div class="row" style="justify-content: center;"> 
+                <div class="col-md-6" style="text-align: center;">
+                    <p style="color:#b5b5b5;font-size:12px;margin:5px;">تعداد طبقات</p>
+                    <p style="font-weight: bold;font-size:20px" id="allfloor"></p>
+                </div>
+
+                <div class="col-md-6" style="text-align: center;">
+                    <p style="color:#b5b5b5;font-size:12px;margin:5px;"> تعداد سرویس بهداشتی</p>
+                    <p style="font-weight: bold;font-size:20px" id="wc_number"></p>
+                </div>
+
+                <div class="col-md-6" style="text-align: center;">
+                    <p style="color:#b5b5b5;font-size:12px;margin:5px;"> پارکنیگ</p>
+                    <p style="font-weight: bold;font-size:20px" id="parking"></p>
+                </div>
+
+                <div class="col-md-6" style="text-align: center;">
+                    <p style="color:#b5b5b5;font-size:12px;margin:5px;"> تعداد واحد در طبقه</p>
+                    <p style="font-weight: bold;font-size:20px" id="suiteinfloor"></p>
+                </div>
+
+                <div class="col-md-6" style="text-align: center;">
+                    <p style="color:#b5b5b5;font-size:12px;margin:5px;"> تعداد کل واحد ها </p>
+                    <p style="font-weight: bold;font-size:20px" id="allsuite"></p>
+                </div>
+
+            </div>
       </div>
-    </form>
       <!-- Modal footer -->
-      <div class="modal-footer">
+      <div class="modal-footer" style="text-align: center;margin:auto">
+        <button onclick="verify_file_failed()" class="btn btn-danger">عدم صحت جزئیات</button>
+        <button onclick="verify_file_success()" class="btn btn-success">تایید فایل</button>
 
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal pt-5" id="show_map">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title"> تایید موقعیت محل</h5>
+      </div>
+      <div id="mapid"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="btn btn-success" data-dismiss="modal">تایید موقعیت</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -518,7 +615,6 @@
                 </div>    <div class="app-main__outer">
                     <div class="app-main__inner">
                                 @yield('content')
-                                <div id="appmap"></div>
                        </div>
         </div>
 
@@ -538,9 +634,78 @@
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
 <script src="{{asset('js/uppy.min.js')}}"></script>
 <script src="{{asset('js/fa_IR.min.js')}}"></script>
-
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
 <script>
 
+    function verify_file_success(){
+        $.get('/monshi/file_id_selected/'+ $("#file_id_selected").val()).then(()=>{
+
+        })
+        location.reload();     
+    }
+
+    function verify_file_failed(){
+        $.get('/monshi/file_id_selected_failed/'+ $("#file_id_selected").val()).then(()=>{
+
+        })
+        location.reload();    
+    }
+
+
+    var mymap = L.map('mapid').setView([35.75, 51.4], 12);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
+}).addTo(mymap);
+
+
+var popup = L.popup();
+
+function onMapClick(e) {
+        $("#llocation").val(e.latlng.toString())
+		popup
+			.setLatLng(e.latlng)
+			.setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+
+    function show_verify_file_details(file_id,user_id,moshaver_id){
+        $("#file_id_selected").val(file_id)
+
+        $.get('getshowfile_id/'+file_id)
+        .then((res)=>{
+            $("#file_area").text(res.area)
+            $("#file_age").text(res.age)
+            $("#file_bedroom_number").text(res.bedroom_number)
+            $("#file_floor").text(res.floor)
+
+            $("#allfloor").text(res.allfloor)
+            $("#wc_number").text(res.wc_number)
+            $("#parking").text(res.parking)
+            $("#suiteinfloor").text(res.suiteinfloor)
+            $("#allsuite").text(res.allsuite)
+
+        })
+        $.get('getshowuser_id/'+user_id)
+        .then((res)=>{
+            $("#moshaver_name").text(res.name)
+            $("#moshaver_phone").text(res.phone)
+
+        })
+        $.get('getshowuser_id/'+moshaver_id)
+        .then((res)=>{
+            $("#client_name").text(res.name)
+            $("#client_phone").text(res.phone)        
+        })
+    }
     function followupmodal(id){
         $("#trtable_followup").empty()
 
@@ -678,6 +843,8 @@ if($("#infileedit").val()){
 
 
 </script>
+
+
 </body>
 
 </html>

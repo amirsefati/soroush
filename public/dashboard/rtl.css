@@ -211,3 +211,5 @@ input[type=number] {
 .showddd{
   display: block;
 }
+
+#mapid { height: 400px; }

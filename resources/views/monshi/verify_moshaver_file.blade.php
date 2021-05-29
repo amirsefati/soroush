@@ -17,7 +17,7 @@
                                 <p>نام مالک فایل : {{App\Models\User::find($file->userid_file)->name}}</p>
                                 <p>شماره تلفن مالک فایل : {{App\Models\User::find($file->userid_file)->phone}}</p>
                                 <div style="text-align: center;">
-                                    <button data-toggle="modal" data-target="#show_file_verify" class="btn btn-success">جزئیات فایل</button>
+                                <button data-toggle="modal" data-target="#show_file_verify" onclick="show_verify_file_details('{{$file->id}}','{{$file->userid_file}}','{{$file->userid_moshaver}}')" class="btn btn-success">جزئیات فایل</button>
                                 </div>
                                 <br>
                             </div>

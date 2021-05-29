@@ -41,8 +41,22 @@
 
                                             @if($file->publish == 0)
                                                 <div class="manage_files_notpublish">
-                                                    <span class="manage_files_notpublish_span">ناقص</span>
+                                                    <span class="manage_files_notpublish_span">پیش نویس</span>
                                                 </div>
+                                            @else
+                                                @if($file->verify == 0)
+                                                    <div class="manage_files_notpublish">
+                                                        <span class="manage_files_notpublish_span"> در انتظار تایید</span>
+                                                    </div>
+                                                @elseif($file->verify == -1)
+                                                    <div class="manage_files_notpublish">
+                                                        <span class="manage_files_notpublish_span"> رد شده </span>
+                                                    </div>
+                                                @else
+                                                    <div class="manage_files_notpublish">
+                                                        <span class="manage_files_notpublish_span"> تایید شده </span>
+                                                    </div>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
