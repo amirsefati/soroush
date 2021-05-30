@@ -46,10 +46,7 @@
                     <img src="/img/remove.svg" alt="">
                 </span>
 
-                <span class="fileinfo_btn_edit">
-                     ارسال به مشتری
-                    <img src="/img/share.svg" alt="">
-                </span>
+               
             </div>
         </div>
     </div>
@@ -78,7 +75,7 @@
                         @endif</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#tab4">اقدامات</a>
+                    <a class="nav-link" href="/moshaver/work_flow_file/{{$file->id}}">اقدامات</a>
                     </li>
                     
                 </ul>
@@ -253,9 +250,9 @@
                                                             <div class="col-md-3 p-0">
                                                                 <div class="chance_ok">
                                                                     @if($user->kind_type == 'sell')
-                                                                        <p class="chance_ok_percent">%{{floor(($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*10)*10}}~</p>
+                                                                        <p class="chance_ok_percent">~</p>
                                                                     @else
-                                                                        <p class="chance_ok_percent">%{{floor(($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*10)*10}}~</p>
+                                                                        <p class="chance_ok_percent">~</p>
                                                                     @endif
                                                                     <p class="chance_ok_text">شانس</p>
                                                                 </div>
@@ -263,16 +260,6 @@
 
                                                             <div class="col-md-8 p-2">
                                                                 
-                                                                        @if($user->kind_type == 'sell')
-                                                                            قیمت :
-                                                                            <strong>حدودا {{floor($user->price/1000)*1000}} میلیون تومان</strong>
-                                                                        @else
-                                                                            رهن : 
-                                                                            <strong>حدودا {{floor($user->rent_annual/1000)*1000}} میلیون تومان</strong>
-                                                                            <br/>
-                                                                            اجاره :
-                                                                            <strong>حدودا {{floor($user->rent_month/1000)*1000}} میلیون تومان</strong>  
-                                                                        @endif
                                                                         <br>
                                                                         مشاور : {{App\Models\User::find($user->userid_inter)->name}}
                                                             </div>
@@ -325,8 +312,7 @@
                         </div>
                     </div>
                     <div id="tab4" class="container tab-pane fade"><br>
-                    <h3>Menu 2</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+
                     </div>
                     
                 </div>

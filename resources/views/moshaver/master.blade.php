@@ -18,7 +18,9 @@
     <link href="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('map/mapp.min.css')}}">
     <link rel="stylesheet" href="{{asset('map/fa/style.css')}}">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
 </head>
 <body id="bbody">
 <div style="display: none;">
@@ -504,6 +506,27 @@
 
 </div>
 
+<div class="modal pt-5" id="show_map">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title"> تایید موقعیت محل</h5>
+      </div>
+      <div id="mapid"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="btn btn-success" data-dismiss="modal">تایید موقعیت</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -706,7 +729,6 @@
                 </div>    <div class="app-main__outer">
                     <div class="app-main__inner">
                                 @yield('content')
-                                <div id="appmap"></div>
                        </div>
         </div>
 
@@ -726,6 +748,85 @@
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
 <script src="{{asset('js/uppy.min.js')}}"></script>
 <script src="{{asset('js/fa_IR.min.js')}}"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script>
+$.get('moshaver/statics/'+7).then((res)=>{
+
+})
+
+Highcharts.chart('container', {
+  chart: {
+    type: 'column',
+    style: {
+            fontFamily: 'sefati'
+        }
+  },
+  title: {
+    text: 'گزارش هفتگی فعالت'
+  },
+  subtitle: {
+    text: 'با قابلیت انتخاب بازه'
+  },
+  xAxis: {
+    categories: [
+      '9/3/1400',
+      '8/3/1400',
+      '7/3/1400',
+      '6/3/1400',
+      '5/3/1400',
+      '4/3/1400',
+      '3/3/1400',
+      '9/3/1400',
+      
+    ],
+    crosshair: true
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'تعداد'
+    }
+  },
+  tooltip: {
+    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+    footerFormat: '</table>',
+    shared: true,
+    useHTML: true
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
+  },
+  series: [{
+    name: 'تماس ها',
+    data: [5,0,0,12,4,6,2,5]
+
+  }, {
+    name: 'فایل های',
+    data: [10,3,0,5,2,10,10,2]
+
+  }, {
+    name: 'سرویس ها',
+    data: [5,2,0,10,5,7,4,2]
+
+  }, {
+    name: 'آگهی ها',
+    data: [1,1,2,1,3,4,5,2]
+
+  }]
+});
+</script>
 
 <script>
 
@@ -745,6 +846,29 @@
         input.value = x;
     }
     
+
+    var mymap = L.map('mapid').setView([35.75, 51.4], 12);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
+}).addTo(mymap);
+
+
+var popup = L.popup();
+
+function onMapClick(e) {
+        $("#llocation").val(e.latlng.toString())
+		popup
+			.setLatLng(e.latlng)
+			.setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
 $("#send_digest").click(function(){
     var name_digest = $("#name_digest").val()
     var phone_digest = $("#phone_digest").val()

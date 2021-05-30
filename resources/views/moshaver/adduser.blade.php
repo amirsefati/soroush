@@ -7,7 +7,7 @@
     <form action="/moshaver/adduser_post" method="POST" enctype="multipart/form-data">
     @csrf
     
-        <input type="text" name="userid_inter" value="1" hidden>
+        <input type="text" name="userid_inter" value="{{Auth::user()->id}}" hidden>
         <input type="text" name="kind_type" id="kind_type" value="" hidden>
         <div class="card">
             <div class="card-header">
@@ -120,7 +120,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-4">
                                     <label for="">آخرین مهلت مشتری :</label>
-                                    <input type="text" class="form-control" id="datepickeruser" name="timer"/>
+                                    <input type="text" class="form-control" id="datepickeruser212" name="timer" required/>
                                 </div>
                                 <div class="col-md-8">
                                     <label for="desc">یادداشت شخصی :</label>

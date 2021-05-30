@@ -131,7 +131,8 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/getshowfile_id/{user_id}',[Moshaver::class,'getshowfile_id']);
 
-    
+    Route::get('/statics/{days}',[Moshaver::class,'statics']);
+
 });
 
 

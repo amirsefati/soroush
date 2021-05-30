@@ -41,13 +41,13 @@
                                 </span> <br>  
                             <span class="stepgreenp">مشخصات اولیه فایل</span></span>
 
-                            <span id="step2" class="col-md-1 col-4 step_page step_page_line2" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">
+                            <span id="step2" style="pointer-events: none;" class="col-md-1 col-4 step_page step_page_line2" data-toggle="collapse" data-target="#collaps2" aria-expanded="false" aria-controls="collaps2">
                                 <span id="step2_span" class="step_dot">
                                     <img class="imgstepdot " id="step2img" src="/img/step2.svg" alt="">
                                 </span> <br> 
                             <span id="step2_span_span"> اطلاعات تکمیلی</span></span>
 
-                            <span id="step3" class="col-md-1 col-4 step_page" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">
+                            <span id="step3" style="pointer-events: none;" class="col-md-1 col-4 step_page" data-toggle="collapse" data-target="#collaps3" aria-expanded="false" aria-controls="collaps3">
                                 <span id="step3_span" class="step_dot">
                                     <img class="imgstepdot" id="step3img" src="/img/step3.svg" alt="">
                                 </span> <br>  
@@ -217,8 +217,8 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="name">لوکیشن :</label>
-                                    <input type="text" name="name" placeholder="در حال ساخت" class="form-control" disabled>
+                                    <label for="">لوکیشن :</label>
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder=" افزودن لوکیشن " class="form-control">
                                 </div>
                             </div>
 

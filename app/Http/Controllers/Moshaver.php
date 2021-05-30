@@ -774,5 +774,9 @@ class Moshaver extends Controller
     public function getshowfile_id($id){
         return File::find($id);
     }
+
+    public function statics($days){
+        
+    }
     
 }

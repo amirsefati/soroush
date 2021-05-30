@@ -72,7 +72,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu3">روند اقدامات</a>
+                            <a class="nav-link"  href="/moshaver/work_flow_user/{{$user->id}}">روند اقدامات</a>
                         </li>
                     </ul>
 
@@ -242,25 +242,16 @@
                                                             <div class="col-md-3 p-0">
                                                                 <div class="chance_ok">
                                                                     @if($file->kind_type == 'sell')
-                                                                        <p class="chance_ok_percent">%{{floor(($file->price / $user->price < 1 ? $file->price / $user->price : $user->price / $file->price)*10)*10}}~</p>
+                                                                        <p class="chance_ok_percent">~</p>
                                                                     @else
-                                                                        <p class="chance_ok_percent">%{{floor(($file->rent_month / $user->rent_month < 1 ? $file->rent_month / $user->rent_month : $user->rent_month / $file->rent_month)*10)*10}}~</p>
+                                                                        <p class="chance_ok_percent">~</p>
                                                                     @endif
                                                                     <p class="chance_ok_text">شانس</p>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-8 p-2">
-                                                                        @if($file->kind_type == 'sell')
-                                                                            قیمت :
-                                                                            <strong>حدودا {{floor($file->price/1000)*1000}} میلیون تومان</strong>
-                                                                        @else
-                                                                            رهن : 
-                                                                            <strong>حدودا {{floor($file->rent_annual/1000)*1000}} میلیون تومان</strong>
-                                                                            <br/>
-                                                                            اجاره :
-                                                                            <strong>حدودا {{floor($file->rent_month/1000)*1000}} میلیون تومان</strong>  
-                                                                        @endif
+
                                                                         <br>
                                                                         مشاور : {{App\Models\User::find($file->userid_moshaver)->name}}
                                                             </div>

@@ -120,7 +120,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-4">
                                     <label for="">آخرین مهلت مشتری :</label>
-                                    <input type="text" class="form-control" id="datepickeruser" name="timer"/>
+                                    <input type="text" class="form-control" id="datepickeruser2" name="timer" required/>
                                 </div>
                                 <div class="col-md-8">
                                     <label for="desc">یادداشت شخصی :</label>

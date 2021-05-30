@@ -4,11 +4,19 @@
 
 <div class="row">
     <div class="col-md-12 p-4">
-        <div class="row index_box">
+        <div class="row index_box" style="height: 500px;">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12 p-3">
                     <p class="index_box_work_p"> گزارش </p>
+
+                    
+                        <figure class="highcharts-figure" >
+                        <div id="container"></div>
+                        <p class="highcharts-description">
+                            ریز گزارش نمودار بالا را می توانید از آکاردئون زیر باز کنید و مشاهده کنید.
+                        </p>
+                        </figure>
                     </div>
                 </div>
             </div>

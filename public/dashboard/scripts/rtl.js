@@ -291,9 +291,12 @@ $('document').ready(function(){
             format:"L",
         });
 
+        $("#datepickeruser212").pDatepicker({
+            format:"L",
+        });
+
         $("#datepickeruser2").pDatepicker({
             format:"L",
-            
         });
 
         $("#timepickeruser2").pDatepicker({
