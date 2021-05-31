@@ -40,13 +40,14 @@
 
                         <div class="row">
                             <div class="col-md-12">
+                            <ul style="height: 200px;overflow-y: auto;">
                                 @foreach($works as $file)
                                     <div style="display: none;">
                                         {{$f = App\Models\File::find($file->file_id)}}
                                         {{$u = App\Models\User::find($file->client_id)}}
                                     </div>
                                     @if($file->type == 1)
-                                        <span>⚫</span>
+                                    <li>
                                         <span><a href="/moshaver/fileinfo/{{$f->id}}">{{$f->name}}</a></span> -
                                         <span>{{App\Models\User::find($f->userid_file)->name}} </span> -
                                         <span>
@@ -54,12 +55,11 @@
                                                 روند اقدام
                                             </a>
                                         </span>
-                                        <span><a href="tel::{{App\Models\User::find($f->userid_file)->phone}}"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
-
+                                        <span><a href="tel::{{App\Models\User::find($f->userid_file)->phone}}" onclick="calling_file('{{$f->id}}')"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
+                                    </li>
                                     @endif
-                                    <br>    
                                 @endforeach
-                            
+                            </ul>
                             </div>
                         </div>
                     </div>
@@ -77,24 +77,26 @@
 
                         <div class="row">
                             <div class="col-md-12">
+                            <ul style="height: 200px;overflow-y: auto;">
                             @foreach($works as $file)
                                     <div style="display: none;">
                                         {{$f = App\Models\File::find($file->file_id)}}
                                         {{$u = App\Models\User::find($file->client_id)}}
                                     </div>
                                     @if($file->type == 0)
-                                        <span>⚫</span>
+                                    <li>
                                         <span><a href="/moshaver/show_user/{{$u->id}}">{{$u->name}}</a></span> -
                                         <span>
                                             <a href="/moshaver/work_flow_user/{{$u->id}}">
                                                 روند اقدام
                                             </a>
                                         </span>
-                                        <span><a href="tel::{{$u->phone}}"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
+                                        <span><a href="tel::{{$u->phone}}" onclick="calling_client('{{$u->id}}')"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
+                                    </li>
                                     @endif
-                                    <br>
+
                                 @endforeach
-                            
+                            </ul>
                             </div>
                         </div>
                     </div>
@@ -119,13 +121,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <ul>
+                    <div class="col-md-12" >
+                        <ul style="height: 200px;overflow-y: auto;">
                             @foreach($files as $file)
                                 <li>
                                     <span>{{$file->name}}</span>
                                     <span>{{App\Models\User::find($file->userid_file)->name}}</span>
-                                    <span><a href="tel::{{App\Models\User::find($file->userid_file)->phone}}"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
+                                    <span><a href="tel::{{App\Models\User::find($file->userid_file)->phone}}" onclick="calling_file('{{$file->id}}')"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
                                 </li>
                             @endforeach
                         </ul>
@@ -147,11 +149,11 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <ul>
+                        <ul style="height: 200px;overflow-y: auto;">
                             @foreach($clients as $client)
                                 <li>
                                     <span>{{$client->name}}</span>
-                                    <span><a href="tel::{{$client->phone}}"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
+                                    <span><a href="tel::{{$client->phone}}" onclick="calling_client('{{$client->id}}')"><img src="/img/phone-call.svg" style="width:20px;" alt=""></a></span>
                                 </li>
                             @endforeach
                         </ul>

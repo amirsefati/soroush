@@ -33,6 +33,12 @@ class CreateWorksTable extends Migration
             $table->text('picture')->nullable();
             $table->text('calls')->nullable();
 
+            $table->string('showfile_date')->nullable();
+            $table->string('gotofile_date')->nullable();
+            $table->string('meeting_date')->nullable();
+            $table->string('contruct_date')->nullable();
+
+
             $table->string('etc1')->nullable();
             $table->string('etc2')->nullable();
             $table->string('etc3')->nullable();

@@ -529,6 +529,94 @@ $('document').ready(function(){
         }
       }
 
+
+var options = {
+    chart: {
+      type: 'column',
+      style: {
+              fontFamily: 'sefati'
+          }
+    },
+    title: {
+      text: 'گزارش هفتگی فعالت'
+    },
+    subtitle: {
+      text: 'با قابلیت انتخاب بازه'
+    },
+    xAxis: {
+      categories: [],
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'تعداد'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [{
+      name: 'تماس ها',
+      data: []
+  
+    }, {
+      name: 'فایل های',
+      data: []
+  
+    },
+    {
+      name: 'کاربر های',
+      data: []
+    },
+    {
+      name: 'سرویس ها',
+      data: []
+  
+    }, {
+      name: 'آگهی ها',
+      data: []
+  
+    }]
+  }
+
+var chart_dates = []
+var files = []
+var users = []
+var calls = []
+
+    $.get('moshaver/statics/'+6).then((res)=>{
+        options.xAxis.categories = []
+        res.map((item)=>{
+            chart_dates.push(item.time)
+            files.push(item.files.length)
+            users.push(item.users.length)
+            calls.push(item.calls.length)
+
+        })
+        options.xAxis.categories = chart_dates
+        options.series[1].data = files
+        options.series[2].data = users
+        options.series[0].data = calls
+
+
+    }).then((res)=>{
+        Highcharts.chart('container', options);
+    })
+
+
+
+    
 })
 
 

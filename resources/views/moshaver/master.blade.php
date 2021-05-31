@@ -730,9 +730,7 @@
                     <div class="app-main__inner">
                                 @yield('content')
                        </div>
-        </div>
-
-            
+        </div>            
     </div>
 
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
@@ -756,80 +754,17 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<script>
-$.get('moshaver/statics/'+7).then((res)=>{
-
-})
-
-Highcharts.chart('container', {
-  chart: {
-    type: 'column',
-    style: {
-            fontFamily: 'sefati'
-        }
-  },
-  title: {
-    text: 'گزارش هفتگی فعالت'
-  },
-  subtitle: {
-    text: 'با قابلیت انتخاب بازه'
-  },
-  xAxis: {
-    categories: [
-      '9/3/1400',
-      '8/3/1400',
-      '7/3/1400',
-      '6/3/1400',
-      '5/3/1400',
-      '4/3/1400',
-      '3/3/1400',
-      '9/3/1400',
-      
-    ],
-    crosshair: true
-  },
-  yAxis: {
-    min: 0,
-    title: {
-      text: 'تعداد'
-    }
-  },
-  tooltip: {
-    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-      '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-    footerFormat: '</table>',
-    shared: true,
-    useHTML: true
-  },
-  plotOptions: {
-    column: {
-      pointPadding: 0.2,
-      borderWidth: 0
-    }
-  },
-  series: [{
-    name: 'تماس ها',
-    data: [5,0,0,12,4,6,2,5]
-
-  }, {
-    name: 'فایل های',
-    data: [10,3,0,5,2,10,10,2]
-
-  }, {
-    name: 'سرویس ها',
-    data: [5,2,0,10,5,7,4,2]
-
-  }, {
-    name: 'آگهی ها',
-    data: [1,1,2,1,3,4,5,2]
-
-  }]
-});
-</script>
 
 <script>
+    function calling_client(userid_client){
+        $.get('/moshaver/calling_client/' + userid_client)
 
+    }
+
+    function calling_file(id_file){
+        $.get('/moshaver/calling_file/' + id_file)
+
+    }
     String.prototype.reverse = function () {
         return this.split("").reverse().join("");
     }

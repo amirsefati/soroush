@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\User;
 use App\Models\Work;
 use App\Models\Action;
+use App\Models\Report;
 use App\Models\Taavon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -776,7 +777,40 @@ class Moshaver extends Controller
     }
 
     public function statics($days){
-        
+        $statics = [];
+
+        $i = 0;
+        for($i; $i <= $days; $i++){
+            $date = Carbon::now()->subDays($i);
+            $date_jalali = \Morilog\Jalali\CalendarUtils::toJalali(date_format($date, 'Y'), date_format($date, 'm'), date_format($date, 'd'));
+            $date_jalali_str = $date_jalali[0].'-'.$date_jalali[1].'-'.$date_jalali[2];
+            $files = File::where('userid_moshaver',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $users = User::where('userid_inter',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $calls = Report::where('moshaver_id',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+
+            $statics_day = ["time"=>$date_jalali_str,"files"=>$files,"users"=>$users,"calls"=>$calls];
+            array_push($statics,$statics_day);
+        }
+        $statics = array_reverse($statics);
+        return $statics;
+    }
+
+    public function calling_client($userid_client){
+        Report::create([
+            'user_id' => $userid_client,
+            'moshaver_id' => Auth::user()->id,  
+            'type' => 'call-user'
+        ]);
+    }
+
+    public function calling_file($id_file){
+        $userid_client = File::find($id_file)->userid_file;
+        Report::create([
+            'user_id' => $userid_client,
+            'file_id' => $id_file,
+            'moshaver_id' => Auth::user()->id,  
+            'type' => 'call-file'
+        ]);
     }
     
 }
