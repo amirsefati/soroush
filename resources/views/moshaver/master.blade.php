@@ -549,6 +549,19 @@
   </div>
 </div>
 
+<div class="modal_details" id="dash_action_details" >
+
+    <!-- Modal content -->
+    <div class="modal_details-content">
+      <span class="close2" id="close2">&times;</span>
+      <p>مشتری : <span id="client_action"></span></p>
+      <p>کاربر : <span id="file_action"></span></p>
+      <p>متن : <span id="text_action"></span></p>
+      <p>عنوان : <span id="title_action"></span></p>
+  
+    </div>
+  
+</div>
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -930,6 +943,12 @@ if($("#infileedit").val()){
         console.log('Upload complete! We’ve uploaded these files:', result.successful)
       })
 
+}
+
+function dash_action_show_details(action){
+    $.get('/moshaver/get_detail_action/' + action.id)
+
+    $("#show_details").addClass("showddd")
 }
 
 

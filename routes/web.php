@@ -135,6 +135,8 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/calling_client/{userid_client}',[Moshaver::class,'calling_client']);
     Route::get('/calling_file/{id_file}',[Moshaver::class,'calling_file']);
+    Route::get('get_detail_action/{action_id}',[Moshaver::class,'get_detail_action']);
+    
 
     
 });
