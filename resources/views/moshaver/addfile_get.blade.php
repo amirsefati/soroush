@@ -83,7 +83,7 @@
                                 </div>
 
                                 <div class="col-md-4" id="agecol">
-                                    <label for="age"> سن بنا :</label>
+                                    <label for="age"> سال ساخت :</label>
                                     <input name="age" type="number" class="form-control" >
 
                                 </div>
@@ -228,7 +228,7 @@
                                     <input type="number" name="allfloor" class="form-control">
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="suiteinfloor">تعداد وارد در طبقه :</label>
+                                    <label for="suiteinfloor">تعداد واحد در طبقه :</label>
                                     <input type="number" name="suiteinfloor" class="form-control">
                                 </div>
                                 <div class="col-md-3">

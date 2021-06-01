@@ -98,7 +98,7 @@
                                         <div class="col-md-2 col-4" style="text-align: center;">
                                             <img style="padding:5px" src="/img/beds.svg" alt=""><br>
                                             <strong style="font-size: 19px;">{{$user->age}}</strong><br>
-                                            <span>سن بنا</span>
+                                            <span>سال ساخت</span>
                                         </div>
 
                                         <div class="col-md-2 col-4" style="text-align: center;">

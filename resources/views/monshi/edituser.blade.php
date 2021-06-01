@@ -126,7 +126,7 @@
                                     <input type="number" class="form-control" name="bedroom_number" value="{{$user->bedroom_number}}">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="age"> حداکثر سن بنا :</label>
+                                    <label for="age"> حداکثر سال ساخت :</label>
                                     <input type="number" class="form-control" name="age" value="{{$user->age}}">
                                 </div>
                             </div>
