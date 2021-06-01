@@ -182,7 +182,7 @@
                     <div class="col-md-12">
                         <ul>
                             @foreach($actions as $action)
-                                <li onclick="dash_action_show_details({{$action}})" data-toggle="modal" data-target="#dash_action_details">
+                                <li onclick="dash_action_show_details({{$action}})">
                                 <span>
                                     @if($action->kind == 1)
                                         بازدید ملک  

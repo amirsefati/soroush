@@ -553,11 +553,11 @@
 
     <!-- Modal content -->
     <div class="modal_details-content">
-      <span class="close2" id="close2">&times;</span>
-      <p>مشتری : <span id="client_action"></span></p>
-      <p>کاربر : <span id="file_action"></span></p>
-      <p>متن : <span id="text_action"></span></p>
-      <p>عنوان : <span id="title_action"></span></p>
+      <span class="close2" id="close3">&times;</span>
+      <p>مشتری : <span id="details_client_action"></span></p>
+      <p>کاربر : <span id="details_file_action"></span></p>
+      <p>متن : <span id="details_text_action"></span></p>
+      <p>عنوان : <span id="details_title_action"></span></p>
   
     </div>
   
@@ -945,12 +945,26 @@ if($("#infileedit").val()){
 
 }
 
+var modal2 = document.getElementById("dash_action_details");
+
 function dash_action_show_details(action){
     $.get('/moshaver/get_detail_action/' + action.id)
+    .then((res)=>{
 
-    $("#show_details").addClass("showddd")
+        $("#details_client_action").text(res.client.name)
+    })
+
+    $("#dash_action_details").addClass("showddd")
 }
 
+$("#close3").click(function(){
+    $("#dash_action_details").removeClass("showddd")
+})
+window.onclick = function(event) {
+    if (event.target == modal2) {
+        $("#dash_action_details").removeClass("showddd")
+    }
+}
 
 </script>
 </body>
