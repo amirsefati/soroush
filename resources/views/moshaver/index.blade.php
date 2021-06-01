@@ -13,8 +13,9 @@
                     
                         <figure class="highcharts-figure" >
                         <div id="container"></div>
-                        <p class="highcharts-description">
-                            ریز گزارش نمودار بالا را می توانید از آکاردئون زیر باز کنید و مشاهده کنید.
+                        <br>
+                        <p data-toggle="modal" data-target="#details_chart" class="highcharts-description" style="text-align: center;font-size:12px;">
+                            جزئیات گزارش بر حسب روز
                         </p>
                         </figure>
                     </div>
@@ -181,7 +182,7 @@
                     <div class="col-md-12">
                         <ul>
                             @foreach($actions as $action)
-                                <li>
+                                <li onclick="action_showdetails(info)">
                                 <span>
                                     @if($action->kind == 1)
                                         بازدید ملک  

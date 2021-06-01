@@ -594,6 +594,7 @@ var chart_dates = []
 var files = []
 var users = []
 var calls = []
+var detatils = []
 
     $.get('moshaver/statics/'+6).then((res)=>{
         options.xAxis.categories = []
@@ -602,7 +603,7 @@ var calls = []
             files.push(item.files.length)
             users.push(item.users.length)
             calls.push(item.calls.length)
-
+            detatils.push(item)
         })
         options.xAxis.categories = chart_dates
         options.series[1].data = files
@@ -612,6 +613,31 @@ var calls = []
 
     }).then((res)=>{
         Highcharts.chart('container', options);
+
+
+    detatils.map((item)=>{
+        $("#details_chart_accordion").append(
+    
+            `<div class="card">
+                <div class="card-header" id="headingOne_${item.time}">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne_${item.time}" aria-expanded="true" aria-controls="collapseOne_${item.time}">
+                    جزئیات در تاریخ <strong> ${item.time} </strong>
+                    </button>
+                </h5>
+                </div>
+    
+                <div id="collapseOne_${item.time}" class="collapse" aria-labelledby="headingOne_${item.time}" data-parent="#details_chart_accordion">
+                <div class="card-body">
+                    ${JSON.stringify(item.files)} <br>
+                    ${item.users}
+
+                </div>
+                </div>
+            </div>
+        `)
+    })
+    
     })
 
 

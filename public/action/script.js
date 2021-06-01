@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       eventClick: function(info) {
         action_showdetails(info)
+        console.log(info)
       },
 
 
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,listWeek'
       },
-      initialDate: '2021-05-10',
+      initialDate: '2021-05-30',
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       selectMirror: true,

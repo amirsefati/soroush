@@ -22,7 +22,7 @@ class Moshaver extends Controller
         $works = Work::where('moshaver_id',Auth::user()->id)->orderBy("updated_at","DESC")->get();
         $today = Carbon::now()->toDateString();
         $tomorrow = Carbon::now()->addDays(1)->toDateString();
-        $actions = Action::where('moshaver_id',Auth::user()->id)->whereBetween('date',[$today,$tomorrow])->get(); 
+        $actions = Action::where('moshaver_id',Auth::user()->id)->whereDate('date',Carbon::now()->format('Y-m-d'))->get(); 
         return view('moshaver.index',compact(['works','clients','files','taavons','actions']));
     }
 
@@ -613,6 +613,7 @@ class Moshaver extends Controller
         $hour = $request->hour;
         $hour = explode(':',$hour);
         if($time[1] < 10){$time[1] = '0' . $time[1];}
+        if($time[2] < 10){$time[2] = '0' . $time[2];}
         $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         Action::create([
             'moshaver_id' => Auth::user()->id,
@@ -632,6 +633,7 @@ class Moshaver extends Controller
         $hour = $request->hour;
         $hour = explode(':',$hour);
         if($time[1] < 10){$time[1] = '0' . $time[1];}
+        if($time[2] < 10){$time[2] = '0' . $time[2];}
         $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         
         Action::create([
@@ -652,6 +654,7 @@ class Moshaver extends Controller
         $hour = $request->hour;
         $hour = explode(':',$hour);
         if($time[1] < 10){$time[1] = '0' . $time[1];}
+        if($time[2] < 10){$time[2] = '0' . $time[2];}
         $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         
         Action::create([
@@ -671,6 +674,7 @@ class Moshaver extends Controller
         $hour = $request->hour;
         $hour = explode(':',$hour);
         if($time[1] < 10){$time[1] = '0' . $time[1];}
+        if($time[2] < 10){$time[2] = '0' . $time[2];}
         $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         
         Action::create([
@@ -690,6 +694,7 @@ class Moshaver extends Controller
         $hour = $request->hour;
         $hour = explode(':',$hour);
         if($time[1] < 10){$time[1] = '0' . $time[1];}
+        if($time[2] < 10){$time[2] = '0' . $time[2];}
         $time = $time[0] .'-'. $time[1] .'-'. $time[2] .'T'. $this->convertpe($hour[0]) .':'. $this->convertpe($hour[1]) .':00' ;
         
         Action::create([

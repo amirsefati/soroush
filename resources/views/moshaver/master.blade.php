@@ -526,6 +526,29 @@
   </div>
 </div>
 
+<div class="modal pt-5" id="details_chart">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title"> جزئیات گزارش</h5>
+      </div>
+
+        <div id="details_chart_accordion" style="direction: rtl;">
+            
+            
+            </div>
+        <!-- Modal footer -->
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
