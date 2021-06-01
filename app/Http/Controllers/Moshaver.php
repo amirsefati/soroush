@@ -817,5 +817,15 @@ class Moshaver extends Controller
             'type' => 'call-file'
         ]);
     }
+
+    public function get_detail_action($action_id){
+        
+        $action = Action::find($action_id);
+        $client = User::find($action->client_id);
+        $file = File::find($action->file_id);
+
+        return ['action'=> $action, 'client' => $client, 'file' => $file];
+
+    }
     
 }
