@@ -346,7 +346,7 @@
                 <div class="col-md-3" style="text-align: center;">
                     <img src="/img/age.svg" alt="">
                     <p style="margin:10px;font-weight:bold;font-size:20px" id="file_age"></p>
-                    <p style="color:#b5b5b5;font-size:12px">سن بنا</p>
+                    <p style="color:#b5b5b5;font-size:12px">سال ساخت</p>
                 </div>
 
                 <div class="col-md-3" style="text-align: center;">

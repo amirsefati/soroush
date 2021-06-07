@@ -561,10 +561,12 @@
     <!-- Modal content -->
     <div class="modal_details-content">
       <span class="close2" id="close3">&times;</span>
-      <p>مشتری : <span id="details_client_action"></span></p>
-      <p>کاربر : <span id="details_file_action"></span></p>
-      <p>متن : <span id="details_text_action"></span></p>
       <p>عنوان : <span id="details_title_action"></span></p>
+      <p>مشتری : <span id="details_client_action"></span></p>
+      <p>صاحب فایل : <span id="details_file_action"></span></p>
+      <p>زمان : <span id="details_date_action"></span></p>
+      <p>توضیحات : <span id="details_text_action"></span></p>
+      
   
     </div>
   
@@ -958,7 +960,41 @@ function dash_action_show_details(action){
     $.get('/moshaver/get_detail_action/' + action.id)
     .then((res)=>{
 
-        $("#details_client_action").text(res.client.name)
+        $("#details_client_action").parent().css("display", "block")
+        $("#details_file_action").parent().css("display", "block")
+
+        $("#details_text_action").text(res.action.text)
+        
+        if (res.client){
+            $("#details_client_action").text(res.client.name)
+        }else{
+            $("#details_client_action").parent().css("display", "none")
+        }
+
+        if (res.file){
+            $("#details_file_action").text(res.file.name)
+        }else{
+            $("#details_file_action").parent().css("display", "none")
+        }
+        
+
+        var title = ""
+        if (res.action.kind == 1){
+            title = "بازدید ملک"
+        }else if(res.action.kind == 2){
+            title = "نشست قرارداد"
+        }else if(res.action.kind == 3){
+            title = "کارشناسی ملک"
+        }else if(res.action.kind == 4){
+            title = "یادآوری تماس"
+        }else if(res.action.kind == 5){
+            title = res.action.title
+        }
+
+        $("#details_title_action").text(title)
+        $("#details_date_action").text(res.action.date.split('T')[1])
+        
+
     })
 
     $("#dash_action_details").addClass("showddd")
