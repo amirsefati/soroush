@@ -257,3 +257,10 @@ input[type=number] {
 .highcharts-credits{
   display: none;
 }
+
+.index_box_work_p_absolute{
+  position: absolute;
+  left: 40px;
+  bottom: 10px;
+  z-index: 10;
+}

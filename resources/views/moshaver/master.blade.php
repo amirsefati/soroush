@@ -63,11 +63,7 @@
                 <button type="button" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-md-12" style="text-align:center">
-                <a href="/moshaver/adduser" style="font-size:11px">حالت پیشرفته</a>
-            </div>
-        </div>
+        
       </div>
       <!-- Modal footer -->
       <div class="modal-footer">
@@ -496,8 +492,19 @@
 
   <!-- Modal content -->
   <div class="modal_details-content">
+    <div class="row">
     <span class="close2" id="close2">&times;</span>
-    <p>مشتری : <span id="client_action"></span></p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>مشتری : <span id="client_action"></span></p>
+                    </div>
+                </div>
+            </div>
+    </div>
     <p>کاربر : <span id="file_action"></span></p>
     <p>متن : <span id="text_action"></span></p>
     <p>عنوان : <span id="title_action"></span></p>

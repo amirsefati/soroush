@@ -39,6 +39,7 @@
                             </div>
                         </div>
 
+
                         <div class="row">
                             <div class="col-md-12">
                             <ul style="height: 200px;overflow-y: auto;">
@@ -120,6 +121,7 @@
                     <p class="index_box_work_p"> فایل ها </p>
                     </div>
                 </div>
+                <a href="/moshaver/manage_files" class="index_box_work_p_absolute"> تمامی فایل ها  </a>
 
                 <div class="row">
                     <div class="col-md-12" >
@@ -147,6 +149,7 @@
                     <p class="index_box_work_p">  مشتریان </p>
                     </div>
                 </div>
+                <a href="/moshaver/listusers" class="index_box_work_p_absolute"> تمامی مشتریان  </a>
 
                 <div class="row">
                     <div class="col-md-12">

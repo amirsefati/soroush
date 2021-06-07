@@ -74,13 +74,13 @@
                                             <p style="margin:5px">کاربر : <strong>{{$user->name}}</strong></p>
                                             @if($user->kind_type == 'sell')
                                                 قیمت :
-                                                <strong>{{$user->price}} میلیون تومان</strong>
+                                                <strong>{{$user->price}}   تومان</strong>
                                             @else
                                                 رهن : 
-                                                <strong>{{$user->rent_annual}}میلیون تومان</strong>
+                                                <strong>{{$user->rent_annual}}  تومان</strong>
                                                 <br/>
                                                 اجاره :
-                                                <strong>{{$user->rent_month}}میلیون تومان</strong>
+                                                <strong>{{$user->rent_month}}  تومان</strong>
 
                                                 
                                             @endif
@@ -182,13 +182,13 @@
 
                                                                         @if($file->kind_type == 'sell')
                                                                             قیمت :
-                                                                            <strong>{{$file->price}} میلیون تومان</strong>
+                                                                            <strong>{{$file->price}}   تومان</strong>
                                                                         @else
                                                                             رهن : 
-                                                                            <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                                                            <strong>{{$file->rent_annual}}   تومان</strong>
                                                                             <br/>
                                                                             اجاره :
-                                                                            <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                                                                            <strong>{{$file->rent_month}}   تومان</strong>  
                                                                         @endif
                                                             </div>
 

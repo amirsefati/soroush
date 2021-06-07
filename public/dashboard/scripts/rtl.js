@@ -629,8 +629,7 @@ var detatils = []
     
                 <div id="collapseOne_${item.time}" class="collapse" aria-labelledby="headingOne_${item.time}" data-parent="#details_chart_accordion">
                 <div class="card-body">
-                    ${JSON.stringify(item.files)} <br>
-                    ${item.users}
+                    ${item.calls} <br>
 
                 </div>
                 </div>
@@ -639,10 +638,6 @@ var detatils = []
     })
     
     })
-
-
-
-    
 })
 
 

@@ -15,11 +15,11 @@
 
                                 <p class="pr-2" style="margin-bottom:5px;"> 
                                     @if($user->kind_type == 'sell')
-                                        بودجه : {{$user->price}} میلیون تومان
+                                        بودجه : {{$user->price}}   تومان
                                     @else
-                                        رهن {{$user->rent_annual}} میلیون تومان
+                                        رهن {{$user->rent_annual}}   تومان
                                         <br>
-                                        اجاره {{$user->rent_month}} میلیون تومان
+                                        اجاره {{$user->rent_month}}   تومان
 
                                     @endif
                                 </p>

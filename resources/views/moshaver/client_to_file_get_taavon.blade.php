@@ -80,13 +80,13 @@
                     <div class="col-md-3">
                         @if($client->kind_type == 'sell')
                             قیمت :
-                                <strong>{{$client->price}} میلیون تومان</strong>
+                                <strong>{{$client->price}}   تومان</strong>
                         @else
                             رهن : 
-                                <strong>{{$client->rent_annual}} میلیون تومان</strong>
+                                <strong>{{$client->rent_annual}}   تومان</strong>
                                 <br/>
                             اجاره :
-                                <strong>{{$client->rent_month}} میلیون تومان</strong>  
+                                <strong>{{$client->rent_month}}   تومان</strong>  
                         @endif
                     </div>
                     <div class="col-md-3">
@@ -113,13 +113,13 @@
                     <div class="col-md-3">
                         @if($file->kind_type == 'sell')
                             قیمت :
-                                <strong>{{$file->price}} میلیون تومان</strong>
+                                <strong>{{$file->price}}   تومان</strong>
                         @else
                             رهن : 
-                                <strong>{{$file->rent_annual}} میلیون تومان</strong>
+                                <strong>{{$file->rent_annual}}   تومان</strong>
                                 <br/>
                             اجاره :
-                                <strong>{{$file->rent_month}} میلیون تومان</strong>  
+                                <strong>{{$file->rent_month}}   تومان</strong>  
                         @endif
                     </div>
                     <div class="col-md-3">
