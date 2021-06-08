@@ -264,3 +264,9 @@ input[type=number] {
   bottom: 10px;
   z-index: 10;
 }
+.round_listitem{
+  border: .5px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 11px;
+}

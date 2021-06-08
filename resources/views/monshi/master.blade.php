@@ -669,9 +669,13 @@ function onMapClick(e) {
 			.setLatLng(e.latlng)
 			.setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
 			.openOn(mymap);
+        
+       
 	}
 
 	mymap.on('click', onMapClick);
+
+    
 
     function show_verify_file_details(file_id,user_id,moshaver_id){
         $("#file_id_selected").val(file_id)

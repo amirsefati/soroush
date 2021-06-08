@@ -9,7 +9,7 @@
                             <div class="row">
                     @foreach($users as $user)
                         <div class="col-md-6 mt-4  pr-2 pl-2">
-                            <div class="user_box p-1">
+                            <div class="user_box p-1 pb-3">
                             <a href="/moshaver/show_user/{{$user->id}}">
                                 <p class="pr-2 pt-3" style="font-size: 12px;margin-bottom:5px;">مشتری : {{$user->name}}</p>
 
@@ -42,6 +42,22 @@
                                     <p class="pr-2">متراژ : {{$user->area}}</p>
                                 </div>
                             </a>
+                            <hr>
+                            <div class="pr-2">
+                                @if($user->etc1 == 1)
+                                    <span class="round_listitem">خریدار</span>
+                                @endif
+                                @if($user->etc2 == 1)
+                                    <span class="round_listitem">فروشنده</span>
+                                @endif
+                                @if($user->etc3 == 1)
+                                    <span class="round_listitem">مستجر</span>
+                                @endif
+                                @if($user->etc4 == 1)
+                                    <span class="round_listitem">موجر</span>
+                                @endif
+                            </div>
+                            
                             </div>
                         </div>
                     @endforeach

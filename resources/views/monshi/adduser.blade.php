@@ -112,7 +112,7 @@
                                     <input type="number" class="form-control" name="bedroom_number">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="age"> حداکثر سال ساخت :</label>
+                                    <label for="age">  سال ساخت :</label>
                                     <input type="number" class="form-control" name="age">
                                 </div>
                             </div>

@@ -84,7 +84,7 @@
 
                                 <div class="col-md-4" id="agecol">
                                     <label for="age"> سال ساخت :</label>
-                                    <input name="age" type="number" class="form-control" >
+                                    <input name="age"  id="datepickeruserage" class="form-control" >
 
                                 </div>
                             </div>

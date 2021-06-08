@@ -98,7 +98,7 @@
 
                                 <div class="col-md-4" id="agecol">
                                     <label for="age"> سال ساخت :</label>
-                                    <input name="age" type="number" class="form-control" value="{{$file->age}}">
+                                    <input name="age" type="number"  class="form-control" value="{{$file->age}}">
 
                                 </div>
                             </div>
