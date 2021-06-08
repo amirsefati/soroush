@@ -650,6 +650,7 @@ crossorigin=""></script>
 <script>
 
     var row_data = []
+    var row
     
 
     $.get('/modir/report_all')
@@ -664,53 +665,71 @@ crossorigin=""></script>
             contracts1 = item.contracts.length
 
             row = {
-                user: user1,
-                type: type1,
-                files: files1,
-                clients: clients1,
-                calls: calls1,
-                services: services1,
-                contracts: contracts1
+                'user': user1,
+                'type': type1 == 2 ? 'مشاور' : 'منشی', 
+                'files': files1,
+                'clients': clients1,
+                'calls': calls1,
+                'services': services1,
+                'contracts': contracts1
             }
 
             row_data.push(row)
         }) 
+    }).then(()=>{
+        
+        $('#moshaver_performance_table').bootstrapTable({
+
+            pagination: true,
+            search: true,
+            columns: [{
+                field: 'user',
+                title: 'مشخصات',
+            }, {
+                field: 'type',
+                title: 'نوع کاربر'
+            }, {
+                field: 'files',
+                title: 'تعداد فایل‌ها',
+                sortable: true,
+            }, {
+                field: 'clients',
+                title: 'تعداد مشتریان',
+                sortable: true,
+            }, {
+                field: 'calls',
+                title: 'تعداد تماس‌ها',
+                sortable: true,
+            }, {
+                field: 'services',
+                title: 'تعداد سرویس‌ها',
+                sortable: true,
+            }, {
+                field: 'contracts',
+                title: 'تعداد قرارداد',
+                sortable: true,
+            }],
+            data: row_data
+        })
+
     })
 
+    function only_moshaver_table(){
+        $('#moshaver_performance_table').bootstrapTable('filterBy', {
+            type: 'مشاور'
+        })
+    }
 
-    $('#moshaver_performance_table').bootstrapTable({
-
-    pagination: true,
-    search: true,
-    columns: [{
-        field: 'user',
-        title: 'مشخصات',
-    }, {
-        field: 'type',
-        title: 'نوع کاربر'
-    }, {
-        field: 'files',
-        title: 'تعداد فایل‌ها',
-        sortable: true,
-    }, {
-        field: 'clients',
-        title: 'تعداد مشتریان',
-        sortable: true,
-    }, {
-        field: 'calls',
-        title: 'تعداد تماس‌ها',
-        sortable: true,
-    }, {
-        field: 'services',
-        title: 'تعداد سرویس‌ها',
-        sortable: true,
-    }, {
-        field: 'contracts',
-        title: 'تعداد قرارداد',
-        sortable: true,
-    }],
-    data: row_data
-    })
+    function only_monshi_table(){
+        $('#moshaver_performance_table').bootstrapTable('filterBy', {
+            type: 'منشی'
+        })
+    }
+    function both_table(){
+        $('#moshaver_performance_table').bootstrapTable('filterBy', {
+            type: ['مشاور', 'منشی']
+        })
+    }
 
     function verify_file_success(){
         $.get('/modir/file_id_selected/'+ $("#file_id_selected").val()).then(()=>{

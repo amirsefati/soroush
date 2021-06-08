@@ -204,6 +204,8 @@ Route::prefix('modir')->group(function(){
     Route::get('/',[Manager::class,'index']);
     Route::get('/moshaver_performance',[Manager::class,'moshaver_performance']);
     Route::get('/report_all',[Manager::class,'report_all']);
+    Route::get('/add_moshaver',[Manager::class,'add_moshaver']);
+    Route::post('/add_moshaver_post',[Manager::class,'add_moshaver_post']);
    
 
 });
