@@ -199,9 +199,11 @@ Route::prefix('monshi')->group(function(){
 
 
 //Manager Router
-Route::prefix('manager')->group(function(){
+Route::prefix('modir')->group(function(){
 
     Route::get('/',[Manager::class,'index']);
+    Route::get('/moshaver_performance',[Manager::class,'moshaver_performance']);
+    Route::get('/report_all',[Manager::class,'report_all']);
    
 
 });
