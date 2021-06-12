@@ -593,12 +593,7 @@
                                     </a>
                                 </li> 
 
-                                <li>
-                                    <a href="/modir/phonebook" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        دفترچه تلفن
-                                    </a>
-                                </li>
+                                
                         
 
                                 <li>
@@ -647,12 +642,139 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/locale/bootstrap-table-fa-IR.js"></script>
+
 <script>
+
+    var row_data_user = []
+    var row_user
+
+    $.get('/modir/manage_user_table')
+    .then((resp)=>{
+        resp.users.map((item)=>{
+            name = item.name
+            level = item.level
+            userid_inter = resp.users.find((user) => {return item.userid_inter == user.id}).name
+            kind_type = item.kind_type
+            area = item.area
+            type = item.type
+            price = item.price
+
+            row = {
+                'name': name,
+                'level' : level === 2 ? 'مشاور' : (level === 3 ? 'منشی' : 'مدیریت'),
+                'userid_inter' : userid_inter,
+                'kind_type' : kind_type,
+                'area' : area,
+                'type' : type,
+                'price' : price
+            }
+        row_data_user.push(row)
+        })
+        
+    }).then(()=>{
+        $('#manage_user_table').bootstrapTable({
+
+            pagination: true,
+            search: true,
+            columns: [{
+                field: 'name',
+                title: 'نام مشتری',
+            }, {
+                field: 'level',
+                title: 'وارد کننده'
+            }, {
+                field: 'userid_inter',
+                title: 'اطلاعات واردکننده',
+            }, {
+                field: 'kind_type',
+                title: 'نوع قرارداد',
+            }, {
+                field: 'area',
+                title: 'متراژ',
+                sortable: true,
+            }, {
+                field: 'type',
+                title: 'نوع ملک',
+                sortable: true,
+            }, {
+                field: 'price',
+                title: 'قیمت',
+                sortable: true,
+            }],
+            data: row_data_user
+        })
+    })
+</script>
+
+
+<script>
+    var row_data_file = []
+    var row_file
+
+    $.get('/modir/manage_file_table')
+    .then((resp)=>{
+        resp.files.map((item)=>{
+            type = item.type
+            userid_file = resp.users.find((user)=> {return user.id === item.userid_file}).name
+            userid_moshaver = resp.users.find((user)=> {return user.id === item.userid_moshaver}).name
+            region = item.region
+            area = item.area
+            kind_type = item.kind_type
+            price = item.price
+
+            row = {
+                'type': type,
+                'userid_file' : userid_file,
+                'userid_moshaver' : userid_moshaver,
+                'region' : region,
+                'area' : area,
+                'kind_type' : kind_type,
+                'price' : price
+            }
+        row_data_file.push(row) 
+        })
+        
+    }).then(()=>{
+        $('#manage_file_table').bootstrapTable({
+
+            pagination: true,
+            search: true,
+            columns: [{
+                field: 'type',
+                title: 'نوع ملک',
+            }, {
+                field: 'userid_file',
+                title: 'مالک'
+            }, {
+                field: 'userid_moshaver',
+                title: 'وارد کننده فایل',
+            }, {
+                field: 'region',
+                title: 'منطقه',
+            }, {
+                field: 'area',
+                title: 'متراژ',
+                sortable: true,
+            }, {
+                field: 'kind_type',
+                title: 'نوع قرارداد',
+                sortable: true,
+            }, {
+                field: 'price',
+                title: 'قیمت',
+                sortable: true,
+            }],
+            data: row_data_file
+        })
+    })
+</script>
+
+<script>
+
 
     var row_data = []
     var row
     
-
     $.get('/modir/report_all')
     .then((response)=>{
         response.map(item =>{

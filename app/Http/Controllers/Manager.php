@@ -85,5 +85,79 @@ class Manager extends Controller
 
         return back();
     }
+
+
+    public function manage_files(){
+        return view('modir.manage_files');
+    }
+
+    public function manage_file_table(){
+        $files = File::all();
+        $users = User::all();
+
+        return ['files' => $files, 'users' => $users];
+    }
+
+    public function listusers(){
+        return view('modir.listusers');
+    }
+
+    public function manage_user_table(){
+        $users = User::all();
+        return ['users'=>$users];
+
+    }
+
+    public function add_monshi(){
+        return view('modir.add_monshi');
+    }
+
+    public function add_monshi_post(Request $request){
+
+        $space_200 = 0;
+        $space_200_350 = 0;
+        $space_350 = 0;
+        foreach($request->space as $space){
+            if ($space == 1){
+                $space_200 = 1;
+            }
+
+            if ($space == 2){
+                $space_200_350 = 1;
+            }
+
+            if ($space == 3){
+                $space_350 = 1;
+            }
+        }
+
+        $user = User::create([
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "password" => $request->password,
+            "level" => 3,
+            "userid_inter" => Auth::user()->id,
+        ]);
+
+        RangeMoshaver::create([
+            "user_id" => $user->id,
+            "seller" => $request->seller == 'on' ? 1 : 0,
+            "renter" => $request->renter == 'on' ? 1 : 0,
+            "kolangi" => $request->kolangi == 'on' ? 1 : 0,
+            "tejari" => $request->tejari == 'on' ? 1 : 0,
+            "mostaghelat" => $request->mostaghelat == 'on' ? 1 : 0,
+            "space_200" => $space_200,
+            "space_200_350" => $space_200_350,
+            "space_350" => $space_350
+        ]);
+
+        return back();
+    }
+
+    public function verify_moshaver_file(){
+        $files = File::where('publish',1)->where('verify',0)->where('etc2','modir')->get();
+        return view('modir.verify_moshaver_file',compact('files'));
+    }
+   
 }
 

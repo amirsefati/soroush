@@ -206,6 +206,20 @@ Route::prefix('modir')->group(function(){
     Route::get('/report_all',[Manager::class,'report_all']);
     Route::get('/add_moshaver',[Manager::class,'add_moshaver']);
     Route::post('/add_moshaver_post',[Manager::class,'add_moshaver_post']);
-   
+    
+    Route::get('/add_monshi',[Manager::class,'add_monshi']);
+    Route::post('/add_monshi_post',[Manager::class,'add_monshi_post']);
 
+    
+
+    Route::get('/manage_files',[Manager::class,'manage_files']);
+    Route::get('/manage_file_table',[Manager::class,'manage_file_table']);
+
+    Route::get('/listusers',[Manager::class,'listusers']);
+    Route::get('/manage_user_table',[Manager::class,'manage_user_table']);
+    
+
+    Route::get('/verify_moshaver_file',[Manager::class,'verify_moshaver_file']);
+
+    
 });
