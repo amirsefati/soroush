@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Ads;
 use App\Models\User;
 use App\Http\Controllers\Page;
 use App\Http\Controllers\Monshi;
@@ -233,9 +234,11 @@ Route::prefix('modir')->group(function(){
 //Tablighat Router
 Route::prefix('tablighat')->group(function(){
 
-    Route::get('/',[Tablighat::class,'index']);
-    Route::get('/instagram',[Tablighat::class,'instagram']);
-    Route::get('/sms_panel',[Tablighat::class,'sms_panel']);
+    Route::get('/',[Ads::class,'index']);
+    Route::get('/instagram',[Ads::class,'instagram']);
+    Route::get('/sms_panel',[Ads::class,'sms_panel']);
+
+    Route::get('/instagram_report',[Ads::class,'instagram_report']);
 
     
 });
