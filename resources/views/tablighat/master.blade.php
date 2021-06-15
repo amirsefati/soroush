@@ -232,184 +232,71 @@ crossorigin=""></script>
 
 <script>
 
-    var row_data_user = []
-    var row_user
-
-    $.get('/modir/manage_user_table')
-    .then((resp)=>{
-        resp.users.map((item)=>{
-            name = item.name
-            level = item.level
-            userid_inter = resp.users.find((user) => {return item.userid_inter == user.id}).name
-            kind_type = item.kind_type
-            area = item.area
-            type = item.type
-            price = item.price
-
-            row = {
-                'name': name,
-                'level' : level === 2 ? 'مشاور' : (level === 3 ? 'منشی' : 'مدیریت'),
-                'userid_inter' : userid_inter,
-                'kind_type' : kind_type,
-                'area' : area,
-                'type' : type,
-                'price' : price
-            }
-        row_data_user.push(row)
-        })
-        
-    }).then(()=>{
-        $('#manage_user_table').bootstrapTable({
-
-            pagination: true,
-            search: true,
-            columns: [{
-                field: 'moshaver_name',
-                title: 'نام مشاور',
-            }, {
-                field: 'moshaver_phone',
-                title: 'شماره تلفن مشاور'
-            }, {
-                field: 'status',
-                title: 'وضعیت',
-            }, {
-                field: 'full_data',
-                title: 'اطلاعات کامل',
-            }],
-            data: row_data_user
-        })
-    })
-</script>
-
-
-<script>
-    var row_data_file = []
-    var row_file
-
-    $.get('/modir/manage_file_table')
-    .then((resp)=>{
-        resp.files.map((item)=>{
-            type = item.type
-            userid_file = resp.users.find((user)=> {return user.id === item.userid_file}).name
-            userid_moshaver = resp.users.find((user)=> {return user.id === item.userid_moshaver}).name
-            region = item.region
-            area = item.area
-            kind_type = item.kind_type
-            price = item.price
-
-            row = {
-                'type': type,
-                'userid_file' : userid_file,
-                'userid_moshaver' : userid_moshaver,
-                'region' : region,
-                'area' : area,
-                'kind_type' : kind_type,
-                'price' : price
-            }
-        row_data_file.push(row) 
-        })
-        
-    }).then(()=>{
-        $('#manage_file_table').bootstrapTable({
-
-            pagination: true,
-            search: true,
-            columns: [{
-                field: 'type',
-                title: 'نوع ملک',
-            }, {
-                field: 'userid_file',
-                title: 'مالک'
-            }, {
-                field: 'userid_moshaver',
-                title: 'وارد کننده فایل',
-            }, {
-                field: 'region',
-                title: 'منطقه',
-            }, {
-                field: 'area',
-                title: 'متراژ',
-                sortable: true,
-            }, {
-                field: 'kind_type',
-                title: 'نوع قرارداد',
-                sortable: true,
-            }, {
-                field: 'price',
-                title: 'قیمت',
-                sortable: true,
-            }],
-            data: row_data_file
-        })
-    })
-</script>
-
-<script>
-
 
     var row_data = []
     var row
     
-    $.get('/modir/report_all')
+    $.get('/tablighat/instagram_report')
     .then((response)=>{
-        response.map(item =>{
-            user1 = item.user.name + ' - ' + item.user.phone
-            type1 = item.user.level
-            files1 = item.files.length
-            clients1 = item.clients.length
-            calls1 = item.calls.length
-            services1 = item.services.length
-            contracts1 = item.contracts.length
+        console.log(response);
+        // response.map(item =>{
+        //     moshaver_name = item.user.name + ' - ' + item.user.phone
+        //     type1 = item.user.level
+        //     files1 = item.files.length
+        //     clients1 = item.clients.length
+        //     calls1 = item.calls.length
+        //     services1 = item.services.length
+        //     contracts1 = item.contracts.length
 
-            row = {
-                'user': user1,
-                'type': type1 == 2 ? 'مشاور' : 'منشی', 
-                'files': files1,
-                'clients': clients1,
-                'calls': calls1,
-                'services': services1,
-                'contracts': contracts1
-            }
+        //     row = {
+        //         'user': user1,
+        //         'type': type1 == 2 ? 'مشاور' : 'منشی', 
+        //         'files': files1,
+        //         'clients': clients1,
+        //         'calls': calls1,
+        //         'services': services1,
+        //         'contracts': contracts1
+        //     }
 
-            row_data.push(row)
-        }) 
-    }).then(()=>{
+        //     row_data.push(row)
+        // }) 
+    // }).then(()=>{
         
-        $('#moshaver_performance_table').bootstrapTable({
+    //     $('#moshaver_performance_table').bootstrapTable({
 
-            pagination: true,
-            search: true,
-            columns: [{
-                field: 'user',
-                title: 'مشخصات',
-            }, {
-                field: 'type',
-                title: 'نوع کاربر'
-            }, {
-                field: 'files',
-                title: 'تعداد فایل‌ها',
-                sortable: true,
-            }, {
-                field: 'clients',
-                title: 'تعداد مشتریان',
-                sortable: true,
-            }, {
-                field: 'calls',
-                title: 'تعداد تماس‌ها',
-                sortable: true,
-            }, {
-                field: 'services',
-                title: 'تعداد سرویس‌ها',
-                sortable: true,
-            }, {
-                field: 'contracts',
-                title: 'تعداد قرارداد',
-                sortable: true,
-            }],
-            data: row_data
-        })
+    //         pagination: true,
+    //         search: true,
+    //         columns: [{
+    //             field: 'user',
+    //             title: 'مشخصات',
+    //         }, {
+    //             field: 'type',
+    //             title: 'نوع کاربر'
+    //         }, {
+    //             field: 'files',
+    //             title: 'تعداد فایل‌ها',
+    //             sortable: true,
+    //         }, {
+    //             field: 'clients',
+    //             title: 'تعداد مشتریان',
+    //             sortable: true,
+    //         }, {
+    //             field: 'calls',
+    //             title: 'تعداد تماس‌ها',
+    //             sortable: true,
+    //         }, {
+    //             field: 'services',
+    //             title: 'تعداد سرویس‌ها',
+    //             sortable: true,
+    //         }, {
+    //             field: 'contracts',
+    //             title: 'تعداد قرارداد',
+    //             sortable: true,
+    //         }],
+    //         data: row_data
+    //     })
 
-    })
+    // })
 
     function only_moshaver_table(){
         $('#moshaver_performance_table').bootstrapTable('filterBy', {
@@ -635,7 +522,7 @@ if($("#infileedit").val()){
 }
 
 
-</script>
+
 
 
 </body>
