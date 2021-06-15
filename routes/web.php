@@ -138,7 +138,12 @@ Route::prefix('moshaver')->group(function(){
     Route::get('/calling_file/{id_file}',[Moshaver::class,'calling_file']);
     Route::get('get_detail_action/{action_id}',[Moshaver::class,'get_detail_action']);
     
+    
+    Route::get('/file/tablighat/{file_id}',[Moshaver::class,'file_talighat']);
 
+    Route::post('tablisht_data',[Moshaver::class,'tablisht_data']);
+
+    
     
 });
 

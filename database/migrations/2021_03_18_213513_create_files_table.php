@@ -36,6 +36,8 @@ class CreateFilesTable extends Migration
 
             $table->string('address')->nullable();
             $table->text('note')->nullable();
+            $table->text('ad_text')->nullable();
+
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('tel')->nullable();

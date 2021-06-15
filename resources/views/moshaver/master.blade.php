@@ -799,6 +799,18 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<script>
+    $("img").click(function(){
+        var selectecimg = []
+        $(this).toggleClass("hoverimg_selected");
+            $(".hoverimg_selected").each(function(){
+            selectecimg.push($(this).attr('src'))
+        })
+        $("#images_tablighat").val(JSON.stringify(selectecimg))
+    })
+
+</script>
+
 
 <script>
     function calling_client(userid_client){

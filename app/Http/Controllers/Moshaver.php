@@ -9,6 +9,7 @@ use App\Models\Work;
 use App\Models\Action;
 use App\Models\Report;
 use App\Models\Taavon;
+use App\Models\Tablighat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -76,6 +77,7 @@ class Moshaver extends Controller
             'shell' => $request->shell,
             'publish' => $publish,
             'etc2' => $etc2,
+            'ad_text'=> $request->ad_text,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -153,6 +155,7 @@ class Moshaver extends Controller
             'shell' => $request->shell,
             'publish' => $publish,
             'etc2' => $etc2,
+            'ad_text'=> $request->ad_text,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -827,5 +830,19 @@ class Moshaver extends Controller
         return ['action'=> $action, 'client' => $client, 'file' => $file];
 
     }
+
+    public function file_talighat($file_id){
+        $file = File::find($file_id);
+        return view('moshaver.file_talighat',compact('file'));
+    }
     
+    public function tablisht_data(Request $request){
+        Tablighat::create([
+            'user_id' => Auth::user()->id,
+            'file_id' => $request->file_id,
+            'images' => $request->images
+        ]);
+
+        return redirect('/moshaver/fileinfo/'.$request->file_id);
+    }
 }

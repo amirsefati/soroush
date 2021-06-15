@@ -22,9 +22,10 @@ class CreateTablighatsTable extends Migration
             $table->boolean('has_done')->default(false);
             $table->string('when_done')->nullable();
             $table->string('who_did')->nullable();
+            $table->text('images')->nullable();
 
-            $table->string('etc1');
-            $table->string('etc2');
+            $table->string('etc1')->nullable();
+            $table->string('etc2')->nullable();
             
             $table->timestamps();
         });

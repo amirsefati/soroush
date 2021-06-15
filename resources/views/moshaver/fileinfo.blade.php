@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-12 p-3 fileinfo_headbox">
         <div class="row">
-            <div class="col-md-12 pr-5">
+            <div class="col-md-10 pr-5">
                 <p style="margin:5px;color:coral;font-size:16px">{{$file->type}}</p>
                 <p style="margin:5px;font-size:20px;font-weight: bold;"> {{$file->type}} {{$file->area}} متری</p>
                 <p style="margin:5px;">
@@ -29,6 +29,12 @@
                     @endif
                 </p>
                 <p style="margin:5px;font-size:10px">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
+            </div>
+            <div class="col-md-2">
+            <p>برای ارسال به پنل تبلیغات</p>
+                <a href="/moshaver/file/tablighat/{{$file->id}}">
+                    <button type="button" class="btn btn-outline-danger">تبلیغات</button>
+                </a>
             </div>
         </div>
 
