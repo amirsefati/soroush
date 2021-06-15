@@ -5,6 +5,7 @@ use App\Http\Controllers\Page;
 use App\Http\Controllers\Monshi;
 use App\Http\Controllers\Manager;
 use App\Http\Controllers\Moshaver;
+use App\Http\Controllers\Tablighat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -220,6 +221,16 @@ Route::prefix('modir')->group(function(){
     
 
     Route::get('/verify_moshaver_file',[Manager::class,'verify_moshaver_file']);
+
+    
+});
+
+//Tablighat Router
+Route::prefix('tablighat')->group(function(){
+
+    Route::get('/',[Tablighat::class,'index']);
+    Route::get('/instagram',[Tablighat::class,'instagram']);
+    Route::get('/sms_panel',[Tablighat::class,'sms_panel']);
 
     
 });
