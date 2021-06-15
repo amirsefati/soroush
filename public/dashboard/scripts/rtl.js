@@ -37,6 +37,7 @@ $('document').ready(function(){
     $("#colrenterannual").hide()
     $("#colrentermonth").hide()
     $("#kind_type").val('sell')
+    $("#presellcol").hide()
 
     $("#type_maskoni").change(function() {
         $("#floorcol").show()  
@@ -72,20 +73,22 @@ $('document').ready(function(){
         })
         $("#sell").css('font-size','110%')
         $("#rent").css('font-size','100%')
-        $("#onsell").css('font-size','100%')
+        $("#presell").css('font-size','100%')
 
         $("#sell").css('opacity','1')
         $("#rent").css('opacity','.5')
-        $("#onsell").css('opacity','.5')
+        $("#presell").css('opacity','.5')
 
         $("#colprice").show()
         $("#colrent").hide()
         $("#colrentmonth").hide()
+        $("#presellcol").hide()
+
         $("#kind_type_select").val('sell')
 
     }
 
-    function onsellsection(){
+    function presellsection(){
         if(type_select === 3){
             return true;
         }
@@ -98,14 +101,16 @@ $('document').ready(function(){
         })
         $("#sell").css('font-size','100%')
         $("#rent").css('font-size','100%')
-        $("#onsell").css('font-size','110%')
+        $("#presell").css('font-size','110%')
 
         $("#sell").css('opacity','.5')
         $("#rent").css('opacity','.5')
-        $("#onsell").css('opacity','1')
+        $("#presell").css('opacity','1')
 
         $("#colprice").show()
         $("#colrent").hide()
+        $("#presellcol").show()
+
         $("#colrentmonth").hide()
         $("#kind_type_select").val('sell')
 
@@ -123,16 +128,20 @@ $('document').ready(function(){
         })
         $("#sell").css('font-size','100%')
         $("#rent").css('font-size','110%')
-        $("#onsell").css('font-size','100%')
-        $("#onsell").css('opacity','.5')
+        $("#presell").css('font-size','100%')
+        $("#presell").css('opacity','.5')
         $("#sell").css('opacity','.5')
         $("#rent").css('opacity','1')
         $("#colprice").hide()
+        $("#presellcol").hide()
+
         $("#colrent").show()
         $("#colrentmonth").show()
         $("#kind_type_select").val('rent')
 
     }
+
+
     //when click on sell button 
     $("#sell").click(function(){
         sellsection()
@@ -144,6 +153,9 @@ $('document').ready(function(){
         rentsection() 
     })
 
+    $("#presell").click(()=>{
+        presellsection()
+    })
     //when click on onsell button 
     $("#onsell").click(function(){
         onsellsection()
@@ -345,12 +357,71 @@ $('document').ready(function(){
             onlyTimePicker: true,
 
         });
+    function rentsection_edit(){
+        type_select = 0
+        $("#type_maskoni").find('option').remove()
+        type_rent_maskoni.map((item)=>{
+            $("#type_maskoni").append(
+                `<option value="${item}">${item}</option>`
+            )
+        })
+        $("#sell").css('font-size','100%')
+        $("#rent").css('font-size','115%')
+        $("#presell").css('font-size','100%')
+        $("#presell").css('opacity','.5')
+        $("#sell").css('opacity','.5')
+        $("#rent").css('opacity','1')
+        $("#colprice").hide()
+        $("#presellcol").hide()
+
+        $("#colrent").show()
+        $("#colrentmonth").show()
+        $("#kind_type_select").val('rent')
+    }
+
+    function rentersection_edit(){
+
+    }
+
+    function presellsection_edit(){
+        $("#type_maskoni").find('option').remove()
+        onsell.map((item)=>{
+            $("#type_maskoni").append(
+                `<option value="${item}">${item}</option>`
+            )
+        })
+        $("#sell").css('font-size','100%')
+        $("#rent").css('font-size','100%')
+        $("#presell").css('font-size','110%')
+
+        $("#sell").css('opacity','.5')
+        $("#rent").css('opacity','.5')
+        $("#presell").css('opacity','1')
+
+        $("#colprice").show()
+        $("#colrent").hide()
+        $("#presellcol").show()
+
+        $("#colrentmonth").hide()
+        $("#kind_type_select").val('sell')
+    }
+
+    function presellersection_edit(){
+
+    }
 
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){
-            sellersection()
+            if($("#what_kind_type_presell").val()){
+                presellersection_edit()
+                presellsection_edit()
+            }else{
+                sellersection_edit()
+                sellsection_edit()
+            }
         }else{
-            rentersection()
+            rentersection_edit()
+            rentsection_edit()
         }
         what_type = $("#what_type").val()
             $("#type_maskoni").append(

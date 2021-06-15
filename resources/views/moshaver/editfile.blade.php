@@ -1,6 +1,7 @@
 @extends('moshaver.master')
 @section('content')
 <input type="text" id="what_kind_type" value="{{$file->kind_type}}"  hidden>
+<input type="text" id="what_kind_type_presell" value="{{$file->presell_date}}"  hidden>
 
 <input type="text" id="what_type" value="{{$file->type}}" hidden>
 <input type="text" id="infileedit" value="1" hidden>
@@ -79,6 +80,8 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="sell">خرید و فروش</button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="rent">رهن و اجاره</button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="presell"> پیش فروش</button>
+
                                 </div>
                             </div>
                             <br>
@@ -133,6 +136,47 @@
                                     <input type="number" name="floor" class="form-control" value="{{$file->floor}}">
                                 </div>
 
+                                <div class="col-md-3" id="presellcol">
+                                    <label for="presell">  موعد تحویل :</label>
+
+                                    <div class="row">
+                                        <div class="col-md-6 pl-0">
+                                            <select name="presell_y" class="form-control" id="">
+                                                <option value="{{explode('-',$file->presell_date)[0]}}">{{explode("-",$file->presell_date)[0]}}</option>
+                                                <option value="1400">1400</option>
+                                                <option value="1401">1401</option>
+                                                <option value="1402">1402</option>
+                                                <option value="1403">1403</option>
+                                                <option value="1404">1404</option>
+                                                <option value="1405">1405</option>
+                                                <option value="1406">1406</option>
+                                                <option value="1407">1407</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 pr-1">
+                                            <select name="presell_m" class="form-control" id="">
+                                                <option value="{{explode('-',$file->presell_date)[1]}}">{{explode("-",$file->presell_date)[1]}}</option>
+
+                                                <option value="فرودین">فرودین</option>
+                                                <option value="اردیبهشت">اردیبهشت</option>
+                                                <option value="خرداد">خرداد</option>
+                                                <option value="تیر">تیر</option>
+                                                <option value="مرداد">مرداد</option>
+                                                <option value="شهریور">شهریور</option>
+                                                <option value="مهر">مهر</option>
+                                                <option value="آبان">آبان</option>
+                                                <option value="آذر">آذر</option>
+                                                <option value="دی">دی</option>
+                                                <option value="بهمن">بهمن</option>
+                                                <option value="اسفند">اسفند</option>
+
+                                            </select>
+                                        </div> 
+                                    </div>
+                                     
+                                    
+                                </div>
                                 
                             </div>
 

@@ -99,6 +99,9 @@ class Moshaver extends Controller
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
 
+            'presell_date' => $request->presell_y. '-' . $request->presell_m,
+
+            
         ]);
         if($request->kind_type == 'sell'){
             User::find($request->userid_file)->update([
@@ -176,6 +179,7 @@ class Moshaver extends Controller
             'evacuation_status' => $request->evacuation_status,
             'deed_type' => $request->deed_type,
             'convertible' => $request->convertible,
+            'presell_date' => $request->presell_y. '-' . $request->presell_m,
 
         ]);
         if($request->kind_type == 'sell'){

@@ -80,7 +80,9 @@ class CreateFilesTable extends Migration
             $table->string('evacuation_status')->nullable();
             $table->string('deed_type')->nullable();
             $table->string('convertible')->nullable();
+            $table->string('presell_date')->nullable();
 
+            
             $table->string('etc1')->nullable();
             $table->string('etc2')->nullable();
             $table->string('etc3')->nullable();
