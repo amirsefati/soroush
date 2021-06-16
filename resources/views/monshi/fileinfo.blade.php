@@ -22,10 +22,10 @@
                 <p style="margin:5px;font-size:20px;font-weight: bold;"> {{$file->type}} {{$file->area}} متری</p>
                 <p style="margin:5px;">
                     @if($file->kind_type == 'sell')
-                        بودجه : {{$file->price * $file->area}}   تومان
+                        بودجه : <span class="price_comma">{{$file->price * $file->area}}</span>    تومان
                     @else
-                        رهن {{$file->rent_annual}}   تومان
-                        - اجاره {{$file->rent_month}}   تومان
+                        رهن <span class="price_comma">{{$file->rent_annual}}</span>    تومان
+                        - اجاره <span class="price_comma">{{$file->rent_month}}</span>    تومان
                     @endif
                 </p>
                 <p style="margin:5px;font-size:10px">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>

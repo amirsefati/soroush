@@ -645,6 +645,16 @@ crossorigin=""></script>
 
 <script>
 
+    
+    $(".price_comma").each(function(){
+        $(this).text(numberWithCommas($(this).text()))
+    })
+    
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
     var row_data_user = []
     var row_user
 

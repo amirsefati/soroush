@@ -635,6 +635,16 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 <script>
 
+
+    $(".price_comma").each(function(){
+        $(this).text(numberWithCommas($(this).text()))
+    })
+    
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
     function verify_file_success(){
         $.get('/monshi/file_id_selected/'+ $("#file_id_selected").val()).then(()=>{
 

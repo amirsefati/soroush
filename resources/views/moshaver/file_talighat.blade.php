@@ -1,7 +1,7 @@
 @extends('moshaver.master')
 @section('content')
 
-
+<input type="text" id="infile_tablighat" value="1" hidden>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -17,11 +17,17 @@
                         <div class="col-md-12">
                             <p>انتخاب عکس </p>
                             <div class="row">
-                                @foreach(json_decode($file->images) as $f)
-                                    <div class="col-md-2 mt-3">
-                                        <img src="{{$f}}" width="100%" alt="">
+                                @if(json_decode($file->images))
+                                    @foreach(json_decode($file->images) as $f)
+                                        <div class="col-md-2 mt-3">
+                                            <img src="{{$f}}" width="100%" alt="">
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="col-md-12" style="text-align: center;">
+                                        <p>هیج عکسی وارد این فایل نشده است لطفا از بخش ارسال عکس فایل اقدام نمایید</p>
                                     </div>
-                                @endforeach 
+                                @endif 
                             </div>
                             
                         </div>

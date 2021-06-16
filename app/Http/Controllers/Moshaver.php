@@ -845,7 +845,9 @@ class Moshaver extends Controller
             'user_id' => Auth::user()->id,
             'file_id' => $request->file_id,
             'images' => $request->images,
-            'ad_text' => $request->ad_text
+            'ad_text' => $request->ad_text,
+            'type' => 'instagram'
+
         ]);
 
         return redirect('/moshaver/fileinfo/'.$request->file_id);
@@ -861,7 +863,9 @@ class Moshaver extends Controller
         Tablighat::create([
             'user_id' => Auth::user()->id,
             'file_id' => $request->file_id,
-            'ad_text' => $request->ad_text
+            'ad_text' => $request->ad_text,
+            'type' => 'sms'
+
         ]);
 
         return redirect('/moshaver/fileinfo/'.$request->file_id);

@@ -409,6 +409,12 @@ $('document').ready(function(){
     function presellersection_edit(){
 
     }
+    function sellersection_edit (){
+
+    }
+    function sellsection_edit (){
+        
+    }
 
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){

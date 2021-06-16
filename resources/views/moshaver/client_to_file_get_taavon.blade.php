@@ -113,13 +113,13 @@
                     <div class="col-md-3">
                         @if($file->kind_type == 'sell')
                             قیمت :
-                                <strong>{{$file->price}}   تومان</strong>
+                                <strong><span class="price_comma">{{$file->price}}</span>    تومان</strong>
                         @else
                             رهن : 
-                                <strong>{{$file->rent_annual}}   تومان</strong>
+                                <strong><span class="price_comma">{{$file->rent_annual}}</span>    تومان</strong>
                                 <br/>
                             اجاره :
-                                <strong>{{$file->rent_month}}   تومان</strong>  
+                                <strong><span class="price_comma">{{$file->rent_month}}</span>    تومان</strong>  
                         @endif
                     </div>
                     <div class="col-md-3">

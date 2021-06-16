@@ -801,22 +801,26 @@ crossorigin=""></script>
 
 <script>
 
-    $(".price_comma").each((i)=>{
-        console.log(i)
+    $(".price_comma").each(function(){
+        $(this).text(numberWithCommas($(this).text()))
     })
     
-    function numberWithCommas() {
+    function numberWithCommas(x) {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    $("img").click(function(){
-        var selectecimg = []
-        $(this).toggleClass("hoverimg_selected");
-            $(".hoverimg_selected").each(function(){
-            selectecimg.push($(this).attr('src'))
-        })
-        $("#images_tablighat").val(JSON.stringify(selectecimg))
-    })
+    if($("#infile_tablighat").val()){
+
+        $("img").click(function(){
+            var selectecimg = []
+            $(this).toggleClass("hoverimg_selected");
+                $(".hoverimg_selected").each(function(){
+                selectecimg.push($(this).attr('src'))
+            })
+            $("#images_tablighat").val(JSON.stringify(selectecimg))
+        })  
+    }
+    
 
 </script>
 

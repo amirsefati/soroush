@@ -15,11 +15,11 @@
 
                                 <p class="pr-2" style="margin-bottom:5px;"> 
                                     @if($user->kind_type == 'sell')
-                                        بودجه : {{$user->price}}   تومان
+                                        بودجه : <span class="price_comma">{{$user->price}} </span>   تومان
                                     @else
-                                        رهن {{$user->rent_annual}}   تومان
+                                        رهن <span class="price_comma">{{$user->rent_annual}} </span>   تومان
                                         <br>
-                                        اجاره {{$user->rent_month}}   تومان
+                                        اجاره <span class="price_comma">{{$user->rent_month}}</span>    تومان
 
                                     @endif
                                 </p>

@@ -33,8 +33,8 @@
                                                 @if($file->kind_type == 'sell')
                                                         قیمت : <span class="price_comma">{{$file->price * $file->area}}</span>  تومان
                                                     @else
-                                                        رهن {{$file->rent_annual}}  تومان
-                                                        -اجاره {{$file->rent_month}}  تومان
+                                                        رهن <span class="price_comma">{{$file->rent_annual}}</span>  تومان
+                                                        -اجاره <span class="price_comma">{{$file->rent_month}}</span>  تومان
                                                 @endif
                                                 </p>
                                             </div>
