@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Tablighat;
 use App\Models\User;
 use App\Models\File;
+use App\Models\Report;
+use Carbon\Carbon;
 use Facade\Ignition\Tabs\Tab;
 
 class Ads extends Controller
@@ -48,5 +50,20 @@ class Ads extends Controller
         }
 
         return view('tablighat.sms_panel', compact('reports'));
+    }
+
+    public function instagram_result(Request $request){
+
+        $request->validate([
+            'result_instagram_link' => 'active_url'
+        ]);
+
+        Tablighat::find($request->tablighat_id)->update([
+            'instagram_link' => $request->result_instagram_link,
+            'has_done' => 1,
+            'when_done' => Carbon::now()
+        ]);
+
+        return back();
     }
 }

@@ -32,6 +32,49 @@
 }}
 </div>
 
+
+<div class="modal pt-5" id="instagram_result_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">نتیجه تبلیغ در اینستاگرام</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST" action="/tablighat/instagram_result">
+                        @csrf
+                        <input id="tablighat_id" name="tablighat_id" style="display: none" type="text">
+                        
+                        <label for="name" style="text-align: right">لینک اینستاگرام: </label>
+                        <input id="result_instagram_link" name="result_instagram_link" type="text" class="form-control" required>
+
+                    
+                </div>
+            </div>
+
+          <div class="row mt-4">
+              <div class="col-md-12" style="text-align:center">
+                  <button type="submit" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
+              </div>
+          </div>
+            </form>
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <div class="modal pt-5" id="sms_modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -340,6 +383,12 @@
         document.getElementById('instagram_modal_ad_text').innerHTML = ad_text
 
     }
+ 
+    function instagram_result_modal(report){
+
+        $('#tablighat_id').val(report.tablighat.id)
+
+}
 
     function sms_modal(report){
 
