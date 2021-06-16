@@ -777,6 +777,7 @@ crossorigin=""></script>
     
     $.get('/modir/report_all')
     .then((response)=>{
+        console.log(response)
         response.map(item =>{
             user1 = item.user.name + ' - ' + item.user.phone
             type1 = item.user.level

@@ -237,8 +237,5 @@ Route::prefix('tablighat')->group(function(){
     Route::get('/',[Ads::class,'index']);
     Route::get('/instagram',[Ads::class,'instagram']);
     Route::get('/sms_panel',[Ads::class,'sms_panel']);
-
-    Route::get('/instagram_report',[Ads::class,'instagram_report']);
-
-    
+        
 });
