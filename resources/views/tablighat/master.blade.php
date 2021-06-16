@@ -32,6 +32,79 @@
 }}
 </div>
 
+<div class="modal pt-5" id="sms_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title">اطلاعات کامل تبلیغات</h5>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body" style="direction: rtl;">
+
+        <div class="row">
+            <div class="col-12">
+                <label for="name">متن پیامک: </label>
+                <p> <span id='sms_modal_text'></span> </p>
+            </div>
+        </div>
+            
+        
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal pt-5" id="instagram_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">اطلاعات کامل تبلیغات</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+          <div class="row">
+  
+              <div class="col-12">
+                <label for="name">عکس‌های منتخب: </label>
+
+                <div class="row" id="instagram_pics"></div>
+
+                  
+              </div>
+          </div>
+
+          <hr>
+  
+          <div class="row">
+              <div class="col-12">
+                  <label for="name">متن آگهی: </label>
+                  <p> <span id='instagram_modal_ad_text'></span> </p>
+              </div>
+          </div>
+              
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -224,226 +297,58 @@
 <script type="text/javascript" src="{{asset('action/script.js')}}"></script>
 <script src="{{asset('js/uppy.min.js')}}"></script>
 <script src="{{asset('js/fa_IR.min.js')}}"></script>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/locale/bootstrap-table-fa-IR.js"></script>
 
 <script>
 
+    function ad_done(){
+        $('#instagram_table').bootstrapTable('filterBy', {
+            status: 'انجام شده'
+        })
+    }
 
-    var row_data = []
-    var row
-    
-    $.get('/tablighat/instagram_report')
-    .then((response)=>{
-        console.log(response);
-        // response.map(item =>{
-        //     moshaver_name = item.user.name + ' - ' + item.user.phone
-        //     type1 = item.user.level
-        //     files1 = item.files.length
-        //     clients1 = item.clients.length
-        //     calls1 = item.calls.length
-        //     services1 = item.services.length
-        //     contracts1 = item.contracts.length
+    function ad_not_done(){
+        $('#instagram_table').bootstrapTable('filterBy', {
+            status: 'انجام نشده'
+        })
+    }
+    function ad_both(){
+        $('#instagram_table').bootstrapTable('filterBy', {
+            status: ['انجام شده', 'انجام نشده']
+        })
+    }
 
-        //     row = {
-        //         'user': user1,
-        //         'type': type1 == 2 ? 'مشاور' : 'منشی', 
-        //         'files': files1,
-        //         'clients': clients1,
-        //         'calls': calls1,
-        //         'services': services1,
-        //         'contracts': contracts1
-        //     }
+    function instagram_modal(report){
 
-        //     row_data.push(row)
-        // }) 
-    // }).then(()=>{
+        var images = report.tablighat.images
+        images = JSON.parse(images)
+        var ad_text = report.file.ad_text
         
-    //     $('#moshaver_performance_table').bootstrapTable({
+        $('#instagram_pics').empty();
 
-    //         pagination: true,
-    //         search: true,
-    //         columns: [{
-    //             field: 'user',
-    //             title: 'مشخصات',
-    //         }, {
-    //             field: 'type',
-    //             title: 'نوع کاربر'
-    //         }, {
-    //             field: 'files',
-    //             title: 'تعداد فایل‌ها',
-    //             sortable: true,
-    //         }, {
-    //             field: 'clients',
-    //             title: 'تعداد مشتریان',
-    //             sortable: true,
-    //         }, {
-    //             field: 'calls',
-    //             title: 'تعداد تماس‌ها',
-    //             sortable: true,
-    //         }, {
-    //             field: 'services',
-    //             title: 'تعداد سرویس‌ها',
-    //             sortable: true,
-    //         }, {
-    //             field: 'contracts',
-    //             title: 'تعداد قرارداد',
-    //             sortable: true,
-    //         }],
-    //         data: row_data
-    //     })
+        var i;
+        for (i = 0; i < images.length; i++) {
 
-    // })
-
-    function only_moshaver_table(){
-        $('#moshaver_performance_table').bootstrapTable('filterBy', {
-            type: 'انجام شده'
-        })
-    }
-
-    function only_monshi_table(){
-        $('#moshaver_performance_table').bootstrapTable('filterBy', {
-            type: 'انجام نشده'
-        })
-    }
-    function both_table(){
-        $('#moshaver_performance_table').bootstrapTable('filterBy', {
-            type: ['انجام شده', 'انجام نشده']
-        })
-    }
-
-    function verify_file_success(){
-        $.get('/modir/file_id_selected/'+ $("#file_id_selected").val()).then(()=>{
-
-        })
-        location.reload();     
-    }
-
-    function verify_file_failed(){
-        $.get('/modir/file_id_selected_failed/'+ $("#file_id_selected").val()).then(()=>{
-
-        })
-        location.reload();    
-    }
-
-
-    var mymap = L.map('mapid').setView([35.75, 51.4], 12);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
-}).addTo(mymap);
-
-
-var popup = L.popup();
-
-function onMapClick(e) {
-        $("#llocation").val(e.latlng.toString())
-		popup
-			.setLatLng(e.latlng)
-			.setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
-			.openOn(mymap);
-        
-       
-	}
-
-	mymap.on('click', onMapClick);
-
-    
-
-    function show_verify_file_details(file_id,user_id,moshaver_id){
-        $("#file_id_selected").val(file_id)
-
-        $.get('getshowfile_id/'+file_id)
-        .then((res)=>{
-            $("#file_area").text(res.area)
-            $("#file_age").text(res.age)
-            $("#file_bedroom_number").text(res.bedroom_number)
-            $("#file_floor").text(res.floor)
-
-            $("#allfloor").text(res.allfloor)
-            $("#wc_number").text(res.wc_number)
-            $("#parking").text(res.parking)
-            $("#suiteinfloor").text(res.suiteinfloor)
-            $("#allsuite").text(res.allsuite)
-
-        })
-        $.get('getshowuser_id/'+user_id)
-        .then((res)=>{
-            $("#moshaver_name").text(res.name)
-            $("#moshaver_phone").text(res.phone)
-
-        })
-        $.get('getshowuser_id/'+moshaver_id)
-        .then((res)=>{
-            $("#client_name").text(res.name)
-            $("#client_phone").text(res.phone)        
-        })
-    }
-    function followupmodal(id){
-        $("#trtable_followup").empty()
-
-        $("#followupmodal_userid").val("")
-        $("#followupmodal_userid").val(id)
-        $.get('/modir/followuphistoryinreport/'+id)
-            .then((res)=>{
-                res.map((item) => {
-                    $("#trtable_followup").append(`<tr><td>${item.date}</td><td>${item.desc}</td></tr>`)
-                })
-            })
-    }
-
-    
-    String.prototype.reverse = function () {
-        return this.split("").reverse().join("");
-    }
-
-    function reformatText(input) {        
-        var x = input.value;
-        x = x.replace(/,/g, ""); // Strip out all commas
-        x = x.reverse();
-        x = x.replace(/.../g, function (e) {
-            return e + ",";
-        }); // Insert new commas
-        x = x.reverse();
-        x = x.replace(/^,/, ""); // Remove leading comma
-        input.value = x;
-    }
-    
-$("#send_digest").click(function(){
-    var name_digest = $("#name_digest").val()
-    var phone_digest = $("#phone_digest").val()
-    $.post('/modir/adduser_digest',{
-        '_token': $('meta[name=csrf-token]').attr('content'),
-        name : name_digest,
-        phone : phone_digest
-    })
-    .then((res)=>{
-        if(res.status === 200){
-            $("#digest_user_all").append(
-                `<option value="${res.data.id}" selected>${res.data.name} - ${res.data.phone}</option>`
-            )
-            $("#myModal").removeClass("show")
-            $("#myModal").css("display","none")
-            $("#bbody").removeClass("modal-open")
-            $(".modal-backdrop").remove(); 
-        }
-        
-    })
-
-})
-
-        if($("#fileid_edit")){
-            var fileid_edit = $("#fileid_edit").val()
+            $('#instagram_pics').append(`
+                <div class='col-md-4'>
+                    <img src='${images[i]}' style='width:100%'/> 
+                </div>
+            `)
         }
 
-       
+        document.getElementById('instagram_modal_ad_text').innerHTML = ad_text
+
+    }
+
+    function sms_modal(report){
+
+        var sms_text = report.file.ad_text
+
+        document.getElementById('sms_modal_text').innerHTML = sms_text
+
+    }
+
 
 function myFunction() {
   // Declare variables
@@ -467,62 +372,7 @@ function myFunction() {
   }
 }
 
-
-var modal = document.getElementById("show_details");
-
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close2")[0];
-
-// When the user clicks the button, open the modal 
-function action_showdetails(actioninfo) {
-
-    $("#client_action").text("")
-    $("#file_action").text("")
-
-    $("#show_details").addClass("showddd")
-    
-    $.get('/modir/getshowuser_id/'+actioninfo.event._def.extendedProps.client_id)
-    .then((res)=>{
-        $("#client_action").text(res.name)
-    })
-
-    $.get('/modir/getshowfile_id/'+actioninfo.event._def.extendedProps.file_id)
-    .then((res)=>{
-        $("#file_action").text(res.name)
-    })
-
-    $("#text_action").text(actioninfo.event._def.extendedProps.text)
-    $("#title_action").text(actioninfo.event._def.title)
-}
-
-$("#close2").click(function(){
-    $("#show_details").removeClass("showddd")
-})
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        $("#show_details").removeClass("showddd")
-    }
-}
-if($("#infileedit").val()){
-    var uppy = Uppy.Core({
-            locale: Uppy.locales.fa_IR
-        })
-        .use(Uppy.Dashboard, {
-          inline: true,
-          target: '#drag-drop-area',
-        })
-        .use(Uppy.XHRUpload, {endpoint: '/modir/uploadfilesimg/'+fileid_edit})
-
-      uppy.on('complete', (result) => {
-        console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      })
-
-}
-
-
-
+</script>
 
 
 </body>

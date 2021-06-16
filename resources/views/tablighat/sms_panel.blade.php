@@ -16,14 +16,48 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <table
-                    id="moshaver_performance_table"
-                    data-show-columns-toggle-all="true"
-                    data-pagination-h-align="left"
-                    data-pagination-detail-h-align="right"
-                    style="text-align: right">
+                data-toggle="table"
+                data-search="true"
+                data-show-columns="true"
+                id='sms_table'>
+                    <thead>
+                        <tr>
+                            <th>نام مشاور</th>
+                            <th>شماره تلفن مشاور</th>
+                            <th data-field="status">وضیعت</th>
+                            <th>تعداد تبلیغات قبلی</th>
+                            <th>اطلاعات کامل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        @foreach ($reports as $report)
+
+                            {{$status = $report['tablighat']['has_done']}}
+                        
+                            <tr>
+                                <td>{{$report['moshaver']['name']}}</td>
+                                <td>{{$report['moshaver']['phone']}}</td>
+                                <td>
+                                    {{($status == 0 ? 'انجام نشده' : 'انجام شده')}} 
+                                </td>
+                                <td>{{$report['ad_times']}}</td>
+                                <td> <span data-toggle="modal" data-target="#sms_modal" onclick="sms_modal({{json_encode($report)}})"><img src="/img/info_tablighat.svg"></span> </td>
+                            </tr>
+                            
+                        @endforeach
+
+                        
+                    </tbody>
                 </table>
+
+
             </div>
         </div>
     </div>
