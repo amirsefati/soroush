@@ -26,7 +26,8 @@ class CreateTablighatsTable extends Migration
 
             $table->string('etc1')->nullable();
             $table->string('etc2')->nullable();
-            
+            $table->text('ad_text')->nullable();
+
             $table->timestamps();
         });
     }

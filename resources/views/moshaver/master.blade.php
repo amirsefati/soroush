@@ -800,6 +800,15 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script>
+
+    $(".price_comma").each((i)=>{
+        console.log(i)
+    })
+    
+    function numberWithCommas() {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     $("img").click(function(){
         var selectecimg = []
         $(this).toggleClass("hoverimg_selected");

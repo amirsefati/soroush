@@ -144,6 +144,10 @@ Route::prefix('moshaver')->group(function(){
 
     Route::post('tablisht_data',[Moshaver::class,'tablisht_data']);
 
+    Route::get('/file/tablighat_sms/{file_id}',[Moshaver::class,'tablighat_sms']);
+
+    Route::post('tablishtsms_data',[Moshaver::class,'tablishtsms_data']);
+
     
     
 });

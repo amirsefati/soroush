@@ -844,7 +844,24 @@ class Moshaver extends Controller
         Tablighat::create([
             'user_id' => Auth::user()->id,
             'file_id' => $request->file_id,
-            'images' => $request->images
+            'images' => $request->images,
+            'ad_text' => $request->ad_text
+        ]);
+
+        return redirect('/moshaver/fileinfo/'.$request->file_id);
+    }
+
+    public function tablighat_sms($file_id){
+        $file = File::find($file_id);
+        return view('moshaver.tablighat_sms',compact('file'));
+    }
+
+    public function tablishtsms_data(Request $request){
+
+        Tablighat::create([
+            'user_id' => Auth::user()->id,
+            'file_id' => $request->file_id,
+            'ad_text' => $request->ad_text
         ]);
 
         return redirect('/moshaver/fileinfo/'.$request->file_id);

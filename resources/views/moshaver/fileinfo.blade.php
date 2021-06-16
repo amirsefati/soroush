@@ -33,7 +33,11 @@
             <div class="col-md-2">
             <p>برای ارسال به پنل تبلیغات</p>
                 <a href="/moshaver/file/tablighat/{{$file->id}}">
-                    <button type="button" class="btn btn-outline-danger">تبلیغات</button>
+                    <button type="button" class="btn btn-outline-danger">اینستاگرام</button>
+                </a>
+
+                <a href="/moshaver/file/tablighat_sms/{{$file->id}}">
+                    <button type="button" class="btn btn-outline-primary">پیامک</button>
                 </a>
             </div>
         </div>

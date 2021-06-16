@@ -31,7 +31,7 @@
                                                 <p class="manage_file_box_p">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
                                                 <p class="manage_file_box_p">
                                                 @if($file->kind_type == 'sell')
-                                                        قیمت : {{$file->price * $file->area}}  تومان
+                                                        قیمت : <span class="price_comma">{{$file->price * $file->area}}</span>  تومان
                                                     @else
                                                         رهن {{$file->rent_annual}}  تومان
                                                         -اجاره {{$file->rent_month}}  تومان
