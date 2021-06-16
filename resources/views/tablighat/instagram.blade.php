@@ -7,6 +7,16 @@
             <img class="card-img-top" src="holder.js/100x180/" alt="">
             <div class="card-body">
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-md-12" style="text-align: left">
                         <div style="position: absolute; left: 15px; top: 10px">
@@ -29,6 +39,7 @@
                             <th data-field="status">وضیعت</th>
                             <th>تعداد تبلیغات قبلی</th>
                             <th>اطلاعات کامل</th>
+                            <th>نتیجه تبلیغ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +59,7 @@
                                 </td>
                                 <td>{{$report['ad_times']}}</td>
                                 <td> <span data-toggle="modal" data-target="#instagram_modal" onclick="instagram_modal({{json_encode($report)}})"><img src="/img/info_tablighat.svg"></span> </td>
+                                <td> <span data-toggle="modal" data-target="#instagram_result_modal" onclick="instagram_result_modal({{json_encode($report)}})"><img src="/img/result_tablighat.svg"></span> </td>
                             </tr>
                             
                         @endforeach
