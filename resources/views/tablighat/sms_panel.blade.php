@@ -29,6 +29,7 @@
                             <th data-field="status">وضیعت</th>
                             <th>تعداد تبلیغات قبلی</th>
                             <th>اطلاعات کامل</th>
+                            <th>نتیجه تبلیغ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,7 @@
                                 </td>
                                 <td>{{$report['ad_times']}}</td>
                                 <td> <span data-toggle="modal" data-target="#sms_modal" onclick="sms_modal({{json_encode($report)}})"><img src="/img/info_tablighat.svg"></span> </td>
+                                <td> <span data-toggle="modal" data-target="#sms_result_modal" onclick="sms_result_modal({{json_encode($report)}})"><img src="/img/result_tablighat.svg"></span> </td>
                             </tr>
                             
                         @endforeach
