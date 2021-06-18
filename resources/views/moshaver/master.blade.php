@@ -851,21 +851,26 @@ crossorigin=""></script>
         input.value = x;
     }
     
+    function showlocation(){
 
+    setTimeout(() => {
+        
+   
+        
     var mymap = L.map('mapid').setView([35.75, 51.4], 12);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
-}).addTo(mymap);
+    }).addTo(mymap);
 
 
-var popup = L.popup();
+    var popup = L.popup();
 
-function onMapClick(e) {
+    function onMapClick(e) {
         $("#llocation").val(e.latlng.toString())
 		popup
 			.setLatLng(e.latlng)
@@ -874,6 +879,9 @@ function onMapClick(e) {
 	}
 
 	mymap.on('click', onMapClick);
+}, 200);
+}
+
 $("#send_digest").click(function(){
     var name_digest = $("#name_digest").val()
     var phone_digest = $("#phone_digest").val()

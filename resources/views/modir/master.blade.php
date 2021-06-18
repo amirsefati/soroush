@@ -771,9 +771,9 @@ crossorigin=""></script>
 }).addTo(mymap);
 
 
-var popup = L.popup();
+    var popup = L.popup();
 
-function onMapClick(e) {
+    function onMapClick(e) {
         $("#llocation").val(e.latlng.toString())
 		popup
 			.setLatLng(e.latlng)
