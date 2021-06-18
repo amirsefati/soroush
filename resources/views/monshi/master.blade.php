@@ -633,6 +633,11 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <script>
 
 
@@ -850,6 +855,116 @@ if($("#infileedit").val()){
       })
 
 }
+
+
+var options = {
+    chart: {
+      type: 'column',
+      style: {
+              fontFamily: 'sefati'
+          }
+    },
+    title: {
+      text: 'گزارش هفتگی فعالت'
+    },
+    subtitle: {
+      text: 'با قابلیت انتخاب بازه'
+    },
+    xAxis: {
+      categories: [],
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'تعداد'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [{
+      name: 'تماس ها',
+      data: []
+  
+    }, {
+      name: 'فایل های',
+      data: []
+  
+    },
+    {
+      name: 'کاربر های',
+      data: []
+    },
+    {
+      name: 'سرویس ها',
+      data: []
+  
+    }, {
+      name: 'آگهی ها',
+      data: []
+  
+    }]
+  }
+
+var chart_dates = []
+var files = []
+var users = []
+var calls = []
+var detatils = []
+
+    $.get('monshi/statics/'+6).then((res)=>{
+        options.xAxis.categories = []
+        res.map((item)=>{
+            chart_dates.push(item.time)
+            files.push(item.files.length)
+            users.push(item.users.length)
+            calls.push(item.calls.length)
+            detatils.push(item)
+        })
+        options.xAxis.categories = chart_dates
+        options.series[1].data = files
+        options.series[2].data = users
+        options.series[0].data = calls
+
+
+    }).then((res)=>{
+        Highcharts.chart('container-monshi', options);
+
+
+    detatils.map((item)=>{
+        $("#details_chart_accordion").append(
+    
+            `<div class="card">
+                <div class="card-header" id="headingOne_${item.time}">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne_${item.time}" aria-expanded="true" aria-controls="collapseOne_${item.time}">
+                    جزئیات در تاریخ <strong> ${item.time} </strong>
+                    </button>
+                </h5>
+                </div>
+    
+                <div id="collapseOne_${item.time}" class="collapse" aria-labelledby="headingOne_${item.time}" data-parent="#details_chart_accordion">
+                <div class="card-body">
+                    ${item.calls} <br>
+
+                </div>
+                </div>
+            </div>
+        `)
+    })
+    
+})
 
 
 </script>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
-use App\Models\RangeMoshaver;
-use App\Models\Report;
 use App\Models\User;
 use App\Models\Work;
+use App\Models\Report;
+use App\Models\Followup;
 use Illuminate\Http\Request;
+use App\Models\RangeMoshaver;
 use Illuminate\Support\Facades\Auth;
 
 class Manager extends Controller
@@ -157,6 +158,31 @@ class Manager extends Controller
     public function verify_moshaver_file(){
         $files = File::where('publish',1)->where('verify',0)->where('etc2','modir')->get();
         return view('modir.verify_moshaver_file',compact('files'));
+    }
+
+
+    public function Manager($days){
+        $statics = [];
+
+        $i = 0;
+        for($i; $i <= $days; $i++){
+            $date = Carbon::now()->subDays($i);
+            $date_jalali = \Morilog\Jalali\CalendarUtils::toJalali(date_format($date, 'Y'), date_format($date, 'm'), date_format($date, 'd'));
+            $date_jalali_str = $date_jalali[0].'-'.$date_jalali[1].'-'.$date_jalali[2];
+            $files = File::whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $users = User::whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $calls = Report::whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+
+            $statics_day = ["time"=>$date_jalali_str,"files"=>$files,"users"=>$users,"calls"=>$calls];
+            array_push($statics,$statics_day);
+        }
+        $statics = array_reverse($statics);
+        return $statics;
+    }
+
+    public function followup(){
+        $followups = Followup::all();
+        return view('modir.followup',compact('followups'));
     }
    
 }

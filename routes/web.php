@@ -205,7 +205,8 @@ Route::prefix('monshi')->group(function(){
     Route::get('/file_id_selected_failed/{file_id}',[Monshi::class,'file_id_selected_failed']);
 
     
-    
+    Route::get('/statics/{days}',[Monshi::class,'statics']);
+
 });
 
 
@@ -232,7 +233,9 @@ Route::prefix('modir')->group(function(){
 
     Route::get('/verify_moshaver_file',[Manager::class,'verify_moshaver_file']);
 
-    
+    Route::get('/statics/{days}',[Manager::class,'statics']);
+    Route::get('/followup',[Manager::class,'followup']);
+
 });
 
 //Tablighat Router
