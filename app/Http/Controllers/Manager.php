@@ -89,24 +89,14 @@ class Manager extends Controller
 
 
     public function manage_files(){
-        return view('modir.manage_files');
+        $files = File::all();        
+        return view('modir.manage_files',compact('files'));
     }
 
-    public function manage_file_table(){
-        $files = File::all();
-        $users = User::all();
-
-        return ['files' => $files, 'users' => $users];
-    }
 
     public function listusers(){
-        return view('modir.listusers');
-    }
-
-    public function manage_user_table(){
         $users = User::all();
-        return ['users'=>$users];
-
+        return view('modir.listusers',compact('users'));
     }
 
     public function add_monshi(){

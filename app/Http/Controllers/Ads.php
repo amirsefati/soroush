@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Tablighat;
-use App\Models\User;
-use App\Models\File;
-use App\Models\Report;
 use Carbon\Carbon;
+use App\Models\File;
+use App\Models\User;
+use App\Models\Report;
+use App\Models\Tablighat;
+use Illuminate\Http\Request;
 use Facade\Ignition\Tabs\Tab;
+use Illuminate\Support\Facades\Auth;
 
 class Ads extends Controller
 {
@@ -65,5 +66,25 @@ class Ads extends Controller
         ]);
 
         return back();
+    }
+
+    
+    public function statics($days){
+        $statics = [];
+
+        $i = 0;
+        for($i; $i <= $days; $i++){
+            $date = Carbon::now()->subDays($i);
+            $date_jalali = \Morilog\Jalali\CalendarUtils::toJalali(date_format($date, 'Y'), date_format($date, 'm'), date_format($date, 'd'));
+            $date_jalali_str = $date_jalali[0].'-'.$date_jalali[1].'-'.$date_jalali[2];
+            $files = File::where('userid_moshaver',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $users = User::where('userid_inter',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+            $calls = Report::where('moshaver_id',Auth::user()->id)->whereDate('created_at',Carbon::now()->subDays($i)->format('Y-m-d'))->get();
+
+            $statics_day = ["time"=>$date_jalali_str,"files"=>$files,"users"=>$users,"calls"=>$calls];
+            array_push($statics,$statics_day);
+        }
+        $statics = array_reverse($statics);
+        return $statics;
     }
 }

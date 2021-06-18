@@ -225,7 +225,6 @@ Route::prefix('modir')->group(function(){
     
 
     Route::get('/manage_files',[Manager::class,'manage_files']);
-    Route::get('/manage_file_table',[Manager::class,'manage_file_table']);
 
     Route::get('/listusers',[Manager::class,'listusers']);
     Route::get('/manage_user_table',[Manager::class,'manage_user_table']);
@@ -245,5 +244,6 @@ Route::prefix('tablighat')->group(function(){
     Route::get('/instagram',[Ads::class,'instagram']);
     Route::get('/sms_panel',[Ads::class,'sms_panel']);
     Route::post('/instagram_result',[Ads::class,'instagram_result']);
- 
+    Route::get('/statics/{days}',[Ads::class,'statics']);
+
 });

@@ -1,4 +1,4 @@
-@extends('monshi.master')
+@extends('modir.master')
 @section('content')
 <br>
 <div class="row">

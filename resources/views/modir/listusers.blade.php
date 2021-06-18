@@ -18,11 +18,64 @@
                 </div>
 
                 <table
-                    id="manage_user_table"
-                    data-show-columns-toggle-all="true"
-                    data-pagination-h-align="left"
-                    data-pagination-detail-h-align="right"
-                    style="text-align: right">
+                data-toggle="table"
+                data-search="true"
+                data-show-columns="true"
+                id='instagram_table'>
+                    <thead>
+                        <tr>
+                            <th> نام مشتری </th>
+                            <th> وارد کننده </th>
+                            <th data-field="status"> اطلاعات واردکننده </th>
+                            <th> نوع قرارداد </th>
+                            <th> متراژ </th>
+                            <th> نوع ملک </th>
+                            <th> قیمت </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach ($users as $user)
+
+                            <div style="display: none;">
+                                {{$moshaver = App\Models\User::find($user->userid_inter)}}
+                            </div>
+                        
+                        
+                            <tr>
+                                <td><a href="/modir/client/{{$user->id}}">{{$user->name}}</a></td>
+                                <td>{{$user->level == 1 ? 'مشاور' : 'منشی'}}</td>
+                                <td><a href="/modir/client/{{$moshaver->id}}">{{$moshaver->name}}</a></td>
+                                <td>
+                                    @if($user->etc1 == 1)
+                                        <span class="badge badge-pill badge-success">خریدار</span>
+                                    @endif
+                                    @if($user->etc2 == 1)
+                                        <span class="badge badge-pill badge-info">فروشنده</span>
+                                    @endif
+                                    @if($user->etc3 == 1)
+                                        <span class="badge badge-pill badge-warning">مستاجر</span>
+                                    @endif
+                                    @if($user->etc4 == 1)
+                                        <span class="badge badge-pill badge-dark">موجر</span>
+                                    @endif
+                                </td>
+                                <td>{{$user->area}}</td>
+                                <td>{{$user->type}}</td>
+                                <td>
+                                    <span class="price_comma">{{$user->price}}</span>
+                                    <span class="price_comma">{{$user->rent_annual}}</span>
+                                    <span class="price_comma">{{$user->rent_month}}</span>
+                                </td>
+                               
+                            </tr>
+                            
+                        @endforeach
+
+                        
+                    </tbody>
                 </table>
             </div>
         </div>

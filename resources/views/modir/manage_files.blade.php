@@ -18,11 +18,63 @@
                 </div>
 
                 <table
-                    id="manage_file_table"
-                    data-show-columns-toggle-all="true"
-                    data-pagination-h-align="left"
-                    data-pagination-detail-h-align="right"
-                    style="text-align: right">
+                data-toggle="table"
+                data-search="true"
+                data-show-columns="true"
+                id='instagram_table'>
+                    <thead>
+                        <tr>
+                            <th> نوع ملک</th>
+                            <th>  مالک</th>
+                            <th data-field="status">وارد کننده فایل</th>
+                            <th> وارد کننده</th>
+                            <th>  منطقه</th>
+                            <th>متراژ </th>
+                            <th> نوع قرارداد</th>
+                            <th>  قیمت</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach ($files as $file)
+
+                            <div style="display: none">
+                                {{$user = App\Models\User::find($file->userid_file)}}
+                                {{$moshaver_monshi = App\Models\User::find($file->userid_moshaver)}}
+
+                            </div>
+                        
+                            <tr>
+                                <td><a href="">{{$file->type}}</a></td>
+                                <td><a href="">{{$user->name}}</a></td>
+                                <td>{{$user->level == 1 ? 'مشاور' : 'منشی'}}</td>
+                                <td>{{$moshaver_monshi->name}}</td>
+                                <td>{{$file->region}}</td>
+                                <td>{{$file->area}}</td>
+                                <td>@if($file->kind_type == 'rent')
+                                        <span>اجاره</span>
+                                    @else
+                                        @if(strlen($file->presell_date) > 3)
+                                            <span>پیش فروش ({{$file->presell_date}})</span>
+                                        @else
+                                            <span> فروش</span>
+                                        @endif
+                                    @endif
+                                </td>
+                                <td>
+                                    <span class="price_comma">{{$file->price}}</span>
+                                    <span class="price_comma">{{$file->rent_annual}}</span>
+                                    <span class="price_comma">{{$file->rent_month}}</span>
+                                </td>
+
+                            </tr>
+                            
+                        @endforeach
+
+                        
+                    </tbody>
                 </table>
             </div>
         </div>
