@@ -33,6 +33,92 @@
 </div>
 
 
+<div class="modal pt-5" id="ann_info_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">اطلاعات کامل اعلامیه</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+          <div class="row" style="text-align: center">
+  
+              <div class="col-12">
+                  <label for="ann_info_img">تصویر</label>
+                  <div class="row" id="ann_info_img"></div>
+              </div>
+  
+              <div class="col-12">
+                  <label for="ann_info_title">عنوان</label>
+                  <p id='ann_info_title' name='ann_info_title'></p>
+              </div>
+
+              <div class="col-12">
+                <label for="ann_info_text">متن</label>
+                <p id='ann_info_text' name='ann_info_text'></p>
+              </div>
+
+              <div class="col-12">
+                <label for="ann_info_time">زمان انتشار</label>
+                <p id='ann_info_time' name='ann_info_time'></p>
+              </div>
+            
+          </div>
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal pt-5" id="add_ann">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">افزودن اعلامیه</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+          <div class="row">
+  
+              <div class="col-6">
+                  <label for="name">عنوان</label>
+                  <input id="name_digest" type="text" class="form-control" required>
+              </div>
+  
+              <div class="col-6">
+                  <label for="name">تصویر</label>
+                  <input id="phone_digest" type="text" class="form-control" required>
+              </div>
+              
+          </div>
+          <div class="row mt-4">
+              <div class="col-md-12" style="text-align:center">
+                  <button type="button" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
+              </div>
+          </div>
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <div class="modal pt-5" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -668,7 +754,6 @@ crossorigin=""></script>
     
     $.get('/modir/report_all')
     .then((response)=>{
-        console.log(response)
         response.map(item =>{
             user1 = item.user.name + ' - ' + item.user.phone
             type1 = item.user.level
@@ -872,6 +957,30 @@ $("#send_digest").click(function(){
         if($("#fileid_edit")){
             var fileid_edit = $("#fileid_edit").val()
         }
+
+
+function ann_info_modal(ann){
+
+    var images = ann.img
+    // images = JSON.parse(images)
+
+    $('#ann_info_img').empty();
+
+    // var i;
+    // for (i = 0; i < images.length; i++) {
+
+    $('#ann_info_img').append(`
+        <div class='col-md-4'>
+            <img src='${images}' style='width:100%'/> 
+        </div>
+    `)
+    // }
+
+    $('#ann_info_title').text(ann.title)
+    $('#ann_info_text').text(ann.text)
+    $('#ann_info_time').text(ann.created_at)
+
+}
 
        
 

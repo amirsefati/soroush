@@ -664,31 +664,45 @@ crossorigin=""></script>
         location.reload();    
     }
 
+    function showlocation(){
 
-    var mymap = L.map('mapid').setView([35.75, 51.4], 12);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
-}).addTo(mymap);
+        setTimeout(() => {
+            locationDelay();
+        }, 200);
 
 
-var popup = L.popup();
+        function locationDelay(){
 
-function onMapClick(e) {
-        $("#llocation").val(e.latlng.toString())
-		popup
-			.setLatLng(e.latlng)
-			.setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
-			.openOn(mymap);
+        
+            var mymap = L.map('mapid').setView([35.75, 51.4], 12);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'نقشه استاتیک <a href="">با همکاری ممد</a> کمپانی صفت <a href="">سروش</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoic2VmYXRpMTAwIiwiYSI6ImNrcDl3bTJkZzBtc2wydm1wMmxoNWhwMXUifQ.j_g6aEhiwXRus-bmHOnA2w'
+            }).addTo(mymap);
+
+
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                $("#llocation").val(e.latlng.toString())
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent(e.latlng.toString() + " : موقعیت اینجا هست ")
+                    .openOn(mymap);
         
        
-	}
+	        }
 
-	mymap.on('click', onMapClick);
+	        mymap.on('click', onMapClick);
+
+        }
+    }
+
+
 
     
 
