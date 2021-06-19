@@ -206,7 +206,7 @@
 
                                 <div class="col-md-4">
                                     <label for="">لوکیشن :</label>
-                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder="افزودن" class="form-control">
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder=" افزودن" class="form-control" onclick="showlocation()">
                        </div>
                             </div>
 

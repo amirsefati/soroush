@@ -21,7 +21,7 @@
                     <div class="col-md-12" style="text-align: left">
                         <div style="position: absolute; left: 15px; top: 10px">
 
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#add_an">افزودن اعلامیه</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#add_ann">افزودن اعلامیه</button>
 
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                 data-toggle="table"
                 data-search="true"
                 data-show-columns="true"
-                id='instagram_table'>
+                id='ann_info_modal'>
                     <thead>
                         <tr>
                             <th>عنوان</th>

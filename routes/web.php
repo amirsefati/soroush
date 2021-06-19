@@ -234,7 +234,8 @@ Route::prefix('modir')->group(function(){
 
     Route::get('/statics/{days}',[Manager::class,'statics']);
     Route::get('/followup',[Manager::class,'followup']);
-
+    
+    Route::get('/announcement',[Manager::class,'announcement']);
 });
 
 //Tablighat Router

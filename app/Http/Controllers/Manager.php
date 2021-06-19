@@ -9,6 +9,7 @@ use App\Models\Report;
 use App\Models\Followup;
 use Illuminate\Http\Request;
 use App\Models\RangeMoshaver;
+use App\Models\Statment;
 use Illuminate\Support\Facades\Auth;
 
 class Manager extends Controller
@@ -173,6 +174,13 @@ class Manager extends Controller
     public function followup(){
         $followups = Followup::all();
         return view('modir.followup',compact('followups'));
+    }
+
+    public function announcement(){
+        $anns = [];
+        $raw_anns = Statment::all();
+
+        return view('modir.announcement', compact('anns'));
     }
    
 }
