@@ -513,6 +513,45 @@
 
 </div>
 
+<div class="modal pt-5" id="archived_file">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title"> تایید حذف فایل </h5>
+      </div>
+        @csrf
+        <!-- Modal body -->
+        <form action="/moshaver/archived_file_selected" method="POST">
+            @csrf
+            <input type="text" name="archive_desc_file_id" id="archive_desc_file_id" id="" hidden>
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+                اگر از آرشیو کردن این فایل مطمئن هستید لطفا دلیل آرشیو کردن را ذکر کنید
+            
+            </div>
+            <div class="row p-3">
+                <div class="col-md-12">
+                    <textarea name="archive_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" data-dismiss="modal" class="btn btn-warning">لغو</button>
+                        <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو شو</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
 <div class="modal pt-5" id="show_map">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -800,6 +839,28 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script>
+    var kkeyword = null
+    function manage_file_filter(keyword){
+        $(".badge_kind_file").each(function(){
+            if($(this).text() === keyword && kkeyword != keyword){
+                $(this).parent().parent().parent().parent().parent().show()
+            }else{
+                $(this).parent().parent().parent().parent().parent().hide()
+            }
+        })
+        if(kkeyword === keyword){
+            kkeyword = null  
+        }else{
+            kkeyword = keyword
+
+        }
+
+
+    }
+
+    function archived_file(id){
+        $("#archive_desc_file_id").val(id)
+    }
 
     $(".price_comma").each(function(){
         $(this).text(numberWithCommas($(this).text()))

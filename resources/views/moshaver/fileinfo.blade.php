@@ -56,7 +56,10 @@
                     <img src="/img/remove.svg" alt="">
                 </span>
 
-               
+                <span class="fileinfo_btn_edit" data-toggle="modal" data-target="#archived_file" onclick="archived_file({{$file->id}})">
+                     آرشیو فایل
+                    <img src="/img/remove.svg" alt="">
+                </span>
             </div>
         </div>
     </div>

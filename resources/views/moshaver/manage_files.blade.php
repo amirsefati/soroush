@@ -6,7 +6,12 @@
     <div class="col-md-12">
                 <div class="row" style="width:100%">
                     <div class="col-md-4 pt-2 pr-4">  </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <span style="padding: 10px;" onclick="manage_file_filter('فروش')">فروش</span>
+                        <span style="padding: 10px;" onclick="manage_file_filter('اجاره')">اجاره</span>
+                        <span style="padding: 10px;" onclick="manage_file_filter('پیش فروش')">پیش فروش</span>
+
+                    </div>
                     <div class="col-md-4" style="text-align: left;">
                         <a href="/moshaver/addfile_get">
                             <button class="btn pr-5 pl-5" style="background:#1D3461;color:white">افزودن فایل</button>
@@ -82,7 +87,19 @@
                                                 <img src="/img/age.svg" style="margin-top:-8px;margin-right:5px" alt="">
                                                 <span style="font-size: 12px;">{{$file->age}}</span>
                                             @endif  
-                                        </div>              
+                                        </div>  
+
+                                        <div class="col-md-4" style="text-align: center;">
+                                            @if($file->kind_type == 'rent')
+                                                <span class="badge_kind_file" style="background: #fcdc4d;">اجاره</span>
+                                            @else
+                                                @if(strlen($file->presell_date) > 3)
+                                                    <span class="badge_kind_file " style="background: #cb793a;">پیش فروش</span> <span>({{$file->presell_date}})</span>
+                                                @else
+                                                    <span class="badge_kind_file" style="background: #5f0f40;">فروش</span>
+                                                @endif
+                                            @endif
+                                        </div>            
                                     </div>
                                 </div>
                             </div>

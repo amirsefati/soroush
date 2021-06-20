@@ -870,4 +870,11 @@ class Moshaver extends Controller
 
         return redirect('/moshaver/fileinfo/'.$request->file_id);
     }
+
+    public function archived_file_selected(Request $request){
+        File::find($request->archive_desc_file_id)->update([
+            'archived_desc' => $request->archive_desc
+        ]);
+        return back();
+    }
 }

@@ -148,6 +148,8 @@ Route::prefix('moshaver')->group(function(){
 
     Route::post('tablishtsms_data',[Moshaver::class,'tablishtsms_data']);
 
+    Route::post('archived_file_selected',[Moshaver::class,'archived_file_selected']);
+
     
     
 });
