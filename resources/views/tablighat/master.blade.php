@@ -90,12 +90,12 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form method="POST" action="/tablighat/sms_result">
+                    <form method="POST" action="/tablighat/sms_panel_result">
                         @csrf
                         <input id="sms_tablighat_id" name="sms_tablighat_id" style="display: none" type="text">
                         
                         <label for="name" style="text-align: right">متن نهایی پیامک شده: </label>
-                        <input id="result_sms_text" name="result_sms_text" type="textarea" class="form-control" required>
+                        <input id="result_sms_text" name="final_sms_text" type="textarea" class="form-control" required>
 
                     
                 </div>
@@ -179,6 +179,90 @@
               </div>
           </div>
               
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal pt-5" id="ds_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">اطلاعات کامل تبلیغات</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+          <div class="row">
+  
+              <div class="col-12">
+                <label for="name">عکس‌های منتخب: </label>
+
+                <div class="row" id="ds_pics"></div>
+
+                  
+              </div>
+          </div>
+
+          <hr>
+  
+          <div class="row">
+              <div class="col-12">
+                  <label for="name">متن آگهی: </label>
+                  <p> <span id='ds_ad_text'></span> </p>
+              </div>
+          </div>
+              
+          
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal pt-5" id="ds_result_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">نتیجه تبلیغ در استوری اینستاگرام</h5>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" style="direction: rtl;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST" action="/tablighat/ds_result">
+                        @csrf
+                        <input id="ds_tablighat_id" name="ds_tablighat_id" style="display: none" type="text">
+                        
+                        <label for="name" style="text-align: right">لینک استوری اینستاگرام: </label>
+                        <input id="result_instagram_story_link" name="result_instagram_story_link" type="text" class="form-control" required>
+
+                    
+                </div>
+            </div>
+
+          <div class="row mt-4">
+              <div class="col-md-12" style="text-align:center">
+                  <button type="submit" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
+              </div>
+          </div>
+            </form>
           
         </div>
         <!-- Modal footer -->
@@ -354,6 +438,14 @@
                                                 پنل پیامکی
                                             </a>
                                         </li>
+
+                                        <li>
+                                            <a href="/tablighat/divar_sheypoor">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                دیوار / شیپور
+                                            </a>
+                                        </li>
                                         
                                     </ul>
                                 </li>
@@ -391,19 +483,50 @@
 
 <script>
 
-    function ad_done(){
+    function instagram_ad_done(){
         $('#instagram_table').bootstrapTable('filterBy', {
             status: 'انجام شده'
         })
     }
-
-    function ad_not_done(){
+    function instagram_ad_not_done(){
         $('#instagram_table').bootstrapTable('filterBy', {
             status: 'انجام نشده'
         })
     }
-    function ad_both(){
+    function instagram_ad_both(){
         $('#instagram_table').bootstrapTable('filterBy', {
+            status: ['انجام شده', 'انجام نشده']
+        })
+    }
+
+    function sms_ad_done(){
+        $('#sms_table').bootstrapTable('filterBy', {
+            status: 'انجام شده'
+        })
+    }
+    function sms_ad_not_done(){
+        $('#sms_table').bootstrapTable('filterBy', {
+            status: 'انجام نشده'
+        })
+    }
+    function sms_ad_both(){
+        $('#sms_table').bootstrapTable('filterBy', {
+            status: ['انجام شده', 'انجام نشده']
+        })
+    }
+
+    function ds_ad_done(){
+        $('#ds_table').bootstrapTable('filterBy', {
+            status: 'انجام شده'
+        })
+    }
+    function ds_ad_not_done(){
+        $('#ds_table').bootstrapTable('filterBy', {
+            status: 'انجام نشده'
+        })
+    }
+    function ds_ad_both(){
+        $('#ds_table').bootstrapTable('filterBy', {
             status: ['انجام شده', 'انجام نشده']
         })
     }
@@ -436,15 +559,44 @@
 
     }
 
+    function ds_modal(report){
+
+        var images = report.tablighat.images
+        images = JSON.parse(images)
+        var ad_text = report.file.ad_text
+
+        $('#ds_pics').empty();
+
+        var i;
+        for (i = 0; i < images.length; i++) {
+
+            $('#ds_pics').append(`
+                <div class='col-md-4'>
+                    <img src='${images[i]}' style='width:100%'/> 
+                </div>
+            `)
+        }
+
+        document.getElementById('ds_ad_text').innerHTML = ad_text
+
+    }
+
+    function ds_result_modal(report){
+
+        $('#ds_tablighat_id').val(report.tablighat.id)
+
+    }
+
+
     function sms_modal(report){
 
-        var sms_text = report.tablighat.sms_text
+        var sms_text = report.tablighat.ad_text
 
         document.getElementById('sms_modal_text').innerHTML = sms_text
 
     }
 
-    function instagram_result_modal(report){
+    function sms_result_modal(report){
 
         $('#sms_tablighat_id').val(report.tablighat.id)
 

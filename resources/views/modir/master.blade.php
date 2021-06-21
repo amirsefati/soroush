@@ -282,8 +282,7 @@
 
         <h5 class="modal-title">پیگیری مشتری</h5>
       </div>
-    <form action="/modir/addfollowup_to_report" method="POST">
-    @csrf
+
       <!-- Modal body -->
       <div class="modal-body" style="direction:rtl;font-family:sefati">
         <div class="row">
@@ -297,6 +296,7 @@
                         </a>
                             </h5>
                         </div>
+
                         <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
                             <div class="card-body">
                                 <table style="width: 100%;" class="table table-striped table-inverse table-responsive">
@@ -312,39 +312,18 @@
                                 </table>
                             </div>
                         </div>
+                        
                     </div>
                     
                 </div>
             </div>
         </div>
     <br>
-            <input type="text" id="followupmodal_userid" name="user_id" hidden>
-            <div class="row">   
-                    <div class="col-md-12">
-                        <label for=""> توضیحات : </label>
-                        <textarea name="desc" class="form-control"></textarea>
-                    </div>
-                </div>
+                
+        <br>
 
-                <br>
-                <div class="row">   
-                    <div class="col-md-12">
-                        <label for="">تاریخ شروع روند : </label>
-                        <input type="text" class="form-control" id="datepickeruser11" name="date" required/>
-                        <br>
-                        <input type="text" class="form-control" id="datepickeruser12" name="time" required/>
-
-                  
-                    </div>
-                </div>
-            <br>
-        <div class="row">
-            <div class="col-md-12" style="text-align: center;">
-                <button class="btn btn-success"> افزودن</button>
-            </div>
-        </div>
       </div>
-    </form>
+
       <!-- Modal footer -->
       <div class="modal-footer">
 

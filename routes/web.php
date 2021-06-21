@@ -222,7 +222,7 @@ Route::prefix('modir')->group(function(){
     Route::get('/add_monshi',[Manager::class,'add_monshi']);
     Route::post('/add_monshi_post',[Manager::class,'add_monshi_post']);
 
-    
+    Route::get('/followuphistoryinreport/{user_id}',[Manager::class,'followuphistoryinreport']);
 
     Route::get('/manage_files',[Manager::class,'manage_files']);
 
@@ -236,6 +236,7 @@ Route::prefix('modir')->group(function(){
     Route::get('/followup',[Manager::class,'followup']);
     
     Route::get('/announcement',[Manager::class,'announcement']);
+
 });
 
 //Tablighat Router
@@ -243,8 +244,14 @@ Route::prefix('tablighat')->group(function(){
 
     Route::get('/',[Ads::class,'index']);
     Route::get('/instagram',[Ads::class,'instagram']);
-    Route::get('/sms_panel',[Ads::class,'sms_panel']);
     Route::post('/instagram_result',[Ads::class,'instagram_result']);
+
+    Route::get('/sms_panel',[Ads::class,'sms_panel']);
+    Route::post('/sms_panel_result',[Ads::class,'sms_panel_result']);
+
+    Route::get('/divar_sheypoor',[Ads::class,'divar_sheypoor']);
+    Route::post('/ds_result',[Ads::class,'ds_result']);
+
     Route::get('/statics/{days}',[Ads::class,'statics']);
 
 });

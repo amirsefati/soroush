@@ -21,7 +21,7 @@ class Ads extends Controller
 
     public function instagram(){
         $reports = [];
-        $all_instagram_ads = Tablighat::where('images', '!=', NULL)->get();
+        $all_instagram_ads = Tablighat::where('type','instagram')->get();
 
         foreach($all_instagram_ads as $instagram_ad){
 
@@ -33,24 +33,7 @@ class Ads extends Controller
             array_push($reports, $arr);
         }
 
-        return view('tablighat.instagram', compact('reports'));
-    }
-
-    public function sms_panel(){
-        $reports = [];
-        $all_sms_ads = Tablighat::where('sms_text', '!=', NULL)->get();
-
-        foreach($all_sms_ads as $sms_ad){
-
-            $moshaver = User::where('id', $sms_ad->user_id)->first();
-            $file = File::where('id', $sms_ad->file_id)->first();
-            $ad_times = Tablighat::where('id', $sms_ad->id)->where('has_done', 1)->count();
-
-            $arr = ['tablighat' => $sms_ad, 'moshaver' => $moshaver, 'file' => $file, 'ad_times' => $ad_times];
-            array_push($reports, $arr);
-        }
-
-        return view('tablighat.sms_panel', compact('reports'));
+        return view('tablighat.divar_sheypoor', compact('reports'));
     }
 
     public function instagram_result(Request $request){
@@ -67,6 +50,68 @@ class Ads extends Controller
 
         return back();
     }
+
+    public function sms_panel(){
+        $reports = [];
+        $all_sms_ads = Tablighat::where('type', 'sms')->get();
+
+        foreach($all_sms_ads as $sms_ad){
+
+            $moshaver = User::where('id', $sms_ad->user_id)->first();
+            $file = File::where('id', $sms_ad->file_id)->first();
+            $ad_times = Tablighat::where('id', $sms_ad->id)->where('has_done', 1)->count();
+
+            $arr = ['tablighat' => $sms_ad, 'moshaver' => $moshaver, 'file' => $file, 'ad_times' => $ad_times];
+            array_push($reports, $arr);
+        }
+
+        return view('tablighat.sms_panel', compact('reports'));
+    }
+    
+    public function sms_panel_result(Request $request){
+
+        Tablighat::find($request->sms_tablighat_id)->update([
+            'sms_text' => $request->final_sms_text,
+            'has_done' => 1,
+            'when_done' => Carbon::now()
+        ]);
+
+        return back();
+    }
+
+    
+    public function divar_sheypoor(){
+        $reports = [];
+        $divar_sheypoor_ads = Tablighat::where('type', 'ds')->get();
+
+        foreach($divar_sheypoor_ads as $divar_sheypoor_ad){
+
+            $moshaver = User::where('id', $divar_sheypoor_ad->user_id)->first();
+            $file = File::where('id', $divar_sheypoor_ad->file_id)->first();
+            $ad_times = Tablighat::where('id', $divar_sheypoor_ad->id)->where('has_done', 1)->count();
+
+            $arr = ['tablighat' => $divar_sheypoor_ad, 'moshaver' => $moshaver, 'file' => $file, 'ad_times' => $ad_times];
+            array_push($reports, $arr);
+        }
+
+        return view('tablighat.instagram', compact('reports'));
+    }
+
+    public function ds_result(Request $request){
+
+        $request->validate([
+            'result_instagram_story_link' => 'active_url'
+        ]);
+
+        Tablighat::find($request->tablighat_id)->update([
+            'instagram_link' => $request->result_instagram_story_link,
+            'has_done' => 1,
+            'when_done' => Carbon::now()
+        ]);
+
+        return back();
+    }
+
 
     
     public function statics($days){

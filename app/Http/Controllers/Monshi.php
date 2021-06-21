@@ -277,7 +277,7 @@ class Monshi extends Controller
             }
         }
         
-        User::where('id',$request->userid)->update([
+        $user = User::where('id',$request->userid)->update([
             'userid_inter' => $request->userid_inter,
             'name' => $request->name,
             'phone' => $request->phone,

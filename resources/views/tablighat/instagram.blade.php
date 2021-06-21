@@ -20,9 +20,9 @@
                 <div class="row">
                     <div class="col-md-12" style="text-align: left">
                         <div style="position: absolute; left: 15px; top: 10px">
-                            <button class="btn btn-primary" onclick='ad_done()'>انجام شده</button>
-                            <button class="btn btn-danger" onclick='ad_not_done()'>انجام نشده</button>
-                            <button class="btn btn-success" onclick='ad_both()'>هر دو</button>
+                            <button class="btn btn-primary" onclick='instagram_ad_done()'>انجام شده</button>
+                            <button class="btn btn-danger" onclick='instagram_ad_not_done()'>انجام نشده</button>
+                            <button class="btn btn-success" onclick='instagram_ad_both()'>هر دو</button>
                         </div>
                     </div>
                 </div>
