@@ -69,6 +69,7 @@ class Moshaver extends Controller
             'suiteinfloor' => $request->suiteinfloor,
             'allsuite' => $request->allsuite,
             'parking' => $request->parking,
+            'master_number' => $request->master_number,
             'wc_number' => $request->wc_number,
             'direction' => $request->direction,
             'depot' => $request->depot,
@@ -150,6 +151,7 @@ class Moshaver extends Controller
             'suiteinfloor' => $request->suiteinfloor,
             'allsuite' => $request->allsuite,
             'parking' => $request->parking,
+            'master_number' => $request->master_number,
             'wc_number' => $request->wc_number,
             'direction' => $request->direction,
             'depot' => $request->depot,
@@ -337,7 +339,7 @@ class Moshaver extends Controller
     }
 
     public function manage_files(){
-        $files_yes_publish = File::where('userid_moshaver',Auth::user()->id)
+        $files_yes_publish = File::where('archived', null)->where('userid_moshaver',Auth::user()->id)
         ->orderBy('updated_at')->get();
         return view('moshaver.manage_files',compact('files_yes_publish'));
     }
@@ -873,7 +875,8 @@ class Moshaver extends Controller
 
     public function archived_file_selected(Request $request){
         File::find($request->archive_desc_file_id)->update([
-            'archived_desc' => $request->archive_desc
+            'archived_desc' => $request->archive_desc,
+            'archived' => 1
         ]);
         return back();
     }

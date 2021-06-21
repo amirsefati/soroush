@@ -33,11 +33,16 @@ class CreateFilesTable extends Migration
             $table->integer('bedroom_number')->nullable();
             $table->integer('floor')->nullable();
             $table->integer('region')->nullable();
+            $table->integer('master_number')->nullable();
 
+            
             $table->string('address')->nullable();
             $table->text('note')->nullable();
             $table->text('ad_text')->nullable();
+            $table->text('archived_desc')->nullable();
+            $table->integer('archived')->nullable();
 
+            
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('tel')->nullable();

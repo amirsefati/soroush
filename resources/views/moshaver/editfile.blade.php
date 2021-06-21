@@ -300,7 +300,7 @@
 
                                 <div class="col-md-3">
                                     <label for="master_number">تعداد خواب‌های مستر :</label>
-                                    <input type="number" name="master_number" class="form-control" value="{{$file->wc_number}}">
+                                    <input type="number" name="master_number" class="form-control" value="{{$file->master_number}}">
                                 </div>
 
                                 <div class="col-md-3">
