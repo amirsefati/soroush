@@ -3,16 +3,26 @@
 
 <div class="row">
     <div class="col-md-12">
-        .<div class="card">
+        <div class="card">
             <img class="card-img-top" src="holder.js/100x180/" alt="">
             <div class="card-body">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="row">
                     <div class="col-md-12" style="text-align: left">
                         <div style="position: absolute; left: 15px; top: 10px">
-                            <button class="btn btn-primary" onclick='sms_ad_done()'>انجام شده</button>
-                            <button class="btn btn-danger" onclick='sms_ad_not_done()'>انجام نشده</button>
-                            <button class="btn btn-success" onclick='sms_ad_both()'>هر دو</button>
+                            <button class="btn btn-primary" onclick='ds_ad_done()'>انجام شده</button>
+                            <button class="btn btn-danger" onclick='ds_ad_not_done()'>انجام نشده</button>
+                            <button class="btn btn-success" onclick='ds_ad_both()'>هر دو</button>
                         </div>
                     </div>
                 </div>
@@ -21,7 +31,7 @@
                 data-toggle="table"
                 data-search="true"
                 data-show-columns="true"
-                id='sms_table'>
+                id='ds_table'>
                     <thead>
                         <tr>
                             <th>نام مشاور</th>
@@ -34,9 +44,6 @@
                     </thead>
                     <tbody>
 
-                        <br>
-                        <br>
-                        <br>
 
                         @foreach ($reports as $report)
 
@@ -51,8 +58,8 @@
                                     {{($status == 0 ? 'انجام نشده' : 'انجام شده')}} 
                                 </td>
                                 <td>{{$report['ad_times']}}</td>
-                                <td> <span data-toggle="modal" data-target="#sms_modal" onclick="sms_modal({{json_encode($report)}})"><img src="/img/info_tablighat.svg"></span> </td>
-                                <td> <span data-toggle="modal" data-target="#sms_result_modal" onclick="sms_result_modal({{json_encode($report)}})"><img src="/img/result_tablighat.svg"></span> </td>
+                                <td> <span data-toggle="modal" data-target="#ds_modal" onclick="ds_modal({{json_encode($report)}})"><img src="/img/info_tablighat.svg"></span> </td>
+                                <td> <span data-toggle="modal" data-target="#ds_result_modal" onclick="ds_result_modal({{json_encode($report)}})"><img src="/img/result_tablighat.svg"></span> </td>
                             </tr>
                             
                         @endforeach

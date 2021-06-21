@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\File;
 use App\Models\User;
 use App\Models\Work;
@@ -106,41 +107,12 @@ class Manager extends Controller
 
     public function add_monshi_post(Request $request){
 
-        $space_200 = 0;
-        $space_200_350 = 0;
-        $space_350 = 0;
-        foreach($request->space as $space){
-            if ($space == 1){
-                $space_200 = 1;
-            }
-
-            if ($space == 2){
-                $space_200_350 = 1;
-            }
-
-            if ($space == 3){
-                $space_350 = 1;
-            }
-        }
-
-        $user = User::create([
+        User::create([
             "name" => $request->name,
             "phone" => $request->phone,
             "password" => $request->password,
             "level" => 3,
             "userid_inter" => Auth::user()->id,
-        ]);
-
-        RangeMoshaver::create([
-            "user_id" => $user->id,
-            "seller" => $request->seller == 'on' ? 1 : 0,
-            "renter" => $request->renter == 'on' ? 1 : 0,
-            "kolangi" => $request->kolangi == 'on' ? 1 : 0,
-            "tejari" => $request->tejari == 'on' ? 1 : 0,
-            "mostaghelat" => $request->mostaghelat == 'on' ? 1 : 0,
-            "space_200" => $space_200,
-            "space_200_350" => $space_200_350,
-            "space_350" => $space_350
         ]);
 
         return back();
@@ -181,6 +153,11 @@ class Manager extends Controller
         $raw_anns = Statment::all();
 
         return view('modir.announcement', compact('anns'));
+    }
+
+    public function followuphistoryinreport($id){
+        $followup = Report::all();
+        return $followup;
     }
    
 }

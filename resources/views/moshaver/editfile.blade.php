@@ -518,7 +518,7 @@
                                         </select>
                                     </div><div class="col-md-3">
                                         <label for="sport_facility">امکانات ورزشی :</label>
-                                        <select class="multiselectfiles" name="sport_facility" id="" style="width:100%">
+                                        <select class="multiselectfiles" name="sport_facility[]" id="" style="width:100%" multiple>
                                             <option value="استخر روباز">استخر روباز</option>
                                             <option value="استخر مشاع">استخر مشاع   </option>
                                             <option value="استخر اختصاصی">استخر اختصاصی</option>
@@ -620,7 +620,7 @@
 
                                         </select>
                                     </div><div class="col-md-3">
-                                        <label for="evacuation_status">وضعیت سکونت</label>
+                                        <label for="evacuation_status">: وضعیت سکونت</label>
                                         <select class="multiselectfiles" name="evacuation_status" id="" style="width:100%">
                                             <option value="تخلیه">تخلیه</option>
                                             <option value="مالک مستقر">مالک مستقر</option>

@@ -1,11 +1,7 @@
 @extends('modir.master')
 @section('content')
 <br>
-<div class="row">
-    <div class="col-md-12" style="text-align: left;">
-        <button class="btn btn-info" data-toggle="modal" data-target="#addfollowup">افزودن پیگیری</button>
-    </div>
-</div>
+
 <br>
 <div class="row">
     <div class="col-md-12">
