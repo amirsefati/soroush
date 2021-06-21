@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">
-                    <div class="col-md-4">افزودن کاربر   جدید</div>
+                    <div class="col-md-4">افزودن کاربر جدید</div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4" >
                         <div class="row">
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="area">متراژ :</label>
-                                    <input type="number" class="form-control">
+                                    <input name = "area" type="number" class="form-control">
                                 </div>
 
                                 <div class="col-md-2">

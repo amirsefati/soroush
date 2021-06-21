@@ -11,6 +11,7 @@ use App\Models\Followup;
 use Illuminate\Http\Request;
 use App\Models\RangeMoshaver;
 use App\Models\Statment;
+use App\Models\Taavon;
 use Illuminate\Support\Facades\Auth;
 
 class Manager extends Controller
@@ -158,6 +159,12 @@ class Manager extends Controller
     public function followuphistoryinreport($id){
         $followup = Report::all();
         return $followup;
+    }
+
+    public function taavons(){
+
+        $taavons = Taavon::where('verify', 2)->get();
+        return view('modir.taavons', compact('taavons'));
     }
    
 }

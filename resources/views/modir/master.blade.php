@@ -656,10 +656,14 @@
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                          مشتری ها
                                     </a>
-                                </li> 
+                                </li>
 
-                                
-                        
+                                <li>
+                                    <a href="/modir/taavons" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                         تعاون ها
+                                    </a>
+                                </li>                          
 
                                 <li>
                                     <a href="/modir/followup" class="">
@@ -960,6 +964,24 @@ function ann_info_modal(ann){
     $('#ann_info_time').text(ann.created_at)
 
 }
+
+    function modir_taavon_file(){
+            $('#instagram_table').bootstrapTable('filterBy', {
+                kind: 'درخواست فایل'
+            })
+    }
+
+    function modir_taavon_user(){
+            $('#instagram_table').bootstrapTable('filterBy', {
+                kind: 'درخواست مشتری'
+            })
+    }
+
+    function modir_taavon_both(){
+            $('#instagram_table').bootstrapTable('filterBy', {
+                kind: ['درخواست فایل', 'درخواست مشتری']
+            })
+    }
 
        
 

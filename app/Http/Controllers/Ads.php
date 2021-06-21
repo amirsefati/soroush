@@ -94,7 +94,7 @@ class Ads extends Controller
             array_push($reports, $arr);
         }
 
-        return view('tablighat.instagram', compact('reports'));
+        return view('tablighat.divar_sheypoor', compact('reports'));
     }
 
     public function ds_result(Request $request){
@@ -103,7 +103,7 @@ class Ads extends Controller
             'result_instagram_story_link' => 'active_url'
         ]);
 
-        Tablighat::find($request->tablighat_id)->update([
+        Tablighat::find($request->ds_tablighat_id)->update([
             'instagram_link' => $request->result_instagram_story_link,
             'has_done' => 1,
             'when_done' => Carbon::now()

@@ -229,13 +229,6 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label for="ad_text"> متن آگهی :</label>
-                                <textarea name="ad_text" class="form-control" id="" rows="3">{{$file->ad_text}}</textarea>
-                            </div>
-                        </div>
-
                         
                         </div>
                     </div>
@@ -243,15 +236,45 @@
                     <div class="collapse multi-collapse show" id="collaps2">
                         <div class="card card-body" style="background:#f4f6f9;box-shadow:0 0 51px 0 rgba(0,0,0,.08),0 6px 18px 0 rgba(0,0,0,.05)!important">
                             <div class="row">
-                                <div class="col-md-8">
-                                    <label for="name">عنوان :</label>
-                                    <input type="text" name="name" class="form-control" value="{{$file->name}}">
+                                
+
+                                <div class="col-md-3">
+                                    <label for="">لوکیشن :</label>
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder="افزودن لوکیشن" class="form-control" onclick="showlocation()">
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="">لوکیشن :</label>
-                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder=" افزودن لوکیشن " class="form-control" onclick="showlocation()">
-                                  </div>
+                                <div class="col-md-3">
+                                    <label for="deed_type"> نوع سند :</label>
+                                    <select class="multiselectfiles" name="deed_type" id="" style="width:100%">
+                                        <option value="تجاری">تجاری</option>
+                                        <option value="اداری">اداری</option>
+                                        <option value="مسکونی">مسکونی</option>
+                                        <option value="قولنامه ای">قولنامه ای</option>
+                                        <option value="منگوله دار">منگوله دار</option>
+                                        <option value="تک برگ">تک برگ</option>
+                                        <option value="شش دانگ">شش دانگ</option>
+                                        <option value="تفکیک شده">تفکیک شده</option>
+                                        <option value="مادر">مادر</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="evacuation_status">وضعیت سکونت :</label>
+                                    <select class="multiselectfiles" name="evacuation_status" id="" style="width:100%">
+                                        <option value="تخلیه">تخلیه</option>
+                                        <option value="مالک مستقر">مالک مستقر</option>
+                                        <option value="مستاجر مستقر">مستاجر مستقر</option>
+                                    </select>
+                                </div>
+                                    
+                                <div class="col-md-3">
+                                    <label for="convertible"> معاوضه :</label>
+                                    <select class="multiselectfiles" name="convertible" id="" style="width:100%">
+                                        <option value="دارد">دارد</option>
+                                        <option value="ندارد">ندارد</option>
+
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="row mt-3">
@@ -274,6 +297,11 @@
                             </div>
 
                             <div class="row mt-3">
+
+                                <div class="col-md-3">
+                                    <label for="master_number">تعداد خواب‌های مستر :</label>
+                                    <input type="number" name="master_number" class="form-control" value="{{$file->wc_number}}">
+                                </div>
 
                                 <div class="col-md-3">
                                     <label for="wc_number">تعداد سرویس بهداشتی :</label>
@@ -307,20 +335,24 @@
                                         <option value="حنوب غربی">حنوب غربی</option> 
                                     </select>
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="depot">انباری :</label>
-                                    <select class="multiselectfiles" name="depot" id="" style="width:100%">
-                                        @if($file->depot)
-                                            <option value="{{$file->depot}}" selected>{{$file->depot  ? 'دارد' : 'ندارد'}}</option>
-                                        @else
-                                            <option value="">انتخاب کنید</option> 
-                                        @endif
-                                        <option value="1">دارد</option>
-                                        <option value="0">ندارد</option>
-                                    </select>
-                                </div>
+                                
                             </div>  
+                                
                                 <div class="row mt-3">
+
+                                    <div class="col-md-3">
+                                        <label for="depot">انباری :</label>
+                                        <select class="multiselectfiles" name="depot" id="" style="width:100%">
+                                            @if($file->depot)
+                                                <option value="{{$file->depot}}" selected>{{$file->depot  ? 'دارد' : 'ندارد'}}</option>
+                                            @else
+                                                <option value="">انتخاب کنید</option> 
+                                            @endif
+                                            <option value="1">دارد</option>
+                                            <option value="0">ندارد</option>
+                                        </select>
+                                    </div>
+
                                     <div class="col-md-3">
                                         <label for="elevator">آسانسور :</label>
                                         <select class="multiselectfiles" name="elevator" id="" style="width:100%">
@@ -364,6 +396,11 @@
                                             <option value="اپکسی">اپکسی</option>
                                         </select>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row mt-3">
+
                                     <div class="col-md-3">
                                         <label for="shell">نوع اسکلت :</label>
                                         <select class="multiselectfiles" name="shell" id="shell" style="width:100%">
@@ -377,9 +414,7 @@
                                             <option value="فلزی جوشی">فلزی جوشی</option>
                                         </select>
                                     </div>
-                                </div>
 
-                                <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="outdoor_face">نمای خارجی :</label>
                                         <select class="multiselectfiles" name="outdoor_face[]" id="outdoor_face" multiple="multiple" id="" style="width:100%">
@@ -432,7 +467,13 @@
                                             <option value="PVC">PVC</option>
 
                                         </select>
-                                    </div><div class="col-md-3">
+                                    </div>
+                                </div>
+
+
+                                <div class="row mt-3">
+
+                                    <div class="col-md-3">
                                         <label for="cooling">سرمایش گرمایش :</label>
                                         <select class="multiselectfiles" name="cooling[]" multiple="multiple" id="cooling" style="width:100%">
                                             <option value="گرمایش از کف">گرمایش از کف</option>
@@ -462,10 +503,7 @@
 
                                         </select>
                                     </div>
-                                </div>
 
-
-                                <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="kitchen">آشپزخانه :</label>
                                         <select class="multiselectfiles" name="kitchen[]" multiple="multiple" id="" style="width:100%">
@@ -516,7 +554,12 @@
                                             <option value="درب ضد سرقت">درب ضد سرقت</option>
 
                                         </select>
-                                    </div><div class="col-md-3">
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+
+                                    <div class="col-md-3">
                                         <label for="sport_facility">امکانات ورزشی :</label>
                                         <select class="multiselectfiles" name="sport_facility[]" id="" style="width:100%" multiple>
                                             <option value="استخر روباز">استخر روباز</option>
@@ -538,9 +581,7 @@
 
                                       </select>
                                     </div>
-                                </div>
 
-                                <div class="row mt-3">
                                     <div class="col-md-3">
                                         <label for="welfair_facility">امکانات رفاهی تفریحی :</label>
                                         <select class="multiselectfiles" name="sport_facility[]" multiple="multiple" id="" style="width:100%">
@@ -619,38 +660,28 @@
                                             <option value="نیاز به بازسازی">نیاز به بازسازی</option>
 
                                         </select>
-                                    </div><div class="col-md-3">
-                                        <label for="evacuation_status">: وضعیت سکونت</label>
-                                        <select class="multiselectfiles" name="evacuation_status" id="" style="width:100%">
-                                            <option value="تخلیه">تخلیه</option>
-                                            <option value="مالک مستقر">مالک مستقر</option>
-                                            <option value="مستاجر مستقر">مستاجر مستقر</option>
-                                        </select>
                                     </div>
                                 </div>
+                                
+
+                                <hr>
+
+                                
 
                                 <div class="row mt-3">
-                                    <div class="col-md-3">
-                                        <label for="deed_type"> نوع سند :</label>
-                                        <select class="multiselectfiles" name="deed_type" id="" style="width:100%">
-                                            <option value="تجاری">تجاری</option>
-                                            <option value="اداری">اداری</option>
-                                            <option value="مسکونی">مسکونی</option>
-                                            <option value="قولنامه ای">قولنامه ای</option>
-                                            <option value="منگوله دار">منگوله دار</option>
-                                            <option value="تک برگ">تک برگ</option>
-                                            <option value="شش دانگ">شش دانگ</option>
-                                            <option value="تفکیک شده">تفکیک شده</option>
-                                            <option value="مادر">مادر</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="convertible"> معاوضه :</label>
-                                        <select class="multiselectfiles" name="convertible" id="" style="width:100%">
-                                            <option value="دارد">دارد</option>
-                                            <option value="ندارد">ندارد</option>
+                                    
+                                    <h5 class="mr-3">مشخصات آگهی :</h5>
+                                    <br>
+                                    <br>
 
-                                        </select>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="name">عنوان آگهی :</label>
+                                        <input type="text" name="name" class="form-control" value="{{$file->name}}">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="ad_text"> متن آگهی :</label>
+                                        <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
                                     </div>
                                 </div>
                         </div>

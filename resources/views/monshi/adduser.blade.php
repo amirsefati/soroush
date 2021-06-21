@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="area">متراژ :</label>
-                                    <input type="number" class="form-control">
+                                    <input type="number" name="area" class="form-control">
                                 </div>
 
                                 <div class="col-md-2">
