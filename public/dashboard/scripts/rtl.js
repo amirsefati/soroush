@@ -418,7 +418,7 @@ $('document').ready(function(){
 
     if($("#what_kind_type").length){
         if($("#what_kind_type").val() == 'sell'){
-            if($("#what_kind_type_presell").val()){
+            if($("#what_kind_type_presell").length > 2){
                 presellersection_edit()
                 presellsection_edit()
             }else{

@@ -233,18 +233,18 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label for="ad_text"> متن آگهی :</label>
-                                <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label for="ad_text"> متن آگهی :</label>
+                                    <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mt-4">   
-                            <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-warning">ارسال اطلاعات اولیه</button>
+                            <div class="row mt-4">   
+                                <div class="col-md-12" style="text-align: center;">
+                                    <button class="btn btn-warning">ارسال اطلاعات اولیه</button>
+                                </div>
                             </div>
-                        </div>
 
                         </div>
                     </div>

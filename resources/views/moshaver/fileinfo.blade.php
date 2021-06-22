@@ -60,6 +60,24 @@
                      آرشیو فایل
                     <img src="/img/remove.svg" alt="">
                 </span>
+
+                <span class="fileinfo_btn_edit">
+                    @if($file->pin)
+                        
+                    <a href="/moshaver/pinfile/{{$file->id}}">
+                        پیش شده 
+                        <img src="/img/pin.png" width="15px" style="margin-top: -2px;" alt="">
+                    </a>               
+
+                    @else
+                    <a href="/moshaver/pinfile/{{$file->id}}">
+                        پین کردن
+                        <img src="/img/pin.png" width="15px" style="margin-top: -2px;" alt="">
+                    </a>
+
+                    @endif
+                    
+                </span>
             </div>
         </div>
     </div>

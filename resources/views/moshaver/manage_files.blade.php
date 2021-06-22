@@ -10,7 +10,16 @@
                         <span style="padding: 10px;" onclick="manage_file_filter('فروش')">فروش</span>
                         <span style="padding: 10px;" onclick="manage_file_filter('اجاره')">اجاره</span>
                         <span style="padding: 10px;" onclick="manage_file_filter('پیش فروش')">پیش فروش</span>
+                        <span style="padding: 10px;" onclick="manage_file_filter('همه')">همه</span>
+                        <span style="padding: 10px;" onclick="manage_file_filter_pin()">نشان دار</span>
+                        <hr>
+                        <div>
+                            <input type="number" id="bednumber_filterinput" placeholder="تعداد اتاق خواب">
+                            <input type="number" id="minarea_filterinput" placeholder=" حداقل متراژ">
+                            <input type="number" id="maxarea_filterinput" placeholder=" حداکثر متراژ">
 
+                            <span onclick="filter_input_files()">اعمال تغییرات</span>
+                        </div>
                     </div>
                     <div class="col-md-4" style="text-align: left;">
                         <a href="/moshaver/addfile_get">
@@ -21,7 +30,7 @@
 
                 <div class="row p-2">
                     @foreach($files_yes_publish as $file)
-                        <div class="col-md-6 pr-4 pl-4 pt-3">
+                        <div class="col-md-6 pr-4 pl-4 pt-3 filter_col">
                             <div class="row manage_file_box">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -32,7 +41,13 @@
                                         </div>
                                         <div class="col-md-9 pr-1">
                                             <div class="pt-3">
-                                                <p class="manage_file_box_p">{{$file->type}} {{$file->area ? $file->area : '-'}} متری</p>
+                                                <p class="manage_file_box_p">{{$file->type}} <span class="area_filter">{{$file->area ? $file->area : ''}}</span> متری
+                                                @if($file->pin)
+                                                    <img src="/img/pin.png" class="file_pined" width="15px" style="margin-top: -2px;" alt="">
+                                                @else
+                                                    <div class="nopined"></div>
+                                                @endif
+                                                </p>
                                                 <p class="manage_file_box_p">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
                                                 <p class="manage_file_box_p">
                                                 @if($file->kind_type == 'sell')
@@ -77,6 +92,7 @@
                                                 <img src="/img/beds.svg" style="margin-top:-3px;margin-right:5px" alt="">
                                                 <span style="font-size: 12px;">{{$file->bedroom_number}}</span>
                                             @endif
+                                                <span class="bednumber_filter" style="display: none;">{{$file->bedroom_number}}</span>
                                             @if($file->floor)
                                                 
                                                 <img src="/img/floor.svg" style="margin-top:-8px;margin-right:5px" alt="">

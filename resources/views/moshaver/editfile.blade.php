@@ -204,24 +204,51 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="phone1">شماره تلفن :</label>
                                 <input type="number" name="phone1" class="form-control" value="{{$file->phone1}}">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label for="address"> کد قطعه بلوک :</label>
                                 <input type="text" name="code_block" id="region" class="form-control" value="{{$file->code_block}}">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label for="phone1"> منطقه :</label>
                                 <input type="number" name="region" id="region" class="form-control" value="{{$file->region}}">
                             </div>
 
-                            <div class="col-md-4 mt-2">
-                                <label for="address">آدرس ملک :</label>
-                                <input type="text" name="address" class="form-control">
+                        </div>
+                        
+                        <hr>
+                        <span style="color: gray;font-size:11px;">آدرس :</span> 
+                        <div class="row pt-1">
+                        
+                        <div class="col-md-3 mt-2">
+                                <label for="address">خیابان اصلی  :</label>
+                                <input type="text" name="address1" class="form-control" value="{{explode('-',$file->address) ? explode('-',$file->address)[0] : ''}}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="address">خیابان فرعی  :</label>
+                                <input type="text" name="address2" class="form-control" value="{{explode('-',$file->address)[0] ? explode('-',$file->address)[1] : ''}}">
+                            </div>
+
+                            <div class="col-md-2 mt-2">
+                                <label for="address"> کوچه  :</label>
+                                <input type="text" name="address3" class="form-control" value="{{explode('-',$file->address)[0] ? explode('-',$file->address)[2] : ''}}">
+                            </div>
+
+                            <div class="col-md-1 mt-2">
+                                <label for="address"> پلاک  :</label>
+                                <input type="number" name="address4" class="form-control" value="{{explode('-',$file->address)[0] ? explode('-',$file->address)[3] : ''}}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="address"> اسم ساختمان  :</label>
+                                <input type="text" name="address5" class="form-control" value="{{explode('-',$file->address)[0] ? explode('-',$file->address)[4] : ''}}">
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label for="note">یادداشت شخصی :</label>

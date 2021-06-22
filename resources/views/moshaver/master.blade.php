@@ -839,24 +839,86 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script>
-    var kkeyword = null
+
+
+    function manage_file_filter_pin(){
+        $(".nopined").each(function(){
+            $(this).parent().parent().parent().parent().parent().parent().hide()
+        })
+    }
+
+
+
+    var keyword_filter = null
     function manage_file_filter(keyword){
+        keyword_filter = keyword
+        console.log(keyword)
         $(".badge_kind_file").each(function(){
-            if($(this).text() === keyword && kkeyword != keyword){
-                $(this).parent().parent().parent().parent().parent().show()
-            }else{
+            $(this).parent().parent().parent().parent().parent().show()
+
+            if($(this).text() != keyword && keyword != 'همه'){
                 $(this).parent().parent().parent().parent().parent().hide()
             }
+           
         })
-        if(kkeyword === keyword){
-            kkeyword = null  
-        }else{
-            kkeyword = keyword
+    }
+
+    
+    function filter_input_files(){
+        manage_file_filter(keyword_filter)
+
+            
+        //search bedroom number
+        if($("#bednumber_filterinput").val() > 0){
+
+            $(".bednumber_filter").each(function(){
+                if($(this).text() != $("#bednumber_filterinput").val()){
+                    $(this).parent().parent().parent().parent().parent().hide()
+                }
+                if(!$(this).text()){
+                    $(this).parent().parent().parent().parent().parent().hide()
+                }
+            })
 
         }
+        if(!$("#bednumber_filterinput").val()){
+            $(".bednumber_filter").each(function(){
+                $(this).parent().parent().parent().parent().parent().show()
+            })
+        }
 
+        
+        //search min area
+        if($("#minarea_filterinput").val() > 0){
+
+            $(".area_filter").each(function(){
+
+                if($(this).text() < $("#minarea_filterinput").val()){
+                    $(this).parent().parent().parent().parent().parent().parent().parent().hide()
+                }
+                if(!$(this).text()){
+                    $(this).parent().parent().parent().parent().parent().parent().parent().hide()
+                }
+            })
+
+            //search max area
+            if($("#maxarea_filterinput").val() > 0){
+
+                $(".area_filter").each(function(){
+
+                    if($(this).text() > $("#maxarea_filterinput").val()){
+                        $(this).parent().parent().parent().parent().parent().parent().parent().hide()
+                    }
+                    if(!$(this).text()){
+                        $(this).parent().parent().parent().parent().parent().parent().parent().hide()
+                    }
+                })
+
+        }
+        manage_file_filter(keyword_filter)
 
     }
+    
 
     function archived_file(id){
         $("#archive_desc_file_id").val(id)
@@ -881,7 +943,7 @@ crossorigin=""></script>
             $("#images_tablighat").val(JSON.stringify(selectecimg))
         })  
     }
-    
+}
 
 </script>
 

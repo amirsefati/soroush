@@ -86,6 +86,7 @@ class CreateFilesTable extends Migration
             $table->string('deed_type')->nullable();
             $table->string('convertible')->nullable();
             $table->string('presell_date')->nullable();
+            $table->integer('pin')->nullable();
 
             
             $table->string('etc1')->nullable();

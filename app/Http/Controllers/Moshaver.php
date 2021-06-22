@@ -131,6 +131,10 @@ class Moshaver extends Controller
             $publish = 1;
         }
 
+        $address = $request->address1 .'-'. $request->address2 .'-'. $request->address3
+        .'-'. $request->address4 .'-'. $request->address5;
+        
+
         File::where('id',$request->fileid)->update([
             'type' => $request->type,
             'kind_type' => $request->kind_type,
@@ -144,7 +148,7 @@ class Moshaver extends Controller
             'bedroom_number' => $request->bedroom_number,
             'floor' => $request->floor,
             'phone1' => $request->phone1,
-            'address' => $request->address,
+            'address' => $address,
             'note' => $request->note,
             'name' => $request->name,
             'allfloor' => $request->allfloor,
@@ -877,6 +881,14 @@ class Moshaver extends Controller
         File::find($request->archive_desc_file_id)->update([
             'archived_desc' => $request->archive_desc,
             'archived' => 1
+        ]);
+        return back();
+    }
+
+    public function pinfile($file_id){
+        $pin = File::find($file_id)->pin;
+        File::find($file_id)->update([
+            'pin' => $pin == 1 ? null : 1
         ]);
         return back();
     }

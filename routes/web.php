@@ -150,6 +150,8 @@ Route::prefix('moshaver')->group(function(){
 
     Route::post('archived_file_selected',[Moshaver::class,'archived_file_selected']);
 
+    Route::get('/pinfile/{file_id}',[Moshaver::class,'pinfile']);
+
     
     
 });
