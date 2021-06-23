@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                ارسال اطلاعات برای تبلیغ در اینستاگرام
+                ارسال اطلاعات برای تبلیغ در پنل تبلیغات
             </div>
             <form action="/moshaver/tablisht_data" method="post">
             @csrf
@@ -35,7 +35,7 @@
                 <br>
                 <hr>
                 <br>
-                    <div class="row mt-3">.
+                    <div class="row mt-3">
                         <h5 class="mr-3">متن آگهی: </h5>
                         <div class="col-md-12">
                             <textarea class="form-control" name="ad_text" rows="10">{{$file->ad_text}}</textarea>

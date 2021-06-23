@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                ارسال اطلاعات برای پنل تبلیغات
+                ارسال اطلاعات برای پنل پیامکی
             </div>
             <form action="/moshaver/tablishtsms_data" method="post">
             @csrf
@@ -15,6 +15,7 @@
                 <div class="card-body">
                 
                     <div class="row mt-3">
+                        <h5 class="mr-3">متن پیامک: </h5>
                         <div class="col-md-12">
                             <textarea class="form-control" name="ad_text" rows="10">{{$file->ad_text}}</textarea>
                         </div>

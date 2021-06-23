@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-12 p-3 fileinfo_headbox">
         <div class="row">
-            <div class="col-md-10 pr-5">
+            <div class="col-md-9 pr-5">
                 <p style="margin:5px;color:coral;font-size:16px">{{$file->type}}</p>
                 <p style="margin:5px;font-size:20px;font-weight: bold;"> {{$file->type}} {{$file->area}} متری</p>
                 <p style="margin:5px;">
@@ -30,7 +30,7 @@
                 </p>
                 <p style="margin:5px;font-size:10px">مالک : {{App\Models\User::find($file->userid_file)->name}}</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
             <p>برای ارسال به پنل تبلیغات</p>
                 <a href="/moshaver/file/tablighat/{{$file->id}}">
                     <button type="button" class="btn btn-outline-danger">اینستاگرام</button>
@@ -38,6 +38,10 @@
 
                 <a href="/moshaver/file/tablighat_sms/{{$file->id}}">
                     <button type="button" class="btn btn-outline-primary">پیامک</button>
+                </a>
+
+                <a href="/moshaver/file/tablighat_ds/{{$file->id}}">
+                    <button type="button" class="btn btn-outline-success">دیوار / شیپور</button>
                 </a>
             </div>
         </div>
@@ -65,13 +69,13 @@
                     @if($file->pin)
                         
                     <a href="/moshaver/pinfile/{{$file->id}}">
-                        پیش شده 
+                        نشان دار شده 
                         <img src="/img/pin.png" width="15px" style="margin-top: -2px;" alt="">
                     </a>               
 
                     @else
                     <a href="/moshaver/pinfile/{{$file->id}}">
-                        پین کردن
+                        نشان دار کردن
                         <img src="/img/pin.png" width="15px" style="margin-top: -2px;" alt="">
                     </a>
 
