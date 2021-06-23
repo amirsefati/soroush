@@ -33,7 +33,7 @@ class Ads extends Controller
             array_push($reports, $arr);
         }
 
-        return view('tablighat.divar_sheypoor', compact('reports'));
+        return view('tablighat.instagram', compact('reports'));
     }
 
     public function instagram_result(Request $request){

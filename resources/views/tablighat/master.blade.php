@@ -535,7 +535,7 @@
 
         var images = report.tablighat.images
         images = JSON.parse(images)
-        var ad_text = report.file.ad_text
+        var ad_text = report.tablighat.ad_text
         
         $('#instagram_pics').empty();
 
@@ -563,7 +563,7 @@
 
         var images = report.tablighat.images
         images = JSON.parse(images)
-        var ad_text = report.file.ad_text
+        var ad_text = report.tablighat.ad_text
 
         $('#ds_pics').empty();
 

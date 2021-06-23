@@ -877,6 +877,26 @@ class Moshaver extends Controller
         return redirect('/moshaver/fileinfo/'.$request->file_id);
     }
 
+    public function tablighat_ds($file_id){
+        $file = File::find($file_id);
+        return view('moshaver.tablighat_ds',compact('file'));
+    }
+
+    public function tablighat_ds_data(Request $request){
+
+        Tablighat::create([
+            'user_id' => Auth::user()->id,
+            'file_id' => $request->file_id,
+            'ad_text' => $request->ad_text,
+            'images' => $request->images,
+            'type' => 'ds'
+
+        ]);
+
+        return redirect('/moshaver/fileinfo/'.$request->file_id);
+    }
+
+
     public function archived_file_selected(Request $request){
         File::find($request->archive_desc_file_id)->update([
             'archived_desc' => $request->archive_desc,
