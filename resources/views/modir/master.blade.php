@@ -663,7 +663,14 @@
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                          تعاون ها
                                     </a>
-                                </li>                          
+                                </li>
+                                
+                                <li>
+                                    <a href="/modir/phonebook" class="">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                         دفترچه تلفن
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="/modir/followup" class="">
@@ -827,6 +834,28 @@ crossorigin=""></script>
         location.reload();    
     }
 
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
 
     var mymap = L.map('mapid').setView([35.75, 51.4], 12);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -964,7 +993,7 @@ function ann_info_modal(ann){
     $('#ann_info_time').text(ann.created_at)
 
 }
-
+    //taavon table filters
     function modir_taavon_file(){
             $('#instagram_table').bootstrapTable('filterBy', {
                 kind: 'درخواست فایل'
@@ -980,6 +1009,37 @@ function ann_info_modal(ann){
     function modir_taavon_both(){
             $('#instagram_table').bootstrapTable('filterBy', {
                 kind: ['درخواست فایل', 'درخواست مشتری']
+            })
+    }
+
+    //phonebook table filters
+    function buyer_phonebook(){
+            $('#phonebook_table').bootstrapTable('filterBy', {
+                kind: 'خریدار'
+            })
+    }
+
+    function seller_phonebook(){
+            $('#phonebook_table').bootstrapTable('filterBy', {
+                kind: 'فروشنده'
+            })
+    }
+
+    function renter_phonebook(){
+            $('#phonebook_table').bootstrapTable('filterBy', {
+                kind: 'مستأجر'
+            })
+    }
+
+    function landlord_phonebook(){
+            $('#phonebook_table').bootstrapTable('filterBy', {
+                kind: 'موجر'
+            })
+    }
+    
+    function all_users_phonebook(){
+            $('#phonebook_table').bootstrapTable('filterBy', {
+                kind: ['خریدار', 'فروشنده', 'مستأجر', 'موجر']
             })
     }
 
