@@ -286,10 +286,12 @@ input[type=number] {
 
 .phone_add_file{
   width: 100%;
-  height: 50%;
+  height: 60%;
   border:.4px solid gray;
   border-radius: 5px;
-  padding: 5px;
+  padding: 15px;
+  margin: 5px;
+
 }
 .no_in_phone_add_file_modal{
   padding: 5px;

@@ -304,4 +304,11 @@ a:hover{
         width: 150px;
     }
    
+   
+}
+
+.iteminselect_phone{
+    border:.5px solid black;
+    border-radius: 5px;
+    padding: 5px;
 }

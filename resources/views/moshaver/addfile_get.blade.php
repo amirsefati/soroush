@@ -187,7 +187,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="phone1">شماره تلفن :</label>
-                                <div class="phone_add_file" data-toggle="modal" data-target="#phone_add_file_modal" >
+                                <div class="phone_add_file" data-toggle="modal" data-target="#phone_add_file_modal" id="phone_add_file">
                                     <span class="no_in_phone_add_file_modal" id="no_in_phone_add_file_modal">شماره تلفن افراد مربوطه</span>
                                 </div>
                                 <input type="number" name="phone1" class="form-control" hidden>

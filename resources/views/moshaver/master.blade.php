@@ -641,13 +641,18 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="">انتخاب کاربر</label>
-                <select name="" id="" class="form-control">
+                <select name="" id="select_phone_add_file_modal" class="form-control">
                     @foreach($us as $u)
                         @if($u->label != 'مالک')
-                        <option value="{{$u->id}}">{{$u->name}} {{$u->label}}</option>
+                        <option value="{{$u->id}}-{{$u->name}}-({{$u->label}})">{{$u->name}} ({{$u->label}})</option>
                         @endif
                     @endforeach
                 </select>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12" style="text-align: left;">
+                <button class="btn btn-warning" id="add_phone_add_file_modal">افزودن</button>
             </div>
         </div>
         
@@ -925,6 +930,15 @@ crossorigin=""></script>
 
 <script>
 
+    $("#add_phone_add_file_modal").click(function(){
+        $("#no_in_phone_add_file_modal").remove()
+        $("#phone_add_file").append(`
+            <span class="iteminselect_phone">
+            ${$("#select_phone_add_file_modal").val()}
+            </span>
+        `)
+        
+    })
 
     $(".price_comma").each(function(){
         $(this).text(numberWithCommas($(this).text()))
