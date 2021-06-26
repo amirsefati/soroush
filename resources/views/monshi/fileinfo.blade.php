@@ -1,4 +1,4 @@
-@extends('moshaver.master')
+@extends('monshi.master')
 @section('content')
 
 <div style="display: none;">

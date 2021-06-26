@@ -243,6 +243,9 @@ Route::prefix('modir')->group(function(){
     Route::get('/followup',[Manager::class,'followup']);
     
     Route::get('/announcement',[Manager::class,'announcement']);
+
+    Route::get('/phonebook',[Manager::class,'phonebook']);
+
     
     Route::get('/taavons',[Manager::class,'taavons']);
 });
