@@ -58,7 +58,20 @@
             </div>
             
         </div>
-        <div class="row mt-4">
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <select class="form-control" id="label" id="">
+                    <option value="مالک">مالک</option>
+                    <option value="نگهبان">نگهبان</option>
+                    <option value="سازنده">سازنده</option>
+                    <option value="مدیرفروش">مدیرفروش</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="row mt-5">
             <div class="col-md-12" style="text-align:center">
                 <button type="button" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
             </div>
@@ -611,6 +624,78 @@
   
 </div>
 
+
+<div class="modal pt-5" id="phone_add_file_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h5 class="modal-title"> ثبت شماره </h5>
+      </div>
+      <!-- Modal body -->
+
+      <div class="modal-body" style="direction: rtl;">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="">انتخاب کاربر</label>
+                <select name="" id="" class="form-control">
+                    @foreach($us as $u)
+                        @if($u->label != 'مالک')
+                        <option value="{{$u->id}}">{{$u->name}} {{$u->label}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        
+      </div>
+
+
+      <div class="modal-body" style="direction: rtl;">
+        <div class="row">
+
+            <div class="col-6">
+                <label for="name"> نام کاربر :</label>
+                <input id="name_digest" type="text" class="form-control" required>
+            </div>
+
+            <div class="col-6">
+                <label for="name">  شماره تلفن :</label>
+                <input id="phone_digest" type="text" class="form-control" required>
+            </div>
+            
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <select class="form-control" name="label" name="" id="">
+                    <option value="مالک">مالک</option>
+                    <option value="نگهبان">نگهبان</option>
+                    <option value="سازنده">سازنده</option>
+                    <option value="مدیرفروش">مدیرفروش</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12" style="text-align:center">
+                <button type="button" id="send_digest" class="btn btn-success pr-5 pl-5"> ارسال</button>
+            </div>
+        </div>
+        
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -841,6 +926,14 @@ crossorigin=""></script>
 <script>
 
 
+    $(".price_comma").each(function(){
+        $(this).text(numberWithCommas($(this).text()))
+    })
+    
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     function manage_file_filter_pin(){
         $(".nopined").each(function(){
             $(this).parent().parent().parent().parent().parent().parent().hide()
@@ -924,13 +1017,6 @@ crossorigin=""></script>
         $("#archive_desc_file_id").val(id)
     }
 
-    $(".price_comma").each(function(){
-        $(this).text(numberWithCommas($(this).text()))
-    })
-    
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    }
 
     if($("#infile_tablighat").val()){
 
@@ -1008,15 +1094,18 @@ crossorigin=""></script>
 $("#send_digest").click(function(){
     var name_digest = $("#name_digest").val()
     var phone_digest = $("#phone_digest").val()
+    var label = $("#label").val()
+
     $.post('/moshaver/adduser_digest',{
         '_token': $('meta[name=csrf-token]').attr('content'),
         name : name_digest,
-        phone : phone_digest
+        phone : phone_digest,
+        label : label
     })
     .then((res)=>{
         if(res.status === 200){
             $("#digest_user_all").append(
-                `<option value="${res.data.id}" selected>${res.data.name} - ${res.data.phone}</option>`
+                `<option value="${res.data.id}" selected>${res.data.name} - ${res.data.phone} (${res.data.label})</option>`
             )
             $("#myModal").removeClass("show")
             $("#myModal").css("display","none")

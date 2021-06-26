@@ -219,7 +219,8 @@ class Moshaver extends Controller
             'kind_type' => 'sell',
             'userid_inter' => Auth::user()->id,
             'password' => '1234567801',
-            'etc5' => $etc5
+            'etc5' => $request->label == 'مالک' ? $etc5 : null,
+            'label' => $request->label
         ]);
         
         return ["status" => 200,"data" => $newuser];
@@ -911,5 +912,12 @@ class Moshaver extends Controller
             'pin' => $pin == 1 ? null : 1
         ]);
         return back();
+    }
+
+    public function add_role(Request $request){
+        
+        User::where('userid',$request->user_id)->update([
+
+        ]);
     }
 }

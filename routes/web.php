@@ -155,7 +155,8 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/pinfile/{file_id}',[Moshaver::class,'pinfile']);
 
-    
+    Route::post('/add_role',[Moshaver::class,'add_role']);
+
     
 });
 

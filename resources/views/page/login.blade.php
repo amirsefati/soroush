@@ -96,7 +96,7 @@
 
 
     <div class="col-md-6 login_left">
-        <div class="login_box p-5">
+        <div class="login_box pt-5 pr-3 pl-3 pb-5">
             <div class="login_box_head">
                 <p class="login_box_head_p">ورود به دستیار مشاور</p>
                 <p class="login_box_head_p">املاک عظیمیان</p>
@@ -105,13 +105,13 @@
             @csrf
             <div class="login_box_content">
                 <label for="phone" style="position: relative;padding:10px;font-size:12px;">موبایل :</label>
-                <input style="background: transparent;color:white" name="phone" type="number" class="form-control" >
+                <input name="phone" type="number" class="form-control input_login" >
 
                 <label for="pass" style="position: relative;padding:10px;font-size:12px;">گذرواژه :</label>
-                <input style="background: transparent;color:white" name="pass" type="password" class="form-control" >
+                <input name="pass" type="password" class="form-control input_login" >
             </div>
                 <br>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-md-12" style="text-align: center;">
                     <button  class="btn_login">ورود</button>
                 </div>

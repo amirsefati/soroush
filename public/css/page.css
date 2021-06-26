@@ -17,10 +17,10 @@ body{
 .login_box{
     border: 2px solid gray;
     border-radius: 15px;
-    margin-top: 15%;
+    margin-top: 10%;
     margin-right: 15%;
     width: 70%;
-    background: #0B4F6C;
+    background: #1F2041;
     opacity: .97;
 }
 .login_box_head{
@@ -34,17 +34,18 @@ body{
 
 .btn_login{
     padding: 10px;
-    background: cyan;
+    background: #016FB9;
     width: 90%;
     border-radius: 20px;
 }
 .btn_forget_pass{
-    padding: 10px;
+    padding: 6px;
     background: white;
-    width: 90%;
+    width: 80%;
     border: .5px solid gray;
     border-radius: 20px;
-    margin-right: 5%;
+    margin-right: 10%;
+    font-size: 10px;
 }
 
 hr.login_box_cutter {
@@ -62,7 +63,7 @@ hr.login_box_cutter:after {
     top: -0.7em;
     font-size: 2.5em;
     padding: 0 0.25em;
-    background: #0B4F6C;
+    background: #1F2041;
 }
 
 @media only screen and (max-width: 600px) {
@@ -71,8 +72,8 @@ hr.login_box_cutter:after {
         border: 2px solid gray;
         border-radius: 15px;
         margin-top: 15%;
-        margin-right: 5%;
-        width: 90%;
-        background: #0B4F6C;
+        margin-right: 1%;
+        width: 98%;
+        background: #1F2041;
     }
 }

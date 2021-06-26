@@ -172,7 +172,9 @@
                                 <select class="all_customers" name="userid_file" id="digest_user_all" style="width: 100%" required>
                                         <option value="">کاربر را انتخاب کنید</option>
                                     @foreach($users as $user)
+                                        @if($user->label == 'مالک   ')
                                         <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -185,7 +187,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="phone1">شماره تلفن :</label>
-                                <input type="number" name="phone1" class="form-control">
+                                <div class="phone_add_file" data-toggle="modal" data-target="#phone_add_file_modal" >
+                                    <span class="no_in_phone_add_file_modal" id="no_in_phone_add_file_modal">شماره تلفن افراد مربوطه</span>
+                                </div>
+                                <input type="number" name="phone1" class="form-control" hidden>
                             </div>
                             
                             <div class="col-md-3">
