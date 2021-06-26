@@ -8,6 +8,7 @@
             <th>مشاور </th>
             <th>درخواست</th>
             <th>درصد خواست شده</th>
+            <th>زمان تعاون</th>
             <th>عملیات</th>
             <th>وضعیت</th>
         </tr>
@@ -36,6 +37,7 @@
                         @endif
                     </td>
                     <td>در حال تکمیل</td>
+                    <td>{{$taavon->updated_at}}</td>
                     <td> 
                         <a href="/moshaver/verfiy_taavon/{{$taavon->id}}/2">
                             <button class="btn btn-success">قبول</button>
@@ -83,6 +85,7 @@
                         @endif
                     </td>
                     <td>در حال تکمیل</td>
+                    <td>{{$taavon->updated_at}}</td>
                     <td> 
                         -
                     </td>
@@ -101,9 +104,7 @@
         @endforeach
     </tbody>
     <tfoot>
-        <tr>
-            <th>#</th>
-        </tr>
+        
     </tfoot>
 </table>
 

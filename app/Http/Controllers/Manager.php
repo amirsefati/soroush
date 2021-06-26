@@ -166,6 +166,12 @@ class Manager extends Controller
         $taavons = Taavon::where('verify', 2)->get();
         return view('modir.taavons', compact('taavons'));
     }
+
+    public function phonebook(){
+
+        $users = User::all();
+        return view('modir.phonebook', compact('users'));
+    }
    
 }
 
