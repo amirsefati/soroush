@@ -32,6 +32,64 @@
 }}
 </div>
 
+<div class="modal pt-5" id="coop_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">ثبت درخواست تعاون</h5>
+        </div>
+
+        <form action="/moshaver/calltaavon_from_user" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input id="my_id" name="my_id" hidden>
+                <input id="file_id" name="file_id" hidden>
+
+                <div class="col-md-12">
+                    <input id="other_moshaver_id" name="other_moshaver_id" hidden>
+                    <label for="other_moshaver">نام مشاور دیگر:</label>
+                    <input type="text" id="other_moshaver" class="form-control" name="other_moshaver" disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <input id="client_id" name="client_id" hidden>
+                    <label for="client_name">نام مشتری شما:</label>
+                    <input type="text" id="client_name" class="form-control" name="client_name" disabled>
+                </div>
+                <hr>
+
+                <div class="col-md-12">
+                    <label for="taavon_percentage">درصد پیشنهادی برای خودم: </label>
+                    <input type="number" id="taavon_percentage" class="form-control" name="taavon_percentage">
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="call_taavon_desc">توضیحات: </label>
+                    <textarea rows="4" id="call_taavon_desc" class="form-control" name="call_taavon_desc"></textarea>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
 
 <div class="modal pt-5" id="myModal">
   <div class="modal-dialog">
@@ -737,7 +795,8 @@
           </form>
       </div>
     </div>
-  </div>
+</div>
+
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -1023,6 +1082,24 @@ crossorigin=""></script>
 
 <script>
 
+    function calltaavon(my_id, other_id, client_id, file_id){
+        $.get('/moshaver/getdata_fromuser/'+other_id)
+        .then((user)=>{
+            $('#other_moshaver').val(user.name)
+            $('#other_moshaver_id').val(user.id)
+        })
+
+        $.get('/moshaver/getdata_fromuser/'+client_id)
+        .then((user2)=>{
+            $('#client_name').val(user2.name)
+            $('#client_id').val(user2.id)
+        })
+
+        $("#my_id").val(my_id)
+        $("#file_id").val(file_id)
+
+    }
+
     $("#add_phone_add_file_modal").click(function(){
         $("#no_in_phone_add_file_modal").remove()
         $("#phone_add_file").append(`
@@ -1050,8 +1127,6 @@ crossorigin=""></script>
             $(this).parent().parent().parent().parent().parent().parent().hide()
         })
     }
-
-
 
     var keyword_filter = null
     function manage_file_filter(keyword){

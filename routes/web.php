@@ -123,7 +123,8 @@ Route::prefix('moshaver')->group(function(){
     Route::post('/reminder_etc',[Moshaver::class,'reminder_etc']);
 
     Route::get('/phonebook',[Moshaver::class,'phonebook']);
-
+    
+    Route::post('/calltaavon_from_user',[Moshaver::class,'calltaavon_from_user']);
 
     
     //action
@@ -164,7 +165,7 @@ Route::prefix('moshaver')->group(function(){
 
     Route::get('/pin_user/{user_id}/{pin}',[Moshaver::class,'pin_user']);
 
-    
+    Route::get('getdata_fromuser/{user_id}',[Moshaver::class,'getdata_fromuser']);
 });
 
 

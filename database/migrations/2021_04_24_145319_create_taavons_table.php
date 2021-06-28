@@ -20,6 +20,8 @@ class CreateTaavonsTable extends Migration
             $table->integer('moshaver_id')->nullable();
             $table->integer('client_id')->nullable();
             $table->integer('file_id')->nullable();
+            $table->integer('percentage')->nullable();
+            $table->text('taavon_desc')->nullable();
 
             $table->integer('verify')->nullable();
             $table->string('to_date_verify')->nullable();

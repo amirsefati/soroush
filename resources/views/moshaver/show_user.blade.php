@@ -1,6 +1,7 @@
 @extends('moshaver.master')
 @section('content')
 
+
 <div style="display: none;">
 {{$f = 0}}
 {{{$t = 0}}}
@@ -295,15 +296,14 @@
                                                                     <a>
                                                                         <span class="verify_file"> تایید شده </span>
                                                                     </a>&nbsp;
-                                                                    <a href="/moshaver/taavon_moshaver_id/client_to_file_get/{{Auth::user()->id}}/{{$file->userid_moshaver}}/{{$user->id}}/{{$file->id}}">
-                                                                        <span class="verify_file"> شروع روند</span>
-                                                                    </a>
+
+
+                                                                    
                                                                 @endif
 
                                                             @else
-                                                                <a href="/moshaver/taavon/user_file/{{Auth::user()->id}}/{{App\Models\User::find($file->userid_moshaver)->id}}/{{$user->id}}/{{$file->id}}">
-                                                                    <span class="verify_file"> درخواست تعاون</span>
-                                                                </a>
+                                                                <span class="verify_file" data-toggle="modal" data-target="#coop_modal" onclick="calltaavon({{Auth::user()->id}}, {{$file->userid_moshaver}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
+
                                                             @endif
                                                             
                                                         </div>

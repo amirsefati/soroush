@@ -480,26 +480,29 @@ class Moshaver extends Controller
 
         return redirect('/moshaver/work_flow_file/'.$file_id);
     }
-    public function taavon_request_user_file($moshaver_id,$userid_taavon,$client_id,$file_id){
-        
-        if(Taavon::where('moshaver_id',$moshaver_id)->where('taavon_id',$userid_taavon)
-        ->where('client_id',$client_id)->where('file_id',$file_id)->count() > 0){
+    public function calltaavon_from_user(Request $request){
+        if(Taavon::where('moshaver_id',$request->my_id)->where('taavon_id',$request->other_moshaver_id)
+        ->where('client_id',$request->client_id)->where('file_id',$request->file_id)->count() > 0){
             return back();  
         }
         
         Taavon::create([
             'kind' => 0,
-            'moshaver_id' => $moshaver_id,
-            'client_id' => $client_id,
-            'file_id' => $file_id,
-            'taavon_id' => $userid_taavon,
+            'moshaver_id' => User::find($request->my_id)->id,
+            'client_id' => User::find($request->client_id)->id,
+            'file_id' => File::find($request->file_id)->id,
+            'taavon_id' => User::find($request->other_moshaver_id)->id,
+            'percentage' => $request->taavon_percentage,
+            'taavon_desc' => $request->call_taavon_desc,
             'verify' => 0,
-            'etc1' => $userid_taavon,
+            'etc1' => File::find($request->file_id)->userid_file,
 
         ]);
 
-        return back();
+        return redirect('/moshaver/show_user/'. $request->client_id);
     }
+
+
 
     public function taavon_request_file_user($moshaver_id,$userid_taavon,$client_id,$file_id){
         
@@ -949,5 +952,11 @@ class Moshaver extends Controller
         $files_archived = File::where('archived', 1)->where('userid_moshaver',Auth::user()->id)
         ->orderBy('updated_at')->get();
         return view('moshaver.archived_files',compact('files_archived'));
+    }
+
+    public function getdata_fromuser($user_id){
+        $user = User::find($user_id);
+        return $user;
+
     }
 }
