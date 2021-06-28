@@ -172,9 +172,7 @@
                                 <select class="all_customers" name="userid_file" id="digest_user_all" style="width: 100%" required>
                                         <option value="">کاربر را انتخاب کنید</option>
                                     @foreach($users as $user)
-                                        @if($user->label == 'مالک   ')
-                                        <option value="{{$user->id}}">{{$user->name}} - {{$user->phone}}</option>
-                                        @endif
+                                        <option value="{{$user->id}}">{{$user->name}} ({{$user->label}}) - {{$user->phone}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -237,13 +235,6 @@
                                 <textarea name="note" class="form-control" id="" rows="3"></textarea>
                             </div>
                         </div>
-
-                            <div class="row mt-3">
-                                <div class="col-md-12">
-                                    <label for="ad_text"> متن آگهی :</label>
-                                    <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
-                                </div>
-                            </div>
 
                             <div class="row mt-4">   
                                 <div class="col-md-12" style="text-align: center;">

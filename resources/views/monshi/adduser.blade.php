@@ -53,18 +53,33 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="seller"> خریدار </button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="renter"> مستاجر </button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="preseller"> پیش خرید </button>
+
                                 </div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="name">نام کاربر :</label>
                                     <input type="text" class="form-control" name="name" required>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="phone"> شماره تلفن :</label>
                                     <input type="number" class="form-control" name="phone" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="source">منبع آشنایی :</label>
+                                    <select name="source" class="form-control" id="source">
+                                        
+                                        <option value="">انتخاب کنید</option>
+                                        <option value="بیلبورد">بیلبورد</option>
+                                        <option value="معرفی دوستان">معرفی دوستان</option>
+                                        <option value="اینستاگرام">اینستاگرام</option>
+                                        <option value="سایت آژانس">سایت آژانس</option>
+
+                                    </select>
                                 </div>
                             </div>
                         

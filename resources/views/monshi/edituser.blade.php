@@ -1,4 +1,4 @@
-@extends('moshaver.master')
+@extends('monshi.master')
 @section('content')
 
 <input type="text" id="pageedituser" value="edituser" hidden>
@@ -10,6 +10,7 @@
 <input type="text" id="what_sporty" value="{{$user->sporty}}" hidden>
 <input type="text" id="what_religen" value="{{$user->religen}}" hidden>
 <input type="text" id="what_likes" value="{{$user->likes}}" hidden>
+<input type="text" id="what_kind_type" value="{{$user->kind_type}}"  hidden>
 
 <div class="row">
     <div class="col-md-12">
@@ -67,18 +68,33 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="seller"> خریدار </button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="renter"> مستاجر </button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="preseller"> پیش خرید </button>
+
                                 </div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="name">نام کاربر :</label>
                                     <input type="text" class="form-control" name="name" value="{{$user->name}}" required>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="phone"> شماره تلفن :</label>
                                     <input type="number" class="form-control" name="phone" value="{{$user->phone}}" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="source">منبع آشنایی :</label>
+                                    <select name="source" class="form-control" id="source">
+                                        
+                                        <option value="">انتخاب کنید</option>
+                                        <option value="بیلبورد" {{$user->source == "بیلبورد" ? "selected" : ""}}> بیلبورد</option>
+                                        <option value="معرفی دوستان" {{$user->source == "معرفی دوستان" ? "selected" : ""}}>معرفی دوستان</option>
+                                        <option value="اینستاگرام" {{$user->source == "اینستاگرام" ? "selected" : ""}}>اینستاگرام</option>
+                                        <option value="سایت آژانس" {{$user->source == "سایت آژانس" ? "selected" : ""}}> سایت آژانس</option>
+
+                                    </select>
                                 </div>
                             </div>
                         

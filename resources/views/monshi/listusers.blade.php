@@ -25,16 +25,22 @@
                                 </p>
 
                                 
-                                    @if($user->kind_type == 'sell')
-                                        <div class="user_box_kind_type">
-                                            <p class="user_box_kind_type_p">خریدار</p>
-                                        </div>
-                                    @else
-                                        <div class="user_box_kind_type_r">
-                                            <p class="user_box_kind_type_p">اجاره</p>
-                                        </div>
+                                @if($user->kind_type == 'sell')
+                                    <div class="user_box_kind_type">
+                                        <p class="user_box_kind_type_p">خریدار</p>
+                                    </div>
 
-                                    @endif
+                                @elseif($user->kind_type == 'presell')
+                                    <div class="user_box_kind_type_presell">
+                                        <p class="user_box_kind_type_p">پیش خریدار</p>
+                                    </div>
+
+                                @else
+                                    <div class="user_box_kind_type_r">
+                                        <p class="user_box_kind_type_p">اجاره</p>
+                                    </div>
+
+                                @endif
                                 
                                 
                                 <div>

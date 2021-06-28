@@ -92,6 +92,17 @@ a:hover{
     background-color: #1dc086;
     text-align: center;
 }
+.user_box_kind_type_presell{
+    border-radius: 0 0 .5rem .5rem;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 95px;
+    height: 45px;
+    background-color: #044389;
+    text-align: center;
+}
+
 
 .user_box_kind_type_r{
     border-radius: 0 0 .5rem .5rem;

@@ -645,6 +645,8 @@ crossorigin=""></script>
         $(this).text(numberWithCommas($(this).text()))
     })
     
+    $("#price").val(numberWithCommas($("#price").val()))
+
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }

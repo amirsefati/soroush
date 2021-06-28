@@ -13,6 +13,7 @@
 @endforeach
 </div>
 
+<input type="text" id="archied_fileinfo_id" value="{{$file->id}}" hidden>
 
 <div class="row">
     <div class="col-md-12 p-3 fileinfo_headbox">
@@ -60,7 +61,7 @@
                     <img src="/img/remove.svg" alt="">
                 </span>
 
-                <span class="fileinfo_btn_edit" data-toggle="modal" data-target="#archived_file" onclick="archived_file({{$file->id}})">
+                <span class="fileinfo_btn_edit" data-toggle="modal" data-target="#archived_file" onClick="archived_file()">
                      آرشیو فایل
                     <img src="/img/remove.svg" alt="">
                 </span>

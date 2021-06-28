@@ -50,9 +50,13 @@ Route::prefix('moshaver')->group(function(){
     
     
     Route::get('manage_files',[Moshaver::class,'manage_files']);
+    Route::get('archived_files',[Moshaver::class,'archived_files']);
+    Route::get('files_on_map',[Moshaver::class,'files_on_map']);
 
     
     Route::get('listusers',[Moshaver::class,'listusers']);
+    Route::get('archived_users',[Moshaver::class,'archived_users']);
+
     Route::get('edituser/{userid}',[Moshaver::class,'edituser_get']);
     Route::post('edituser_post',[Moshaver::class,'edituser_post']);
     Route::get('show_user/{userid}',[Moshaver::class,'show_user_get']);
@@ -152,10 +156,13 @@ Route::prefix('moshaver')->group(function(){
     Route::post('/file/tablighat_ds_data/{file_id}',[Moshaver::class,'tablighat_ds_data']);
 
     Route::post('archived_file_selected',[Moshaver::class,'archived_file_selected']);
+    Route::post('archived_user_selected',[Moshaver::class,'archived_user_selected']);
 
     Route::get('/pinfile/{file_id}',[Moshaver::class,'pinfile']);
 
     Route::post('/add_role',[Moshaver::class,'add_role']);
+
+    Route::get('/pin_user/{user_id}/{pin}',[Moshaver::class,'pin_user']);
 
     
 });
@@ -178,7 +185,7 @@ Route::prefix('monshi')->group(function(){
     Route::get('listusers',[Monshi::class,'listusers']);
     Route::get('adduser',[Monshi::class,'adduser']);
     Route::get('show_user/{userid}',[Monshi::class,'show_user_get']);
-    Route::post('adduser_post',[Moshaver::class,'adduser_post']);
+    Route::post('adduser_post',[Monshi::class,'adduser_post']);
 
     Route::get('edituser/{userid}',[Monshi::class,'edituser_get']);
     Route::post('edituser_post',[Monshi::class,'edituser_post']);

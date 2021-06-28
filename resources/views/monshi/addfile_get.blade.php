@@ -14,15 +14,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4" >
                         <div class="row">
-                            <div class="col-md-6 col-6" style="text-align: left;">
-                                <div class="custom-control custom-switch pt-2">
-                                    <select style="width: 200px;" name="publish" class="form-control" id="">
-                                        <option value="">ارسال برای تایید</option>
-                                        <option value="monshi">ارسال برای منشی</option>
-                                        <option value="modir">ارسال برای مدیر</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <div class="col-md-6"></div>
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <button type="submit" class="btn btn-secondary pr-4 pl-4"  disabled>ارسال فایل</button>
                             </div>
@@ -70,23 +62,37 @@
                             </div>
                             <br>
                             <div class="row justify-content-center">
-                                <div class="col-md-4">
+
+                                <div class="col-md-3">
                                     <label for="type">نوع ملک :</label>
                                     <select name="type" class="form-control" id="type_maskoni" required>
 
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="area"> متراژ(مترمربع) :</label>
                                     <input name="area" type="number" id="area" value="{{ old('area') }}" class="form-control">
 
                                 </div>
 
-                                <div class="col-md-4" id="agecol">
+                                <div class="col-md-3" id="agecol">
                                     <label for="age"> سال ساخت :</label>
                                     <input name="age" type="number" class="form-control" >
 
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="source">منبع آشنایی :</label>
+                                    <select name="source" class="form-control" id="source">
+                                        
+                                        <option value="">انتخاب کنید</option>
+                                        <option value="بیلبورد">بیلبورد</option>
+                                        <option value="معرفی دوستان">معرفی دوستان</option>
+                                        <option value="اینستاگرام">اینستاگرام</option>
+                                        <option value="سایت آژانس">سایت آژانس</option>
+
+                                    </select>
                                 </div>
                             </div>
 
@@ -190,13 +196,6 @@
                             <div class="col-md-12">
                                 <label for="note">یادداشت شخصی :</label>
                                 <textarea name="note" class="form-control" id="" rows="3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label for="ad_text"> متن آگهی :</label>
-                                <textarea name="ad_text" class="form-control" id="" rows="3"></textarea>
                             </div>
                         </div>
 

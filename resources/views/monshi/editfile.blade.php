@@ -27,15 +27,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4" >
                         <div class="row">
-                            <div class="col-md-6 col-6" style="text-align: left;">
-                                <div class="custom-control custom-switch pt-2">
-                                    <select style="width: 200px;" name="publish" class="form-control" id="">
-                                        <option value="">ارسال برای تایید</option>
-                                        <option value="monshi">ارسال برای منشی</option>
-                                        <option value="modir">ارسال برای مدیر</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <div class="col-md-6"></div>
                             <div class="col-md-6 col-6" style="text-align: left;">
                                 <button type="submit" class="btn btn-success pr-4 pl-4">ویرایش فایل</button>
                             </div>
@@ -79,27 +71,42 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="sell">خرید و فروش</button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="rent">رهن و اجاره</button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="preseller"> پیش خرید </button>
+
                                 </div>
                             </div>
                             <br>
                             <div class="row justify-content-center">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="type">نوع ملک :</label>
                                     <select name="type" class="form-control" id="type_maskoni" required>
 
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="area"> متراژ(مترمربع) :</label>
                                     <input name="area" type="number" id="area" class="form-control" value="{{$file->area}}">
 
                                 </div>
 
-                                <div class="col-md-4" id="agecol">
+                                <div class="col-md-3" id="agecol">
                                     <label for="age"> سال ساخت :</label>
                                     <input name="age" type="number"  class="form-control" value="{{$file->age}}">
 
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="source">منبع آشنایی :</label>
+                                    <select name="source" class="form-control" id="source">
+                                        
+                                        <option value="">انتخاب کنید</option>
+                                        <option value="بیلبورد" {{$file->source == "بیلبورد" ? "selected" : ""}}> بیلبورد</option>
+                                        <option value="معرفی دوستان" {{$file->source == "معرفی دوستان" ? "selected" : ""}}>معرفی دوستان</option>
+                                        <option value="اینستاگرام" {{$file->source == "اینستاگرام" ? "selected" : ""}}>اینستاگرام</option>
+                                        <option value="سایت آژانس" {{$file->source == "سایت آژانس" ? "selected" : ""}}> سایت آژانس</option>
+
+                                    </select>
                                 </div>
                             </div>
 
@@ -110,7 +117,7 @@
                             <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
                                     <label for="price">قیمت متری :</label>
-                                    <input type="text" name="price"  onkeyup="reformatText(this)"  class="form-control" value="{{$file->price}}">
+                                    <input type="text" name="price" id="price"  onkeyup="reformatText(this)"  class="form-control" value="{{$file->price}}">
                                 </div>
 
                                 <div class="col-md-3" id="colrent">

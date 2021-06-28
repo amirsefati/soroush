@@ -339,8 +339,17 @@ class Moshaver extends Controller
     public function listusers(){
         $users = User::where('userid_inter',Auth::user()->id)
         ->where('level','1')
+        ->where('archived', null)
         ->get();
         return view('moshaver.listusers',compact('users'));
+    }
+
+    public function archived_users(){
+        $users = User::where('userid_inter',Auth::user()->id)
+        ->where('level','1')
+        ->where('archived', 1)
+        ->get();
+        return view('moshaver.archived_users',compact('users'));
     }
 
     public function manage_files(){
@@ -903,7 +912,15 @@ class Moshaver extends Controller
             'archived_desc' => $request->archive_desc,
             'archived' => 1
         ]);
-        return back();
+        return redirect('/moshaver/manage_files');
+    }
+
+    public function archived_user_selected(Request $request){
+        User::find($request->archive_desc_user_id)->update([
+            'archived_desc' => $request->archive_user_desc,
+            'archived' => 1
+        ]);
+        return redirect('/moshaver/listusers');
     }
 
     public function pinfile($file_id){
@@ -919,5 +936,18 @@ class Moshaver extends Controller
         User::where('userid',$request->user_id)->update([
 
         ]);
+    }
+
+    public function pin_user($user_id,$pin){
+        User::find($user_id)->update([
+            'pin' => $pin
+        ]);
+        return back();
+    }
+    
+    public function archived_files(){
+        $files_archived = File::where('archived', 1)->where('userid_moshaver',Auth::user()->id)
+        ->orderBy('updated_at')->get();
+        return view('moshaver.archived_files',compact('files_archived'));
     }
 }

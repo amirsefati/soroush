@@ -41,8 +41,8 @@ class CreateFilesTable extends Migration
             $table->text('ad_text')->nullable();
             $table->text('archived_desc')->nullable();
             $table->integer('archived')->nullable();
-
             
+            $table->string('source')->nullable();
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('tel')->nullable();

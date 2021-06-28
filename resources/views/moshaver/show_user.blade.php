@@ -13,6 +13,8 @@
 @endforeach
 </div>
 
+<input type="text" id="archied_userinfo_id" value="{{$user->id}}" hidden>
+
 <div class="row">
     <div class="col-md-1"></div>
 
@@ -47,7 +49,17 @@
                         <a href="/moshaver/edituser/{{$user->id}}">
                         <button class="btn btn-outline-primary">ویرایش</button></a>
                         <button class="btn btn-outline-danger">حذف</button>
+                        @if(!$user->pin || $user->pin == 0)
+                            <a href="/moshaver/pin_user/{{$user->id}}/1">
+                                <button class="btn btn-outline-secondary">نشان دار کردن</button>
+                            </a>
+                        @else
+                            <a href="/moshaver/pin_user/{{$user->id}}/0">
+                                <button class="btn btn-outline-success"> حذف نشان دار </button>
+                            </a>
+                        @endif
 
+                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#archived_user" onClick="archived_user()">آرشیو کردن</button>
                     </div>
                 </div>
 

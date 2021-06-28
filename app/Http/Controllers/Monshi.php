@@ -68,6 +68,7 @@ class Monshi extends Controller
             'shell' => $request->shell,
             'publish' => 1,
             'verify' => 1,
+            'source' => $request->source,
 
             'wc' => json_encode($request->wc),
             'floor_type' => json_encode($request->floor_type),
@@ -350,6 +351,7 @@ class Monshi extends Controller
             'region' => $request->region,
             'kind_type' => $request->kind_type,
             'area' => $request->area,
+            'source' => $request->source,
 
             'sporty' => json_encode($request->sporty),
             'religen' => json_encode($request->religen),

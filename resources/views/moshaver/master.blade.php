@@ -534,15 +534,15 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-        <h5 class="modal-title"> تایید حذف فایل </h5>
+        <h5 class="modal-title">تأیید آرشیو فایل</h5>
       </div>
         @csrf
         <!-- Modal body -->
         <form action="/moshaver/archived_file_selected" method="POST">
             @csrf
-            <input type="text" name="archive_desc_file_id" id="archive_desc_file_id" id="" hidden>
+            <input type="text" name="archive_desc_file_id" id="archive_desc_file_id" value="" hidden>
             <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
-                اگر از آرشیو کردن این فایل مطمئن هستید لطفا دلیل آرشیو کردن را ذکر کنید
+                .اگر از آرشیو کردن این فایل مطمئن هستید؛ لطفا دلیل آرشیو کردن را ذکر کنید
             
             </div>
             <div class="row p-3">
@@ -555,7 +555,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" data-dismiss="modal" class="btn btn-warning">لغو</button>
-                        <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو شو</button>
+                        <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو کردن</button>
                     </div>
                 </div>
             </div>
@@ -701,6 +701,44 @@
   </div>
 </div>
 
+<div class="modal pt-5" id="archived_user">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">تأیید آرشیو مشتری</h5>
+        </div>
+          @csrf
+          <!-- Modal body -->
+          <form action="/moshaver/archived_user_selected" method="POST">
+              @csrf
+              <input type="text" name="archive_desc_user_id" id="archive_desc_user_id" value="" hidden>
+              <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+                  .اگر از آرشیو کردن این کاربر مطمئن هستید؛ لطفا دلیل آرشیو کردن را ذکر کنید
+              
+              </div>
+              <div class="row p-3">
+                  <div class="col-md-12">
+                      <textarea name="user_archive_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                  </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <button type="button" data-dismiss="modal" class="btn btn-warning">لغو</button>
+                          <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو کردن</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -845,20 +883,61 @@
                                     </a>
                                 </li> 
 
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        فایل ها
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/moshaver/manage_files">
+                                                <i class="metismenu-icon"></i>
+                                                فایل‌های موجود
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/moshaver/archived_files">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                فایل‌های آرشیو شده
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/moshaver/files_on_map">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                فایل‌ها بر روی نقشه
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
                                 
                                 <li>
-                                    <a href="/moshaver/manage_files">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                          فایل ها
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        مشتری ها
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/moshaver/listusers">
+                                                <i class="metismenu-icon"></i>
+                                                مشتری‌های موجود
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/moshaver/archived_users">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                مشتری‌های آرشیو شده
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
                                 </li>
-
-                                <li>
-                                    <a href="/moshaver/listusers" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                         مشتری ها
-                                    </a>
-                                </li> 
 
                                 <li>
                                     <a href="/moshaver/taavon" class="">
@@ -907,6 +986,20 @@
         </div>            
     </div>
 
+<script>
+    function archived_file(){
+
+        $("#archive_desc_file_id").val($("#archied_fileinfo_id").val())
+    }
+
+    
+    function archived_user(){
+
+        $("#archive_desc_user_id").val($("#archied_userinfo_id").val())
+    }
+
+</script>
+
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
@@ -943,6 +1036,10 @@ crossorigin=""></script>
     $(".price_comma").each(function(){
         $(this).text(numberWithCommas($(this).text()))
     })
+
+    if($("#price").val()){
+        $("#price").val(numberWithCommas($("#price").val()))
+    }
     
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -1027,9 +1124,6 @@ crossorigin=""></script>
     }
     
 
-    function archived_file(id){
-        $("#archive_desc_file_id").val(id)
-    }
 
 
     if($("#infile_tablighat").val()){
@@ -1380,6 +1474,7 @@ var detatils = []
 
 
 </script>
+
 </body>
 
 </html>
