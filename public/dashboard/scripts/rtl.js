@@ -5,8 +5,11 @@ $('document').ready(function(){
     var filename = url.substr(url.lastIndexOf("/"))
     $('li a').each(function(){
         var href = $(this).attr('href').substr($(this).attr('href').lastIndexOf("/"));
-        if(href == filename)
-        $(this).addClass('mm-active')
+        if(href == filename){
+            $(this).parent().parent().addClass("mm-show")
+            $(this).addClass('mm-active')
+            $(this).parent().parent().siblings('a').addClass("mm-active")
+        }
     })
 
 
@@ -382,6 +385,10 @@ $('document').ready(function(){
 
     
         $("#datepickeruser").pDatepicker({
+            format:"L",
+        });
+
+        $("#datepickeruseredituser").pDatepicker({
             format:"L",
         });
 

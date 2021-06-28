@@ -487,7 +487,7 @@ class Moshaver extends Controller
         }
         
         Taavon::create([
-            'kind' => 0,
+            'kind' => 1,
             'moshaver_id' => User::find($request->my_id)->id,
             'client_id' => User::find($request->client_id)->id,
             'file_id' => File::find($request->file_id)->id,

@@ -1199,10 +1199,9 @@ crossorigin=""></script>
     }
     
 
-
-
+}
     if($("#infile_tablighat").val()){
-
+        alert('ok')
         $("img").click(function(){
             var selectecimg = []
             $(this).toggleClass("hoverimg_selected");
@@ -1212,7 +1211,7 @@ crossorigin=""></script>
             $("#images_tablighat").val(JSON.stringify(selectecimg))
         })  
     }
-}
+
 
 </script>
 
