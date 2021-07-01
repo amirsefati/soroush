@@ -32,7 +32,66 @@
 }}
 </div>
 
-<div class="modal pt-5" id="coop_modal">
+<div class="modal pt-5" id="coop_from_file_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">ثبت درخواست تعاون</h5>
+        </div>
+
+        <form action="/moshaver/calltaavon_from_file" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input id="taavon_from_file_my_id" name="taavon_from_file_my_id" hidden>
+                <input id="taavon_from_file_clinet_id" name="taavon_from_file_clinet_id" hidden>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_file_other_moshaver_id" name="taavon_from_file_other_moshaver_id" hidden>
+                    <label for="taavon_from_file_other_moshaver">نام مشاور دیگر:</label>
+                    <input type="text" id="taavon_from_file_other_moshaver" class="form-control" name="taavon_from_file_other_moshaver" disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_file_file_id" name="taavon_from_file_file_id" hidden>
+                    <label for="taavon_from_file_file_name">نام فایل شما:</label>
+                    <input type="text" id="taavon_from_file_file_name" class="form-control" name="taavon_from_file_file_name" disabled>
+                </div>
+                <hr>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_file_taavon_percentage">درصد پیشنهادی برای خودم: </label>
+                    <input type="number" id="taavon_from_file_taavon_percentage" class="form-control" name="taavon_from_file_taavon_percentage">
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_file_call_taavon_desc">توضیحات: </label>
+                    <textarea rows="4" id="taavon_from_file_call_taavon_desc" class="form-control" name="taavon_from_file_call_taavon_desc"></textarea>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal pt-5" id="coop_from_user_modal">
     <div class="modal-dialog">
       <div class="modal-content">
          
@@ -48,32 +107,32 @@
             <!-- Modal body -->
             <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
 
-                <input id="my_id" name="my_id" hidden>
-                <input id="file_id" name="file_id" hidden>
+                <input id="taavon_from_user_my_id" name="taavon_from_user_my_id" hidden>
+                <input id="taavon_from_user_file_id" name="taavon_from_user_file_id" hidden>
 
                 <div class="col-md-12">
-                    <input id="other_moshaver_id" name="other_moshaver_id" hidden>
-                    <label for="other_moshaver">نام مشاور دیگر:</label>
-                    <input type="text" id="other_moshaver" class="form-control" name="other_moshaver" disabled>
+                    <input id="taavon_from_user_other_moshaver_id" name="taavon_from_user_other_moshaver_id" hidden>
+                    <label for="taavon_from_user_other_moshaver">نام مشاور دیگر:</label>
+                    <input type="text" id="taavon_from_user_other_moshaver" class="form-control" name="other_moshaver" disabled>
                 </div>
                 <br>
 
                 <div class="col-md-12">
-                    <input id="client_id" name="client_id" hidden>
-                    <label for="client_name">نام مشتری شما:</label>
-                    <input type="text" id="client_name" class="form-control" name="client_name" disabled>
+                    <input id="taavon_from_user_client_id" name="taavon_from_user_client_id" hidden>
+                    <label for="taavon_from_user_client_name">نام مشتری شما:</label>
+                    <input type="text" id="taavon_from_user_client_name" class="form-control" name="taavon_from_user_client_name" disabled>
                 </div>
                 <hr>
 
                 <div class="col-md-12">
-                    <label for="taavon_percentage">درصد پیشنهادی برای خودم: </label>
-                    <input type="number" id="taavon_percentage" class="form-control" name="taavon_percentage">
+                    <label for="taavon_from_user_taavon_percentage">درصد پیشنهادی برای خودم: </label>
+                    <input type="number" id="taavon_from_user_taavon_percentage" class="form-control" name="taavon_from_user_taavon_percentage">
                 </div>
                 <br>
 
                 <div class="col-md-12">
-                    <label for="call_taavon_desc">توضیحات: </label>
-                    <textarea rows="4" id="call_taavon_desc" class="form-control" name="call_taavon_desc"></textarea>
+                    <label for="taavon_from_user_call_taavon_desc">توضیحات: </label>
+                    <textarea rows="4" id="taavon_from_user_call_taavon_desc" class="form-control" name="taavon_from_user_call_taavon_desc"></textarea>
                 </div>
 
                 <div class="row mt-4">
@@ -1082,21 +1141,39 @@ crossorigin=""></script>
 
 <script>
 
-    function calltaavon(my_id, other_id, client_id, file_id){
-        $.get('/moshaver/getdata_fromuser/'+other_id)
+    function coop_from_user_modal(my_id, other_id, client_id, file_id){
+        $.get('/moshaver/getdata_fromuser/'+ other_id)
         .then((user)=>{
-            $('#other_moshaver').val(user.name)
-            $('#other_moshaver_id').val(user.id)
+            $('#taavon_from_user_other_moshaver').val(user.name)
+            $('#taavon_from_user_other_moshaver_id').val(user.id)
         })
 
         $.get('/moshaver/getdata_fromuser/'+client_id)
         .then((user2)=>{
-            $('#client_name').val(user2.name)
-            $('#client_id').val(user2.id)
+            $('#taavon_from_user_client_name').val(user2.name)
+            $('#taavon_from_user_client_id').val(user2.id)
         })
 
-        $("#my_id").val(my_id)
-        $("#file_id").val(file_id)
+        $("#taavon_from_user_my_id").val(my_id)
+        $("#taavon_from_user_file_id").val(file_id)
+
+    }
+
+    function coop_from_file_modal(my_id, other_id, client_id, file_id){
+        $.get('/moshaver/getdata_fromuser/'+ other_id)
+        .then((user)=>{
+            $('#taavon_from_file_other_moshaver').val(user.name)
+            $('#taavon_from_file_other_moshaver_id').val(user.id)
+        })
+
+        $.get('/moshaver/getdata_fromfile/'+ file_id)
+        .then((file)=>{
+            $('#taavon_from_file_file_name').val(file.name)
+            $('#taavon_from_file_file_id').val(file.id)
+        })
+
+        $("#taavon_from_file_my_id").val(my_id)
+        $("#taavon_from_file_clinet_id").val(client_id)
 
     }
 

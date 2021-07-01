@@ -302,7 +302,7 @@
                                                                 @endif
 
                                                             @else
-                                                                <span class="verify_file" data-toggle="modal" data-target="#coop_modal" onclick="calltaavon({{Auth::user()->id}}, {{$file->userid_moshaver}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
+                                                                <span class="verify_file" data-toggle="modal" data-target="#coop_from_user_modal" onclick="coop_from_user_modal({{Auth::user()->id}}, {{$file->userid_moshaver}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
 
                                                             @endif
                                                             

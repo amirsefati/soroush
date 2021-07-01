@@ -481,25 +481,47 @@ class Moshaver extends Controller
         return redirect('/moshaver/work_flow_file/'.$file_id);
     }
     public function calltaavon_from_user(Request $request){
-        if(Taavon::where('moshaver_id',$request->my_id)->where('taavon_id',$request->other_moshaver_id)
-        ->where('client_id',$request->client_id)->where('file_id',$request->file_id)->count() > 0){
+        if(Taavon::where('moshaver_id',$request->taavon_from_user_my_id)->where('taavon_id',$request->taavon_from_user_other_moshaver_id)
+        ->where('client_id',$request->taavon_from_user_client_id)->where('file_id',$request->taavon_from_user_file_id)->count() > 0){
             return back();  
         }
         
         Taavon::create([
             'kind' => 1,
-            'moshaver_id' => User::find($request->my_id)->id,
-            'client_id' => User::find($request->client_id)->id,
-            'file_id' => File::find($request->file_id)->id,
-            'taavon_id' => User::find($request->other_moshaver_id)->id,
-            'percentage' => $request->taavon_percentage,
-            'taavon_desc' => $request->call_taavon_desc,
+            'moshaver_id' => User::find($request->taavon_from_user_my_id)->id,
+            'client_id' => User::find($request->taavon_from_user_client_id)->id,
+            'file_id' => File::find($request->taavon_from_user_file_id)->id,
+            'taavon_id' => User::find($request->taavon_from_user_other_moshaver_id)->id,
+            'percentage' => $request->taavon_from_user_taavon_percentage,
+            'taavon_desc' => $request->taavon_from_user_call_taavon_desc,
             'verify' => 0,
-            'etc1' => File::find($request->file_id)->userid_file,
+            'etc1' => File::find($request->taavon_from_user_file_id)->userid_file,
 
         ]);
 
-        return redirect('/moshaver/show_user/'. $request->client_id);
+        return redirect('/moshaver/show_user/'. $request->taavon_from_user_client_id);
+    } 
+
+    public function calltaavon_from_file(Request $request){
+        if(Taavon::where('moshaver_id',$request->taavon_from_file_my_id)->where('taavon_id',$request->taavon_from_file_other_moshaver_id)
+        ->where('client_id',$request->taavon_from_file_clinet_id)->where('file_id',$request->taavon_from_file_file_id)->count() > 0){
+            return back();  
+        }
+        
+        Taavon::create([
+            'kind' => 0,
+            'moshaver_id' => User::find($request->taavon_from_file_my_id)->id,
+            'client_id' => User::find($request->taavon_from_file_clinet_id)->id,
+            'file_id' => File::find($request->taavon_from_file_file_id)->id,
+            'taavon_id' => User::find($request->taavon_from_file_other_moshaver_id)->id,
+            'percentage' => $request->taavon_from_file_taavon_percentage,
+            'taavon_desc' => $request->taavon_from_file_call_taavon_desc,
+            'verify' => 0,
+            'etc1' => File::find($request->taavon_from_file_file_id)->userid_file,
+
+        ]);
+
+        return redirect('/moshaver/fileinfo/'. $request->taavon_from_file_file_id);
     }
 
 
@@ -957,6 +979,12 @@ class Moshaver extends Controller
     public function getdata_fromuser($user_id){
         $user = User::find($user_id);
         return $user;
+
+    }
+
+    public function getdata_fromfile($file_id){
+        $file = File::find($file_id);
+        return $file;
 
     }
 }
