@@ -10,6 +10,7 @@
 <input type="text" id="what_sporty" value="{{$user->sporty}}" hidden>
 <input type="text" id="what_religen" value="{{$user->religen}}" hidden>
 <input type="text" id="what_likes" value="{{$user->likes}}" hidden>
+<input type="text" id="what_kind_type" value="{{$user->kind_type}}"  hidden>
 
 <div class="row">
     <div class="col-md-12">
@@ -67,6 +68,8 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="seller"> خریدار </button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="renter"> مستاجر </button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="preseller"> پیش خرید </button>
+
                                 </div>
                             </div>
 
@@ -134,7 +137,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-4">
                                     <label for="">آخرین مهلت مشتری :</label>
-                                    <input type="text" class="form-control" id="datepickeruser" name="timer"/>
+                                    <input type="text" class="form-control" id="datepickeruseredituser" name="timer" value="{{$user->timer}}"/>
                                 </div>
                                 <div class="col-md-8">
                                     <label for="desc">یادداشت شخصی :</label>

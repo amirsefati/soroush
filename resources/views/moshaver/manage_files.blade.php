@@ -52,7 +52,10 @@
                                                 <p class="manage_file_box_p">
                                                 @if($file->kind_type == 'sell')
                                                         قیمت : <span class="price_comma">{{$file->price * $file->area}}</span>  تومان
-                                                    @else
+                                                @elseif($file->kind_type == 'presell')
+                                                        قیمت : <span class="price_comma">{{$file->price * $file->area}}</span>  تومان
+                                                
+                                                @else
                                                         رهن <span class="price_comma">{{$file->rent_annual}}</span>  تومان
                                                         -اجاره <span class="price_comma">{{$file->rent_month}}</span>  تومان
                                                 @endif
@@ -109,7 +112,7 @@
                                             @if($file->kind_type == 'rent')
                                                 <span class="badge_kind_file" style="background: #fcdc4d;">اجاره</span>
                                             @else
-                                                @if(strlen($file->presell_date) > 3)
+                                                @if($file->kind_type == 'presell')
                                                     <span class="badge_kind_file " style="background: #cb793a;">پیش فروش</span> <span>({{$file->presell_date}})</span>
                                                 @else
                                                     <span class="badge_kind_file" style="background: #5f0f40;">فروش</span>

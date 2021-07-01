@@ -13,6 +13,7 @@
 @endforeach
 </div>
 
+<input type="text" id="archied_fileinfo_id" value="{{$file->id}}" hidden>
 
 <div class="row">
     <div class="col-md-12 p-3 fileinfo_headbox">
@@ -60,7 +61,7 @@
                     <img src="/img/remove.svg" alt="">
                 </span>
 
-                <span class="fileinfo_btn_edit" data-toggle="modal" data-target="#archived_file" onclick="archived_file({{$file->id}})">
+                <span class="fileinfo_btn_edit" data-toggle="modal" data-target="#archived_file" onClick="archived_file()">
                      آرشیو فایل
                     <img src="/img/remove.svg" alt="">
                 </span>
@@ -256,8 +257,8 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             @if(!App\Models\Work::where('moshaver_id', Auth::user()->id)->where('client_id' , $user->id,)->where('file_id', $file->id)->first())
-                                                            <a href="/moshaver/file_to_client_get/{{Auth::user()->id}}/{{$user->id}}/{{$file->id}}">
-                                                                <span class="verify_file"> شروع روند</span>
+                                                            <span class="verify_file" data-toggle="modal" data-target="#coop_from_file_modal" onclick="coop_from_file_modal({{Auth::user()->id}}, {{$file->userid_moshaver}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
+                                                            <span class="verify_file"> شروع روند</span>
                                                             </a>
                                                             @else
                                                                 <span class="verify_file">  شروع شده</span>
@@ -326,14 +327,12 @@
                                                                     <a>
                                                                         <span class="verify_file"> تایید شده </span>
                                                                     </a>&nbsp;
-                                                                    <a href="/moshaver/taavon_moshaver_id/file_to_client_get/{{Auth::user()->id}}/{{$user->userid_inter}}/{{$user->id}}/{{$file->id}}">
-                                                                        <span class="verify_file"> شروع روند</span>
+                                                                    <span class="verify_file" data-toggle="modal" data-target="#coop_from_file_modal" onclick="coop_from_file_modal({{Auth::user()->id}}, {{$user->userid_inter}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
                                                                     </a>
                                                                 @endif
 
                                                             @else
-                                                                <a href="/moshaver/taavon/file_user/{{Auth::user()->id}}/{{$user->userid_inter}}/{{$user->id}}/{{$file->id}}">
-                                                                    <span class="verify_file"> درخواست تعاون</span>
+                                                                    <span class="verify_file" data-toggle="modal" data-target="#coop_from_file_modal" onclick="coop_from_file_modal({{Auth::user()->id}}, {{$user->userid_inter}}, {{$user->id}}, {{$file->id}})"> شروع روند</span>
                                                                 </a>
                                                             @endif
                                                     </div>

@@ -339,8 +339,17 @@ class Moshaver extends Controller
     public function listusers(){
         $users = User::where('userid_inter',Auth::user()->id)
         ->where('level','1')
+        ->where('archived', null)
         ->get();
         return view('moshaver.listusers',compact('users'));
+    }
+
+    public function archived_users(){
+        $users = User::where('userid_inter',Auth::user()->id)
+        ->where('level','1')
+        ->where('archived', 1)
+        ->get();
+        return view('moshaver.archived_users',compact('users'));
     }
 
     public function manage_files(){
@@ -471,26 +480,51 @@ class Moshaver extends Controller
 
         return redirect('/moshaver/work_flow_file/'.$file_id);
     }
-    public function taavon_request_user_file($moshaver_id,$userid_taavon,$client_id,$file_id){
+    public function calltaavon_from_user(Request $request){
+        if(Taavon::where('moshaver_id',$request->taavon_from_user_my_id)->where('taavon_id',$request->taavon_from_user_other_moshaver_id)
+        ->where('client_id',$request->taavon_from_user_client_id)->where('file_id',$request->taavon_from_user_file_id)->count() > 0){
+            return back();  
+        }
         
-        if(Taavon::where('moshaver_id',$moshaver_id)->where('taavon_id',$userid_taavon)
-        ->where('client_id',$client_id)->where('file_id',$file_id)->count() > 0){
+        Taavon::create([
+            'kind' => 1,
+            'moshaver_id' => User::find($request->taavon_from_user_my_id)->id,
+            'client_id' => User::find($request->taavon_from_user_client_id)->id,
+            'file_id' => File::find($request->taavon_from_user_file_id)->id,
+            'taavon_id' => User::find($request->taavon_from_user_other_moshaver_id)->id,
+            'percentage' => $request->taavon_from_user_taavon_percentage,
+            'taavon_desc' => $request->taavon_from_user_call_taavon_desc,
+            'verify' => 0,
+            'etc1' => File::find($request->taavon_from_user_file_id)->userid_file,
+
+        ]);
+
+        return redirect('/moshaver/show_user/'. $request->taavon_from_user_client_id);
+    } 
+
+    public function calltaavon_from_file(Request $request){
+        if(Taavon::where('moshaver_id',$request->taavon_from_file_my_id)->where('taavon_id',$request->taavon_from_file_other_moshaver_id)
+        ->where('client_id',$request->taavon_from_file_clinet_id)->where('file_id',$request->taavon_from_file_file_id)->count() > 0){
             return back();  
         }
         
         Taavon::create([
             'kind' => 0,
-            'moshaver_id' => $moshaver_id,
-            'client_id' => $client_id,
-            'file_id' => $file_id,
-            'taavon_id' => $userid_taavon,
+            'moshaver_id' => User::find($request->taavon_from_file_my_id)->id,
+            'client_id' => User::find($request->taavon_from_file_clinet_id)->id,
+            'file_id' => File::find($request->taavon_from_file_file_id)->id,
+            'taavon_id' => User::find($request->taavon_from_file_other_moshaver_id)->id,
+            'percentage' => $request->taavon_from_file_taavon_percentage,
+            'taavon_desc' => $request->taavon_from_file_call_taavon_desc,
             'verify' => 0,
-            'etc1' => $userid_taavon,
+            'etc1' => File::find($request->taavon_from_file_file_id)->userid_file,
 
         ]);
 
-        return back();
+        return redirect('/moshaver/fileinfo/'. $request->taavon_from_file_file_id);
     }
+
+
 
     public function taavon_request_file_user($moshaver_id,$userid_taavon,$client_id,$file_id){
         
@@ -903,7 +937,15 @@ class Moshaver extends Controller
             'archived_desc' => $request->archive_desc,
             'archived' => 1
         ]);
-        return back();
+        return redirect('/moshaver/manage_files');
+    }
+
+    public function archived_user_selected(Request $request){
+        User::find($request->archive_desc_user_id)->update([
+            'archived_desc' => $request->archive_user_desc,
+            'archived' => 1
+        ]);
+        return redirect('/moshaver/listusers');
     }
 
     public function pinfile($file_id){
@@ -919,5 +961,30 @@ class Moshaver extends Controller
         User::where('userid',$request->user_id)->update([
 
         ]);
+    }
+
+    public function pin_user($user_id,$pin){
+        User::find($user_id)->update([
+            'pin' => $pin
+        ]);
+        return back();
+    }
+    
+    public function archived_files(){
+        $files_archived = File::where('archived', 1)->where('userid_moshaver',Auth::user()->id)
+        ->orderBy('updated_at')->get();
+        return view('moshaver.archived_files',compact('files_archived'));
+    }
+
+    public function getdata_fromuser($user_id){
+        $user = User::find($user_id);
+        return $user;
+
+    }
+
+    public function getdata_fromfile($file_id){
+        $file = File::find($file_id);
+        return $file;
+
     }
 }

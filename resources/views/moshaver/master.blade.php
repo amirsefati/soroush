@@ -32,6 +32,123 @@
 }}
 </div>
 
+<div class="modal pt-5" id="coop_from_file_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">ثبت درخواست تعاون</h5>
+        </div>
+
+        <form action="/moshaver/calltaavon_from_file" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input id="taavon_from_file_my_id" name="taavon_from_file_my_id" hidden>
+                <input id="taavon_from_file_clinet_id" name="taavon_from_file_clinet_id" hidden>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_file_other_moshaver_id" name="taavon_from_file_other_moshaver_id" hidden>
+                    <label for="taavon_from_file_other_moshaver">نام مشاور دیگر:</label>
+                    <input type="text" id="taavon_from_file_other_moshaver" class="form-control" name="taavon_from_file_other_moshaver" disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_file_file_id" name="taavon_from_file_file_id" hidden>
+                    <label for="taavon_from_file_file_name">نام فایل شما:</label>
+                    <input type="text" id="taavon_from_file_file_name" class="form-control" name="taavon_from_file_file_name" disabled>
+                </div>
+                <hr>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_file_taavon_percentage">درصد پیشنهادی برای خودم: </label>
+                    <input type="number" id="taavon_from_file_taavon_percentage" class="form-control" name="taavon_from_file_taavon_percentage">
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_file_call_taavon_desc">توضیحات: </label>
+                    <textarea rows="4" id="taavon_from_file_call_taavon_desc" class="form-control" name="taavon_from_file_call_taavon_desc"></textarea>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal pt-5" id="coop_from_user_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">ثبت درخواست تعاون</h5>
+        </div>
+
+        <form action="/moshaver/calltaavon_from_user" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input id="taavon_from_user_my_id" name="taavon_from_user_my_id" hidden>
+                <input id="taavon_from_user_file_id" name="taavon_from_user_file_id" hidden>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_user_other_moshaver_id" name="taavon_from_user_other_moshaver_id" hidden>
+                    <label for="taavon_from_user_other_moshaver">نام مشاور دیگر:</label>
+                    <input type="text" id="taavon_from_user_other_moshaver" class="form-control" name="other_moshaver" disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <input id="taavon_from_user_client_id" name="taavon_from_user_client_id" hidden>
+                    <label for="taavon_from_user_client_name">نام مشتری شما:</label>
+                    <input type="text" id="taavon_from_user_client_name" class="form-control" name="taavon_from_user_client_name" disabled>
+                </div>
+                <hr>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_user_taavon_percentage">درصد پیشنهادی برای خودم: </label>
+                    <input type="number" id="taavon_from_user_taavon_percentage" class="form-control" name="taavon_from_user_taavon_percentage">
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="taavon_from_user_call_taavon_desc">توضیحات: </label>
+                    <textarea rows="4" id="taavon_from_user_call_taavon_desc" class="form-control" name="taavon_from_user_call_taavon_desc"></textarea>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
 
 <div class="modal pt-5" id="myModal">
   <div class="modal-dialog">
@@ -534,15 +651,15 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-        <h5 class="modal-title"> تایید حذف فایل </h5>
+        <h5 class="modal-title">تأیید آرشیو فایل</h5>
       </div>
         @csrf
         <!-- Modal body -->
         <form action="/moshaver/archived_file_selected" method="POST">
             @csrf
-            <input type="text" name="archive_desc_file_id" id="archive_desc_file_id" id="" hidden>
+            <input type="text" name="archive_desc_file_id" id="archive_desc_file_id" value="" hidden>
             <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
-                اگر از آرشیو کردن این فایل مطمئن هستید لطفا دلیل آرشیو کردن را ذکر کنید
+                .اگر از آرشیو کردن این فایل مطمئن هستید؛ لطفا دلیل آرشیو کردن را ذکر کنید
             
             </div>
             <div class="row p-3">
@@ -555,7 +672,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="button" data-dismiss="modal" class="btn btn-warning">لغو</button>
-                        <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو شو</button>
+                        <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو کردن</button>
                     </div>
                 </div>
             </div>
@@ -701,6 +818,45 @@
   </div>
 </div>
 
+<div class="modal pt-5" id="archived_user">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">تأیید آرشیو مشتری</h5>
+        </div>
+          @csrf
+          <!-- Modal body -->
+          <form action="/moshaver/archived_user_selected" method="POST">
+              @csrf
+              <input type="text" name="archive_desc_user_id" id="archive_desc_user_id" value="" hidden>
+              <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+                  .اگر از آرشیو کردن این کاربر مطمئن هستید؛ لطفا دلیل آرشیو کردن را ذکر کنید
+              
+              </div>
+              <div class="row p-3">
+                  <div class="col-md-12">
+                      <textarea name="user_archive_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                  </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <button type="button" data-dismiss="modal" class="btn btn-warning">لغو</button>
+                          <button type="submit" class="btn btn-success pr-5 pl-5">آرشیو کردن</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+</div>
+
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -845,20 +1001,61 @@
                                     </a>
                                 </li> 
 
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        فایل ها
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/moshaver/manage_files">
+                                                <i class="metismenu-icon"></i>
+                                                فایل‌های موجود
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/moshaver/archived_files">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                فایل‌های آرشیو شده
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/moshaver/files_on_map">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                فایل‌ها بر روی نقشه
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
                                 
                                 <li>
-                                    <a href="/moshaver/manage_files">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                          فایل ها
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        مشتری ها
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
+                                    <ul>
+                                        <li>
+                                            <a href="/moshaver/listusers">
+                                                <i class="metismenu-icon"></i>
+                                                مشتری‌های موجود
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/moshaver/archived_users">
+                                                <i class="metismenu-icon">
+                                                </i>
+                                                مشتری‌های آرشیو شده
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
                                 </li>
-
-                                <li>
-                                    <a href="/moshaver/listusers" class="">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                         مشتری ها
-                                    </a>
-                                </li> 
 
                                 <li>
                                     <a href="/moshaver/taavon" class="">
@@ -907,6 +1104,20 @@
         </div>            
     </div>
 
+<script>
+    function archived_file(){
+
+        $("#archive_desc_file_id").val($("#archied_fileinfo_id").val())
+    }
+
+    
+    function archived_user(){
+
+        $("#archive_desc_user_id").val($("#archied_userinfo_id").val())
+    }
+
+</script>
+
 <script type="text/javascript" src="{{asset('dashboard/scripts/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/scripts/rtl.js')}}"></script>
@@ -930,6 +1141,42 @@ crossorigin=""></script>
 
 <script>
 
+    function coop_from_user_modal(my_id, other_id, client_id, file_id){
+        $.get('/moshaver/getdata_fromuser/'+ other_id)
+        .then((user)=>{
+            $('#taavon_from_user_other_moshaver').val(user.name)
+            $('#taavon_from_user_other_moshaver_id').val(user.id)
+        })
+
+        $.get('/moshaver/getdata_fromuser/'+client_id)
+        .then((user2)=>{
+            $('#taavon_from_user_client_name').val(user2.name)
+            $('#taavon_from_user_client_id').val(user2.id)
+        })
+
+        $("#taavon_from_user_my_id").val(my_id)
+        $("#taavon_from_user_file_id").val(file_id)
+
+    }
+
+    function coop_from_file_modal(my_id, other_id, client_id, file_id){
+        $.get('/moshaver/getdata_fromuser/'+ other_id)
+        .then((user)=>{
+            $('#taavon_from_file_other_moshaver').val(user.name)
+            $('#taavon_from_file_other_moshaver_id').val(user.id)
+        })
+
+        $.get('/moshaver/getdata_fromfile/'+ file_id)
+        .then((file)=>{
+            $('#taavon_from_file_file_name').val(file.name)
+            $('#taavon_from_file_file_id').val(file.id)
+        })
+
+        $("#taavon_from_file_my_id").val(my_id)
+        $("#taavon_from_file_clinet_id").val(client_id)
+
+    }
+
     $("#add_phone_add_file_modal").click(function(){
         $("#no_in_phone_add_file_modal").remove()
         $("#phone_add_file").append(`
@@ -943,6 +1190,10 @@ crossorigin=""></script>
     $(".price_comma").each(function(){
         $(this).text(numberWithCommas($(this).text()))
     })
+
+    if($("#price").val()){
+        $("#price").val(numberWithCommas($("#price").val()))
+    }
     
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -953,8 +1204,6 @@ crossorigin=""></script>
             $(this).parent().parent().parent().parent().parent().parent().hide()
         })
     }
-
-
 
     var keyword_filter = null
     function manage_file_filter(keyword){
@@ -1027,13 +1276,9 @@ crossorigin=""></script>
     }
     
 
-    function archived_file(id){
-        $("#archive_desc_file_id").val(id)
-    }
-
-
+}
     if($("#infile_tablighat").val()){
-
+        alert('ok')
         $("img").click(function(){
             var selectecimg = []
             $(this).toggleClass("hoverimg_selected");
@@ -1043,7 +1288,7 @@ crossorigin=""></script>
             $("#images_tablighat").val(JSON.stringify(selectecimg))
         })  
     }
-}
+
 
 </script>
 
@@ -1380,6 +1625,7 @@ var detatils = []
 
 
 </script>
+
 </body>
 
 </html>

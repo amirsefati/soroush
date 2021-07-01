@@ -9,6 +9,7 @@
     
         <input type="text" name="userid_inter" value="{{Auth::user()->id}}" hidden>
         <input type="text" name="kind_type" id="kind_type" value="" hidden>
+        
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">
@@ -53,6 +54,8 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <button class="btn btn-danger pr-3 pl-3 pt-2 pb-2" type="button" id="seller"> خریدار </button>
                                     <button class="btn btn-warning pr-3 pl-3 pt-2 pb-2" type="button" id="renter"> مستاجر </button>
+                                    <button class="btn btn-info pr-3 pl-3 pt-2 pb-2" type="button" id="preseller"> پیش خرید </button>
+
                                 </div>
                             </div>
 

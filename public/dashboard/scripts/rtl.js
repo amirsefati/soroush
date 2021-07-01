@@ -5,14 +5,17 @@ $('document').ready(function(){
     var filename = url.substr(url.lastIndexOf("/"))
     $('li a').each(function(){
         var href = $(this).attr('href').substr($(this).attr('href').lastIndexOf("/"));
-        if(href == filename)
-        $(this).addClass('mm-active')
+        if(href == filename){
+            $(this).parent().parent().addClass("mm-show")
+            $(this).addClass('mm-active')
+            $(this).parent().parent().siblings('a').addClass("mm-active")
+        }
     })
 
 
     const type_sell_maskoni = ['آپارتمان','ویلا','زمین مسکونی','کلنگی','مستغلات مسکونی','برج','پنت هاوس','برج باغ'];
     const type_rent_maskoni = ['آپارتمان','ویلا','مستغلات مسکونی','پنت هاوس','برج','برج باغ'];
-    const onsell = ['آپارتمان'];
+    const onsell = ['آپارتمان','برج','پنت هاوس','مستغلات مسکونی'];
 
     var type_select = 1;
     
@@ -22,6 +25,7 @@ $('document').ready(function(){
             `<option value="${item}">${item}</option>`
         )
     })
+
     $("#sell").css('font-size','110%')
     $("#rent").css('font-size','100%')
     $("#sell").css('opacity','1')
@@ -32,8 +36,12 @@ $('document').ready(function(){
 
     $("#seller").css('font-size','110%')
     $("#renter").css('font-size','100%')
+    $("#preseller").css('font-size','100%')
+
     $("#seller").css('opacity','1')
     $("#renter").css('opacity','.5')
+    $("#preseller").css('opacity','.5')
+
     $("#colrenterannual").hide()
     $("#colrentermonth").hide()
     $("#kind_type").val('sell')
@@ -112,7 +120,7 @@ $('document').ready(function(){
         $("#presellcol").show()
 
         $("#colrentmonth").hide()
-        $("#kind_type_select").val('sell')
+        $("#kind_type_select").val('presell')
 
     }
     function rentsection(){
@@ -162,6 +170,7 @@ $('document').ready(function(){
     })
 
     function sellersection(){
+
         if(type_select === 1){
             return true;
         }
@@ -169,6 +178,8 @@ $('document').ready(function(){
         
         $("#seller").css('font-size','110%')
         $("#renter").css('font-size','100%')
+        $("#preseller").css('font-size','100%')
+
         $("#seller").css('opacity','1')
         $("#renter").css('opacity','.5')
         $("#colrenterannual").hide()
@@ -186,53 +197,127 @@ $('document').ready(function(){
         
         $("#seller").css('font-size','100%')
         $("#renter").css('font-size','110%')
+        $("#preseller").css('font-size','100%')
         $("#seller").css('opacity','.5')
+        $("#preseller").css('opacity','.5')
+
         $("#renter").css('opacity','1')
         $("#colrenterannual").show()
         $("#colrentermonth").show()
         $("#colrentermonth").show()
         $("#colseller").hide()
         $("#kind_type").val('rent')
-
     }
-    $("#seller").click(function(){
-        if(type_select === 1){
+
+    function presellersection(){
+        if(type_select === 3){
             return true;
         }
-        type_select = 1
+        type_select = 3
         
-        $("#seller").css('font-size','110%')
+        $("#seller").css('font-size','100%')
         $("#renter").css('font-size','100%')
-        $("#seller").css('opacity','1')
+        $("#preseller").css('font-size','110%')
+
+        $("#seller").css('opacity','.5')
         $("#renter").css('opacity','.5')
+        $("#preseller").css('opacity','1')
+
         $("#colrenterannual").hide()
         $("#colrentermonth").hide()
         $("#colseller").show()
-        $("#kind_type").val('sell')
+        $("#kind_type").val('presell')
+    }
 
-
+    $("#seller").click(function(){
+        sellersection()
     })
   
    
     //when click on rent button 
     $("#renter").click(()=>{
-        if(type_select === 0){
-            return true;
-        }
-        type_select = 0
-        
-        $("#seller").css('font-size','100%')
-        $("#renter").css('font-size','110%')
-        $("#seller").css('opacity','.5')
-        $("#renter").css('opacity','1')
-        $("#colrenterannual").show()
-        $("#colrentermonth").show()
-        $("#colrentermonth").show()
-        $("#colseller").hide()
-        $("#kind_type").val('rent')
-        
+        rentersection()
     })
       
+    $("#preseller").click(()=>{
+        presellersection()
+    })
+
+    function rentsection_edit(){
+        type_select = 0
+        $("#type_maskoni").find('option').remove()
+        type_rent_maskoni.map((item)=>{
+            $("#type_maskoni").append(
+                `<option value="${item}">${item}</option>`
+            )
+        })
+        $("#sell").css('font-size','100%')
+        $("#rent").css('font-size','115%')
+        $("#presell").css('font-size','100%')
+        $("#presell").css('opacity','.5')
+        $("#sell").css('opacity','.5')
+        $("#rent").css('opacity','1')
+        $("#colprice").hide()
+        $("#presellcol").hide()
+
+        $("#colrent").show()
+        $("#colrentmonth").show()
+        $("#kind_type_select").val('rent')
+    }
+
+
+    function presellsection_edit(){
+        $("#type_maskoni").find('option').remove()
+        onsell.map((item)=>{
+            $("#type_maskoni").append(
+                `<option value="${item}">${item}</option>`
+            )
+        })
+
+        $("#sell").css('font-size','100%')
+        $("#rent").css('font-size','100%')
+        $("#presell").css('font-size','110%')
+
+        $("#sell").css('opacity','.5')
+        $("#rent").css('opacity','.5')
+        $("#presell").css('opacity','1')
+
+        $("#colprice").show()
+        $("#colrent").hide()
+        $("#presellcol").show()
+
+        $("#colrentmonth").hide()
+        $("#kind_type_select").val('sell')
+    }
+
+    function presellersection_edit(){
+        presellersection()
+    }
+
+    function sellersection_edit (){
+        sellersection()
+    }
+    function rentersection_edit(){
+        rentersection()
+    }
+
+    if($("#what_kind_type").length){
+        
+        if($("#what_kind_type").val() == 'sell'){
+            sellersection_edit()
+            sellsection()
+        }
+        else if ($("#what_kind_type").val() == 'presell'){
+            presellersection_edit()
+            presellsection_edit()
+        
+        }else{
+            rentersection_edit()
+            rentsection_edit()
+        }
+    }
+
+
     $(function () {
 
 
@@ -274,7 +359,7 @@ $('document').ready(function(){
             else
               $(this).val($(this).data("old"));
           });
-      });
+    });
    
       
       $(".all_customers").select2({
@@ -296,10 +381,14 @@ $('document').ready(function(){
       $("#timepickeruser").pDatepicker({
         format:"HH:mm",
         onlyTimePicker: true
-    });
+        });
 
     
         $("#datepickeruser").pDatepicker({
+            format:"L",
+        });
+
+        $("#datepickeruseredituser").pDatepicker({
             format:"L",
         });
 
@@ -357,82 +446,9 @@ $('document').ready(function(){
             onlyTimePicker: true,
 
         });
-    function rentsection_edit(){
-        type_select = 0
-        $("#type_maskoni").find('option').remove()
-        type_rent_maskoni.map((item)=>{
-            $("#type_maskoni").append(
-                `<option value="${item}">${item}</option>`
-            )
-        })
-        $("#sell").css('font-size','100%')
-        $("#rent").css('font-size','115%')
-        $("#presell").css('font-size','100%')
-        $("#presell").css('opacity','.5')
-        $("#sell").css('opacity','.5')
-        $("#rent").css('opacity','1')
-        $("#colprice").hide()
-        $("#presellcol").hide()
+    
 
-        $("#colrent").show()
-        $("#colrentmonth").show()
-        $("#kind_type_select").val('rent')
-    }
-
-    function rentersection_edit(){
-
-    }
-
-    function presellsection_edit(){
-        $("#type_maskoni").find('option').remove()
-        onsell.map((item)=>{
-            $("#type_maskoni").append(
-                `<option value="${item}">${item}</option>`
-            )
-        })
-        $("#sell").css('font-size','100%')
-        $("#rent").css('font-size','100%')
-        $("#presell").css('font-size','110%')
-
-        $("#sell").css('opacity','.5')
-        $("#rent").css('opacity','.5')
-        $("#presell").css('opacity','1')
-
-        $("#colprice").show()
-        $("#colrent").hide()
-        $("#presellcol").show()
-
-        $("#colrentmonth").hide()
-        $("#kind_type_select").val('sell')
-    }
-
-    function presellersection_edit(){
-
-    }
-    function sellersection_edit (){
-
-    }
-    function sellsection_edit (){
-        
-    }
-
-    if($("#what_kind_type").length){
-        if($("#what_kind_type").val() == 'sell'){
-            if($("#what_kind_type_presell").length > 2){
-                presellersection_edit()
-                presellsection_edit()
-            }else{
-                sellersection_edit()
-                sellsection_edit()
-            }
-        }else{
-            rentersection_edit()
-            rentsection_edit()
-        }
-        what_type = $("#what_type").val()
-            $("#type_maskoni").append(
-                `<option value="${what_type}" selected>${what_type}</option>`
-        )
+    if( $("#infileedit").val() ){
         what_wc = $("#what_wc").val()
         what_wc_arr = JSON.parse(what_wc)
         what_wc_arr && what_wc_arr.map((item)=>{
@@ -606,11 +622,8 @@ $('document').ready(function(){
         }
       }
 
-
-
    
 })
-
 
 
 

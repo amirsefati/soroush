@@ -113,7 +113,7 @@
                             <div class="row justify-content-center">   
                                 <div class="col-md-3" id="colprice">
                                     <label for="price">قیمت متری :</label>
-                                    <input type="text" name="price"  onkeyup="reformatText(this)"  class="form-control" value="{{$file->price}}">
+                                    <input type="text" name="price" id="price"  onkeyup="reformatText(this)"  class="form-control" value="{{$file->price}}">
                                 </div>
 
                                 <div class="col-md-3" id="colrent">
