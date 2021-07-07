@@ -1234,7 +1234,41 @@ var detatils = []
 
 
 </script>
-
+<script>
+var to, from;
+to = $(".range-to-example").persianDatepicker({
+    inline: true,
+    altField: '#range_to_modir',
+    altFormat: 'll',
+    initialValue: false,
+    onSelect: function (unix) {
+        to.touched = true;
+        if (from && from.options && from.options.maxDate != unix) {
+            var cachedValue = from.getState().selected.unixDate;
+            from.options = {maxDate: unix};
+            if (from.touched) {
+                from.setDate(cachedValue);
+            }
+        }
+    }
+});
+from = $(".range-from-example").persianDatepicker({
+    inline: true,
+    altField: '#range_from_modir',
+    altFormat: 'll',
+    initialValue: false,
+    onSelect: function (unix) {
+        from.touched = true;
+        if (to && to.options && to.options.minDate != unix) {
+            var cachedValue = to.getState().selected.unixDate;
+            to.options = {minDate: unix};
+            if (to.touched) {
+                to.setDate(cachedValue);
+            }
+        }
+    }
+});
+</script>
 
 </body>
 

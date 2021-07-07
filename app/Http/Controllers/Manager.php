@@ -173,5 +173,8 @@ class Manager extends Controller
         return view('modir.phonebook', compact('users'));
     }
    
+    public function range_moshaver_performance(Request $request){
+        return $request;
+    }
 }
 

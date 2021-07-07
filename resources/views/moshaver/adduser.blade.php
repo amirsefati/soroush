@@ -219,6 +219,12 @@
                                         <option value="پرنده "> پرنده </option>
                                     </select>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <label for="">لوکیشن :</label>
+                                    <input autocomplete="off" id=llocation data-toggle="modal" data-target="#show_map" name="location" placeholder="افزودن لوکیشن" class="form-control" onclick="showlocation()" {{$dread_only}}>
+                                </div>
+
                             </div>
 
                             <div class="row mt-3">
@@ -227,6 +233,7 @@
                                     <textarea name="info" class="form-control" id="" rows="6"></textarea>
                                 </div>
                             </div>
+                            
 
                         </div>
                     </div>

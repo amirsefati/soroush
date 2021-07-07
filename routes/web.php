@@ -259,6 +259,10 @@ Route::prefix('modir')->group(function(){
 
     
     Route::get('/taavons',[Manager::class,'taavons']);
+
+    Route::post('/range_moshaver_performance',[Manager::class,'range_moshaver_performance']);
+
+    
 });
 
 //Tablighat Router
