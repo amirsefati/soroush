@@ -59,7 +59,9 @@ class CreateUsersTable extends Migration
             $table->string('label')->nullable();
             $table->integer('pin')->nullable();
             $table->string('source')->nullable();
+            $table->integer('archived')->nullable();
 
+            
             $table->string('etc1')->nullable();
             $table->string('etc2')->nullable();
             $table->string('etc3')->nullable();

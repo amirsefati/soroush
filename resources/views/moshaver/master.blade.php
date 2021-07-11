@@ -857,6 +857,238 @@
 </div>
 
 
+
+<div class="modal pt-5" id="work_flow_user_step1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">نشان دادن فایل</h5>
+        </div>
+          
+        <div class="modal-body drr">
+            <form action="/moshaver/work_flow_file_item" method="POST">
+                                            <input type="text" name="step" value="1" hidden>
+                                            <input type="text" name="workid" id="workidst1" value="" hidden>
+
+                                            @csrf
+                                            
+                                            <div class="row mt-1">
+                                                <div class="col-md-12">
+                                                    آیا فایل رو پسندید ؟
+                                                    <select name="like" class="form-control" id="" required>
+                                                        <option value=""> انتخاب کنید</option>
+                                                        <option value="0">نه</option>
+                                                        <option value="1">آره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-md-12">
+                                                    <label for="desc">توضیحات :</label>
+                                                    <input name="desc" type="text" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>زمان نشان دادن فایل :</span>
+                                                    <input required type="text" class="form-control pwt-datepicker-input-element" id="datepickeruser" name="timer">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-3">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-success">مشتری مایل به بازدید از ملک است</button>
+                                                </div>
+                                            </div>
+                </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal pt-5" id="work_flow_user_step2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">بازدید از ملک</h5>
+        </div>
+          
+        <div class="modal-body drr">
+        <form action="/moshaver/work_flow_file_item" method="POST">
+                                            <input type="text" name="step" value="2" id="" hidden>
+                                            <input type="text" name="workid" id="workidst2" id="" hidden>
+
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    برگذاری جلسه 
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    آیا جلسه موفقیت آمیز بود ؟
+                                                    <select name="like" class="form-control" id="" required>
+                                                        <option value=""> انتخاب کنید</option>
+                                                        <option value="0">نه</option>
+                                                        <option value="1">آره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="desc">توضیحات :</label>
+                                                    <input name="desc" type="text" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>زمان برگذاری جلسه :</span>
+                                                    <input required type="text" class="form-control pwt-datepicker-input-element" id="datepickeruser" name="timer">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-3">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-success">مشتری مایل به نوشتن قرارداد است</button>
+                                                </div>
+                                            </div>
+                                        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal pt-5" id="work_flow_user_step3">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">برگذاری جلسه</h5>
+        </div>
+          
+        <div class="modal-body drr">
+        <form action="/moshaver/work_flow_file_item" method="POST">
+                                            <input type="text" name="step" value="3" id="" hidden>
+                                            <input type="text" name="workid" id="workidst3" hidden>
+
+                                            @csrf
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    آیا جلسه موفقیت آمیز بود ؟
+                                                    <select name="like" class="form-control" id="" required>
+                                                        <option value=""> انتخاب کنید</option>
+                                                        <option value="0">نه</option>
+                                                        <option value="1">آره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="desc">توضیحات :</label>
+                                                    <input name="desc" type="text" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>زمان برگذاری جلسه :</span>
+                                                    <input required type="text" class="form-control pwt-datepicker-input-element" id="datepickeruser" name="timer">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-3">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-success">مشتری مایل به نوشتن قرارداد است</button>
+                                                </div>
+                                            </div>
+                                        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal pt-5" id="work_flow_user_step4">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">بستن قرارداد</h5>
+        </div>
+          
+        <div class="modal-body drr">
+        <form action="/moshaver/work_flow_file_item" method="POST" enctype="multipart/form-data">
+                                            <input type="text" name="step" value="4" id="" hidden>
+                                            <input type="text" name="workid" id="workidst4" hidden>
+
+                                            @csrf
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    آیا قرار داد نوشته شد ؟
+                                                    <select name="like" class="form-control" id="" required>
+                                                        <option value=""> انتخاب کنید</option>
+                                                        <option value="0">نه</option>
+                                                        <option value="1">آره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="desc">توضیحات :</label>
+                                                    <input name="desc" type="text" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>زمان نوشته شدن قرارداد  :</span>
+                                                    <input required type="text" class="form-control pwt-datepicker-input-element" id="datepickeruser" name="timer">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>آپلود عکس قرارداد</span>
+                                                    <input type="file" name="picture[]" class="form-control" multiple>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-3">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-success">آرشیو کردن فایل</button>
+                                                </div>
+                                            </div>
+                                        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -1140,6 +1372,20 @@ crossorigin=""></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script>
+
+    function workflowuserclicked(id){
+        $("#workidst1").val(id)
+    }
+
+    function workflowuserclicked2(id){
+        $("#workidst2").val(id)
+    }
+    function workflowuserclicked3(id){
+        $("#workidst3").val(id)
+    }
+    function workflowuserclicked4(id){
+        $("#workidst4").val(id)
+    }
 
     function coop_from_user_modal(my_id, other_id, client_id, file_id){
         $.get('/moshaver/getdata_fromuser/'+ other_id)

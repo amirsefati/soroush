@@ -610,17 +610,17 @@ class Moshaver extends Controller
         if($request->step == 1){
             Work::find($request->workid)->update([
                 "showfile" => json_encode($item),
-                "etc1" => 2
+                "etc1" => 1
             ]);
         }elseif($request->step == 2){
             Work::find($request->workid)->update([
                 "gotofile" => json_encode($item),
-                "etc1" => 3
+                "etc1" => 2
             ]);
         }elseif($request->step == 3){
             Work::find($request->workid)->update([
                 "meeting" => json_encode($item),
-                "etc1" => 4
+                "etc1" => 3
             ]);
         }elseif($request->step == 4){
 
@@ -637,7 +637,7 @@ class Moshaver extends Controller
             
             Work::find($request->workid)->update([
                 "contruct" => json_encode($item),
-                "etc1" => 5,
+                "etc1" => 4,
                 "picture" => json_encode($picture)
             ]);
         }

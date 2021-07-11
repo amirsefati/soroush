@@ -323,3 +323,23 @@ a:hover{
     border-radius: 5px;
     padding: 5px;
 }
+
+.work_flow_user_step{
+    width: 40px;
+    height: 40px;
+    background: wheat;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.greenstep{
+    background: green;
+    color: white;
+    font-weight: bold;
+}
+.drr{
+    text-align: right;
+    direction: rtl;
+}
