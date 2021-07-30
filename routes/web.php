@@ -228,6 +228,9 @@ Route::prefix('monshi')->group(function(){
     
     Route::get('/statics/{days}',[Monshi::class,'statics']);
 
+    Route::post('/change_phone_number',[Monshi::class,'change_phone_number']);
+    Route::post('/change_password',[Monshi::class,'change_password']);
+
 });
 
 
@@ -265,6 +268,9 @@ Route::prefix('modir')->group(function(){
 
     Route::post('/range_moshaver_performance',[Manager::class,'range_moshaver_performance']);
 
+    Route::post('/change_phone_number',[Manager::class,'change_phone_number']);
+    Route::post('/change_password',[Manager::class,'change_password']);
+
     
 });
 
@@ -282,5 +288,8 @@ Route::prefix('tablighat')->group(function(){
     Route::post('/ds_result',[Ads::class,'ds_result']);
 
     Route::get('/statics/{days}',[Ads::class,'statics']);
+
+    Route::post('/change_phone_number',[Ads::class,'change_phone_number']);
+    Route::post('/change_password',[Ads::class,'change_password']);
 
 });

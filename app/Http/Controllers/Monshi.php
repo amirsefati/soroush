@@ -476,5 +476,21 @@ class Monshi extends Controller
         return $statics;
     }
 
+    public function change_phone_number(Request $request){
+        User::find($request->change_phone_number_monshi_id)->update([
+            'phone' => $request->change_phone_number_new_number
+        ]);
+        return redirect('/monshi');
+
+    }
+
+    public function change_password(Request $request){
+        User::find($request->change_password_monshi_id)->update([
+            'password' => $request->change_password_new_pass
+        ]);
+        return redirect('/monshi');
+
+    }
+
     
 }
