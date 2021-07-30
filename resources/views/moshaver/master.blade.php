@@ -32,6 +32,97 @@
 }}
 </div>
 
+<div class="modal pt-5" id="change_phone_number_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">تغییر شماره تماس</h5>
+        </div>
+
+        <form action="/moshaver/change_phone_number" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input type="text" name="change_phone_number_moshaver_id" id="change_phone_number_moshaver_id" value={{Auth::user()->id}} hidden>
+
+                <div class="col-md-12">
+                    <label for="change_phone_number_existing_number">شماره تماس کنونی:</label>
+                    <input type="text" id="change_phone_number_existing_number" class="form-control" name="change_phone_number_existing_number" value={{Auth::user()->phone}} disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="change_phone_number_new_number">شماره تماس جدید:</label>
+                    <input type="text" id="change_phone_number_new_number" class="form-control" name="change_phone_number_new_number">
+                </div>
+                <hr>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal pt-5" id="change_password_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+          <h5 class="modal-title">تغییر گذرواژه</h5>
+        </div>
+
+        <form action="/moshaver/change_password" method="POST">
+            @csrf
+            <!-- Modal body -->
+            <div class="modal-body" style="direction:rtl;font-family:sefati;text-align:right">
+
+                <input type="text" name="change_password_moshaver_id" id="change_password_moshaver_id" value={{Auth::user()->id}} hidden>
+
+                <div class="col-md-12">
+                    <label for="change_password_existing_pass">گذرواژه کنونی:</label>
+                    <input type="text" id="change_password_existing_pass" class="form-control" name="change_password_existing_pass" value={{Auth::user()->password}} disabled>
+                </div>
+                <br>
+
+                <div class="col-md-12">
+                    <label for="change_password_new_pass">گذرواژه جدید:</label>
+                    <input type="text" id="change_password_new_pass" class="form-control" name="change_password_new_pass">
+                </div>
+                <hr>
+
+                <div class="row mt-4">
+                    <div class="col-md-12" style="text-align:center">
+                        <button class="btn btn-success pr-5 pl-5"> ارسال</button>
+                    </div>
+                </div>         
+            </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  
+        </div>
+      </div>
+    </div>
+</div>
+
+
 <div class="modal pt-5" id="coop_from_file_modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -1132,17 +1223,19 @@
                                  خروج از پنل
                             </a>
                         </li>
-                        <li class="btn-group nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-edit"></i>
-                                مدیریت
-                            </a>
-                        </li>
+                        
                         <li class="dropdown nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-cog"></i>
-                                تنظیمات
-                            </a>
+
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    تنظیمات
+                                </a>
+                              
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" data-toggle="modal" data-target="#change_phone_number_modal">تغییر شماره تماس</a>
+                                  <a class="dropdown-item" data-toggle="modal" data-target="#change_password_modal">تغییر گذرواژه</a>
+                                </div>
+                              </div>
                         </li>
 
                         

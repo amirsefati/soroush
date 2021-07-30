@@ -987,4 +987,20 @@ class Moshaver extends Controller
         return $file;
 
     }
+
+    public function change_phone_number(Request $request){
+        User::find($request->change_phone_number_moshaver_id)->update([
+            'phone' => $request->change_phone_number_new_number
+        ]);
+        return redirect('/moshaver');
+
+    }
+
+    public function change_password(Request $request){
+        User::find($request->change_password_moshaver_id)->update([
+            'password' => $request->change_password_new_pass
+        ]);
+        return redirect('/moshaver');
+
+    }
 }

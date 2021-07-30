@@ -127,6 +127,9 @@ Route::prefix('moshaver')->group(function(){
     Route::post('/calltaavon_from_user',[Moshaver::class,'calltaavon_from_user']);
     Route::post('/calltaavon_from_file',[Moshaver::class,'calltaavon_from_file']);
 
+    Route::post('/change_phone_number',[Moshaver::class,'change_phone_number']);
+    Route::post('/change_password',[Moshaver::class,'change_password']);
+
     
     //action
 
