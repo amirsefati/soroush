@@ -176,5 +176,21 @@ class Manager extends Controller
     public function range_moshaver_performance(Request $request){
         return $request;
     }
+
+    public function change_phone_number(Request $request){
+        User::find($request->change_phone_number_modir_id)->update([
+            'phone' => $request->change_phone_number_new_number
+        ]);
+        return redirect('/modir');
+
+    }
+
+    public function change_password(Request $request){
+        User::find($request->change_password_modir_id)->update([
+            'password' => $request->change_password_new_pass
+        ]);
+        return redirect('/modir');
+
+    }
 }
 

@@ -132,4 +132,20 @@ class Ads extends Controller
         $statics = array_reverse($statics);
         return $statics;
     }
+
+    public function change_phone_number(Request $request){
+        User::find($request->change_phone_number_tablighat_id)->update([
+            'phone' => $request->change_phone_number_new_number
+        ]);
+        return redirect('/tablighat');
+
+    }
+
+    public function change_password(Request $request){
+        User::find($request->change_password_tablighat_id)->update([
+            'password' => $request->change_password_new_pass
+        ]);
+        return redirect('/tablighat');
+
+    }
 }
