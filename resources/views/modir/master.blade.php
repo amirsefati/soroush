@@ -481,6 +481,20 @@
                     <p style="color:#b5b5b5;font-size:12px">طبقه واحد</p>
                 </div>
             </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-3" style="text-align: center;">
+                    <img src="/img/verify_file_moshaver_address.svg" alt="">
+                    <p style="margin:10px;font-weight:bold;font-size:20px" id="file_address_title"></p>
+                    <p style="color:#b5b5b5;font-size:12px">آدرس</p>
+                </div>
+    
+                <div class="col-md-9" style="text-align: right;">
+    
+                    <p style="margin:10px;font-size:15px" id="file_address"></p>
+                </div>
+            </div>
 
             <hr>
             <div class="row" style="justify-content: center;"> 
@@ -700,13 +714,13 @@
                                             </a>
                                         </li>
 
-                                        <li>
+                                        {{-- <li>
                                             <a href="/modir/manage_kpi">
                                                 <i class="metismenu-icon">
                                                 </i>
                                                 مدیریت سنجه‌ها
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                         <li>
                                             <a href="/modir/announcement">
@@ -975,6 +989,7 @@ crossorigin=""></script>
             $("#parking").text(res.parking)
             $("#suiteinfloor").text(res.suiteinfloor)
             $("#allsuite").text(res.allsuite)
+            $("#file_address").text(res.address)
 
         })
         $.get('getshowuser_id/'+user_id)
