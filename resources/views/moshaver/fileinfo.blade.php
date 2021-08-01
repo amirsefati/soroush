@@ -178,6 +178,21 @@
                                     </div>
                                 </div>
                                 <hr/>
+                                
+                                <div class="row">
+                                    <div class="col-md-3" style="text-align: center;">
+                                        <img src="/img/verify_file_moshaver_address.svg" alt="">
+                                        <p style="margin:10px;font-weight:bold;font-size:20px"></p>
+                                        <p style="color:#b5b5b5;font-size:12px">آدرس</p>
+                                    </div>
+                        
+                                    <div class="col-md-9" style="text-align: right;">
+                        
+                                        <p style="font-size:18px">{{$file->address}}</p>
+                                    </div>
+                                </div>
+
+                                <hr>
 
                                 <div class="row">
                                     <div class="col-md-3">
